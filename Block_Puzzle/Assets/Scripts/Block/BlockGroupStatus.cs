@@ -24,4 +24,16 @@ public class BlockGroupStatus : MonoBehaviour
             else if (value > 6) numOfBlockColor = 6;
         }
     }
+
+    private float blockFallingSpeed;
+    public float BlockFallingSpeed
+    {
+        get => blockFallingSpeed;
+        set
+        {
+            blockFallingSpeed = value;
+            if (value < 1.0f) blockFallingSpeed = 1.0f;
+            else if (value > 10.0f) blockFallingSpeed = 10.0f;
+        }
+    }
 }

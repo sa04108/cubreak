@@ -71,7 +71,7 @@ public class Block : MonoBehaviour
             CheckmateCheck();
         }
 
-        transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPos, Time.deltaTime * 5.0f);
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPos, Time.deltaTime * blockGroupStatus.BlockFallingSpeed);
     }
 
     IEnumerator MoveDown()

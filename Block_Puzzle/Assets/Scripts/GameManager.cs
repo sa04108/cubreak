@@ -21,15 +21,23 @@ public class GameManager : MonoBehaviour
     [Header("Main Game Object Prefab")]
     public GameObject mainGameObjects;
 
-    [Header("Number of Block Color Text")]
+    [Header("Number of Block Colors Text")]
     public Text numOfBlockColorText;
+
+    [Header("Block Falling Speed Text")]
+    public Text blockFallingSpeedText;
 
     private BlockGroupStatus blockGroupStatus;
 
     private void Awake()
     {
         blockGroupStatus = FindObjectOfType<BlockGroupStatus>();
+
+        blockGroupStatus.NumOfBlockColor = 4;
         numOfBlockColorText.text = blockGroupStatus.NumOfBlockColor.ToString();
+        blockGroupStatus.BlockFallingSpeed = 5.0f;
+        blockFallingSpeedText.text = blockGroupStatus.BlockFallingSpeed.ToString();
+
         Init();
     }
 
@@ -49,7 +57,6 @@ public class GameManager : MonoBehaviour
         score = 0;
         scoreText.text = "0";
 
-        blockGroupStatus.NumOfBlockColor = 4;
         blockGroupStatus.BlockCount = 0;
         blockGroupStatus.FallingBlockCount = 0;
         blockGroupStatus.UnconnectedBlockCount = 0;
@@ -59,6 +66,12 @@ public class GameManager : MonoBehaviour
     {
         blockGroupStatus.NumOfBlockColor += num;
         numOfBlockColorText.text = blockGroupStatus.NumOfBlockColor.ToString();
+    }
+
+    public void SetBlockFallingSpeed(float num)
+    {
+        blockGroupStatus.BlockFallingSpeed += num;
+        blockFallingSpeedText.text = blockGroupStatus.BlockFallingSpeed.ToString();
     }
 
     public void OnOffDevOptionPanel()
