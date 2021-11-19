@@ -12,50 +12,31 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverPanel;
     public GameObject devOptionPanel;
 
-    private Vector3[] rayCastVec;
-    public Vector3[] RayCastVec { get { return rayCastVec; } }
-
     private int score;
-    [Header("In Game Variables")]
+    [Header("Score Variables")]
     public Text scoreText;
     public Text finalScoreText;
 
     private GameObject mainGameObjectsTemp;
+    [Header("Main Game Object Prefab")]
     public GameObject mainGameObjects;
 
-    private int numOfBlockColor;
-    public int NumOfBlockColor { get { return numOfBlockColor; } }
+    [Header("Number of Block Color Text")]
     public Text numOfBlockColorText;
-    
-    [SerializeField]
-    private int blockCount;
-    public int BlockCount { get { return blockCount; } set { blockCount = value; } }
 
-    [SerializeField]
-    private int fallingBlockCount;
-    public int FallingBlockCount { get { return fallingBlockCount; } set { fallingBlockCount = value; } }
-
-    [SerializeField]
-    private int unconnectedBlockCount;
-    public int UnconnectedBlockCount { get { return unconnectedBlockCount; } set { unconnectedBlockCount = value; } }
+    private BlockGroupStatus blockGroupStatus;
 
     private void Awake()
     {
-        numOfBlockColor = 4;
-        rayCastVec = new Vector3[6];
-        rayCastVec[0] = Vector3.forward;
-        rayCastVec[1] = Vector3.back;
-        rayCastVec[2] = Vector3.left;
-        rayCastVec[3] = Vector3.right;
-        rayCastVec[4] = Vector3.up;
-        rayCastVec[5] = Vector3.down;
+        blockGroupStatus = FindObjectOfType<BlockGroupStatus>();
+        numOfBlockColorText.text = blockGroupStatus.NumOfBlockColor.ToString();
+        Init();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        numOfBlockColorText.text = numOfBlockColor.ToString();
-        Init();
+
     }
 
     private void Update()
@@ -65,19 +46,19 @@ public class GameManager : MonoBehaviour
 
     private void Init()
     {
-        blockCount = 0;
-        unconnectedBlockCount = 0;
-        fallingBlockCount = 0;
         score = 0;
         scoreText.text = "0";
+
+        blockGroupStatus.NumOfBlockColor = 4;
+        blockGroupStatus.BlockCount = 0;
+        blockGroupStatus.FallingBlockCount = 0;
+        blockGroupStatus.UnconnectedBlockCount = 0;
     }
 
     public void SetNumberOfBlockColor(int num)
     {
-        numOfBlockColor += num;
-        if (numOfBlockColor < 1) numOfBlockColor = 1;
-        else if (numOfBlockColor > 6) numOfBlockColor = 6;
-        numOfBlockColorText.text = numOfBlockColor.ToString();
+        blockGroupStatus.NumOfBlockColor += num;
+        numOfBlockColorText.text = blockGroupStatus.NumOfBlockColor.ToString();
     }
 
     public void OnOffDevOptionPanel()
@@ -117,7 +98,9 @@ public class GameManager : MonoBehaviour
 
     public void GameOverCheck()
     {
-        if (blockCount > 0 && blockCount == unconnectedBlockCount && fallingBlockCount == 0)
+        if (blockGroupStatus.BlockCount > 0
+            && blockGroupStatus.BlockCount == blockGroupStatus.UnconnectedBlockCount
+            && blockGroupStatus.FallingBlockCount == 0)
         {
             gameOverPanel.SetActive(true);
             finalScoreText.text = scoreText.text;
