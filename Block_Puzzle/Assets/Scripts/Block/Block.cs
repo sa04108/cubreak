@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Block : MonoBehaviour
+class Block : MonoBehaviour
 {
     GameManager gameManager;
     BlockGroupStatus blockGroupStatus;
     Renderer renderer;
     const float maxRayDistance = 1.0f;
 
-    Coroutine prevCoroutine;
-    Coroutine nowCoroutine;
     Vector3 targetPos;
     bool isFalling;
 
@@ -42,8 +40,11 @@ public class Block : MonoBehaviour
 
         renderer = GetComponent<Renderer>();
 
+        isFalling = true;
+        blockGroupStatus.FallingBlockCount++;
+        StartCoroutine(MoveDown());
         targetPos = transform.localPosition;
-        isFalling = false;
+
         isUnconnected = false; // 주변에 같은 색으로 연결될 수 있는 블럭이 없는 경우 true
 
         ResetColor();
@@ -52,11 +53,6 @@ public class Block : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DestroyCheck();
-
-        if (!isFalling)
-            nowCoroutine = StartCoroutine(MoveDown());
-
         if (Input.GetMouseButtonDown(0) && blockGroupStatus.FallingBlockCount == 0)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -69,38 +65,38 @@ public class Block : MonoBehaviour
             }
 
             CheckmateCheck();
+            DestroyCheck();
         }
+
+        if (!isFalling)
+            StartCoroutine(MoveDown());
 
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPos, Time.deltaTime * blockGroupStatus.BlockFallingSpeed);
     }
 
     IEnumerator MoveDown()
     {
-        if (!Physics.Raycast(transform.position, Vector3.down, maxRayDistance))
+        while (!Physics.Raycast(transform.position, Vector3.down, maxRayDistance))
         {
-            if (prevCoroutine != null)
-                StopCoroutine(prevCoroutine);
             targetPos += Vector3.down;
 
             if (!isFalling)
+            {
                 blockGroupStatus.FallingBlockCount++;
-            isFalling = true;
+                isFalling = true;
+            }
 
             yield return new WaitUntil(() => transform.localPosition.y - targetPos.y <= 0.1f);
+        }
 
-            prevCoroutine = nowCoroutine;
-            nowCoroutine = StartCoroutine(MoveDown());
-
-            yield return new WaitUntil(() => prevCoroutine == null);
-
+        if (isFalling)
+        {
             blockGroupStatus.FallingBlockCount--;
             isFalling = false;
         }
-
-        prevCoroutine = null;
     }
 
-    public void DestroyCheck()
+    private void DestroyCheck()
     {
         if (gameObject.CompareTag("Destroyed"))
         {

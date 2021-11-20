@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CameraRotation : MonoBehaviour
+class CameraRotation : MonoBehaviour
 {
     public Transform nextCamera;
     public Button leftButton;

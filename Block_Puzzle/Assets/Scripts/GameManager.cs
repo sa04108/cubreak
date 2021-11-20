@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +26,7 @@ public class GameManager : MonoBehaviour
     [Header("Block Falling Speed Text")]
     public Text blockFallingSpeedText;
 
+    private BlockGenerator blockGenerator;
     private BlockGroupStatus blockGroupStatus;
 
     private void Awake()
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 
         blockGroupStatus.NumOfBlockColor = 4;
         numOfBlockColorText.text = blockGroupStatus.NumOfBlockColor.ToString();
-        blockGroupStatus.BlockFallingSpeed = 5.0f;
+        blockGroupStatus.BlockFallingSpeed = 3.0f;
         blockFallingSpeedText.text = blockGroupStatus.BlockFallingSpeed.ToString();
 
         Init();
@@ -47,9 +47,10 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-
+        GenerateBlocks();
+        GameOverCheck();
     }
 
     private void Init()
@@ -60,6 +61,12 @@ public class GameManager : MonoBehaviour
         blockGroupStatus.BlockCount = 0;
         blockGroupStatus.FallingBlockCount = 0;
         blockGroupStatus.UnconnectedBlockCount = 0;
+    }
+
+    private void GenerateBlocks()
+    {
+        if (blockGroupStatus.FallingBlockCount == 0 && blockGenerator != null)
+            blockGenerator.GenerateBlocks();
     }
 
     public void SetNumberOfBlockColor(int num)
@@ -84,6 +91,7 @@ public class GameManager : MonoBehaviour
         titlePanel.SetActive(false);
         mainPanel.SetActive(true);
         mainGameObjectsTemp = Instantiate(mainGameObjects);
+        blockGenerator = mainGameObjectsTemp.GetComponentInChildren<BlockGenerator>();
     }
 
     public void RestartGame()
@@ -92,6 +100,7 @@ public class GameManager : MonoBehaviour
         Init();
         Destroy(mainGameObjectsTemp);
         mainGameObjectsTemp = Instantiate(mainGameObjects);
+        blockGenerator = mainGameObjectsTemp.GetComponentInChildren<BlockGenerator>();
     }
 
     public void GoTitle()

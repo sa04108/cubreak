@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class BlockGroupStatus : MonoBehaviour
 {
+    [SerializeField]
     private int blockCount;
-    public int BlockCount { get; set; }
+    public int BlockCount { get => blockCount; set => blockCount = value; }
 
+    [SerializeField]
     private int fallingBlockCount;
-    public int FallingBlockCount { get; set; }
+    public int FallingBlockCount { get => fallingBlockCount; set => fallingBlockCount = value; }
 
+    [SerializeField]
     private int unconnectedBlockCount;
-    public int UnconnectedBlockCount { get; set; }
+    public int UnconnectedBlockCount { get => unconnectedBlockCount; set => unconnectedBlockCount = value; }
 
     private int numOfBlockColor;
     public int NumOfBlockColor
