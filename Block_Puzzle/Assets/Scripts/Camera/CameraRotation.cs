@@ -9,52 +9,37 @@ class CameraRotation : MonoBehaviour
     public Button leftButton;
     public Button rightButton;
 
-    Vector3 velocity;
     Vector3 cubePos;
-
-    bool clockwise;
-    bool turn;
+    float slerpVal;
 
     // Start is called before the first frame update
     void Start()
     {
         leftButton.onClick.AddListener(OnLeftClick);
         rightButton.onClick.AddListener(OnRightClick);
-        velocity = Vector3.zero;
-        cubePos = Vector3.zero;
-        clockwise = true;
-        turn = false;
+        cubePos = Vector3.down * 5;
+        slerpVal = 0.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (turn)
-            transform.RotateAround(cubePos, Vector3.up, clockwise ? Time.deltaTime * 300.0f : -Time.deltaTime * 300.0f);
+        if (slerpVal < 1.0f)
+            slerpVal += Time.deltaTime / 3.0f;
+
+        transform.position = Vector3.Slerp(transform.position, nextCamera.position, slerpVal);
         transform.LookAt(cubePos);
     }
     
     void OnLeftClick()
     {
-        clockwise = true;
+        slerpVal = 0.0f;
         nextCamera.RotateAround(cubePos, Vector3.up, 90f);
     }
 
     void OnRightClick()
     {
-        clockwise = false;
+        slerpVal = 0.0f;
         nextCamera.RotateAround(cubePos, Vector3.up, -90f);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("NextCamera"))
-            turn = false;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("NextCamera"))
-            turn = true;
     }
 }
