@@ -9,12 +9,16 @@ public class UIManager : MonoBehaviour
 
     [Header("Panels")]
     public GameObject titlePanel;
-    public GameObject rGamePanel;
-    public GameObject gameOverPanel;
     public GameObject devOptionPanel;
+    public GameObject inGamePanel;
+    public GameObject gameClearPanel;
+    public GameObject gameOverPanel;
 
     [Header("Randomized Game Objects")]
     public GameObject RGameObjects;
+
+    [Header("Patterned Game Objects")]
+    public GameObject PGameObjects;
 
     private int score;
     [Header("Score Variables")]
@@ -62,6 +66,7 @@ public class UIManager : MonoBehaviour
         scoreText.text = score.ToString();
     }
 
+    #region Panel Management
     public void OnOffDevOptionPanel()
     {
         devOptionPanel.SetActive(!devOptionPanel.activeSelf);
@@ -70,30 +75,50 @@ public class UIManager : MonoBehaviour
     public void StartRandomizedGame()
     {
         titlePanel.SetActive(false);
-        rGamePanel.SetActive(true);
-        // pGamePanel.SetActive(true);
+        inGamePanel.SetActive(true);
         RGameObjects.SetActive(true);
     }
 
-    public void RestartRGame()
+    public void StartPatternedGame()
     {
+        titlePanel.SetActive(false);
+        inGamePanel.SetActive(true);
+        PGameObjects.SetActive(true);
+    }
+
+    public void RestartGame()
+    {
+        gameClearPanel.SetActive(false);
         gameOverPanel.SetActive(false);
         Init();
-        RGameObjects.SetActive(false);
-        RGameObjects.SetActive(true);
-        //PGameObjects.SetActive(false);
-        //PGameObjects.SetActive(true);
+
+        if (RGameObjects.activeSelf)
+        {
+            RGameObjects.SetActive(false);
+            RGameObjects.SetActive(true);
+        }
+        else if (PGameObjects.activeSelf)
+        {
+            PGameObjects.SetActive(false);
+            PGameObjects.SetActive(true);
+        }
     }
 
     public void GoTitle()
     {
+        gameClearPanel.SetActive(false);
         gameOverPanel.SetActive(false);
         Init();
         RGameObjects.SetActive(false);
-        // PGameObjects.SetActive(false);
-        rGamePanel.SetActive(false);
-        // pGamePanel.SetActive(false);
+        PGameObjects.SetActive(false);
+        inGamePanel.SetActive(false);
         titlePanel.SetActive(true);
+    }
+
+    public void GameClear()
+    {
+        gameClearPanel.SetActive(true);
+        finalScoreText.text = scoreText.text;
     }
 
     public void GameOver()
@@ -101,4 +126,5 @@ public class UIManager : MonoBehaviour
         gameOverPanel.SetActive(true);
         finalScoreText.text = scoreText.text;
     }
+    #endregion
 }

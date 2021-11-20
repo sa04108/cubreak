@@ -2,21 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Block : MonoBehaviour
+abstract public class Block : MonoBehaviour
 {
-    GameManager gameManager;
-    BlockGroupStatus blockGroupStatus;
-    Renderer renderer;
-    const float maxRayDistance = 1.0f;
+    protected BlockGroupStatus blockGroupStatus;
+    protected Renderer renderer;
+    private UIManager uiManager;
 
-    Vector3 targetPos;
-    
+    private const float maxRayDistance = 1.0f;
+
+    private Vector3 targetPos;
+
     private bool isFalling;
     public bool IsFalling { get => isFalling; }
 
     [SerializeField]
-    bool isUnconnected;
-    bool destroyed;
+    private bool isUnconnected;
+    private bool destroyed;
 
     private Vector3[] rayCastVec {
         get
@@ -35,14 +36,12 @@ public class Block : MonoBehaviour
     public GameObject destroyEffect;
 
     // Start is called before the first frame update
-    void Start()
+    virtual protected void Awake()
     {
-        gameManager = FindObjectOfType<GameManager>();
-        gameManager.blocks.Add(gameObject);
         blockGroupStatus = FindObjectOfType<BlockGroupStatus>();
         blockGroupStatus.BlockCount++;
-
         renderer = GetComponent<Renderer>();
+        uiManager = FindObjectOfType<UIManager>();
 
         isFalling = true;
         blockGroupStatus.FallingBlockCount++;
@@ -52,44 +51,16 @@ public class Block : MonoBehaviour
         isUnconnected = false; // 주변에 같은 색으로 연결될 수 있는 블럭이 없는 경우 true
         destroyed = false;
 
-        ResetColor();
+        InitGameManager();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPos, Time.deltaTime * blockGroupStatus.BlockFallingSpeed);
     }
 
-    void ResetColor()
-    {
-        int numOfBlockColor = blockGroupStatus.NumOfBlockColor;
-        int colorVal = Random.Range(0, numOfBlockColor);
-
-        switch (colorVal)
-        {
-            case 0:
-                renderer.material.color = Color.red;
-                break;
-            case 1:
-                renderer.material.color = Color.green;
-                break;
-            case 2:
-                renderer.material.color = Color.blue;
-                break;
-            case 3:
-                renderer.material.color = Color.yellow;
-                break;
-            case 4:
-                renderer.material.color = Color.black;
-                break;
-            case 5:
-                renderer.material.color = Color.white;
-                break;
-            default:
-                break;
-        }
-    }
+    abstract public void InitGameManager();
 
     public IEnumerator MoveDown()
     {
@@ -167,6 +138,7 @@ public class Block : MonoBehaviour
 
     private void DestroyThis()
     {
+        uiManager.ScoreUp();
         blockGroupStatus.BlockCount--;
         Destroy(Instantiate(destroyEffect, transform.position, Quaternion.identity, transform.parent), 0.8f);
         Destroy(gameObject);

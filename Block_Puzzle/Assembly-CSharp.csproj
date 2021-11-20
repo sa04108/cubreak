@@ -59,13 +59,17 @@
     <Compile Include="Assets\Scripts\Manager\UIManager.cs" />
     <Compile Include="Assets\Scripts\Block\BlockGenerator.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraRotation.cs" />
+    <Compile Include="Assets\Scripts\Cube\CubePattern.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\Scripts\Block\Block.cs" />
     <Compile Include="Assets\Scripts\Block\BlockGroupStatus.cs" />
-    <Compile Include="Assets\Scripts\Cube\CubePattern.cs" />
+    <Compile Include="Assets\Scripts\Manager\RandomizedGameManager.cs" />
+    <Compile Include="Assets\Scripts\Block\RandomizedBlock.cs" />
+    <Compile Include="Assets\Scripts\Manager\PatternedGameManager.cs" />
+    <Compile Include="Assets\Scripts\Block\PatternedBlock.cs" />
   </ItemGroup>
   <ItemGroup>
-     <None Include="Assets\Customizable Skybox\Stylized Sky\Shaders\Stylized Sky.shader" />
+     <None Include="Assets\External Assets\Customizable Skybox\Stylized Sky\Shaders\Stylized Sky.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\2020.3.7f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

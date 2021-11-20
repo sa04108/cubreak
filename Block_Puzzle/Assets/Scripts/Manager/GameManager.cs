@@ -21,12 +21,6 @@ public class GameManager : MonoBehaviour
         uiManager.blockFallingSpeedText.text = blockGroupStatus.BlockFallingSpeed.ToString();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     private void Update()
     {
         if (Input.GetMouseButtonDown(0) && blockGroupStatus.FallingBlockCount == 0)
@@ -46,10 +40,11 @@ public class GameManager : MonoBehaviour
     {
         BlocksMoveDownCheck();
         BlocksCheckmateCheck();
+        GameClearCheck();
         GameOverCheck();
     }
 
-    public void BlocksMoveDownCheck()
+    private void BlocksMoveDownCheck()
     {
         for (int i = 0; i < blocks.Count; i++)
         {
@@ -63,7 +58,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void BlocksCheckmateCheck()
+    private void BlocksCheckmateCheck()
     {
         for (int i = 0; i < blocks.Count; i++)
         {
@@ -77,7 +72,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void GameOverCheck()
+    private void GameClearCheck()
+    {
+        if (blockGroupStatus.BlockCount == 0
+            && blockGroupStatus.UnconnectedBlockCount == 0
+            && blockGroupStatus.FallingBlockCount == 0)
+        {
+            uiManager.GameClear();
+        }
+    }
+
+    private void GameOverCheck()
     {
         if (blockGroupStatus.BlockCount > 0
             && blockGroupStatus.BlockCount == blockGroupStatus.UnconnectedBlockCount
