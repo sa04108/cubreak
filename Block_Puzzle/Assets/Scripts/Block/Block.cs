@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-class Block : MonoBehaviour
+public class Block : MonoBehaviour
 {
     GameManager gameManager;
     BlockGroupStatus blockGroupStatus;
@@ -10,7 +10,9 @@ class Block : MonoBehaviour
     const float maxRayDistance = 1.0f;
 
     Vector3 targetPos;
-    bool isFalling;
+    
+    private bool isFalling;
+    public bool IsFalling { get => isFalling; }
 
     [SerializeField]
     bool isUnconnected;
@@ -35,6 +37,7 @@ class Block : MonoBehaviour
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        gameManager.blocks.Add(gameObject);
         blockGroupStatus = FindObjectOfType<BlockGroupStatus>();
         blockGroupStatus.BlockCount++;
 
@@ -53,28 +56,10 @@ class Block : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && blockGroupStatus.FallingBlockCount == 0)
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.transform.CompareTag("Block"))
-                    hit.transform.GetComponent<Block>().DestroyBlocks();
-            }
-
-            CheckmateCheck();
-            DestroyCheck();
-        }
-
-        if (!isFalling)
-            StartCoroutine(MoveDown());
-
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPos, Time.deltaTime * blockGroupStatus.BlockFallingSpeed);
     }
 
-    IEnumerator MoveDown()
+    public IEnumerator MoveDown()
     {
         while (!Physics.Raycast(transform.position, Vector3.down, maxRayDistance))
         {
@@ -96,23 +81,7 @@ class Block : MonoBehaviour
         }
     }
 
-    private void DestroyCheck()
-    {
-        if (gameObject.CompareTag("Destroyed"))
-        {
-            blockGroupStatus.BlockCount--;
-            gameManager.ScoreUp();
-
-            if (transform.parent.childCount <= 1)
-            {
-                Destroy(transform.parent.gameObject);
-            }
-            else
-                Destroy(gameObject);
-        }
-    }
-
-    private void CheckmateCheck()
+    public void CheckmateCheck()
     {
         RaycastHit hit;
 
@@ -120,7 +89,7 @@ class Block : MonoBehaviour
         {
             if (Physics.Raycast(transform.position, rayCastVec[i], out hit, maxRayDistance))
             {
-                if ((hit.transform.CompareTag("Block") || hit.transform.CompareTag("Destroyed"))
+                if (hit.transform.CompareTag("Block")
                     && hit.transform.GetComponent<Renderer>().material.color == renderer.material.color)
                 {
                     if (isUnconnected)
@@ -181,7 +150,7 @@ class Block : MonoBehaviour
                     && hit.transform.GetComponent<Renderer>().material.color == renderer.material.color)
                 {
                     Destroy(Instantiate(destroyEffect, hit.transform.position, Quaternion.identity, transform.parent), 0.8f);
-                    hit.transform.tag = "Destroyed";
+                    transform.tag = "Destroyed";
                     hit.transform.GetComponent<Block>().DestroyBlocks();
                 }
             }

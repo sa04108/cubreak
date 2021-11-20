@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BlockGenerator : MonoBehaviour
 {
-    public GameObject blockFloor;
+    public GameObject cubePrefab;
+
+    private GameObject cubeTemp;
 
     // Start is called before the first frame update
     void Start()
@@ -17,19 +19,13 @@ public class BlockGenerator : MonoBehaviour
 
     }
 
-    public void GenerateBlocks()
+    private void OnEnable()
     {
-        int passCount = 0;
+        cubeTemp = Instantiate(cubePrefab, transform.position, Quaternion.identity, transform.parent);
+    }
 
-        for (int i = 0; i < 3; i++)
-        {
-            if (Physics.Raycast(new Vector3(-2.0f, 1.0f, 1.0f - i), Vector3.right, 4.0f))
-                break;
-            else
-                passCount++;
-        }
-
-        if (passCount >= 3)
-            Instantiate(blockFloor, new Vector3(0.0f, 1.0f, 0.0f), Quaternion.identity, transform.parent);
+    private void OnDisable()
+    {
+        Destroy(cubeTemp);
     }
 }
