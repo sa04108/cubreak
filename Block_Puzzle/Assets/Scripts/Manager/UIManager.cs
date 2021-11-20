@@ -9,12 +9,12 @@ public class UIManager : MonoBehaviour
 
     [Header("Panels")]
     public GameObject titlePanel;
-    public GameObject mainPanel;
+    public GameObject rGamePanel;
     public GameObject gameOverPanel;
     public GameObject devOptionPanel;
 
-    [Header("Main Game Objects")]
-    public GameObject mainGameObjects;
+    [Header("Randomized Game Objects")]
+    public GameObject RGameObjects;
 
     private int score;
     [Header("Score Variables")]
@@ -67,27 +67,32 @@ public class UIManager : MonoBehaviour
         devOptionPanel.SetActive(!devOptionPanel.activeSelf);
     }
 
-    public void StartGame()
+    public void StartRandomizedGame()
     {
         titlePanel.SetActive(false);
-        mainPanel.SetActive(true);
-        mainGameObjects.SetActive(true);
+        rGamePanel.SetActive(true);
+        // pGamePanel.SetActive(true);
+        RGameObjects.SetActive(true);
     }
 
-    public void RestartGame()
+    public void RestartRGame()
     {
         gameOverPanel.SetActive(false);
         Init();
-        mainGameObjects.SetActive(false);
-        mainGameObjects.SetActive(true);
+        RGameObjects.SetActive(false);
+        RGameObjects.SetActive(true);
+        //PGameObjects.SetActive(false);
+        //PGameObjects.SetActive(true);
     }
 
     public void GoTitle()
     {
         gameOverPanel.SetActive(false);
         Init();
-        mainGameObjects.SetActive(false);
-        mainPanel.SetActive(false);
+        RGameObjects.SetActive(false);
+        // PGameObjects.SetActive(false);
+        rGamePanel.SetActive(false);
+        // pGamePanel.SetActive(false);
         titlePanel.SetActive(true);
     }
 

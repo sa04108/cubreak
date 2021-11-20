@@ -44,27 +44,9 @@ public class GameManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        BlocksDestroyCheck();
         BlocksMoveDownCheck();
         BlocksCheckmateCheck();
         GameOverCheck();
-    }
-
-    public void BlocksDestroyCheck()
-    {
-        for (int i = 0; i < blocks.Count; i++)
-        {
-            if (blocks[i] != null)
-            {
-                if (blocks[i].CompareTag("Destroyed"))
-                {
-                    Destroy(blocks[i]);
-                    blockGroupStatus.BlockCount--;
-                    blocks.RemoveAt(i);
-                    i--;
-                }
-            }
-        }
     }
 
     public void BlocksMoveDownCheck()
@@ -76,6 +58,8 @@ public class GameManager : MonoBehaviour
                 if (!blocks[i].GetComponent<Block>().IsFalling)
                     StartCoroutine(blocks[i].GetComponent<Block>().MoveDown());
             }
+            else
+                blocks.RemoveAt(i--);
         }
     }
 
@@ -88,6 +72,8 @@ public class GameManager : MonoBehaviour
                 if (!blocks[i].GetComponent<Block>().IsFalling)
                     blocks[i].GetComponent<Block>().CheckmateCheck();
             }
+            else
+                blocks.RemoveAt(i--);
         }
     }
 

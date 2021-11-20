@@ -16,6 +16,7 @@ public class Block : MonoBehaviour
 
     [SerializeField]
     bool isUnconnected;
+    bool destroyed;
 
     private Vector3[] rayCastVec {
         get
@@ -49,6 +50,7 @@ public class Block : MonoBehaviour
         targetPos = transform.localPosition;
 
         isUnconnected = false; // 주변에 같은 색으로 연결될 수 있는 블럭이 없는 경우 true
+        destroyed = false;
 
         ResetColor();
     }
@@ -57,6 +59,36 @@ public class Block : MonoBehaviour
     void Update()
     {
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPos, Time.deltaTime * blockGroupStatus.BlockFallingSpeed);
+    }
+
+    void ResetColor()
+    {
+        int numOfBlockColor = blockGroupStatus.NumOfBlockColor;
+        int colorVal = Random.Range(0, numOfBlockColor);
+
+        switch (colorVal)
+        {
+            case 0:
+                renderer.material.color = Color.red;
+                break;
+            case 1:
+                renderer.material.color = Color.green;
+                break;
+            case 2:
+                renderer.material.color = Color.blue;
+                break;
+            case 3:
+                renderer.material.color = Color.yellow;
+                break;
+            case 4:
+                renderer.material.color = Color.black;
+                break;
+            case 5:
+                renderer.material.color = Color.white;
+                break;
+            default:
+                break;
+        }
     }
 
     public IEnumerator MoveDown()
@@ -108,38 +140,10 @@ public class Block : MonoBehaviour
         isUnconnected = true;
     }
 
-    void ResetColor()
-    {
-        int numOfBlockColor = blockGroupStatus.NumOfBlockColor;
-        int colorVal = Random.Range(0, numOfBlockColor);
-
-        switch (colorVal)
-        {
-            case 0:
-                renderer.material.color = Color.red;
-                break;
-            case 1:
-                renderer.material.color = Color.green;
-                break;
-            case 2:
-                renderer.material.color = Color.blue;
-                break;
-            case 3:
-                renderer.material.color = Color.yellow;
-                break;
-            case 4:
-                renderer.material.color = Color.black;
-                break;
-            case 5:
-                renderer.material.color = Color.white;
-                break;
-            default:
-                break;
-        }
-    }
-
     public void DestroyBlocks()
     {
+        if (destroyed) return;
+
         RaycastHit hit;
 
         for (int i = 0; i < rayCastVec.Length; i++)
@@ -149,11 +153,22 @@ public class Block : MonoBehaviour
                 if (hit.transform.CompareTag("Block")
                     && hit.transform.GetComponent<Renderer>().material.color == renderer.material.color)
                 {
-                    Destroy(Instantiate(destroyEffect, hit.transform.position, Quaternion.identity, transform.parent), 0.8f);
-                    transform.tag = "Destroyed";
+                    destroyed = true;
                     hit.transform.GetComponent<Block>().DestroyBlocks();
+
+                    // 맨 끝 블럭의 경우 다시 이 함수가 실행되지 않으므로 따로 제거해주어야 한다.
+                    // 맨 끝 블럭이 아닌 경우 이미 위에서 Destory 처리가 됐을 것이므로 예외처리를 한다.
                 }
             }
         }
+
+        if (destroyed) DestroyThis();
+    }
+
+    private void DestroyThis()
+    {
+        blockGroupStatus.BlockCount--;
+        Destroy(Instantiate(destroyEffect, transform.position, Quaternion.identity, transform.parent), 0.8f);
+        Destroy(gameObject);
     }
 }
