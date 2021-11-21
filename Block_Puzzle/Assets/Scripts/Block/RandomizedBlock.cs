@@ -6,9 +6,9 @@ public class RandomizedBlock : Block
 {
     RandomizedGameManager rGameManager;
 
-    protected override void Awake()
+    protected override void Start()
     {
-        base.Awake();
+        base.Start();
         ResetColor();
     }
 

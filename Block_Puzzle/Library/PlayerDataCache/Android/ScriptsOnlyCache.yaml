@@ -1,11 +1,15 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - Block
     - BlockGenerator
     - BlockGroupStatus
     - CameraRotation
-    - GameManager
+    - CubePattern
+    - PatternedBlock
+    - PatternedGameManager
+    - RandomizedBlock
+    - RandomizedGameManager
+    - UIManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     UnityEditor.TestRunner.dll:
@@ -54,29 +58,37 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1490}
     - Class: 114
-      Script: {instanceID: 2212}
+      Script: {instanceID: 1568}
     - Class: 114
-      Script: {instanceID: 2452}
+      Script: {instanceID: 2008}
     - Class: 114
-      Script: {instanceID: 2636}
+      Script: {instanceID: 2030}
     - Class: 114
-      Script: {instanceID: 2794}
+      Script: {instanceID: 2218}
     - Class: 114
-      Script: {instanceID: 2818}
+      Script: {instanceID: 2356}
     - Class: 114
-      Script: {instanceID: 3042}
+      Script: {instanceID: 2406}
     - Class: 114
-      Script: {instanceID: 3062}
+      Script: {instanceID: 2462}
     - Class: 114
-      Script: {instanceID: 3292}
+      Script: {instanceID: 2646}
     - Class: 114
-      Script: {instanceID: 3362}
+      Script: {instanceID: 2804}
     - Class: 114
-      Script: {instanceID: 3404}
+      Script: {instanceID: 2828}
     - Class: 114
-      Script: {instanceID: 3500}
+      Script: {instanceID: 2950}
     - Class: 114
-      Script: {instanceID: 3538}
+      Script: {instanceID: 3054}
+    - Class: 114
+      Script: {instanceID: 3374}
+    - Class: 114
+      Script: {instanceID: 3416}
+    - Class: 114
+      Script: {instanceID: 3512}
+    - Class: 114
+      Script: {instanceID: 3550}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -122,6 +134,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_InputField
+  - hash:
+      serializedVersion: 2
+      Hash: 91eb6badf1326c3ebc24c3c5ee1e6946
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RandomizedBlock
   - hash:
       serializedVersion: 2
       Hash: caa533b001ae39b864ba8425019e2268
@@ -238,6 +256,18 @@ ScriptsOnlyBuild:
     className: AudioPlayableAsset
   - hash:
       serializedVersion: 2
+      Hash: 91eb6badf1326c3ebc24c3c5ee1e6946
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PatternedBlock
+  - hash:
+      serializedVersion: 2
+      Hash: 4211ad085391a34c3dc7e537370129f4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UIManager
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
@@ -292,6 +322,12 @@ ScriptsOnlyBuild:
     className: PlaymodeTestsController
   - hash:
       serializedVersion: 2
+      Hash: a3b2c7b6c1616ac7b144bb91e8e4ce86
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PatternedGameManager
+  - hash:
+      serializedVersion: 2
       Hash: aba7b2852ef61d175dd9602e7723d5e5
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -304,7 +340,13 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 8bbe26806487607b40b7da3a18d8bb68
+      Hash: a3b2c7b6c1616ac7b144bb91e8e4ce86
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RandomizedGameManager
+  - hash:
+      serializedVersion: 2
+      Hash: da4c32122446fe87997abcbafa0beb33
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BlockGenerator
@@ -418,6 +460,12 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
+      Hash: 9489dba016f10266ac9f6ce2b722d4cb
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CubePattern
+  - hash:
+      serializedVersion: 2
       Hash: fd68d84f33fad85aac38f2739c0ee270
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -436,7 +484,7 @@ ScriptsOnlyBuild:
     className: GraphicRaycaster
   - hash:
       serializedVersion: 2
-      Hash: adc66f21d2edae58afe9d913cba3b430
+      Hash: a3b2c7b6c1616ac7b144bb91e8e4ce86
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -472,12 +520,6 @@ ScriptsOnlyBuild:
     className: TestResultRendererCallback
   - hash:
       serializedVersion: 2
-      Hash: 91eb6badf1326c3ebc24c3c5ee1e6946
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Block
-  - hash:
-      serializedVersion: 2
       Hash: 748dd2a2a28da4e618912da5ac45684b
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
@@ -502,7 +544,7 @@ ScriptsOnlyBuild:
     className: MarkerTrack
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: acbf6e2506d6279e2963112ecbbc3da6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BlockGroupStatus

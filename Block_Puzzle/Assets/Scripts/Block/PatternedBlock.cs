@@ -7,9 +7,9 @@ public class PatternedBlock : Block
     PatternedGameManager pGameManager;
 
     // Start is called before the first frame update
-    protected override void Awake()
+    protected override void Start()
     {
-        base.Awake();
+        base.Start();
         ResetColor();
     }
 

@@ -10,7 +10,7 @@ public class PatternedGameManager : GameManager
         {
             if (blocks[i] != null)
             {
-                blocks[i].GetComponent<RandomizedBlock>().ResetColor();
+                blocks[i].GetComponent<PatternedBlock>().ResetColor();
             }
             else
                 blocks.RemoveAt(i--);

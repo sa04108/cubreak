@@ -36,7 +36,7 @@ abstract public class Block : MonoBehaviour
     public GameObject destroyEffect;
 
     // Start is called before the first frame update
-    virtual protected void Awake()
+    virtual protected void Start()
     {
         blockGroupStatus = FindObjectOfType<BlockGroupStatus>();
         blockGroupStatus.BlockCount++;
@@ -61,6 +61,19 @@ abstract public class Block : MonoBehaviour
     }
 
     abstract public void InitGameManager();
+
+    private bool CompareColor(Renderer r1, Renderer r2)
+    {
+        // 이 함수는 alpha 값을 제외하고 색을 비교하는 함수입니다.
+        // 색이 같은 경우 true, 다른 경우 false를 반환합니다.
+
+        if (r1.material.color.r == r2.material.color.r
+            && r1.material.color.g == r2.material.color.g
+            && r1.material.color.b == r2.material.color.b)
+            return true;
+
+        return false;
+    }
 
     public IEnumerator MoveDown()
     {
@@ -93,7 +106,7 @@ abstract public class Block : MonoBehaviour
             if (Physics.Raycast(transform.position, rayCastVec[i], out hit, maxRayDistance))
             {
                 if (hit.transform.CompareTag("Block")
-                    && hit.transform.GetComponent<Renderer>().material.color == renderer.material.color)
+                    && CompareColor(hit.transform.GetComponent<Renderer>(), renderer))
                 {
                     if (isUnconnected)
                         blockGroupStatus.UnconnectedBlockCount--;
@@ -122,7 +135,7 @@ abstract public class Block : MonoBehaviour
             if (Physics.Raycast(transform.position, rayCastVec[i], out hit, maxRayDistance))
             {
                 if (hit.transform.CompareTag("Block")
-                    && hit.transform.GetComponent<Renderer>().material.color == renderer.material.color)
+                    && CompareColor(hit.transform.GetComponent<Renderer>(), renderer))
                 {
                     destroyed = true;
                     hit.transform.GetComponent<Block>().DestroyBlocks();

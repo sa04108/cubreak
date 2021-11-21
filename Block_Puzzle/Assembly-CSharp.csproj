@@ -56,17 +56,19 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Block\RandomizedBlock.cs" />
+    <Compile Include="Assets\Scripts\Block\PatternedBlock.cs" />
     <Compile Include="Assets\Scripts\Manager\UIManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\PatternedGameManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\RandomizedGameManager.cs" />
     <Compile Include="Assets\Scripts\Block\BlockGenerator.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraRotation.cs" />
     <Compile Include="Assets\Scripts\Cube\CubePattern.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\Scripts\Block\Block.cs" />
     <Compile Include="Assets\Scripts\Block\BlockGroupStatus.cs" />
-    <Compile Include="Assets\Scripts\Manager\RandomizedGameManager.cs" />
-    <Compile Include="Assets\Scripts\Block\RandomizedBlock.cs" />
-    <Compile Include="Assets\Scripts\Manager\PatternedGameManager.cs" />
-    <Compile Include="Assets\Scripts\Block\PatternedBlock.cs" />
+    <Compile Include="Assets\Scripts\Cube\CubeMaterial.cs" />
+    <Compile Include="Assets\Scripts\Cube\CubeBlocks.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\External Assets\Customizable Skybox\Stylized Sky\Shaders\Stylized Sky.shader" />
