@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-abstract public class Block : MonoBehaviour
+public class Block : MonoBehaviour, ISelectGameManager
 {
     protected BlockGroupStatus blockGroupStatus;
     protected Renderer renderer;
@@ -15,7 +15,6 @@ abstract public class Block : MonoBehaviour
     private bool isFalling;
     public bool IsFalling { get => isFalling; }
 
-    [SerializeField]
     private bool isUnconnected;
     private bool destroyed;
 
@@ -33,15 +32,15 @@ abstract public class Block : MonoBehaviour
         }
     }
 
-    public GameObject destroyEffect;
+    private GameObject destroyEffect;
 
     // Start is called before the first frame update
     virtual protected void Start()
     {
-        blockGroupStatus = FindObjectOfType<BlockGroupStatus>();
+        blockGroupStatus = BlockGroupStatus.Instance;
         blockGroupStatus.BlockCount++;
         renderer = GetComponent<Renderer>();
-        uiManager = FindObjectOfType<UIManager>();
+        uiManager = UIManager.Instance;
 
         isFalling = true;
         blockGroupStatus.FallingBlockCount++;
@@ -51,16 +50,18 @@ abstract public class Block : MonoBehaviour
         isUnconnected = false; // 주변에 같은 색으로 연결될 수 있는 블럭이 없는 경우 true
         destroyed = false;
 
+        destroyEffect = GetComponent<BlockType>().destroyEffect;
+
         InitGameManager();
     }
+
+    virtual public void InitGameManager() { }
 
     // Update is called once per frame
     private void Update()
     {
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPos, Time.deltaTime * blockGroupStatus.BlockFallingSpeed);
     }
-
-    abstract public void InitGameManager();
 
     private bool CompareColor(Renderer r1, Renderer r2)
     {

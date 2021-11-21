@@ -5,6 +5,18 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    private static UIManager instance;
+    public static UIManager Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = FindObjectOfType(typeof(UIManager)) as UIManager;
+
+            return instance;
+        }
+    }
+
     private BlockGroupStatus blockGroupStatus;
 
     [Header("Panels")]
@@ -31,9 +43,26 @@ public class UIManager : MonoBehaviour
     [Header("Block Falling Speed Text")]
     public Text blockFallingSpeedText;
 
+    [Header("Camera Transform")]
+    public Transform cameraTransform;
+
+    private bool onPatternGame;
+    public bool OnPatternGame { get => onPatternGame; }
+
     private void Awake()
     {
-        blockGroupStatus = FindObjectOfType<BlockGroupStatus>();
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
+
+        blockGroupStatus = BlockGroupStatus.Instance;
+        blockGroupStatus.NumOfBlockColor = 4;
+        numOfBlockColorText.text = blockGroupStatus.NumOfBlockColor.ToString();
+        blockGroupStatus.BlockFallingSpeed = 3.0f;
+        blockFallingSpeedText.text = blockGroupStatus.BlockFallingSpeed.ToString();
 
         Init();
     }
@@ -46,6 +75,8 @@ public class UIManager : MonoBehaviour
         blockGroupStatus.BlockCount = 0;
         blockGroupStatus.FallingBlockCount = 0;
         blockGroupStatus.UnconnectedBlockCount = 0;
+
+        cameraTransform.localPosition = Vector3.zero;
     }
 
     public void SetNumberOfBlockColor(int num)
@@ -74,6 +105,7 @@ public class UIManager : MonoBehaviour
 
     public void StartRandomizedGame()
     {
+        onPatternGame = false;
         titlePanel.SetActive(false);
         inGamePanel.SetActive(true);
         RGameObjects.SetActive(true);
@@ -81,6 +113,7 @@ public class UIManager : MonoBehaviour
 
     public void StartPatternedGame()
     {
+        onPatternGame = true;
         titlePanel.SetActive(false);
         inGamePanel.SetActive(true);
         PGameObjects.SetActive(true);

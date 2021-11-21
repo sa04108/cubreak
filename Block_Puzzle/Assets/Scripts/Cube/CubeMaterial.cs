@@ -23,6 +23,9 @@ public class CubeMaterial : MonoBehaviour
 
         seeThroughButton = GameObject.Find("See Through Button").GetComponent<Button>();
         seeThroughButton.onClick.AddListener(SetCubeAlpha);
+
+        if (UIManager.Instance.OnPatternGame)
+            gameObject.AddComponent<CubePattern>();
     }
 
     private void InitFloors()

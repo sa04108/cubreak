@@ -1913,6 +1913,7 @@ MonoBehaviour:
   finalScoreText: {fileID: 150017323}
   numOfBlockColorText: {fileID: 486672789}
   blockFallingSpeedText: {fileID: 1417660451}
+  cameraTransform: {fileID: 1499270906}
 --- !u!1 &634649243
 GameObject:
   m_ObjectHideFlags: 0
@@ -2640,7 +2641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c334e51261594fc4aae5a0fec4117ef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubePrefab: {fileID: 5832450033840221499, guid: 9b8410a8fd9d4764ca58364f94b9aad1, type: 3}
+  cubePrefab: {fileID: 5832450033840221499, guid: bda3c73ac65da7e46959b090bfacb366, type: 3}
 --- !u!23 &910872531
 MeshRenderer:
   m_ObjectHideFlags: 0

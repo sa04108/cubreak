@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomizedBlock : Block
+public class RandomizedBlock : Block, ISelectGameManager
 {
     RandomizedGameManager rGameManager;
 
@@ -44,7 +44,7 @@ public class RandomizedBlock : Block
 
     public override void InitGameManager()
     {
-        rGameManager = FindObjectOfType<RandomizedGameManager>();
+        rGameManager = RandomizedGameManager.Instance;
         rGameManager.blocks.Add(gameObject);
     }
 }

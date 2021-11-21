@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PatternedBlock : Block
+public class PatternedBlock : Block, ISelectGameManager
 {
     PatternedGameManager pGameManager;
 
@@ -20,7 +20,7 @@ public class PatternedBlock : Block
 
     public override void InitGameManager()
     {
-        pGameManager = FindObjectOfType<PatternedGameManager>();
+        pGameManager = PatternedGameManager.Instance;
         pGameManager.blocks.Add(gameObject);
     }
 }

@@ -10,15 +10,10 @@ public class GameManager : MonoBehaviour
     private BlockGroupStatus blockGroupStatus;
     private UIManager uiManager;
 
-    private void Awake()
+    protected virtual void Awake()
     {
-        uiManager = FindObjectOfType<UIManager>();
-        blockGroupStatus = FindObjectOfType<BlockGroupStatus>();
-
-        blockGroupStatus.NumOfBlockColor = 4;
-        uiManager.numOfBlockColorText.text = blockGroupStatus.NumOfBlockColor.ToString();
-        blockGroupStatus.BlockFallingSpeed = 3.0f;
-        uiManager.blockFallingSpeedText.text = blockGroupStatus.BlockFallingSpeed.ToString();
+        uiManager = UIManager.Instance;
+        blockGroupStatus = BlockGroupStatus.Instance;
     }
 
     private void Update()

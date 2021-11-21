@@ -4,6 +4,28 @@ using UnityEngine;
 
 public class BlockGroupStatus : MonoBehaviour
 {
+    private static BlockGroupStatus instance;
+    public static BlockGroupStatus Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = FindObjectOfType(typeof(BlockGroupStatus)) as BlockGroupStatus;
+
+            return instance;
+        }
+    }
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
+    }
+
     [SerializeField]
     private int blockCount;
     public int BlockCount { get => blockCount; set => blockCount = value; }
