@@ -29,6 +29,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Stage Manager")]
     public StageManager stageManager;
+    public Text stageText;
 
     private int score;
     [Header("Score Variables")]
@@ -62,7 +63,7 @@ public class UIManager : MonoBehaviour
         Init();
     }
 
-    private void Init()
+    public void Init()
     {
         score = 0;
         scoreText.text = "0";
@@ -103,22 +104,33 @@ public class UIManager : MonoBehaviour
         gameOverPanel.SetActive(panel.name == gameOverPanel.name);
     }
 
-    public void StartRandomizedGame()
-    {
-        SetActivePanel(inGamePanel);
-        stageManager.StartStage(0);
-    }
-
-    public void RestartGame()
+    public void StartStage(int stageNum)
     {
         Init();
         SetActivePanel(inGamePanel);
+        if (stageNum == 0)
+        {
+            scoreText.gameObject.SetActive(true);
+            stageText.gameObject.SetActive(false);
+            RandomizedGameManager.Instance.gameObject.SetActive(true);
+        }
+        else
+        {
+            scoreText.gameObject.SetActive(false);
+            stageText.gameObject.SetActive(true);
+            stageText.text = "Stage " + stageNum;
+            PatternedGameManager.Instance.gameObject.SetActive(true);
+        }
+
+        stageManager.StartStage(stageNum);
     }
 
     public void GoTitle()
     {
         Init();
         SetActivePanel(titlePanel);
+        PatternedGameManager.Instance.gameObject.SetActive(false);
+        RandomizedGameManager.Instance.gameObject.SetActive(false);
     }
 
     public void GameClear()
