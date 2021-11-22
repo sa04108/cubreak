@@ -5,20 +5,14 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [HideInInspector]
     public List<GameObject> blocks;
 
-    private BlockGroupStatus blockGroupStatus;
-    private UIManager uiManager;
-
-    protected virtual void Awake()
-    {
-        uiManager = UIManager.Instance;
-        blockGroupStatus = BlockGroupStatus.Instance;
-    }
+    protected virtual void Awake() { }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && blockGroupStatus.FallingBlockCount == 0)
+        if (Input.GetMouseButtonDown(0) && BlockGroupStatus.Instance.FallingBlockCount == 0)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -69,21 +63,21 @@ public class GameManager : MonoBehaviour
 
     private void GameClearCheck()
     {
-        if (blockGroupStatus.BlockCount == 0
-            && blockGroupStatus.UnconnectedBlockCount == 0
-            && blockGroupStatus.FallingBlockCount == 0)
+        if (BlockGroupStatus.Instance.BlockCount == 0
+            && BlockGroupStatus.Instance.UnconnectedBlockCount == 0
+            && BlockGroupStatus.Instance.FallingBlockCount == 0)
         {
-            uiManager.GameClear();
+            UIManager.Instance.GameClear();
         }
     }
 
     private void GameOverCheck()
     {
-        if (blockGroupStatus.BlockCount > 0
-            && blockGroupStatus.BlockCount == blockGroupStatus.UnconnectedBlockCount
-            && blockGroupStatus.FallingBlockCount == 0)
+        if (BlockGroupStatus.Instance.BlockCount > 0
+            && BlockGroupStatus.Instance.BlockCount == BlockGroupStatus.Instance.UnconnectedBlockCount
+            && BlockGroupStatus.Instance.FallingBlockCount == 0)
         {
-            uiManager.GameOver();
+            UIManager.Instance.GameOver();
         }
     }
 }

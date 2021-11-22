@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Block\BlockType.cs" />
     <Compile Include="Assets\Scripts\Block\BlockGroupStatus.cs" />
     <Compile Include="Assets\Scripts\Cube\CubeBlocks.cs" />
+    <Compile Include="Assets\Scripts\Manager\StageManager.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\External Assets\Customizable Skybox\Stylized Sky\Shaders\Stylized Sky.shader" />

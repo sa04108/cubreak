@@ -10,7 +10,10 @@ public class RandomizedGameManager : GameManager
         get
         {
             if (instance == null)
+            {
+                Debug.Log("assign new RandomizedGameManager to instance");
                 instance = FindObjectOfType(typeof(RandomizedGameManager)) as RandomizedGameManager;
+            }
 
             return instance;
         }
@@ -25,19 +28,7 @@ public class RandomizedGameManager : GameManager
         else
             Destroy(gameObject);
 
-        // DontDestroyOnLoad(gameObject);
-    }
-
-    public void BlocksResetColor()
-    {
-        for (int i = 0; i < blocks.Count; i++)
-        {
-            if (blocks[i] != null)
-            {
-                blocks[i].GetComponent<RandomizedBlock>().ResetColor();
-            }
-            else
-                blocks.RemoveAt(i--);
-        }
+        DontDestroyOnLoad(gameObject);
+        gameObject.SetActive(false);
     }
 }

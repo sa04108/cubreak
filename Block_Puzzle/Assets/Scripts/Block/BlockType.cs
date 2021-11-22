@@ -9,7 +9,7 @@ public class BlockType : MonoBehaviour
     // Block Type 지정은 반드시 Block 객체가 인스턴스화 되기 전에 미리 되어있어야 합니다.
     void Awake()
     {
-        if (UIManager.Instance.OnPatternGame)
+        if (PatternedGameManager.Instance.gameObject.activeSelf)
             gameObject.AddComponent<PatternedBlock>();
         else
             gameObject.AddComponent<RandomizedBlock>();

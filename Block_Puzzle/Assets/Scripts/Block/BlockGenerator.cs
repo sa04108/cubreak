@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class BlockGenerator : MonoBehaviour
 {
-    public GameObject cubePrefab;
-
     private GameObject cubeTemp;
 
-    private void OnEnable()
+    public void CreateCubeAndPattern(GameObject cubePrefab, int stageNum)
     {
         cubeTemp = Instantiate(cubePrefab, transform.position, Quaternion.identity, transform.parent);
+        cubeTemp.GetComponent<CubePattern>().SetPattern(stageNum);
     }
 
-    private void OnDisable()
+    public void DestroyBlocks()
     {
         Destroy(cubeTemp);
     }

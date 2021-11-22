@@ -10,7 +10,10 @@ public class PatternedGameManager : GameManager
         get
         {
             if (instance == null)
+            {
+                Debug.Log("assign new PatternedGameManager to instance");
                 instance = FindObjectOfType(typeof(PatternedGameManager)) as PatternedGameManager;
+            }
 
             return instance;
         }
@@ -25,19 +28,7 @@ public class PatternedGameManager : GameManager
         else
             Destroy(gameObject);
 
-        // DontDestroyOnLoad(gameObject);
-    }
-
-    public void BlocksResetColor()
-    {
-        for (int i = 0; i < blocks.Count; i++)
-        {
-            if (blocks[i] != null)
-            {
-                blocks[i].GetComponent<PatternedBlock>().ResetColor();
-            }
-            else
-                blocks.RemoveAt(i--);
-        }
+        DontDestroyOnLoad(gameObject);
+        gameObject.SetActive(false);
     }
 }

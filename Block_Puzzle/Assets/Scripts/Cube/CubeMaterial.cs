@@ -17,7 +17,7 @@ public class CubeMaterial : MonoBehaviour
 
     Button seeThroughButton;
 
-    virtual protected void Start()
+    private void Awake()
     {
         isAlpha = false;
         alphaVal = 0.0f;

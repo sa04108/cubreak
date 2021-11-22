@@ -21,16 +21,14 @@ public class UIManager : MonoBehaviour
 
     [Header("Panels")]
     public GameObject titlePanel;
+    public GameObject stagesPanel;
     public GameObject devOptionPanel;
     public GameObject inGamePanel;
     public GameObject gameClearPanel;
     public GameObject gameOverPanel;
 
-    [Header("Randomized Game Objects")]
-    public GameObject RGameObjects;
-
-    [Header("Patterned Game Objects")]
-    public GameObject PGameObjects;
+    [Header("Stage Manager")]
+    public StageManager stageManager;
 
     private int score;
     [Header("Score Variables")]
@@ -45,9 +43,6 @@ public class UIManager : MonoBehaviour
 
     [Header("Camera Transform")]
     public Transform cameraTransform;
-
-    private bool onPatternGame;
-    public bool OnPatternGame { get => onPatternGame; }
 
     private void Awake()
     {
@@ -98,65 +93,43 @@ public class UIManager : MonoBehaviour
     }
 
     #region Panel Management
-    public void OnOffDevOptionPanel()
+    public void SetActivePanel(GameObject panel)
     {
-        devOptionPanel.SetActive(!devOptionPanel.activeSelf);
+        titlePanel.SetActive(panel.name == titlePanel.name);
+        stagesPanel.SetActive(panel.name == stagesPanel.name);
+        devOptionPanel.SetActive(panel.name == devOptionPanel.name);
+        inGamePanel.SetActive(panel.name == inGamePanel.name);
+        gameClearPanel.SetActive(panel.name == gameClearPanel.name);
+        gameOverPanel.SetActive(panel.name == gameOverPanel.name);
     }
 
     public void StartRandomizedGame()
     {
-        onPatternGame = false;
-        titlePanel.SetActive(false);
-        inGamePanel.SetActive(true);
-        RGameObjects.SetActive(true);
-    }
-
-    public void StartPatternedGame()
-    {
-        onPatternGame = true;
-        titlePanel.SetActive(false);
-        inGamePanel.SetActive(true);
-        PGameObjects.SetActive(true);
+        SetActivePanel(inGamePanel);
+        stageManager.StartStage(0);
     }
 
     public void RestartGame()
     {
-        gameClearPanel.SetActive(false);
-        gameOverPanel.SetActive(false);
         Init();
-
-        if (RGameObjects.activeSelf)
-        {
-            RGameObjects.SetActive(false);
-            RGameObjects.SetActive(true);
-        }
-        else if (PGameObjects.activeSelf)
-        {
-            PGameObjects.SetActive(false);
-            PGameObjects.SetActive(true);
-        }
+        SetActivePanel(inGamePanel);
     }
 
     public void GoTitle()
     {
-        gameClearPanel.SetActive(false);
-        gameOverPanel.SetActive(false);
         Init();
-        RGameObjects.SetActive(false);
-        PGameObjects.SetActive(false);
-        inGamePanel.SetActive(false);
-        titlePanel.SetActive(true);
+        SetActivePanel(titlePanel);
     }
 
     public void GameClear()
     {
-        gameClearPanel.SetActive(true);
+        SetActivePanel(gameClearPanel);
         finalScoreText.text = scoreText.text;
     }
 
     public void GameOver()
     {
-        gameOverPanel.SetActive(true);
+        SetActivePanel(gameOverPanel);
         finalScoreText.text = scoreText.text;
     }
     #endregion
