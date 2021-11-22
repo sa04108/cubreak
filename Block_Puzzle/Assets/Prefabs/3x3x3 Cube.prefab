@@ -88,7 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5832450033840221498}
   - component: {fileID: 6241480644390852790}
-  - component: {fileID: 1063285652605699678}
+  - component: {fileID: 1507840708660746044}
   m_Layer: 0
   m_Name: 3x3x3 Cube
   m_TagString: Untagged
@@ -125,37 +125,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48af1cd0e41693d48bbf38b859bf1af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstFloor:
-  - {fileID: 6169325484657376428}
-  - {fileID: 740104329684620154}
-  - {fileID: 4931267355415600914}
-  - {fileID: 5576947166985691764}
-  - {fileID: 1924768973404732720}
-  - {fileID: 3330023002534961732}
-  - {fileID: 2780692083045463666}
-  - {fileID: 2178728541364948111}
-  - {fileID: 4191408720628108122}
-  secondFloor:
-  - {fileID: 6643466879306796786}
-  - {fileID: 8770667595150431410}
-  - {fileID: 3938549657904359734}
-  - {fileID: 2741968294584638417}
-  - {fileID: 1265612777069725060}
-  - {fileID: 5062459672839982862}
-  - {fileID: 125670444697990600}
-  - {fileID: 4625318011891471434}
-  - {fileID: 2993394493996692710}
-  thirdFloor:
-  - {fileID: 8631487912309614261}
-  - {fileID: 2836257419866221909}
-  - {fileID: 1684874678682200196}
-  - {fileID: 2752886982122838285}
-  - {fileID: 7477112634253858339}
-  - {fileID: 4808115023175297932}
-  - {fileID: 6325178312251788216}
-  - {fileID: 3290667973843329376}
-  - {fileID: 495817411182921509}
---- !u!114 &1063285652605699678
+  floors:
+  - floor:
+    - {fileID: 6169325484657376428}
+    - {fileID: 740104329684620154}
+    - {fileID: 4931267355415600914}
+    - {fileID: 5576947166985691764}
+    - {fileID: 1924768973404732720}
+    - {fileID: 3330023002534961732}
+    - {fileID: 2780692083045463666}
+    - {fileID: 2178728541364948111}
+    - {fileID: 4191408720628108122}
+  - floor:
+    - {fileID: 6643466879306796786}
+    - {fileID: 8770667595150431410}
+    - {fileID: 3938549657904359734}
+    - {fileID: 2741968294584638417}
+    - {fileID: 1265612777069725060}
+    - {fileID: 5062459672839982862}
+    - {fileID: 125670444697990600}
+    - {fileID: 4625318011891471434}
+    - {fileID: 2993394493996692710}
+  - floor:
+    - {fileID: 8631487912309614261}
+    - {fileID: 2836257419866221909}
+    - {fileID: 1684874678682200196}
+    - {fileID: 2752886982122838285}
+    - {fileID: 7477112634253858339}
+    - {fileID: 4808115023175297932}
+    - {fileID: 6325178312251788216}
+    - {fileID: 3290667973843329376}
+    - {fileID: 495817411182921509}
+--- !u!114 &1507840708660746044
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,7 +165,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5832450033840221499}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6414255f5a363d24e8a89202c1fd3f5f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cb4d40b9c995fc4eabc759d0a9e5f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8154721279935516224

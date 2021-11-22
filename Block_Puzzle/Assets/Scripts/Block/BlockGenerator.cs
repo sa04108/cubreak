@@ -8,17 +8,6 @@ public class BlockGenerator : MonoBehaviour
 
     private GameObject cubeTemp;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnEnable()
     {
         cubeTemp = Instantiate(cubePrefab, transform.position, Quaternion.identity, transform.parent);

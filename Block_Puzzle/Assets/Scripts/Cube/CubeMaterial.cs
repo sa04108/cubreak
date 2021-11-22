@@ -8,35 +8,44 @@ public class CubeMaterial : MonoBehaviour
     bool isAlpha;
     float alphaVal;
 
-    GameObject[] firstFloor;
-    GameObject[] secondFloor;
-    GameObject[] thirdFloor;
+    protected bool cube222;
+    protected bool cube333;
+
+    protected GameObject[] firstFloor;
+    protected GameObject[] secondFloor;
+    protected GameObject[] thirdFloor;
 
     Button seeThroughButton;
 
-    private void Start()
+    virtual protected void Start()
     {
         isAlpha = false;
         alphaVal = 0.0f;
 
         InitFloors();
 
-        seeThroughButton = GameObject.Find("See Through Button").GetComponent<Button>();
-        seeThroughButton.onClick.AddListener(SetCubeAlpha);
-
-        if (UIManager.Instance.OnPatternGame)
-            gameObject.AddComponent<CubePattern>();
+        if (cube333)
+        {
+            seeThroughButton = GameObject.Find("See Through Button").GetComponent<Button>();
+            seeThroughButton.onClick.AddListener(Set333CubeAlpha);
+        }
     }
 
     private void InitFloors()
     {
         CubeBlocks cubeBlocks = GetComponent<CubeBlocks>();
-        firstFloor = cubeBlocks.firstFloor;
-        secondFloor = cubeBlocks.secondFloor;
-        thirdFloor = cubeBlocks.thirdFloor;
+
+        cube222 = cubeBlocks.floors.Count == 2;
+        cube333 = cubeBlocks.floors.Count == 3;
+
+        firstFloor = cubeBlocks.floors[0].floor;
+        secondFloor = cubeBlocks.floors[1].floor;
+
+        if (cube333)
+            thirdFloor = cubeBlocks.floors[2].floor;
     }
 
-    public void SetCubeAlpha()
+    public void Set333CubeAlpha()
     {
         SetFloorAlpha(firstFloor, new int[] { 1, 2, 3, 4, 6, 7, 8, 9 }, isAlpha ? 1.0f : alphaVal);
         SetFloorAlpha(secondFloor, new int[] { 1, 2, 3, 4, 6, 7, 8, 9 }, isAlpha ? 1.0f : alphaVal);
@@ -55,9 +64,12 @@ public class CubeMaterial : MonoBehaviour
     {
         foreach (var idx in list)
         {
-            Color color = floor[idx - 1].GetComponent<Renderer>().material.color;
-            color.a = alpha;
-            floor[idx - 1].GetComponent<Renderer>().material.color = color;
+            if (floor[idx - 1] != null)
+            {
+                Color color = floor[idx - 1].GetComponent<Renderer>().material.color;
+                color.a = alpha;
+                floor[idx - 1].GetComponent<Renderer>().material.color = color;
+            }
         }
     }
 
@@ -71,7 +83,8 @@ public class CubeMaterial : MonoBehaviour
     {
         foreach (var idx in list)
         {
-            floor[idx - 1].GetComponent<Renderer>().material.color = color;
+            if (floor[idx - 1] != null)
+                floor[idx - 1].GetComponent<Renderer>().material.color = color;
         }
     }
 }

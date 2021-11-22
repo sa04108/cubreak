@@ -14,10 +14,4 @@ public class BlockType : MonoBehaviour
         else
             gameObject.AddComponent<RandomizedBlock>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
