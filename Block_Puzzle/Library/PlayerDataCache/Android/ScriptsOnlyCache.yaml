@@ -4,12 +4,15 @@ ScriptsOnlyBuild:
     - BlockGenerator
     - BlockGroupStatus
     - BlockType
+    - CameraPos
     - CameraRotation
     - CubeBlocks
     - CubePattern
+    - InGame
     - PatternedGameManager
     - RandomizedGameManager
     - StageManager
+    - Tutorial
     - UIManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
@@ -19,6 +22,7 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.EventTrigger
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
@@ -57,41 +61,49 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1490}
+      Script: {instanceID: 1426}
     - Class: 114
-      Script: {instanceID: 2032}
+      Script: {instanceID: 1520}
     - Class: 114
-      Script: {instanceID: 2220}
+      Script: {instanceID: 2034}
     - Class: 114
-      Script: {instanceID: 2294}
+      Script: {instanceID: 2068}
     - Class: 114
-      Script: {instanceID: 2360}
+      Script: {instanceID: 2126}
     - Class: 114
-      Script: {instanceID: 2410}
+      Script: {instanceID: 2224}
     - Class: 114
-      Script: {instanceID: 2466}
+      Script: {instanceID: 2298}
     - Class: 114
-      Script: {instanceID: 2650}
+      Script: {instanceID: 2364}
     - Class: 114
-      Script: {instanceID: 2808}
+      Script: {instanceID: 2414}
     - Class: 114
-      Script: {instanceID: 2832}
+      Script: {instanceID: 2470}
     - Class: 114
-      Script: {instanceID: 2956}
+      Script: {instanceID: 2654}
     - Class: 114
-      Script: {instanceID: 3060}
+      Script: {instanceID: 2814}
     - Class: 114
-      Script: {instanceID: 3366}
+      Script: {instanceID: 2838}
     - Class: 114
-      Script: {instanceID: 3382}
+      Script: {instanceID: 2962}
     - Class: 114
-      Script: {instanceID: 3424}
+      Script: {instanceID: 3066}
     - Class: 114
-      Script: {instanceID: 3520}
+      Script: {instanceID: 3122}
     - Class: 114
-      Script: {instanceID: 3558}
+      Script: {instanceID: 3374}
     - Class: 114
-      Script: {instanceID: 3656}
+      Script: {instanceID: 3390}
+    - Class: 114
+      Script: {instanceID: 3432}
+    - Class: 114
+      Script: {instanceID: 3528}
+    - Class: 114
+      Script: {instanceID: 3566}
+    - Class: 114
+      Script: {instanceID: 3664}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -115,22 +127,28 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
-      Hash: 5ab533713adae59372fb3e10a585c186
-    assemblyName: Unity.Timeline.dll
-    namespaceName: UnityEngine.Timeline
-    className: AnimationPlayableAsset
-  - hash:
-      serializedVersion: 2
       Hash: a6e561615949734e9f12f9b61661f43e
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
   - hash:
       serializedVersion: 2
+      Hash: 5ab533713adae59372fb3e10a585c186
+    assemblyName: Unity.Timeline.dll
+    namespaceName: UnityEngine.Timeline
+    className: AnimationPlayableAsset
+  - hash:
+      serializedVersion: 2
       Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: ContentSizeFitter
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CameraPos
   - hash:
       serializedVersion: 2
       Hash: 77aaaaa51f7a8d8ff333a879741e47d2
@@ -271,7 +289,7 @@ ScriptsOnlyBuild:
     className: PatternedBlock
   - hash:
       serializedVersion: 2
-      Hash: 53aeaec5061a13b7188990e55e36a75a
+      Hash: d61eafa312cc8c8f276ea86579dc11aa
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
@@ -287,6 +305,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: EventTrigger
+  - hash:
+      serializedVersion: 2
+      Hash: ee86a3ff82f8aed3270381d450d33071
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: InGame
   - hash:
       serializedVersion: 2
       Hash: a81d4c2c1cf3ad164d277d927a193679
@@ -331,7 +355,7 @@ ScriptsOnlyBuild:
     className: PlaymodeTestsController
   - hash:
       serializedVersion: 2
-      Hash: 77d185a874af0e0f0bb8fa8c4a7e2572
+      Hash: f60893d96ef3dabcbe31ea0cbae03c62
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: StageManager
@@ -361,7 +385,7 @@ ScriptsOnlyBuild:
     className: RandomizedGameManager
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: a3def27d84ac15a356583e7cc416d359
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BlockGenerator
@@ -425,6 +449,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_Settings
+  - hash:
+      serializedVersion: 2
+      Hash: 5a349894d7feec55c53e06f7fb3d4b56
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FillValueNumber
   - hash:
       serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
@@ -509,6 +539,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_ScrollbarEventHandler
+  - hash:
+      serializedVersion: 2
+      Hash: b9dcc69438e4ea72c0093377704dcaef
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Tutorial
   - hash:
       serializedVersion: 2
       Hash: f40fedccd4adbc76605bea6d67537e4b
