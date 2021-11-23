@@ -3,13 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+enum CubeModel
+{
+    cube222,
+    cube333,
+    cube444
+}
+
 public class StageManager : MonoBehaviour
 {
     private int nowStage;
 
+    private int modelIdx;
+    public int ModelIdx
+    {
+        get => modelIdx;
+        set
+        {
+            modelIdx = value;
+            if (modelIdx < 0) modelIdx = 0;
+            else if (modelIdx > 2) modelIdx = 2;
+        }
+    }
+
     public BlockGenerator blockGenerator;
-    public GameObject cube222;
-    public GameObject cube333;
 
     public void StartStage(int stageNum)
     {
@@ -17,16 +34,17 @@ public class StageManager : MonoBehaviour
 
         switch (stageNum)
         {
+            // stage 0 is random pattern game
             case 0:
-                blockGenerator.CreateCubeAndPattern(cube333, stageNum);
+                blockGenerator.CreateCubeAndPattern(modelIdx, stageNum);
                 break;
             case 1:
             case 2:
-                blockGenerator.CreateCubeAndPattern(cube222, stageNum);
+                blockGenerator.CreateCubeAndPattern((int)CubeModel.cube222, stageNum);
                 break;
             case 3:
             case 4:
-                blockGenerator.CreateCubeAndPattern(cube333, stageNum);
+                blockGenerator.CreateCubeAndPattern((int)CubeModel.cube333, stageNum);
                 break;
             default:
                 break;

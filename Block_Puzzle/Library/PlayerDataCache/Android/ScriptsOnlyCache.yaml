@@ -6,9 +6,10 @@ ScriptsOnlyBuild:
     - BlockType
     - CameraRotation
     - CubeBlocks
-    - CubeMaterial
+    - CubePattern
     - PatternedGameManager
     - RandomizedGameManager
+    - StageManager
     - UIManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
@@ -58,37 +59,39 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1490}
     - Class: 114
-      Script: {instanceID: 1644}
-    - Class: 114
       Script: {instanceID: 2032}
     - Class: 114
       Script: {instanceID: 2220}
     - Class: 114
-      Script: {instanceID: 2358}
+      Script: {instanceID: 2294}
     - Class: 114
-      Script: {instanceID: 2408}
+      Script: {instanceID: 2360}
     - Class: 114
-      Script: {instanceID: 2464}
+      Script: {instanceID: 2410}
     - Class: 114
-      Script: {instanceID: 2648}
+      Script: {instanceID: 2466}
     - Class: 114
-      Script: {instanceID: 2806}
+      Script: {instanceID: 2650}
     - Class: 114
-      Script: {instanceID: 2830}
+      Script: {instanceID: 2808}
     - Class: 114
-      Script: {instanceID: 3058}
+      Script: {instanceID: 2832}
     - Class: 114
-      Script: {instanceID: 3364}
+      Script: {instanceID: 2956}
     - Class: 114
-      Script: {instanceID: 3380}
+      Script: {instanceID: 3060}
     - Class: 114
-      Script: {instanceID: 3422}
+      Script: {instanceID: 3366}
     - Class: 114
-      Script: {instanceID: 3518}
+      Script: {instanceID: 3382}
     - Class: 114
-      Script: {instanceID: 3556}
+      Script: {instanceID: 3424}
     - Class: 114
-      Script: {instanceID: 3654}
+      Script: {instanceID: 3520}
+    - Class: 114
+      Script: {instanceID: 3558}
+    - Class: 114
+      Script: {instanceID: 3656}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -268,7 +271,7 @@ ScriptsOnlyBuild:
     className: PatternedBlock
   - hash:
       serializedVersion: 2
-      Hash: 40d33f67881df3256e1066a86fe37116
+      Hash: 53aeaec5061a13b7188990e55e36a75a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
@@ -328,6 +331,12 @@ ScriptsOnlyBuild:
     className: PlaymodeTestsController
   - hash:
       serializedVersion: 2
+      Hash: 77d185a874af0e0f0bb8fa8c4a7e2572
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: StageManager
+  - hash:
+      serializedVersion: 2
       Hash: a3b2c7b6c1616ac7b144bb91e8e4ce86
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -352,7 +361,7 @@ ScriptsOnlyBuild:
     className: RandomizedGameManager
   - hash:
       serializedVersion: 2
-      Hash: da4c32122446fe87997abcbafa0beb33
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BlockGenerator
@@ -616,7 +625,7 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: 9489dba016f10266ac9f6ce2b722d4cb
+      Hash: 6677d3ea65677045f9e20eb4e8dec769
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CubeBlocks

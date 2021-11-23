@@ -9,16 +9,13 @@ public class CubePattern : CubeMaterial
         switch (stageNum)
         {
             case 1:
-                SetFloorColor(firstFloor, new int[] { 1, 3 }, Color.red);
-                SetFloorColor(firstFloor, new int[] { 2, 4 }, Color.blue);
-                SetFloorColor(secondFloor, new int[] { 1, 2 }, Color.green);
+                SetFloorColor(firstFloor, new int[] { 1, 2, 3, 4 }, Color.red);
+                SetFloorColor(secondFloor, new int[] { 1, 2, 3, 4 }, Color.blue);
                 break;
             case 2:
                 SetFloorColor(firstFloor, new int[] { 1, 3 }, Color.red);
-                SetFloorColor(firstFloor, new int[] { 2 }, Color.green);
-                SetFloorColor(firstFloor, new int[] { 4 }, Color.blue);
-                SetFloorColor(secondFloor, new int[] { 1 }, Color.green);
-                SetFloorColor(secondFloor, new int[] { 3 }, Color.blue);
+                SetFloorColor(firstFloor, new int[] { 2, 4 }, Color.blue);
+                SetFloorColor(secondFloor, new int[] { 1, 2 }, Color.green);
                 break;
             case 3:
                 SetFloorColor(firstFloor, new int[] { 1, 3, 4, 7, 9 }, Color.red);

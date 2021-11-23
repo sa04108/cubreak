@@ -6,10 +6,14 @@ public class BlockGenerator : MonoBehaviour
 {
     private GameObject cubeTemp;
 
-    public void CreateCubeAndPattern(GameObject cubePrefab, int stageNum)
+    public CameraPos cameraPos;
+    public GameObject[] cubePrefab;
+
+    public void CreateCubeAndPattern(int modelIdx, int stageNum)
     {
-        cubeTemp = Instantiate(cubePrefab, transform.position, Quaternion.identity, transform.parent);
+        cubeTemp = Instantiate(cubePrefab[modelIdx], transform.position, Quaternion.identity, transform.parent);
         cubeTemp.GetComponent<CubePattern>().SetPattern(stageNum);
+        cameraPos.SetCameraDistance(modelIdx);
     }
 
     public void DestroyBlocks()

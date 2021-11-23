@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour
     [Header("Panels")]
     public GameObject titlePanel;
     public GameObject stagesPanel;
-    public GameObject devOptionPanel;
+    public GameObject optionPanel;
     public GameObject inGamePanel;
     public GameObject gameClearPanel;
     public GameObject gameOverPanel;
@@ -36,11 +36,14 @@ public class UIManager : MonoBehaviour
     public Text scoreText;
     public Text finalScoreText;
 
-    [Header("Number of Block Colors Text")]
-    public Text numOfBlockColorText;
-
     [Header("Block Falling Speed Text")]
     public Text blockFallingSpeedText;
+
+    [Header("Cube Model Text")]
+    public Text cubeModelText;
+    
+    [Header("Number of Block Colors Text")]
+    public Text numOfBlockColorText;
 
     [Header("Camera Transform")]
     public Transform cameraTransform;
@@ -55,10 +58,12 @@ public class UIManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         blockGroupStatus = BlockGroupStatus.Instance;
-        blockGroupStatus.NumOfBlockColor = 4;
-        numOfBlockColorText.text = blockGroupStatus.NumOfBlockColor.ToString();
         blockGroupStatus.BlockFallingSpeed = 3.0f;
         blockFallingSpeedText.text = blockGroupStatus.BlockFallingSpeed.ToString();
+        blockGroupStatus.NumOfBlockColor = 4;
+        numOfBlockColorText.text = blockGroupStatus.NumOfBlockColor.ToString();
+        stageManager.ModelIdx = (int)CubeModel.cube333;
+        cubeModelText.text = "3x3x3";
 
         Init();
     }
@@ -75,16 +80,22 @@ public class UIManager : MonoBehaviour
         cameraTransform.localPosition = Vector3.zero;
     }
 
-    public void SetNumberOfBlockColor(int num)
-    {
-        blockGroupStatus.NumOfBlockColor += num;
-        numOfBlockColorText.text = blockGroupStatus.NumOfBlockColor.ToString();
-    }
-
     public void SetBlockFallingSpeed(float num)
     {
         blockGroupStatus.BlockFallingSpeed += num;
         blockFallingSpeedText.text = blockGroupStatus.BlockFallingSpeed.ToString();
+    }
+
+    public void SetCubeModel(int num)
+    {
+        stageManager.ModelIdx += num;
+        cubeModelText.text = (stageManager.ModelIdx + 2) + "x" + (stageManager.ModelIdx + 2) + "x" + (stageManager.ModelIdx + 2);
+    }
+
+    public void SetNumberOfBlockColor(int num)
+    {
+        blockGroupStatus.NumOfBlockColor += num;
+        numOfBlockColorText.text = blockGroupStatus.NumOfBlockColor.ToString();
     }
 
     public void ScoreUp()
@@ -98,7 +109,7 @@ public class UIManager : MonoBehaviour
     {
         titlePanel.SetActive(panel.name == titlePanel.name);
         stagesPanel.SetActive(panel.name == stagesPanel.name);
-        devOptionPanel.SetActive(panel.name == devOptionPanel.name);
+        optionPanel.SetActive(panel.name == optionPanel.name);
         inGamePanel.SetActive(panel.name == inGamePanel.name);
         gameClearPanel.SetActive(panel.name == gameClearPanel.name);
         gameOverPanel.SetActive(panel.name == gameOverPanel.name);

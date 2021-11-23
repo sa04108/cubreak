@@ -104,10 +104,9 @@ public class Block : MonoBehaviour, ISelectGameManager
 
         for (int i = 0; i < rayCastVec.Length; i++)
         {
-            if (Physics.Raycast(transform.position, rayCastVec[i], out hit, maxRayDistance))
+            if (Physics.Raycast(transform.position, rayCastVec[i], out hit, maxRayDistance, 1 << 6))
             {
-                if (hit.transform.CompareTag("Block")
-                    && CompareColor(hit.transform.GetComponent<Renderer>(), renderer))
+                if (CompareColor(hit.transform.GetComponent<Renderer>(), renderer))
                 {
                     if (isUnconnected)
                         blockGroupStatus.UnconnectedBlockCount--;
@@ -133,10 +132,9 @@ public class Block : MonoBehaviour, ISelectGameManager
 
         for (int i = 0; i < rayCastVec.Length; i++)
         {
-            if (Physics.Raycast(transform.position, rayCastVec[i], out hit, maxRayDistance))
+            if (Physics.Raycast(transform.position, rayCastVec[i], out hit, maxRayDistance, 1 << 6))
             {
-                if (hit.transform.CompareTag("Block")
-                    && CompareColor(hit.transform.GetComponent<Renderer>(), renderer))
+                if (CompareColor(hit.transform.GetComponent<Renderer>(), renderer))
                 {
                     destroyed = true;
                     hit.transform.GetComponent<Block>().DestroyBlocks();
