@@ -2554,6 +2554,7 @@ MonoBehaviour:
   gameOverPanel: {fileID: 1927021478}
   stageManager: {fileID: 923370025}
   stageText: {fileID: 2000228207}
+  nextStageButton: {fileID: 1164363759}
   scoreText: {fileID: 2011560285}
   finalScoreText: {fileID: 150017323}
   blockFallingSpeedText: {fileID: 1417660451}
@@ -5489,7 +5490,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1452960927}
   - component: {fileID: 1452960926}
-  - component: {fileID: 1452960928}
   m_Layer: 0
   m_Name: P Game Manager
   m_TagString: Untagged
@@ -5524,35 +5524,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1452960928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1452960925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1452960926}
-          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-          m_MethodName: DestroyBlocks
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &1459453599
 GameObject:
   m_ObjectHideFlags: 0
@@ -6136,7 +6107,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1606172545}
   - component: {fileID: 1606172546}
-  - component: {fileID: 1606172547}
   m_Layer: 0
   m_Name: R Game Manager
   m_TagString: Untagged
@@ -6171,35 +6141,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blocks: []
---- !u!114 &1606172547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1606172544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1606172546}
-          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-          m_MethodName: DestroyBlocks
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &1626776928
 GameObject:
   m_ObjectHideFlags: 0

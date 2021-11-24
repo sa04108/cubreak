@@ -45,7 +45,7 @@ public class CubeMaterial : MonoBehaviour
     {
         SetFloorAlpha(cubeBlocks.floors[0].floor, new int[] { 1, 2, 3, 4, 6, 7, 8, 9 }, isAlpha ? 1.0f : alphaVal);
         SetFloorAlpha(cubeBlocks.floors[1].floor, new int[] { 1, 2, 3, 4, 6, 7, 8, 9 }, isAlpha ? 1.0f : alphaVal);
-        SetFloorAlpha(cubeBlocks.floors[3].floor, new int[] { 1, 2, 3, 4, 6, 7, 8, 9 }, isAlpha ? 1.0f : alphaVal);
+        SetFloorAlpha(cubeBlocks.floors[2].floor, new int[] { 1, 2, 3, 4, 6, 7, 8, 9 }, isAlpha ? 1.0f : alphaVal);
 
         isAlpha = !isAlpha;
     }

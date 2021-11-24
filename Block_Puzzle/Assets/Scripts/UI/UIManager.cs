@@ -30,6 +30,7 @@ public class UIManager : MonoBehaviour
     [Header("Stage Manager")]
     public StageManager stageManager;
     public Text stageText;
+    public Button nextStageButton;
 
     private int score;
     [Header("Score Variables")]
@@ -129,6 +130,7 @@ public class UIManager : MonoBehaviour
             scoreText.gameObject.SetActive(true);
             stageText.gameObject.SetActive(false);
             RandomizedGameManager.Instance.gameObject.SetActive(true);
+            nextStageButton.gameObject.SetActive(false);
         }
         else
         {
@@ -136,6 +138,7 @@ public class UIManager : MonoBehaviour
             stageText.gameObject.SetActive(true);
             stageText.text = "Stage " + stageNum;
             PatternedGameManager.Instance.gameObject.SetActive(true);
+            nextStageButton.gameObject.SetActive(true);
         }
 
         stageManager.StartStage(stageNum);

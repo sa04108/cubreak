@@ -289,7 +289,7 @@ ScriptsOnlyBuild:
     className: PatternedBlock
   - hash:
       serializedVersion: 2
-      Hash: d61eafa312cc8c8f276ea86579dc11aa
+      Hash: 1dce1cd94aa10bc9eb70be17551d9b55
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
@@ -355,7 +355,7 @@ ScriptsOnlyBuild:
     className: PlaymodeTestsController
   - hash:
       serializedVersion: 2
-      Hash: f60893d96ef3dabcbe31ea0cbae03c62
+      Hash: 19bc477a18e55c3a28b7c610700d4f7c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: StageManager
@@ -668,4 +668,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/MainScene.unity
-  playerPath: C:/Users/hyunb/Desktop/Build/BlockGame.apk
+  playerPath: C:/Users/hyunb/Desktop/Build/Cublocks.apk
