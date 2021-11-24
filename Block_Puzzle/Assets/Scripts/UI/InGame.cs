@@ -9,7 +9,11 @@ public class InGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tutorialPanel.SetActive(true);
+        if (PlayerPrefs.GetInt("Newbie", 1) == 1)
+        {
+            tutorialPanel.SetActive(true);
+            PlayerPrefs.SetInt("Newbie", 0);
+        }
     }
 
     private void OnDisable()

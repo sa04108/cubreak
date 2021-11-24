@@ -98,6 +98,11 @@ public class UIManager : MonoBehaviour
         numOfBlockColorText.text = blockGroupStatus.NumOfBlockColor.ToString();
     }
 
+    public void ResetGame()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
     public void ScoreUp()
     {
         score++;
@@ -148,6 +153,7 @@ public class UIManager : MonoBehaviour
     {
         SetActivePanel(gameClearPanel);
         finalScoreText.text = scoreText.text;
+        stageManager.SetStageUp();
     }
 
     public void GameOver()

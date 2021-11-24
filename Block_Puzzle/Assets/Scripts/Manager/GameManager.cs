@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
             && BlockGroupStatus.Instance.FallingBlockCount == 0)
         {
             UIManager.Instance.GameClear();
+            gameObject.SetActive(false);
         }
     }
 
@@ -100,6 +101,7 @@ public class GameManager : MonoBehaviour
             && BlockGroupStatus.Instance.FallingBlockCount == 0)
         {
             UIManager.Instance.GameOver();
+            gameObject.SetActive(false);
         }
     }
 }

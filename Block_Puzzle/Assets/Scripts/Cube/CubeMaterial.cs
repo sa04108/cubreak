@@ -12,19 +12,16 @@ public class CubeMaterial : MonoBehaviour
     protected bool cube333;
     protected bool cube444;
 
-    protected GameObject[] firstFloor;
-    protected GameObject[] secondFloor;
-    protected GameObject[] thirdFloor;
-    protected GameObject[] fourthFloor;
-
+    protected CubeBlocks cubeBlocks;
     Button seeThroughButton;
 
     private void Awake()
     {
+        cubeBlocks = GetComponent<CubeBlocks>();
         isAlpha = false;
         alphaVal = 0.0f;
 
-        InitFloors();
+        SelectCube();
 
         seeThroughButton = GameObject.Find("See Through Button").GetComponent<Button>();
         if (cube333)
@@ -37,41 +34,28 @@ public class CubeMaterial : MonoBehaviour
         }
     }
 
-    private void InitFloors()
+    private void SelectCube()
     {
-        CubeBlocks cubeBlocks = GetComponent<CubeBlocks>();
-
         cube222 = cubeBlocks.floors.Count == 2;
         cube333 = cubeBlocks.floors.Count == 3;
         cube444 = cubeBlocks.floors.Count == 4;
-
-        firstFloor = cubeBlocks.floors[0].floor;
-        secondFloor = cubeBlocks.floors[1].floor;
-
-        if (cube333)
-            thirdFloor = cubeBlocks.floors[2].floor;
-        if (cube444)
-        {
-            thirdFloor = cubeBlocks.floors[2].floor;
-            fourthFloor = cubeBlocks.floors[3].floor;
-        }
     }
 
     public void Set333CubeAlpha()
     {
-        SetFloorAlpha(firstFloor, new int[] { 1, 2, 3, 4, 6, 7, 8, 9 }, isAlpha ? 1.0f : alphaVal);
-        SetFloorAlpha(secondFloor, new int[] { 1, 2, 3, 4, 6, 7, 8, 9 }, isAlpha ? 1.0f : alphaVal);
-        SetFloorAlpha(thirdFloor, new int[] { 1, 2, 3, 4, 6, 7, 8, 9 }, isAlpha ? 1.0f : alphaVal);
+        SetFloorAlpha(cubeBlocks.floors[0].floor, new int[] { 1, 2, 3, 4, 6, 7, 8, 9 }, isAlpha ? 1.0f : alphaVal);
+        SetFloorAlpha(cubeBlocks.floors[1].floor, new int[] { 1, 2, 3, 4, 6, 7, 8, 9 }, isAlpha ? 1.0f : alphaVal);
+        SetFloorAlpha(cubeBlocks.floors[3].floor, new int[] { 1, 2, 3, 4, 6, 7, 8, 9 }, isAlpha ? 1.0f : alphaVal);
 
         isAlpha = !isAlpha;
     }
 
     public void Set444CubeAlpha()
     {
-        SetFloorAlpha(firstFloor, new int[] { 1, 2, 3, 4, 5, 8, 9, 12, 13, 14, 15, 16 }, isAlpha ? 1.0f : alphaVal);
-        SetFloorAlpha(secondFloor, new int[] { 1, 2, 3, 4, 5, 8, 9, 12, 13, 14, 15, 16 }, isAlpha ? 1.0f : alphaVal);
-        SetFloorAlpha(thirdFloor, new int[] { 1, 2, 3, 4, 5, 8, 9, 12, 13, 14, 15, 16 }, isAlpha ? 1.0f : alphaVal);
-        SetFloorAlpha(fourthFloor, new int[] { 1, 2, 3, 4, 5, 8, 9, 12, 13, 14, 15, 16 }, isAlpha ? 1.0f : alphaVal);
+        SetFloorAlpha(cubeBlocks.floors[0].floor, new int[] { 1, 2, 3, 4, 5, 8, 9, 12, 13, 14, 15, 16 }, isAlpha ? 1.0f : alphaVal);
+        SetFloorAlpha(cubeBlocks.floors[1].floor, new int[] { 1, 2, 3, 4, 5, 8, 9, 12, 13, 14, 15, 16 }, isAlpha ? 1.0f : alphaVal);
+        SetFloorAlpha(cubeBlocks.floors[2].floor, new int[] { 1, 2, 3, 4, 5, 8, 9, 12, 13, 14, 15, 16 }, isAlpha ? 1.0f : alphaVal);
+        SetFloorAlpha(cubeBlocks.floors[3].floor, new int[] { 1, 2, 3, 4, 5, 8, 9, 12, 13, 14, 15, 16 }, isAlpha ? 1.0f : alphaVal);
 
         isAlpha = !isAlpha;
     }

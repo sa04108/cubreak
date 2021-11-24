@@ -13,6 +13,7 @@ enum CubeModel
 public class StageManager : MonoBehaviour
 {
     private int nowStage;
+    private int clearedStage;
 
     private int modelIdx;
     public int ModelIdx
@@ -27,6 +28,16 @@ public class StageManager : MonoBehaviour
     }
 
     public BlockGenerator blockGenerator;
+    public Button[] stageButtons;
+
+    private void Awake()
+    {
+        clearedStage = PlayerPrefs.GetInt("ClearedStage", 0);
+        for (int i = 0; i <= clearedStage; i++)
+        {
+            stageButtons[i].interactable = true;
+        }
+    }
 
     public void StartStage(int stageNum)
     {
@@ -44,6 +55,7 @@ public class StageManager : MonoBehaviour
                 break;
             case 3:
             case 4:
+            case 5:
                 blockGenerator.CreateCubeAndPattern((int)CubeModel.cube333, stageNum);
                 break;
             default:
@@ -53,13 +65,22 @@ public class StageManager : MonoBehaviour
 
     public void NextStage()
     {
-        if (nowStage <= 3)
+        if (nowStage <= 4)
         {
             blockGenerator.DestroyBlocks();
-            UIManager.Instance.StartStage(++nowStage);
+            UIManager.Instance.StartStage(nowStage + 1);
         }
         else
             EndStage();
+    }
+
+    public void SetStageUp()
+    {
+        if (nowStage > clearedStage && stageButtons.Length > nowStage)
+        {
+            stageButtons[nowStage].interactable = true;
+            PlayerPrefs.SetInt("ClearedStage", ++clearedStage);
+        }
     }
 
     public void RestartStage()
