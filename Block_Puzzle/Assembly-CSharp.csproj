@@ -56,6 +56,7 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Camera\CameraPos.cs" />
     <Compile Include="Assets\Scripts\Block\RandomizedBlock.cs" />
     <Compile Include="Assets\Scripts\Cube\CubeMaterial.cs" />
     <Compile Include="Assets\Scripts\Block\PatternedBlock.cs" />
@@ -75,7 +76,7 @@
     <Compile Include="Assets\Scripts\Block\BlockType.cs" />
     <Compile Include="Assets\Scripts\Block\BlockGroupStatus.cs" />
     <Compile Include="Assets\Scripts\Cube\CubeBlocks.cs" />
-    <Compile Include="Assets\Scripts\Camera\CameraPos.cs" />
+    <Compile Include="Assets\Scripts\Touch\TouchManager.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\External Assets\UI pack\Documentation.txt" />

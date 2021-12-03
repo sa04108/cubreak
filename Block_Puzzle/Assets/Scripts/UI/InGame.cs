@@ -20,4 +20,5 @@ public class InGame : MonoBehaviour
     {
         tutorialPanel.SetActive(false);
     }
+
 }
