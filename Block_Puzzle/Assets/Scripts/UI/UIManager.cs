@@ -46,9 +46,6 @@ public class UIManager : MonoBehaviour
     [Header("Number of Block Colors Text")]
     public Text numOfBlockColorText;
 
-    [Header("Camera Transform")]
-    public Transform cameraTransform;
-
     private void Awake()
     {
         if (instance == null)
@@ -69,6 +66,11 @@ public class UIManager : MonoBehaviour
         Init();
     }
 
+    private void Start()
+    {
+        SetActivePanel(titlePanel);
+    }
+
     public void Init()
     {
         score = 0;
@@ -77,8 +79,6 @@ public class UIManager : MonoBehaviour
         blockGroupStatus.BlockCount = 0;
         blockGroupStatus.FallingBlockCount = 0;
         blockGroupStatus.UnconnectedBlockCount = 0;
-
-        cameraTransform.localPosition = Vector3.zero;
     }
 
     public void SetBlockFallingSpeed(float num)

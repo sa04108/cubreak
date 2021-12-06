@@ -21,6 +21,15 @@ public class CameraRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.A))
+            RotateLeft();
+        else if (Input.GetKeyDown(KeyCode.D))
+            RotateRight();
+        else if (Input.GetKeyDown(KeyCode.W))
+            RotateUp();
+        else if (Input.GetKeyDown(KeyCode.S))
+            RotateDown();
+
         if (slerpVal < 1.0f)
             slerpVal += Time.deltaTime / 3.0f;
 
