@@ -56,6 +56,7 @@ public class StageManager : MonoBehaviour
             case 3:
             case 4:
             case 5:
+            case 6:
                 blockGenerator.CreateCubeAndPattern((int)CubeModel.cube333, stageNum);
                 break;
             default:
@@ -65,13 +66,8 @@ public class StageManager : MonoBehaviour
 
     public void NextStage()
     {
-        if (nowStage <= 4)
-        {
-            blockGenerator.DestroyBlocks();
-            UIManager.Instance.StartStage(nowStage + 1);
-        }
-        else
-            EndStage();
+        blockGenerator.DestroyBlocks();
+        UIManager.Instance.StartStage(nowStage + 1);
     }
 
     public void SetStageUp()

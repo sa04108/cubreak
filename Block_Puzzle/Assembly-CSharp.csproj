@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\Scripts\UI\Tutorial.cs" />
     <Compile Include="Assets\Scripts\Block\Block.cs" />
+    <Compile Include="Assets\Scripts\Input\InputManager.cs" />
     <Compile Include="Assets\Scripts\Block\BlockType.cs" />
     <Compile Include="Assets\Scripts\Block\BlockGroupStatus.cs" />
     <Compile Include="Assets\Scripts\Cube\CubeBlocks.cs" />

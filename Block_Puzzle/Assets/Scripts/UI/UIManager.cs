@@ -102,6 +102,7 @@ public class UIManager : MonoBehaviour
     public void ResetGame()
     {
         PlayerPrefs.DeleteAll();
+        SetActivePanel(titlePanel);
     }
 
     public void ScoreUp()

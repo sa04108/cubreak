@@ -4,14 +4,16 @@ ScriptsOnlyBuild:
     - BlockGenerator
     - BlockGroupStatus
     - BlockType
+    - ButtonSound
     - CameraPos
     - CameraRotation
     - CubeBlocks
     - CubePattern
-    - InGame
+    - InputManager
     - PatternedGameManager
     - RandomizedGameManager
     - StageManager
+    - TouchManager
     - Tutorial
     - UIManager
     Unity.Rider.Editor.dll:
@@ -54,6 +56,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 104
@@ -65,45 +71,49 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1520}
     - Class: 114
-      Script: {instanceID: 2034}
+      Script: {instanceID: 1840}
     - Class: 114
-      Script: {instanceID: 2068}
+      Script: {instanceID: 2040}
     - Class: 114
-      Script: {instanceID: 2126}
+      Script: {instanceID: 2074}
     - Class: 114
-      Script: {instanceID: 2224}
+      Script: {instanceID: 2228}
     - Class: 114
-      Script: {instanceID: 2298}
+      Script: {instanceID: 2230}
     - Class: 114
-      Script: {instanceID: 2364}
+      Script: {instanceID: 2304}
     - Class: 114
-      Script: {instanceID: 2414}
+      Script: {instanceID: 2370}
     - Class: 114
-      Script: {instanceID: 2470}
+      Script: {instanceID: 2420}
     - Class: 114
-      Script: {instanceID: 2654}
+      Script: {instanceID: 2476}
     - Class: 114
-      Script: {instanceID: 2814}
+      Script: {instanceID: 2660}
     - Class: 114
-      Script: {instanceID: 2838}
+      Script: {instanceID: 2820}
     - Class: 114
-      Script: {instanceID: 2962}
+      Script: {instanceID: 2844}
     - Class: 114
-      Script: {instanceID: 3066}
+      Script: {instanceID: 2968}
     - Class: 114
-      Script: {instanceID: 3122}
+      Script: {instanceID: 3072}
     - Class: 114
-      Script: {instanceID: 3374}
+      Script: {instanceID: 3128}
     - Class: 114
-      Script: {instanceID: 3390}
+      Script: {instanceID: 3348}
     - Class: 114
-      Script: {instanceID: 3432}
+      Script: {instanceID: 3382}
     - Class: 114
-      Script: {instanceID: 3528}
+      Script: {instanceID: 3398}
     - Class: 114
-      Script: {instanceID: 3566}
+      Script: {instanceID: 3440}
     - Class: 114
-      Script: {instanceID: 3664}
+      Script: {instanceID: 3536}
+    - Class: 114
+      Script: {instanceID: 3574}
+    - Class: 114
+      Script: {instanceID: 3672}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -247,6 +257,18 @@ ScriptsOnlyBuild:
     className: TMP_FontAsset
   - hash:
       serializedVersion: 2
+      Hash: 8e22ac9e4ade1f1ef805eef2243a2344
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TouchManager
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: StageMaker
+  - hash:
+      serializedVersion: 2
       Hash: 18c222bef9ae745ce69ddde9b74337ca
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
@@ -289,7 +311,7 @@ ScriptsOnlyBuild:
     className: PatternedBlock
   - hash:
       serializedVersion: 2
-      Hash: 1dce1cd94aa10bc9eb70be17551d9b55
+      Hash: b929ef5030ef0636888453e617dcc6cf
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
@@ -305,12 +327,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: EventTrigger
-  - hash:
-      serializedVersion: 2
-      Hash: ee86a3ff82f8aed3270381d450d33071
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: InGame
   - hash:
       serializedVersion: 2
       Hash: a81d4c2c1cf3ad164d277d927a193679
@@ -341,6 +357,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Text
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ButtonSound
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -463,7 +485,7 @@ ScriptsOnlyBuild:
     className: AspectRatioFitter
   - hash:
       serializedVersion: 2
-      Hash: 964d816cdccd62926c386f5746b36859
+      Hash: f3010594211ee4ab4e29a30d4b2c9951
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraRotation
@@ -577,6 +599,12 @@ ScriptsOnlyBuild:
     className: Block
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: InputManager
+  - hash:
+      serializedVersion: 2
       Hash: b8063620a7b99da9cbc2c2fc1b5fe28e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -665,6 +693,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CubeBlocks
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Async
   platform: 13
   scenePathNames:
   - Assets/Scenes/MainScene.unity

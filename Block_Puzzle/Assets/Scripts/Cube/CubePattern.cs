@@ -54,6 +54,20 @@ public class CubePattern : CubeMaterial
                 SetFloorColor(cubeBlocks.floors[2].floor, new int[] { 1, 5 }, color.colors[1]);
                 SetFloorColor(cubeBlocks.floors[2].floor, new int[] { 2, 3, 4, 7 }, color.colors[3]);
                 break;
+            case 6:
+                SetFloorColor(cubeBlocks.floors[0].floor, new int[] { 4, 7 }, color.colors[0]);
+                SetFloorColor(cubeBlocks.floors[0].floor, new int[] { 5, 6 }, color.colors[1]);
+                SetFloorColor(cubeBlocks.floors[0].floor, new int[] { 3, 8, 9 }, color.colors[2]);
+                SetFloorColor(cubeBlocks.floors[0].floor, new int[] { 1, 2 }, color.colors[4]);
+                SetFloorColor(cubeBlocks.floors[1].floor, new int[] { 5 }, color.colors[0]);
+                SetFloorColor(cubeBlocks.floors[1].floor, new int[] { 6, 9 }, color.colors[3]);
+                SetFloorColor(cubeBlocks.floors[1].floor, new int[] { 4 }, color.colors[4]);
+                SetFloorColor(cubeBlocks.floors[1].floor, new int[] { 1, 2 }, color.colors[5]);
+                SetFloorColor(cubeBlocks.floors[2].floor, new int[] { 8, 9 }, color.colors[0]);
+                SetFloorColor(cubeBlocks.floors[2].floor, new int[] { 5 }, color.colors[1]);
+                SetFloorColor(cubeBlocks.floors[2].floor, new int[] { 3 }, color.colors[2]);
+                SetFloorColor(cubeBlocks.floors[2].floor, new int[] { 1 }, color.colors[4]);
+                break;
             default:
                 break;
         }

@@ -36,7 +36,12 @@ public class CameraRotation : MonoBehaviour
         transform.position = Vector3.Slerp(transform.position, nextCamera.position, slerpVal);
         transform.LookAt(cubePos);
     }
-    
+
+    private void OnEnable()
+    {
+        ResetPosition();
+    }
+
     public void RotateLeft()
     {
         slerpVal = 0.0f;
@@ -67,5 +72,11 @@ public class CameraRotation : MonoBehaviour
             nextCamera.Translate(new Vector3(1.0f, 1.0f, 1.0f) * -3.0f);
             isUp = false;
         }
+    }
+
+    public void ResetPosition()
+    {
+        RotateDown();
+        nextCamera.localPosition = Vector3.zero;
     }
 }
