@@ -78,5 +78,6 @@ public class CameraRotation : MonoBehaviour
     {
         RotateDown();
         nextCamera.localPosition = Vector3.zero;
+        nextCamera.localRotation = Quaternion.identity;
     }
 }

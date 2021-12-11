@@ -5,21 +5,25 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    Vector2 startPos;
-    Vector2 endPos;
+    InputManager inputManager;
+    delegate bool InputType();
+    InputType click;
+    InputType slide;
 
     [HideInInspector]
     public List<GameObject> blocks;
 
     protected virtual void Awake()
     {
-        startPos = Vector2.zero;
-        endPos = Vector2.zero;
+        inputManager = FindObjectOfType<InputManager>();
+        click = new InputType(inputManager.Click);
+        slide = new InputType(inputManager.Slide);
     }
 
     private void Update()
     {
-        if (MouseClick() && BlockGroupStatus.Instance.FallingBlockCount == 0)
+        slide();
+        if (click() && BlockGroupStatus.Instance.FallingBlockCount == 0)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -27,24 +31,6 @@ public class GameManager : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100.0f, 1 << 6))
                 hit.transform.GetComponent<Block>().DestroyBlocks();
         }
-    }
-
-    private bool MouseClick()
-    {
-        if (Input.GetMouseButtonDown(0))
-            startPos = Input.mousePosition;
-
-        if (Input.GetMouseButton(0))
-            endPos = Input.mousePosition;
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            if (Vector2.Distance(startPos, endPos) < Screen.width * 0.1f)
-                return true;
-        }
-
-        return false;
-        
     }
 
     private void LateUpdate()
