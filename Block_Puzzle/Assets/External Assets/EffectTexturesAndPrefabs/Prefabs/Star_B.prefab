@@ -9760,6 +9760,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4304763869332708}
   - component: {fileID: 3222008985464250253}
+  - component: {fileID: 4121120554766930751}
   m_Layer: 0
   m_Name: Star_B
   m_TagString: Untagged
@@ -9879,3 +9880,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4121120554766930751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500378020736912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f852100bfe69dd429dc68f539201be3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
