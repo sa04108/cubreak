@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     InputManager inputManager;
     delegate bool InputType();
@@ -12,10 +12,11 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector]
     public List<GameObject> blocks;
+    public IBlockType.BLOCK_TYPE blockType = IBlockType.BLOCK_TYPE.UNDEFINED;
 
     protected virtual void Awake()
     {
-        inputManager = FindObjectOfType<InputManager>();
+        inputManager = InputManager.Instance;
         click = new InputType(inputManager.Click);
         slide = new InputType(inputManager.Slide);
     }
@@ -76,7 +77,6 @@ public class GameManager : MonoBehaviour
             && BlockGroupStatus.Instance.FallingBlockCount == 0)
         {
             UIManager.Instance.GameClear();
-            gameObject.SetActive(false);
         }
     }
 
@@ -87,7 +87,6 @@ public class GameManager : MonoBehaviour
             && BlockGroupStatus.Instance.FallingBlockCount == 0)
         {
             UIManager.Instance.GameOver();
-            gameObject.SetActive(false);
         }
     }
 }

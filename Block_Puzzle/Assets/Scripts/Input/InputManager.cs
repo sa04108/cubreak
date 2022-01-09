@@ -2,31 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour
-{
-    CameraRotation mainCamera;
+public class InputManager : Singleton<InputManager> {
+    [SerializeField] new CameraRotation camera;
     bool inputReady;
     Vector2 startPos;
     Vector2 endPos;
 
-    private void Awake()
-    {
-        mainCamera = Camera.main.GetComponent<CameraRotation>();
+    private void Awake() {
         inputReady = false;
         startPos = Vector2.zero;
         endPos = Vector2.zero;
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         Escape();
     }
 
-    private void Escape()
-    {
-        if (Input.GetKey(KeyCode.Escape))
-        {
+    private void Escape() {
+        if (Input.GetKey(KeyCode.Escape)) {
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -35,8 +29,7 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    public bool Click()
-    {
+    public bool Click() {
         if (!inputReady)
             return false;
 
@@ -46,8 +39,7 @@ public class InputManager : MonoBehaviour
         if (Input.GetMouseButton(0))
             endPos = Input.mousePosition;
 
-        if (Input.GetMouseButtonUp(0))
-        {
+        if (Input.GetMouseButtonUp(0)) {
             if (Vector2.Distance(startPos, endPos) < Screen.width * 0.1f)
                 return true;
         }
@@ -55,37 +47,31 @@ public class InputManager : MonoBehaviour
         return false;
     }
 
-    public bool Slide()
-    {
-        if (Input.touchCount > 0)
-        {
+    public bool Slide() {
+        if (Input.touchCount > 0) {
             Touch touch = Input.GetTouch(0);
 
-            switch (touch.phase)
-            {
+            switch (touch.phase) {
                 case TouchPhase.Began:
                     break;
                 case TouchPhase.Moved:
                     float speedX = touch.deltaPosition.x / touch.deltaTime;
                     float speedY = touch.deltaPosition.y / touch.deltaTime;
-                    if (inputReady)
-                    {
-                        if (Mathf.Abs(speedX) > 2000f && Mathf.Abs(speedY) < 2000f)
-                        {
+                    if (inputReady) {
+                        if (Mathf.Abs(speedX) > 2000f && Mathf.Abs(speedY) < 2000f) {
                             if (speedX < 0)
-                                mainCamera.RotateRight();
+                                camera.RotateRight();
                             else
-                                mainCamera.RotateLeft();
+                                camera.RotateLeft();
 
                             inputReady = false;
                             return true;
                         }
-                        else if (Mathf.Abs(speedX) < 2000f && Mathf.Abs(speedY) > 2000f)
-                        {
+                        else if (Mathf.Abs(speedX) < 2000f && Mathf.Abs(speedY) > 2000f) {
                             if (speedY < 0)
-                                mainCamera.RotateUp();
+                                camera.RotateUp();
                             else
-                                mainCamera.RotateDown();
+                                camera.RotateDown();
 
                             inputReady = false;
                             return true;
@@ -107,8 +93,7 @@ public class InputManager : MonoBehaviour
         return false;
     }
 
-    void SetInputReadyTrue()
-    {
+    void SetInputReadyTrue() {
         inputReady = true;
     }
 }
