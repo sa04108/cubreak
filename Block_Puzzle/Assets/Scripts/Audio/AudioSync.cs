@@ -6,15 +6,14 @@ using UnityEngine.UI;
 public class AudioSync : MonoBehaviour {
     new AudioSource audio;
 
-    private void Awake() {
-        audio = GetComponent<AudioSource>();
-    }
-
     // Start is called before the first frame update
     void Start() {
+        audio = AudioManager.Instance.listener;
         AudioManager.Instance.audios.Add(this);
         Button button = GetComponent<Button>();
-        if (button != null) audio.clip = Resources.Load<AudioClip>("Sounds/Click");
+        if (button != null) {
+            button.onClick.AddListener(() => {audio.clip = Resources.Load<AudioClip>("Sounds/Click"); audio.Play(); });
+        }
         VolumeSync();
     }
 

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class AudioManager : Singleton<AudioManager> {
     public List<AudioSync> audios;
+    public AudioSource listener;
     [SerializeField] private Slider volumeSlider;
 
     private float volume;
@@ -12,6 +13,7 @@ public class AudioManager : Singleton<AudioManager> {
 
     // Start is called before the first frame update
     void Awake() {
+        listener = GetComponent<AudioSource>();
         volumeSlider.onValueChanged.AddListener(SetVolume);
         SetVolume(volumeSlider.value);
     }
