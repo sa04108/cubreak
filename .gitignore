@@ -35,3 +35,9 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Exlix/Assets/StreamingAssets/2DAnimationSampleAssetBundles/2DAnimationSampleAssetBundles.manifest
+Exlix/Assets/StreamingAssets/2DAnimationSampleAssetBundles/2DAnimationSampleAssetBundles
+Exlix/Assets/Scripts/Layer/CharacterGenerate/CharacterInfo.meta
+Exlix/Assets/ExternalAssets/StompyRobot/SRDebugger/usr/Resources.meta
+Exlix/Assets/GraphicResources.meta
+Exlix/Assets/LegacyAssets.meta

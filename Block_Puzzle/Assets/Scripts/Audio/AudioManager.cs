@@ -4,12 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class AudioManager : Singleton<AudioManager> {
-    public List<AudioSync> audios;
-    public AudioSource listener;
-    [SerializeField] private Slider volumeSlider;
-
-    private float volume;
-    public float Volume { get => volume; }
+    [HideInInspector] public AudioSource listener;
+    [SerializeField] AudioSource bgm;
+    [SerializeField] Slider volumeSlider;
 
     // Start is called before the first frame update
     void Awake() {
@@ -19,14 +16,7 @@ public class AudioManager : Singleton<AudioManager> {
     }
 
     void SetVolume(float volume) {
-        this.volume = volume;
-
-        for (int i = 0; i < audios.Count; i++) {
-            if (audios[i] != null)
-                audios[i].VolumeSync();
-            else
-                audios.RemoveAt(i--);
-
-        }
+        listener.volume = volume;
+        bgm.volume = volume;
     }
 }
