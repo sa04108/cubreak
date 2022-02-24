@@ -1,17 +1,18 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - BlockGenerator
+    - AudioManager
+    - AudioSync
+    - Block
     - BlockGroupStatus
-    - BlockType
-    - ButtonSound
     - CameraPos
     - CameraRotation
     - CubeBlocks
     - CubePattern
+    - FillValueNumber
+    - GameDirector
+    - GameManager
     - InputManager
-    - PatternedGameManager
-    - RandomizedGameManager
     - StageManager
     - Tutorial
     - UIManager
@@ -30,6 +31,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.GridLayoutGroup
     - UnityEngine.UI.Image
+    - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
   sceneClasses:
     Assets/Scenes/MainScene.unity:
@@ -51,7 +53,13 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
+    - Class: 64
+      Script: {instanceID: 0}
     - Class: 65
+      Script: {instanceID: 0}
+    - Class: 74
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
@@ -60,6 +68,14 @@ ScriptsOnlyBuild:
     - Class: 83
       Script: {instanceID: 0}
     - Class: 89
+      Script: {instanceID: 0}
+    - Class: 90
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
+    - Class: 96
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -70,47 +86,51 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1520}
     - Class: 114
+      Script: {instanceID: 1700}
+    - Class: 114
       Script: {instanceID: 2048}
     - Class: 114
-      Script: {instanceID: 2082}
+      Script: {instanceID: 2084}
     - Class: 114
-      Script: {instanceID: 2238}
+      Script: {instanceID: 2244}
     - Class: 114
-      Script: {instanceID: 2242}
+      Script: {instanceID: 2248}
     - Class: 114
-      Script: {instanceID: 2320}
+      Script: {instanceID: 2326}
     - Class: 114
-      Script: {instanceID: 2386}
+      Script: {instanceID: 2336}
     - Class: 114
-      Script: {instanceID: 2436}
+      Script: {instanceID: 2498}
     - Class: 114
-      Script: {instanceID: 2492}
+      Script: {instanceID: 2690}
     - Class: 114
-      Script: {instanceID: 2682}
+      Script: {instanceID: 2762}
     - Class: 114
-      Script: {instanceID: 2846}
+      Script: {instanceID: 2856}
     - Class: 114
-      Script: {instanceID: 2870}
+      Script: {instanceID: 2880}
     - Class: 114
-      Script: {instanceID: 3000}
+      Script: {instanceID: 3010}
     - Class: 114
-      Script: {instanceID: 3114}
+      Script: {instanceID: 3126}
     - Class: 114
-      Script: {instanceID: 3176}
+      Script: {instanceID: 3148}
     - Class: 114
-      Script: {instanceID: 3400}
+      Script: {instanceID: 3188}
     - Class: 114
-      Script: {instanceID: 3434}
+      Script: {instanceID: 3388}
     - Class: 114
-      Script: {instanceID: 3452}
+      Script: {instanceID: 3412}
     - Class: 114
-      Script: {instanceID: 3496}
+      Script: {instanceID: 3462}
     - Class: 114
-      Script: {instanceID: 3596}
+      Script: {instanceID: 3506}
     - Class: 114
-      Script: {instanceID: 3634}
+      Script: {instanceID: 3606}
     - Class: 114
-      Script: {instanceID: 3730}
+      Script: {instanceID: 3644}
+    - Class: 114
+      Script: {instanceID: 3740}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -162,12 +182,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_InputField
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: RandomizedBlock
   - hash:
       serializedVersion: 2
       Hash: caa533b001ae39b864ba8425019e2268
@@ -296,12 +310,6 @@ ScriptsOnlyBuild:
     className: AudioPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PatternedBlock
-  - hash:
-      serializedVersion: 2
       Hash: b929ef5030ef0636888453e617dcc6cf
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -350,10 +358,10 @@ ScriptsOnlyBuild:
     className: Text
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 8657e8c6474a97d7d00ece9c76112bea
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: ButtonSound
+    className: AudioManager
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -368,16 +376,16 @@ ScriptsOnlyBuild:
     className: PlaymodeTestsController
   - hash:
       serializedVersion: 2
-      Hash: 19bc477a18e55c3a28b7c610700d4f7c
+      Hash: 297d090eddb6d28ddc15feb0894c5be7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: StageManager
   - hash:
       serializedVersion: 2
-      Hash: a3b2c7b6c1616ac7b144bb91e8e4ce86
+      Hash: 3f6cd49b64de8c3c90d05cd20ee3d8bd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: PatternedGameManager
+    className: AudioSync
   - hash:
       serializedVersion: 2
       Hash: aba7b2852ef61d175dd9602e7723d5e5
@@ -392,16 +400,10 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: a3b2c7b6c1616ac7b144bb91e8e4ce86
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: RandomizedGameManager
-  - hash:
-      serializedVersion: 2
       Hash: a3def27d84ac15a356583e7cc416d359
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: BlockGenerator
+    className: GameDirector
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -542,7 +544,7 @@ ScriptsOnlyBuild:
     className: GraphicRaycaster
   - hash:
       serializedVersion: 2
-      Hash: a3b2c7b6c1616ac7b144bb91e8e4ce86
+      Hash: bed0b146e93d3608354d6e4393e35780
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -584,22 +586,16 @@ ScriptsOnlyBuild:
     className: TestResultRendererCallback
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: b8063620a7b99da9cbc2c2fc1b5fe28e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Block
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: f345f18123e6c9ca63e0b3760eb5c3f0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: InputManager
-  - hash:
-      serializedVersion: 2
-      Hash: b8063620a7b99da9cbc2c2fc1b5fe28e
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: BlockType
   - hash:
       serializedVersion: 2
       Hash: 748dd2a2a28da4e618912da5ac45684b
@@ -693,4 +689,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/MainScene.unity
-  playerPath: C:/Users/hyunb/Desktop/Build/Cublocks.apk
+  playerPath: C:/Users/hongik/Desktop/build/cublocks.apk

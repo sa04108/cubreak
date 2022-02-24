@@ -9,7 +9,7 @@ public class InputManager : Singleton<InputManager> {
     Vector2 endPos;
 
     private void Awake() {
-        inputReady = false;
+        inputReady = true;
         startPos = Vector2.zero;
         endPos = Vector2.zero;
     }
@@ -33,15 +33,18 @@ public class InputManager : Singleton<InputManager> {
         if (!inputReady)
             return false;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)) {
             startPos = Input.mousePosition;
+        }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0)) {
             endPos = Input.mousePosition;
+        }
 
         if (Input.GetMouseButtonUp(0)) {
-            if (Vector2.Distance(startPos, endPos) < Screen.width * 0.1f)
+            if (Vector2.Distance(startPos, endPos) < Screen.width * 0.1f) {
                 return true;
+            }
         }
 
         return false;
