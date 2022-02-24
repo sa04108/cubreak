@@ -33,7 +33,8 @@ public class UIManager : Singleton<UIManager> {
     [Header("Number of Block Colors Text")]
     public Text numOfBlockColorText;
 
-    private void Awake() {
+    private new void Awake() {
+        base.Awake();
         blockGroupStatus = BlockGroupStatus.Instance;
         blockGroupStatus.BlockFallingSpeed = 3.0f;
         blockFallingSpeedText.text = blockGroupStatus.BlockFallingSpeed.ToString();

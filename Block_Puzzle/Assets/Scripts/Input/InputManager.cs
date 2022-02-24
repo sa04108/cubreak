@@ -8,7 +8,8 @@ public class InputManager : Singleton<InputManager> {
     Vector2 startPos;
     Vector2 endPos;
 
-    private void Awake() {
+    private new void Awake() {
+        base.Awake();
         inputReady = true;
         startPos = Vector2.zero;
         endPos = Vector2.zero;

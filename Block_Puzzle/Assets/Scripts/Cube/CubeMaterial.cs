@@ -85,12 +85,13 @@ public class CubeMaterial : MonoBehaviour
     /// <param name="floor"></param>
     /// <param name="list"></param>
     /// <param name="color"></param>
-    public void SetFloorColor(GameObject[] floor, int[] list, Color color)
+    public void SetFloorColor(GameObject[] floor, int[] list, ENUM_COLOR colorEnum)
     {
         foreach (var idx in list)
         {
-            if (floor[idx - 1] != null)
-                floor[idx - 1].GetComponent<Renderer>().material.color = color;
+            if (floor[idx - 1] != null) {
+                floor[idx - 1].GetComponent<Renderer>().material.color = BlockColors.colors[(int)colorEnum];
+            }
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Block : MonoBehaviour, IBlockType {
     [SerializeField] GameObject destroyEffect;
 
-    IBlockType.BLOCK_TYPE blockType;
+    ENUM_BLOCK_TYPE blockType;
 
     private BlockGroupStatus blockGroupStatus;
     new private Renderer renderer;
@@ -40,7 +40,9 @@ public class Block : MonoBehaviour, IBlockType {
         blockGroupStatus = BlockGroupStatus.Instance;
         uiManager = UIManager.Instance;
         gameManager = GameManager.Instance;
+    }
 
+    private void Start() {
         blockGroupStatus.BlockCount++;
         renderer = GetComponent<Renderer>();
 
@@ -64,7 +66,7 @@ public class Block : MonoBehaviour, IBlockType {
 
     public void SelectBlockType() {
         blockType = gameManager.blockType;
-        if (blockType == IBlockType.BLOCK_TYPE.UNDEFINED) {
+        if (blockType == ENUM_BLOCK_TYPE.UNDEFINED) {
             Debug.LogError("Block Type이 지정되지 않았습니다.");
             return;
         }
@@ -72,15 +74,11 @@ public class Block : MonoBehaviour, IBlockType {
     }
 
     public void ResetBlockColor() {
-        if (blockType == IBlockType.BLOCK_TYPE.PATTERNED) {
-            renderer.material.color = Color.black;
-        }
-        else if (blockType == IBlockType.BLOCK_TYPE.RANDOMIZED) {
+        if (blockType == ENUM_BLOCK_TYPE.RANDOMIZED) {
             int numOfBlockColor = blockGroupStatus.NumOfBlockColor;
             int colorVal = Random.Range(0, numOfBlockColor);
-            BlockColors color = new BlockColors();
 
-            renderer.material.color = color.colors[colorVal];
+            renderer.material.color = BlockColors.colors[colorVal];
         }
         else {
             return;

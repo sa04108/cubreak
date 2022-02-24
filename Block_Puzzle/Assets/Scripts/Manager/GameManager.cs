@@ -10,15 +10,16 @@ public class GameManager : Singleton<GameManager>
     InputType click;
     InputType slide;
 
-    [HideInInspector]
-    public List<GameObject> blocks;
-    public IBlockType.BLOCK_TYPE blockType = IBlockType.BLOCK_TYPE.UNDEFINED;
+    [HideInInspector] public List<GameObject> blocks;
+    public ENUM_BLOCK_TYPE blockType = ENUM_BLOCK_TYPE.UNDEFINED;
 
-    protected virtual void Awake()
+    private new void Awake()
     {
+        base.Awake();
         inputManager = InputManager.Instance;
         click = new InputType(inputManager.Click);
         slide = new InputType(inputManager.Slide);
+        gameObject.SetActive(false);
     }
 
     private void Update()

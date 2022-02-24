@@ -1,0 +1,5 @@
+public enum ENUM_BLOCK_TYPE {
+    PATTERNED,
+    RANDOMIZED,
+    UNDEFINED
+}

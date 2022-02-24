@@ -1,11 +1,4 @@
-public interface IBlockType
-{
-    public enum BLOCK_TYPE {
-        PATTERNED,
-        RANDOMIZED,
-        UNDEFINED
-    }
-
+public interface IBlockType {
     void SelectBlockType();
     void ResetBlockColor();
 }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 public class GameDirector : MonoBehaviour
 {
-    private GameObject gameManager;
+    [SerializeField] private GameManager gameManager;
     private GameObject cubeTemp;
 
     public CameraPos cameraPos;
@@ -13,8 +13,8 @@ public class GameDirector : MonoBehaviour
 
     public void CreateCubeAndPattern(int modelIdx, int stageNum)
     {
-        gameManager = Instantiate(Resources.Load<GameObject>("Prefabs/GameManager"), transform.parent);
-        gameManager.GetComponent<GameManager>().blockType = stageNum == 0 ? IBlockType.BLOCK_TYPE.RANDOMIZED : IBlockType.BLOCK_TYPE.PATTERNED;
+        gameManager.blockType = stageNum == 0 ? ENUM_BLOCK_TYPE.RANDOMIZED : ENUM_BLOCK_TYPE.PATTERNED;
+        gameManager.gameObject.SetActive(true);
         cubeTemp = Instantiate(cubePrefab[modelIdx], transform.position, Quaternion.identity, transform.parent);
         cubeTemp.GetComponent<CubePattern>().SetPattern(stageNum);
         cameraPos.SetCameraDistance(modelIdx);
@@ -23,6 +23,6 @@ public class GameDirector : MonoBehaviour
     public void DestroyBlocks()
     {
         Destroy(cubeTemp);
-        Destroy(gameManager);
+        gameManager.gameObject.SetActive(false);
     }
 }
