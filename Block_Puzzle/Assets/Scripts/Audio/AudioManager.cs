@@ -8,10 +8,12 @@ public class AudioManager : Singleton<AudioManager> {
     [SerializeField] AudioSource bgm;
     [SerializeField] Slider volumeSlider;
 
-    // Start is called before the first frame update
-    private new void Awake() {
+    protected override void Awake() {
         base.Awake();
         listener = GetComponent<AudioSource>();
+    }
+
+    private void Start() {
         volumeSlider.onValueChanged.AddListener(SetVolume);
         SetVolume(volumeSlider.value);
     }

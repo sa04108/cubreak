@@ -9,8 +9,7 @@ public class Tutorial : MonoBehaviour
     public RectTransform panel;
     public Text tutorialText;
 
-    private void Awake()
-    {
+    private void Start() {
         sceneNum = 0;
 
         if (PlayerPrefs.GetInt("Newbie", 1) == 0)

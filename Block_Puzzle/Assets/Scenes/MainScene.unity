@@ -349,7 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &45663731
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,7 +662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &81583640
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,7 +1245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &201921862
 GameObject:
   m_ObjectHideFlags: 0
@@ -1788,7 +1788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &379819649
 GameObject:
   m_ObjectHideFlags: 0
@@ -2252,7 +2252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &545969819
 GameObject:
   m_ObjectHideFlags: 0
@@ -2562,7 +2562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &601524938
 GameObject:
   m_ObjectHideFlags: 0
@@ -3159,7 +3159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &770258660
 GameObject:
   m_ObjectHideFlags: 0
@@ -3253,8 +3253,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f852100bfe69dd429dc68f539201be3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 0}
-  playOnAwake: 0
+  audioClip: {fileID: 8300000, guid: 48af869103024544e966b102aec63455, type: 3}
+  playOnEnabled: 1
 --- !u!1 &798026827
 GameObject:
   m_ObjectHideFlags: 0
@@ -4312,7 +4312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &1040906940
 GameObject:
   m_ObjectHideFlags: 0
@@ -4894,7 +4894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &1175092640
 GameObject:
   m_ObjectHideFlags: 0
@@ -5175,7 +5175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &1186012538
 GameObject:
   m_ObjectHideFlags: 0
@@ -5323,7 +5323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &1216901139
 GameObject:
   m_ObjectHideFlags: 0
@@ -5586,7 +5586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &1281194345
 GameObject:
   m_ObjectHideFlags: 0
@@ -5734,7 +5734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &1313839425
 GameObject:
   m_ObjectHideFlags: 0
@@ -6128,7 +6128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &1417660449
 GameObject:
   m_ObjectHideFlags: 0
@@ -6686,7 +6686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &1530506758
 GameObject:
   m_ObjectHideFlags: 0
@@ -6992,7 +6992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &1626776928
 GameObject:
   m_ObjectHideFlags: 0
@@ -7140,7 +7140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &1632834653
 GameObject:
   m_ObjectHideFlags: 0
@@ -7363,7 +7363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &1646934615
 GameObject:
   m_ObjectHideFlags: 0
@@ -7826,7 +7826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &1797060449
 GameObject:
   m_ObjectHideFlags: 0
@@ -8139,7 +8139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &1825671651
 GameObject:
   m_ObjectHideFlags: 0
@@ -8275,7 +8275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &1838190607
 GameObject:
   m_ObjectHideFlags: 0
@@ -8502,7 +8502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &1841259168
 GameObject:
   m_ObjectHideFlags: 0
@@ -8650,7 +8650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &1848115457
 GameObject:
   m_ObjectHideFlags: 0
@@ -8798,7 +8798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &1866862450
 GameObject:
   m_ObjectHideFlags: 0
@@ -9094,8 +9094,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f852100bfe69dd429dc68f539201be3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 0}
-  playOnAwake: 0
+  audioClip: {fileID: 8300000, guid: 2dcc45f9f0b99124ca2511aafdb7dd4a, type: 3}
+  playOnEnabled: 1
 --- !u!1 &1932841797
 GameObject:
   m_ObjectHideFlags: 0
@@ -9243,7 +9243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &1955547857
 GameObject:
   m_ObjectHideFlags: 0
@@ -9545,7 +9545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &1987051380
 GameObject:
   m_ObjectHideFlags: 0
@@ -10206,7 +10206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &2072929615
 GameObject:
   m_ObjectHideFlags: 0
@@ -10680,7 +10680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  playOnAwake: 0
+  playOnEnabled: 0
 --- !u!1 &2134073893
 GameObject:
   m_ObjectHideFlags: 0

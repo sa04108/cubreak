@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class AudioSync : MonoBehaviour {
     [SerializeField] AudioClip audioClip;
-    [SerializeField] bool playOnAwake;
+    [SerializeField] bool playOnEnabled;
+
+    AudioSource listener;
 
     // Start is called before the first frame update
     void Start() {
-        AudioSource listener = AudioManager.Instance.listener;
+        listener = AudioManager.Instance.listener;
         Button button = GetComponent<Button>();
         if (button != null) {
             button.onClick.AddListener(() => {
@@ -18,8 +20,13 @@ public class AudioSync : MonoBehaviour {
                 listener.Play();
             });
         }
+    }
 
-        if (playOnAwake) {
+    private void OnEnable() {
+        if (listener == null)
+            listener = AudioManager.Instance.listener;
+
+        if (playOnEnabled) {
             listener.clip = audioClip;
             listener.Play();
         }

@@ -33,8 +33,7 @@ public class UIManager : Singleton<UIManager> {
     [Header("Number of Block Colors Text")]
     public Text numOfBlockColorText;
 
-    private new void Awake() {
-        base.Awake();
+    private void Start() {
         blockGroupStatus = BlockGroupStatus.Instance;
         blockGroupStatus.BlockFallingSpeed = 3.0f;
         blockFallingSpeedText.text = blockGroupStatus.BlockFallingSpeed.ToString();
@@ -44,9 +43,6 @@ public class UIManager : Singleton<UIManager> {
         cubeModelText.text = "3x3x3";
 
         Init();
-    }
-
-    private void Start() {
         SetActivePanel(titlePanel);
     }
 

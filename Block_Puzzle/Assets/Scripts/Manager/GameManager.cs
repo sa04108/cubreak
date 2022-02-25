@@ -13,9 +13,7 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public List<GameObject> blocks;
     public ENUM_BLOCK_TYPE blockType = ENUM_BLOCK_TYPE.UNDEFINED;
 
-    private new void Awake()
-    {
-        base.Awake();
+    private void Start() {
         inputManager = InputManager.Instance;
         click = new InputType(inputManager.Click);
         slide = new InputType(inputManager.Slide);
