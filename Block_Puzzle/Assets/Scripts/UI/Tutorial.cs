@@ -23,27 +23,27 @@ public class Tutorial : MonoBehaviour
         switch (++sceneNum)
         {
             case 1:
-                tutorialText.text = "°°Àº »öÀ¸·Î ¿¬°áµÇ¾îÀÖ´Â ºí·Ïµé¸¸ ÆÄ±«µË´Ï´Ù!";
+                tutorialText.text = "ê°™ì€ ìƒ‰ìœ¼ë¡œ ì—°ê²°ë˜ì–´ìžˆëŠ” ë¸”ë¡ë“¤ë§Œ íŒŒê´´ë©ë‹ˆë‹¤!";
                 break;
             case 2:
-                tutorialText.text = "ÁÂ, ¿ì ½½¶óÀÌµå·Î Å¥ºê¸¦ ÁÂ¿ì·Î È¸ÀüÇÒ ¼ö ÀÖ½À´Ï´Ù.";
+                tutorialText.text = "ì¢Œ, ìš° ìŠ¬ë¼ì´ë“œë¡œ íë¸Œë¥¼ ì¢Œìš°ë¡œ íšŒì „í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.";
                 break;
             case 3:
-                tutorialText.text = "À§, ¾Æ·¡ ½½¶óÀÌµå·Î Å¥ºêÀÇ ÃµÀå°ú ¿·À» ¹ø°¥¾Æ°¡¸é¼­ º¼ ¼ö ÀÖ½À´Ï´Ù.";
+                tutorialText.text = "ìœ„, ì•„ëž˜ ìŠ¬ë¼ì´ë“œë¡œ íë¸Œì˜ ì²œìž¥ê³¼ ì˜†ì„ ë²ˆê°ˆì•„ê°€ë©´ì„œ ë³¼ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.";
                 break;
             case 4:
                 MovePanelUp();
-                tutorialText.text = "¾Æ·¡¿¡ ÀÖ´Â\nSee Through ¹öÆ°Àº\n3x3x3 ÀÌ»óÀÇ Å¥ºê¿¡¼­ È°¼ºÈ­µÇ¸ç Å¥ºêÀÇ ³»ºÎ¸¦ º¼ ¼ö ÀÖ½À´Ï´Ù.";
+                tutorialText.text = "ì•„ëž˜ì— ìžˆëŠ”\nSee Through ë²„íŠ¼ì€\n3x3x3 ì´ìƒì˜ íë¸Œì—ì„œ í™œì„±í™”ë˜ë©° íë¸Œì˜ ë‚´ë¶€ë¥¼ ë³¼ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.";
                 break;
             case 5:
                 MovePanelDown();
-                tutorialText.text = "½ºÅ×ÀÌÁö °ÔÀÓ¿¡¼­´Â ¸ðµç ºí·ÏÀ» ÆÄ±«ÇØ¾ß Å¬¸®¾îÇÒ ¼ö ÀÖ½À´Ï´Ù.";
+                tutorialText.text = "ìŠ¤í…Œì´ì§€ ê²Œìž„ì—ì„œëŠ” ëª¨ë“  ë¸”ë¡ì„ íŒŒê´´í•´ì•¼ í´ë¦¬ì–´í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.";
                 break;
             case 6:
-                tutorialText.text = "¿¬½À °ÔÀÓ¿¡¼­´Â ÃÖ´ëÇÑ ¸¹Àº ºí·ÏÀ» ÆÄ±«ÇÏ¸é µË´Ï´Ù!";
+                tutorialText.text = "ì—°ìŠµ ê²Œìž„ì—ì„œëŠ” ìµœëŒ€í•œ ë§Žì€ ë¸”ë¡ì„ íŒŒê´´í•˜ë©´ ë©ë‹ˆë‹¤!";
                 break;            
             case 7:
-                tutorialText.text = "½Ã°£ Á¦ÇÑÀº ¾ø½À´Ï´Ù!\n´ç½ÅÀÇ °ø°£Áö°¢´É·ÂÀ» ÃæºÐÈ÷ ¹ßÈÖÇØº¸¼¼¿ä!";
+                tutorialText.text = "ì‹œê°„ ì œí•œì€ ì—†ìŠµë‹ˆë‹¤!\në‹¹ì‹ ì˜ ê³µê°„ì§€ê°ëŠ¥ë ¥ì„ ì¶©ë¶„ížˆ ë°œíœ˜í•´ë³´ì„¸ìš”!";
                 break;
             default:
                 gameObject.SetActive(false);
