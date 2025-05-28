@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -61,7 +59,7 @@ public class CubeMaterial : MonoBehaviour
     }
 
     /// <summary>
-    /// list ¿¡ µé¾î°¥ ÀÎµ¦½º ¹øÈ£´Â 1~9 ÀÔ´Ï´Ù.
+    /// list ì— ë“¤ì–´ê°ˆ ì¸ë±ìŠ¤ ë²ˆí˜¸ëŠ” 1~9 ì…ë‹ˆë‹¤.
     /// </summary>
     /// <param name="floor"></param>
     /// <param name="list"></param>
@@ -80,7 +78,7 @@ public class CubeMaterial : MonoBehaviour
     }
 
     /// <summary>
-    /// list ¿¡ µé¾î°¥ ÀÎµ¦½º ¹øÈ£´Â 1~9 ÀÔ´Ï´Ù.
+    /// list ì— ë“¤ì–´ê°ˆ ì¸ë±ìŠ¤ ë²ˆí˜¸ëŠ” 1~9 ì…ë‹ˆë‹¤.
     /// </summary>
     /// <param name="floor"></param>
     /// <param name="list"></param>

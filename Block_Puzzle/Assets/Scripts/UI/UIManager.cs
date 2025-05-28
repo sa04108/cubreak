@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : Singleton<UIManager> {
+public class UIManager : Singleton<UIManager>
+{
     private BlockGroupStatus blockGroupStatus;
 
     [Header("Panels")]
@@ -33,7 +32,8 @@ public class UIManager : Singleton<UIManager> {
     [Header("Number of Block Colors Text")]
     public Text numOfBlockColorText;
 
-    private void Start() {
+    private void Start()
+    {
         blockGroupStatus = BlockGroupStatus.Instance;
         blockGroupStatus.BlockFallingSpeed = 3.0f;
         blockFallingSpeedText.text = blockGroupStatus.BlockFallingSpeed.ToString();
@@ -46,7 +46,8 @@ public class UIManager : Singleton<UIManager> {
         SetActivePanel(titlePanel);
     }
 
-    public void Init() {
+    public void Init()
+    {
         score = 0;
         scoreText.text = "0";
 
@@ -55,33 +56,39 @@ public class UIManager : Singleton<UIManager> {
         blockGroupStatus.UnconnectedBlockCount = 0;
     }
 
-    public void SetBlockFallingSpeed(float num) {
+    public void SetBlockFallingSpeed(float num)
+    {
         blockGroupStatus.BlockFallingSpeed += num;
         blockFallingSpeedText.text = blockGroupStatus.BlockFallingSpeed.ToString();
     }
 
-    public void SetCubeModel(int num) {
+    public void SetCubeModel(int num)
+    {
         stageManager.ModelIdx += num;
         cubeModelText.text = (stageManager.ModelIdx + 2) + "x" + (stageManager.ModelIdx + 2) + "x" + (stageManager.ModelIdx + 2);
     }
 
-    public void SetNumberOfBlockColor(int num) {
+    public void SetNumberOfBlockColor(int num)
+    {
         blockGroupStatus.NumOfBlockColor += num;
         numOfBlockColorText.text = blockGroupStatus.NumOfBlockColor.ToString();
     }
 
-    public void ResetGame() {
+    public void ResetGame()
+    {
         PlayerPrefs.DeleteAll();
         SetActivePanel(titlePanel);
     }
 
-    public void ScoreUp() {
+    public void ScoreUp()
+    {
         score++;
         scoreText.text = score.ToString();
     }
 
     #region Panel Management
-    public void SetActivePanel(GameObject panel) {
+    public void SetActivePanel(GameObject panel)
+    {
         titlePanel.SetActive(panel.name == titlePanel.name);
         stagesPanel.SetActive(panel.name == stagesPanel.name);
         optionPanel.SetActive(panel.name == optionPanel.name);
@@ -90,15 +97,18 @@ public class UIManager : Singleton<UIManager> {
         gameOverPanel.SetActive(panel.name == gameOverPanel.name);
     }
 
-    public void StartStage(int stageNum) {
+    public void StartStage(int stageNum)
+    {
         Init();
         SetActivePanel(inGamePanel);
-        if (stageNum == 0) {
+        if (stageNum == 0)
+        {
             scoreText.gameObject.SetActive(true);
             stageText.gameObject.SetActive(false);
             nextStageButton.gameObject.SetActive(false);
         }
-        else {
+        else
+        {
             scoreText.gameObject.SetActive(false);
             stageText.gameObject.SetActive(true);
             stageText.text = "Stage " + stageNum;
@@ -107,18 +117,21 @@ public class UIManager : Singleton<UIManager> {
         stageManager.StartStage(stageNum);
     }
 
-    public void GoTitle() {
+    public void GoTitle()
+    {
         Init();
         SetActivePanel(titlePanel);
     }
 
-    public void GameClear() {
+    public void GameClear()
+    {
         SetActivePanel(gameClearPanel);
         finalScoreText.text = scoreText.text;
         stageManager.SetStageUp();
     }
 
-    public void GameOver() {
+    public void GameOver()
+    {
         SetActivePanel(gameOverPanel);
         finalScoreText.text = scoreText.text;
     }

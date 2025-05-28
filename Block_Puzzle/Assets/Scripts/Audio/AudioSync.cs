@@ -1,20 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AudioSync : MonoBehaviour {
+public class AudioSync : MonoBehaviour
+{
     [SerializeField] AudioClip audioClip;
     [SerializeField] bool playOnEnabled;
 
     AudioSource listener;
 
     // Start is called before the first frame update
-    void Start() {
+    void Start()
+    {
         listener = AudioManager.Instance.listener;
         Button button = GetComponent<Button>();
-        if (button != null) {
-            button.onClick.AddListener(() => {
+        if (button != null)
+        {
+            button.onClick.AddListener(() =>
+            {
                 audioClip = Resources.Load<AudioClip>("Sounds/Click");
                 listener.clip = audioClip;
                 listener.Play();
@@ -22,11 +24,13 @@ public class AudioSync : MonoBehaviour {
         }
     }
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         if (listener == null)
             listener = AudioManager.Instance.listener;
 
-        if (playOnEnabled) {
+        if (playOnEnabled)
+        {
             listener.clip = audioClip;
             listener.Play();
         }

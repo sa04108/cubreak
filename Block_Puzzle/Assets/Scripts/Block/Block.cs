@@ -1,8 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Block : MonoBehaviour, IBlockType {
+public class Block : MonoBehaviour, IBlockType
+{
     [SerializeField] GameObject destroyEffect;
 
     ENUM_BLOCK_TYPE blockType;
@@ -22,8 +22,10 @@ public class Block : MonoBehaviour, IBlockType {
     private bool isUnconnected;
     private bool destroyed;
 
-    private Vector3[] rayCastVec {
-        get {
+    private Vector3[] rayCastVec
+    {
+        get
+        {
             Vector3[] _rayCastVec = new Vector3[6];
             _rayCastVec[0] = Vector3.forward;
             _rayCastVec[1] = Vector3.back;
@@ -36,13 +38,15 @@ public class Block : MonoBehaviour, IBlockType {
     }
 
     // Start is called before the first frame update
-    private void Awake() {
+    private void Awake()
+    {
         blockGroupStatus = BlockGroupStatus.Instance;
         uiManager = UIManager.Instance;
         gameManager = GameManager.Instance;
     }
 
-    private void Start() {
+    private void Start()
+    {
         blockGroupStatus.BlockCount++;
         renderer = GetComponent<Renderer>();
 
@@ -52,7 +56,7 @@ public class Block : MonoBehaviour, IBlockType {
         StartCoroutine(MoveDown());
         targetPos = transform.localPosition;
 
-        isUnconnected = false; // ÁÖº¯¿¡ °°Àº »öÀ¸·Î ¿¬°áµÉ ¼ö ÀÖ´Â ºí·°ÀÌ ¾ø´Â °æ¿ì true
+        isUnconnected = false; // ì£¼ë³€ì— ê°™ì€ ìƒ‰ìœ¼ë¡œ ì—°ê²°ë  ìˆ˜ ìˆëŠ” ë¸”ëŸ­ì´ ì—†ëŠ” ê²½ìš° true
         destroyed = false;
 
         SelectBlockType();
@@ -60,34 +64,40 @@ public class Block : MonoBehaviour, IBlockType {
     }
 
     // Update is called once per frame
-    private void Update() {
+    private void Update()
+    {
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPos, Time.deltaTime * blockGroupStatus.BlockFallingSpeed);
     }
 
-    public void SelectBlockType() {
+    public void SelectBlockType()
+    {
         blockType = gameManager.blockType;
-        if (blockType == ENUM_BLOCK_TYPE.UNDEFINED) {
-            Debug.LogError("Block TypeÀÌ ÁöÁ¤µÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+        if (blockType == ENUM_BLOCK_TYPE.UNDEFINED)
+        {
+            Debug.LogError("Block Typeì´ ì§€ì •ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
             return;
         }
         ResetBlockColor();
     }
 
     public void ResetBlockColor() {
-        if (blockType == ENUM_BLOCK_TYPE.RANDOMIZED) {
+        if (blockType == ENUM_BLOCK_TYPE.RANDOMIZED)
+        {
             int numOfBlockColor = blockGroupStatus.NumOfBlockColor;
             int colorVal = Random.Range(0, numOfBlockColor);
 
             renderer.material.color = BlockColors.colors[colorVal];
         }
-        else {
+        else
+        {
             return;
         }
     }
 
-    private bool CompareColor(Renderer r1, Renderer r2) {
-        // ÀÌ ÇÔ¼ö´Â alpha °ªÀ» Á¦¿ÜÇÏ°í »öÀ» ºñ±³ÇÏ´Â ÇÔ¼öÀÔ´Ï´Ù.
-        // »öÀÌ °°Àº °æ¿ì true, ´Ù¸¥ °æ¿ì false¸¦ ¹İÈ¯ÇÕ´Ï´Ù.
+    private bool CompareColor(Renderer r1, Renderer r2)
+    {
+        // ì´ í•¨ìˆ˜ëŠ” alpha ê°’ì„ ì œì™¸í•˜ê³  ìƒ‰ì„ ë¹„êµí•˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤.
+        // ìƒ‰ì´ ê°™ì€ ê²½ìš° true, ë‹¤ë¥¸ ê²½ìš° falseë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
 
         if (r1.material.color.r == r2.material.color.r
             && r1.material.color.g == r2.material.color.g
@@ -97,11 +107,14 @@ public class Block : MonoBehaviour, IBlockType {
         return false;
     }
 
-    public IEnumerator MoveDown() {
-        while (!Physics.Raycast(transform.position, Vector3.down, maxRayDistance)) {
+    public IEnumerator MoveDown()
+    {
+        while (!Physics.Raycast(transform.position, Vector3.down, maxRayDistance))
+        {
             targetPos += Vector3.down;
 
-            if (!isFalling) {
+            if (!isFalling)
+            {
                 blockGroupStatus.FallingBlockCount++;
                 isFalling = true;
             }
@@ -109,18 +122,23 @@ public class Block : MonoBehaviour, IBlockType {
             yield return new WaitUntil(() => transform.localPosition.y - targetPos.y <= 0.1f);
         }
 
-        if (isFalling) {
+        if (isFalling)
+        {
             blockGroupStatus.FallingBlockCount--;
             isFalling = false;
         }
     }
 
-    public void CheckmateCheck() {
+    public void CheckmateCheck()
+    {
         RaycastHit hit;
 
-        for (int i = 0; i < rayCastVec.Length; i++) {
-            if (Physics.Raycast(transform.position, rayCastVec[i], out hit, maxRayDistance, 1 << 6)) {
-                if (CompareColor(hit.transform.GetComponent<Renderer>(), renderer)) {
+        for (int i = 0; i < rayCastVec.Length; i++)
+        {
+            if (Physics.Raycast(transform.position, rayCastVec[i], out hit, maxRayDistance, 1 << 6))
+            {
+                if (CompareColor(hit.transform.GetComponent<Renderer>(), renderer))
+                {
                     if (isUnconnected)
                         blockGroupStatus.UnconnectedBlockCount--;
 
@@ -130,26 +148,30 @@ public class Block : MonoBehaviour, IBlockType {
             }
         }
 
-        // 6¹æÇâÀ¸·Î RayCast ÈÄ Block°ú ºÎµúÄ¡Áö ¾Ê¾Ò°Å³ª, ºÎµúÄ£ Block°ú »öÀÌ ´Ù¸¥ °æ¿ì
+        // 6ë°©í–¥ìœ¼ë¡œ RayCast í›„ Blockê³¼ ë¶€ë”ªì¹˜ì§€ ì•Šì•˜ê±°ë‚˜, ë¶€ë”ªì¹œ Blockê³¼ ìƒ‰ì´ ë‹¤ë¥¸ ê²½ìš°
         if (!isUnconnected)
             blockGroupStatus.UnconnectedBlockCount++;
 
         isUnconnected = true;
     }
 
-    public void DestroyBlocks() {
+    public void DestroyBlocks()
+    {
         if (destroyed) return;
 
         RaycastHit hit;
 
-        for (int i = 0; i < rayCastVec.Length; i++) {
-            if (Physics.Raycast(transform.position, rayCastVec[i], out hit, maxRayDistance, 1 << 6)) {
-                if (CompareColor(hit.transform.GetComponent<Renderer>(), renderer)) {
+        for (int i = 0; i < rayCastVec.Length; i++)
+        {
+            if (Physics.Raycast(transform.position, rayCastVec[i], out hit, maxRayDistance, 1 << 6))
+            {
+                if (CompareColor(hit.transform.GetComponent<Renderer>(), renderer))
+                {
                     destroyed = true;
                     hit.transform.GetComponent<Block>().DestroyBlocks();
 
-                    // ¸Ç ³¡ ºí·°ÀÇ °æ¿ì ´Ù½Ã ÀÌ ÇÔ¼ö°¡ ½ÇÇàµÇÁö ¾ÊÀ¸¹Ç·Î µû·Î Á¦°ÅÇØÁÖ¾î¾ß ÇÑ´Ù.
-                    // ¸Ç ³¡ ºí·°ÀÌ ¾Æ´Ñ °æ¿ì ÀÌ¹Ì À§¿¡¼­ Destory Ã³¸®°¡ µÆÀ» °ÍÀÌ¹Ç·Î ¿¹¿ÜÃ³¸®¸¦ ÇÑ´Ù.
+                    // ë§¨ ë ë¸”ëŸ­ì˜ ê²½ìš° ë‹¤ì‹œ ì´ í•¨ìˆ˜ê°€ ì‹¤í–‰ë˜ì§€ ì•Šìœ¼ë¯€ë¡œ ë”°ë¡œ ì œê±°í•´ì£¼ì–´ì•¼ í•œë‹¤.
+                    // ë§¨ ë ë¸”ëŸ­ì´ ì•„ë‹Œ ê²½ìš° ì´ë¯¸ ìœ„ì—ì„œ Destory ì²˜ë¦¬ê°€ ëì„ ê²ƒì´ë¯€ë¡œ ì˜ˆì™¸ì²˜ë¦¬ë¥¼ í•œë‹¤.
                 }
             }
         }
@@ -157,7 +179,8 @@ public class Block : MonoBehaviour, IBlockType {
         if (destroyed) DestroyThis();
     }
 
-    private void DestroyThis() {
+    private void DestroyThis()
+    {
         uiManager.ScoreUp();
         blockGroupStatus.BlockCount--;
         Destroy(Instantiate(destroyEffect, transform.position, Quaternion.identity, transform.parent), 0.8f);

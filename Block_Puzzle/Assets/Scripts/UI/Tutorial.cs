@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +7,8 @@ public class Tutorial : MonoBehaviour
     public RectTransform panel;
     public Text tutorialText;
 
-    private void Start() {
+    private void Start()
+    {
         sceneNum = 0;
 
         if (PlayerPrefs.GetInt("Newbie", 1) == 0)
@@ -41,7 +40,7 @@ public class Tutorial : MonoBehaviour
                 break;
             case 6:
                 tutorialText.text = "연습 게임에서는 최대한 많은 블록을 파괴하면 됩니다!";
-                break;            
+                break;
             case 7:
                 tutorialText.text = "시간 제한은 없습니다!\n당신의 공간지각능력을 충분히 발휘해보세요!";
                 break;

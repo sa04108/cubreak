@@ -1,22 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-enum CubeModel {
+enum CubeModel
+{
     cube222,
     cube333,
     cube444
 }
 
-public class StageManager : MonoBehaviour {
+public class StageManager : MonoBehaviour
+{
     private int nowStage;
     private int clearedStage;
 
     private int modelIdx;
-    public int ModelIdx {
+    public int ModelIdx
+    {
         get => modelIdx;
-        set {
+        set
+        {
             modelIdx = value;
             if (modelIdx < 0) modelIdx = 0;
             else if (modelIdx > 2) modelIdx = 2;
@@ -26,17 +28,21 @@ public class StageManager : MonoBehaviour {
     [SerializeField] GameDirector gameDirector;
     [SerializeField] Button[] stageButtons;
 
-    private void Awake() {
+    private void Awake()
+    {
         clearedStage = PlayerPrefs.GetInt("ClearedStage", 0);
-        for (int i = 0; i <= clearedStage; i++) {
+        for (int i = 0; i <= clearedStage; i++)
+        {
             stageButtons[i].interactable = true;
         }
     }
 
-    public void StartStage(int stageNum) {
+    public void StartStage(int stageNum)
+    {
         nowStage = stageNum;
 
-        switch (stageNum) {
+        switch (stageNum)
+        {
             // stage 0 is random pattern game
             case 0:
                 gameDirector.CreateCubeAndPattern(modelIdx, stageNum);
@@ -56,24 +62,29 @@ public class StageManager : MonoBehaviour {
         }
     }
 
-    public void NextStage() {
+    public void NextStage()
+    {
         gameDirector.DestroyBlocks();
         UIManager.Instance.StartStage(nowStage + 1);
     }
 
-    public void SetStageUp() {
-        if (nowStage > clearedStage && stageButtons.Length > nowStage) {
+    public void SetStageUp()
+    {
+        if (nowStage > clearedStage && stageButtons.Length > nowStage)
+        {
             stageButtons[nowStage].interactable = true;
             PlayerPrefs.SetInt("ClearedStage", ++clearedStage);
         }
     }
 
-    public void RestartStage() {
+    public void RestartStage()
+    {
         gameDirector.DestroyBlocks();
         UIManager.Instance.StartStage(nowStage);
     }
 
-    public void EndStage() {
+    public void EndStage()
+    {
         gameDirector.DestroyBlocks();
         UIManager.Instance.GoTitle();
     }

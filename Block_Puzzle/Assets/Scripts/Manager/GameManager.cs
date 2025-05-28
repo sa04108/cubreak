@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -13,7 +11,8 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public List<GameObject> blocks;
     public ENUM_BLOCK_TYPE blockType = ENUM_BLOCK_TYPE.UNDEFINED;
 
-    private void Start() {
+    private void Start()
+    {
         inputManager = InputManager.Instance;
         click = new InputType(inputManager.Click);
         slide = new InputType(inputManager.Slide);
@@ -28,7 +27,8 @@ public class GameManager : Singleton<GameManager>
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 100.0f, 1 << 6)) {
+            if (Physics.Raycast(ray, out hit, 100.0f, 1 << 6))
+            {
                 hit.transform.GetComponent<Block>().DestroyBlocks();
             }
         }
