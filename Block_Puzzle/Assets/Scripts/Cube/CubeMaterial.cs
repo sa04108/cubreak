@@ -6,11 +6,11 @@ public class CubeMaterial : MonoBehaviour
     bool isAlpha;
     float alphaVal;
 
-    protected bool cube222;
-    protected bool cube333;
-    protected bool cube444;
+    private bool cube222;
+    private bool cube333;
+    private bool cube444;
 
-    protected CubeBlocks cubeBlocks;
+    private CubeBlocks cubeBlocks;
     Button seeThroughButton;
 
     private void Awake()
@@ -21,7 +21,7 @@ public class CubeMaterial : MonoBehaviour
 
         SelectCube();
 
-        seeThroughButton = GameObject.Find("See Through Button").GetComponent<Button>();
+        seeThroughButton = GameObject.Find("See Through Button")?.GetComponent<Button>();
         if (cube333)
         {
             seeThroughButton.onClick.AddListener(Set333CubeAlpha);
@@ -62,17 +62,17 @@ public class CubeMaterial : MonoBehaviour
     /// list 에 들어갈 인덱스 번호는 1~9 입니다.
     /// </summary>
     /// <param name="floor"></param>
-    /// <param name="list"></param>
+    /// <param name="positions"></param>
     /// <param name="color"></param>
-    public void SetFloorAlpha(GameObject[] floor, int[] list, float alpha)
+    public void SetFloorAlpha(GameObject[] floor, int[] positions, float alpha)
     {
-        foreach (var idx in list)
+        foreach (var pos in positions)
         {
-            if (floor[idx - 1] != null)
+            if (floor[pos - 1] != null)
             {
-                Color color = floor[idx - 1].GetComponent<Renderer>().material.color;
+                Color color = floor[pos - 1].GetComponent<Renderer>().material.color;
                 color.a = alpha;
-                floor[idx - 1].GetComponent<Renderer>().material.color = color;
+                floor[pos - 1].GetComponent<Renderer>().material.color = color;
             }
         }
     }
@@ -80,15 +80,15 @@ public class CubeMaterial : MonoBehaviour
     /// <summary>
     /// list 에 들어갈 인덱스 번호는 1~9 입니다.
     /// </summary>
-    /// <param name="floor"></param>
-    /// <param name="list"></param>
+    /// <param name="floors"></param>
+    /// <param name="positions"></param>
     /// <param name="color"></param>
-    public void SetFloorColor(GameObject[] floor, int[] list, ENUM_COLOR colorEnum)
+    public void SetFloorColor(int floor, int[] positions, ENUM_COLOR colorEnum)
     {
-        foreach (var idx in list)
+        foreach (int pos in positions)
         {
-            if (floor[idx - 1] != null) {
-                floor[idx - 1].GetComponent<Renderer>().material.color = BlockColors.colors[(int)colorEnum];
+            if (cubeBlocks.floors[floor].floor[pos - 1] != null) {
+                cubeBlocks.floors[floor].floor[pos - 1].GetComponent<Renderer>().material.color = BlockColors.colors[(int)colorEnum];
             }
         }
     }

@@ -37,16 +37,12 @@ public class Block : MonoBehaviour, IBlockType
         }
     }
 
-    // Start is called before the first frame update
-    private void Awake()
+    private void Start()
     {
         blockGroupStatus = BlockGroupStatus.Instance;
         uiManager = UIManager.Instance;
         gameManager = GameManager.Instance;
-    }
 
-    private void Start()
-    {
         blockGroupStatus.BlockCount++;
         renderer = GetComponent<Renderer>();
 

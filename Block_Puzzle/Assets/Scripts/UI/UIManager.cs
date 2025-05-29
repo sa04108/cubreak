@@ -39,7 +39,7 @@ public class UIManager : Singleton<UIManager>
         blockFallingSpeedText.text = blockGroupStatus.BlockFallingSpeed.ToString();
         blockGroupStatus.NumOfBlockColor = 4;
         numOfBlockColorText.text = blockGroupStatus.NumOfBlockColor.ToString();
-        stageManager.ModelIdx = (int)CubeModel.cube333;
+        stageManager.DimensionIdx = (int)CubeModel.cube333;
         cubeModelText.text = "3x3x3";
 
         Init();
@@ -64,8 +64,8 @@ public class UIManager : Singleton<UIManager>
 
     public void SetCubeModel(int num)
     {
-        stageManager.ModelIdx += num;
-        cubeModelText.text = (stageManager.ModelIdx + 2) + "x" + (stageManager.ModelIdx + 2) + "x" + (stageManager.ModelIdx + 2);
+        stageManager.DimensionIdx += num;
+        cubeModelText.text = (stageManager.DimensionIdx + 2) + "x" + (stageManager.DimensionIdx + 2) + "x" + (stageManager.DimensionIdx + 2);
     }
 
     public void SetNumberOfBlockColor(int num)
@@ -97,7 +97,7 @@ public class UIManager : Singleton<UIManager>
         gameOverPanel.SetActive(panel.name == gameOverPanel.name);
     }
 
-    public void StartStage(int stageNum)
+    public void SetStageUI(int stageNum)
     {
         Init();
         SetActivePanel(inGamePanel);
@@ -114,7 +114,6 @@ public class UIManager : Singleton<UIManager>
             stageText.text = "Stage " + stageNum;
             nextStageButton.gameObject.SetActive(true);
         }
-        stageManager.StartStage(stageNum);
     }
 
     public void GoTitle()
@@ -127,7 +126,7 @@ public class UIManager : Singleton<UIManager>
     {
         SetActivePanel(gameClearPanel);
         finalScoreText.text = scoreText.text;
-        stageManager.SetStageUp();
+        stageManager.StageClear();
     }
 
     public void GameOver()

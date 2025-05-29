@@ -8,7 +8,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         get
         {
             if (instance == null)
-                instance = FindObjectOfType(typeof(T)) as T;
+                instance = FindFirstObjectByType(typeof(T)) as T;
             return instance;
         }
     }

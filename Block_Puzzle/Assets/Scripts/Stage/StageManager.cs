@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,82 +11,179 @@ enum CubeModel
 
 public class StageManager : MonoBehaviour
 {
+    private GameManager gameManager;
+    private GameObject cubeObject;
+
     private int nowStage;
     private int clearedStage;
-
-    private int modelIdx;
-    public int ModelIdx
+    private int stageGroupIndex; // start with 0
+    private int dimensionIdx;
+    public int DimensionIdx
     {
-        get => modelIdx;
+        get => dimensionIdx;
         set
         {
-            modelIdx = value;
-            if (modelIdx < 0) modelIdx = 0;
-            else if (modelIdx > 2) modelIdx = 2;
+            dimensionIdx = value;
+            if (dimensionIdx < 0) dimensionIdx = 0;
+            else if (dimensionIdx > 2) dimensionIdx = 2;
         }
     }
 
-    [SerializeField] GameDirector gameDirector;
+    private CubeStage[] stageData;
+
+    [SerializeField] TextAsset stageJson;
+    [SerializeField] CameraPos cameraPos;
+    [SerializeField] GameObject[] cubePrefab;
     [SerializeField] Button[] stageButtons;
+    [SerializeField] Button prevButton;
+    [SerializeField] Button nextButton;
 
-    private void Awake()
+    private void Start()
     {
+        gameManager = GameManager.Instance;
+
+        stageData = CubeStage.FromJson(stageJson.text);
         clearedStage = PlayerPrefs.GetInt("ClearedStage", 0);
-        for (int i = 0; i <= clearedStage; i++)
+        stageGroupIndex = clearedStage / stageButtons.Length;
+
+        InitializeStagePanel();
+
+        prevButton.onClick.AddListener((UnityEngine.Events.UnityAction)(() =>
         {
-            stageButtons[i].interactable = true;
+            stageGroupIndex--;
+
+            if (stageGroupIndex < 0)
+            {
+                stageGroupIndex = 0;
+                return;
+            }
+
+            InitializeStagePanel();
+        }));
+
+        nextButton.onClick.AddListener((UnityEngine.Events.UnityAction)(() =>
+        {
+            stageGroupIndex++;
+
+            int maxStageNum = stageData.Length;
+            if (stageGroupIndex > (maxStageNum - 1) / stageButtons.Length)
+            {
+                stageGroupIndex--;
+                return;
+            }
+
+            InitializeStagePanel();
+        }));
+    }
+
+    private void InitializeStagePanel()
+    {
+        int maxStageNum = stageData.Length;
+
+        for (int i = 0; i < stageButtons.Length; i++)
+        {
+            int stageNum = (i + 1) + stageGroupIndex * stageButtons.Length;
+
+            if (stageNum <= maxStageNum)
+            {
+                stageButtons[i].gameObject.SetActive(true);
+                stageButtons[i].onClick.RemoveAllListeners();
+                stageButtons[i].onClick.AddListener(() => StartStage(stageNum));
+                stageButtons[i].GetComponentInChildren<TMP_Text>().text = $"Stage {stageNum}";
+
+                if (stageNum - 1 <= clearedStage)
+                {
+                    stageButtons[i].interactable = true;
+                }
+                else
+                {
+                    stageButtons[i].interactable = false;
+                }
+            }
+            else
+            {
+                stageButtons[i].gameObject.SetActive(false);
+            }
         }
     }
 
-    public void StartStage(int stageNum)
+    private void CreateCubeAndPattern(int modelIdx, CubeStage stage, ENUM_BLOCK_TYPE stageType = ENUM_BLOCK_TYPE.PATTERNED)
+    {
+        gameManager.blockType = stageType;
+        gameManager.gameObject.SetActive(true);
+        cubeObject = Instantiate(cubePrefab[modelIdx], transform.position, Quaternion.identity, transform.parent);
+
+        GenerateCubeStage(stage);
+
+        cameraPos.SetCameraDistance(modelIdx);
+    }
+
+    private void GenerateCubeStage(CubeStage stage)
+    {
+        foreach (var layer in stage.Layers)
+        {
+            foreach (var arrangement in layer.Arrangements)
+            {
+                cubeObject.GetComponent<CubeMaterial>().SetFloorColor(layer.Index, arrangement.Positions, arrangement.Color);
+            }
+        }
+    }
+
+    private void DestroyBlocks()
+    {
+        Destroy(cubeObject);
+        gameManager.gameObject.SetActive(false);
+    }
+
+    private void StartStage(int stageNum)
     {
         nowStage = stageNum;
 
-        switch (stageNum)
+        if (stageNum == 0)
         {
-            // stage 0 is random pattern game
-            case 0:
-                gameDirector.CreateCubeAndPattern(modelIdx, stageNum);
-                break;
-            case 1:
-            case 2:
-                gameDirector.CreateCubeAndPattern((int)CubeModel.cube222, stageNum);
-                break;
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-                gameDirector.CreateCubeAndPattern((int)CubeModel.cube333, stageNum);
-                break;
-            default:
-                break;
+            CreateCubeAndPattern(dimensionIdx, stageData[stageNum]);
+        }
+        else
+        {
+            var stage = stageData[stageNum - 1];
+            if (stage == null || stage.Layers.Count == 0)
+            {
+                Debug.LogError($"Stage {stageNum} data is missing or invalid.");
+                return;
+            }
+
+            CreateCubeAndPattern(stage.Dimension - 2, stage);
+        }
+
+        UIManager.Instance.SetStageUI(nowStage);
+    }
+
+    public void StageClear()
+    {
+        if (nowStage > clearedStage)
+        {
+            stageButtons[nowStage % stageButtons.Length].interactable = true;
+            PlayerPrefs.SetInt("ClearedStage", ++clearedStage);
         }
     }
 
     public void NextStage()
     {
-        gameDirector.DestroyBlocks();
-        UIManager.Instance.StartStage(nowStage + 1);
-    }
-
-    public void SetStageUp()
-    {
-        if (nowStage > clearedStage && stageButtons.Length > nowStage)
-        {
-            stageButtons[nowStage].interactable = true;
-            PlayerPrefs.SetInt("ClearedStage", ++clearedStage);
-        }
+        DestroyBlocks();
+        StartStage(nowStage + 1);
+        UIManager.Instance.SetStageUI(nowStage + 1);
     }
 
     public void RestartStage()
     {
-        gameDirector.DestroyBlocks();
-        UIManager.Instance.StartStage(nowStage);
+        DestroyBlocks();
+        StartStage(nowStage);
+        UIManager.Instance.SetStageUI(nowStage);
     }
 
     public void EndStage()
     {
-        gameDirector.DestroyBlocks();
+        DestroyBlocks();
         UIManager.Instance.GoTitle();
     }
 }
