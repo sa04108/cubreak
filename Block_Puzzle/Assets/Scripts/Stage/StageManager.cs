@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,26 +18,29 @@ public class StageManager : MonoBehaviour
     private int nowStage;
     private int clearedStage;
     private int stageGroupIndex; // start with 0
-    private int dimensionIdx;
-    public int DimensionIdx
+    private int exerciseDimension;
+    public int ExerciseDimension
     {
-        get => dimensionIdx;
+        get => exerciseDimension;
         set
         {
-            dimensionIdx = value;
-            if (dimensionIdx < 0) dimensionIdx = 0;
-            else if (dimensionIdx > 2) dimensionIdx = 2;
+            exerciseDimension = value;
+            if (exerciseDimension < 2) exerciseDimension = 2;
+            else if (exerciseDimension > 4) exerciseDimension = 4;
         }
     }
 
     private CubeStage[] stageData;
 
-    [SerializeField] TextAsset stageJson;
-    [SerializeField] CameraPos cameraPos;
-    [SerializeField] GameObject[] cubePrefab;
-    [SerializeField] Button[] stageButtons;
-    [SerializeField] Button prevButton;
-    [SerializeField] Button nextButton;
+    [SerializeField] private TextAsset stageJson;
+    [SerializeField] private CameraPos cameraPos;
+    [SerializeField] private Transform cubeParent;
+    [SerializeField] private GameObject[] cubePrefab;
+    [SerializeField] private Button[] stageButtons;
+    [SerializeField] private Button exerciseButton;
+    [SerializeField] private Button prevButton;
+    [SerializeField] private Button nextButton;
+    [SerializeField] private Button seeThroughButton;
 
     private void Start()
     {
@@ -48,7 +52,9 @@ public class StageManager : MonoBehaviour
 
         InitializeStagePanel();
 
-        prevButton.onClick.AddListener((UnityEngine.Events.UnityAction)(() =>
+        exerciseButton.onClick.AddListener(() => StartStage(0));
+
+        prevButton.onClick.AddListener(() =>
         {
             stageGroupIndex--;
 
@@ -59,9 +65,9 @@ public class StageManager : MonoBehaviour
             }
 
             InitializeStagePanel();
-        }));
+        });
 
-        nextButton.onClick.AddListener((UnityEngine.Events.UnityAction)(() =>
+        nextButton.onClick.AddListener(() =>
         {
             stageGroupIndex++;
 
@@ -73,7 +79,7 @@ public class StageManager : MonoBehaviour
             }
 
             InitializeStagePanel();
-        }));
+        });
     }
 
     private void InitializeStagePanel()
@@ -107,41 +113,13 @@ public class StageManager : MonoBehaviour
         }
     }
 
-    private void CreateCubeAndPattern(int modelIdx, CubeStage stage, ENUM_BLOCK_TYPE stageType = ENUM_BLOCK_TYPE.PATTERNED)
-    {
-        gameManager.blockType = stageType;
-        gameManager.gameObject.SetActive(true);
-        cubeObject = Instantiate(cubePrefab[modelIdx], transform.position, Quaternion.identity, transform.parent);
-
-        GenerateCubeStage(stage);
-
-        cameraPos.SetCameraDistance(modelIdx);
-    }
-
-    private void GenerateCubeStage(CubeStage stage)
-    {
-        foreach (var layer in stage.Layers)
-        {
-            foreach (var arrangement in layer.Arrangements)
-            {
-                cubeObject.GetComponent<CubeMaterial>().SetFloorColor(layer.Index, arrangement.Positions, arrangement.Color);
-            }
-        }
-    }
-
-    private void DestroyBlocks()
-    {
-        Destroy(cubeObject);
-        gameManager.gameObject.SetActive(false);
-    }
-
     private void StartStage(int stageNum)
     {
         nowStage = stageNum;
 
         if (stageNum == 0)
         {
-            CreateCubeAndPattern(dimensionIdx, stageData[stageNum]);
+            CreateExerciseCube();
         }
         else
         {
@@ -152,10 +130,71 @@ public class StageManager : MonoBehaviour
                 return;
             }
 
-            CreateCubeAndPattern(stage.Dimension - 2, stage);
+            CreateCube(stage);
         }
 
         UIManager.Instance.SetStageUI(nowStage);
+    }
+
+    private void CreateCube(CubeStage stage)
+    {
+        gameManager.gameObject.SetActive(true);
+        cubeObject = Instantiate(cubePrefab[stage.Dimension - 2], cubeParent);
+        var cubeMat = cubeObject.GetComponent<CubeMaterial>();
+
+        seeThroughButton.onClick.RemoveAllListeners();
+        if (stage.Dimension == 3)
+        {
+            seeThroughButton.onClick.AddListener(cubeMat.Set333CubeAlpha);
+        }
+        else if (stage.Dimension == 4)
+        {
+            seeThroughButton.onClick.AddListener(cubeMat.Set444CubeAlpha);
+        }
+
+        foreach (var layer in stage.Layers)
+        {
+            foreach (var arrangement in layer.Arrangements)
+            {
+                cubeMat.SetFloorColor(layer.Index, arrangement.Positions, arrangement.Color);
+            }
+        }
+
+        cameraPos.SetCameraDistance(stage.Dimension - 2);
+    }
+
+    private void CreateExerciseCube()
+    {
+        gameManager.gameObject.SetActive(true);
+        cubeObject = Instantiate(cubePrefab[ExerciseDimension - 2], cubeParent);
+        var cubeMat = cubeObject.GetComponent<CubeMaterial>();
+        var cubeBlocks = cubeObject.GetComponent<CubeBlocks>();
+
+        seeThroughButton.onClick.RemoveAllListeners();
+        if (ExerciseDimension == 3)
+        {
+            seeThroughButton.onClick.AddListener(cubeMat.Set333CubeAlpha);
+        }
+        else if (ExerciseDimension == 4)
+        {
+            seeThroughButton.onClick.AddListener(cubeMat.Set444CubeAlpha);
+        }
+
+        foreach (var floor in cubeBlocks.floors)
+        {
+            foreach (var block in floor.floor)
+            {
+                block.GetComponent<Block>().SetColor(null);
+            }
+        }
+
+        cameraPos.SetCameraDistance(ExerciseDimension - 2);
+    }
+
+    private void DestroyBlocks()
+    {
+        Destroy(cubeObject);
+        gameManager.gameObject.SetActive(false);
     }
 
     public void StageClear()

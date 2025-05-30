@@ -9,7 +9,6 @@ public class GameManager : Singleton<GameManager>
     InputType slide;
 
     [HideInInspector] public List<GameObject> blocks;
-    public ENUM_BLOCK_TYPE blockType = ENUM_BLOCK_TYPE.UNDEFINED;
 
     private void Start()
     {

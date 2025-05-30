@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,31 +7,35 @@ public class UIManager : Singleton<UIManager>
     private BlockGroupStatus blockGroupStatus;
 
     [Header("Panels")]
-    public GameObject titlePanel;
-    public GameObject stagesPanel;
-    public GameObject optionPanel;
-    public GameObject inGamePanel;
-    public GameObject gameClearPanel;
-    public GameObject gameOverPanel;
+    [SerializeField] private GameObject titlePanel;
+    [SerializeField] private GameObject stagesPanel;
+    [SerializeField] private GameObject optionPanel;
+    [SerializeField] private GameObject inGamePanel;
+    [SerializeField] private GameObject gameClearPanel;
+    [SerializeField] private GameObject gameOverPanel;
+
+    [Header("Title Buttons")]
+    [SerializeField] private Button selectStageButton;
+    [SerializeField] private Button optionButton;
 
     [Header("Stage Manager")]
-    public StageManager stageManager;
-    public Text stageText;
-    public Button nextStageButton;
+    [SerializeField] private StageManager stageManager;
+    [SerializeField] private TMP_Text stageText;
+    [SerializeField] private Button nextStageButton;
 
     private int score;
     [Header("Score Variables")]
-    public Text scoreText;
-    public Text finalScoreText;
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text finalScoreText;
 
     [Header("Block Falling Speed Text")]
-    public Text blockFallingSpeedText;
+    [SerializeField] private TMP_Text blockFallingSpeedText;
 
     [Header("Cube Model Text")]
-    public Text cubeModelText;
+    [SerializeField] private TMP_Text cubeModelText;
 
     [Header("Number of Block Colors Text")]
-    public Text numOfBlockColorText;
+    [SerializeField] private TMP_Text numOfBlockColorText;
 
     private void Start()
     {
@@ -39,11 +44,14 @@ public class UIManager : Singleton<UIManager>
         blockFallingSpeedText.text = blockGroupStatus.BlockFallingSpeed.ToString();
         blockGroupStatus.NumOfBlockColor = 4;
         numOfBlockColorText.text = blockGroupStatus.NumOfBlockColor.ToString();
-        stageManager.DimensionIdx = (int)CubeModel.cube333;
+        stageManager.ExerciseDimension = (int)CubeModel.cube333 + 2;
         cubeModelText.text = "3x3x3";
 
         Init();
         SetActivePanel(titlePanel);
+
+        selectStageButton.onClick.AddListener(() => SetActivePanel(stagesPanel));
+        optionButton.onClick.AddListener(() => SetActivePanel(optionPanel));
     }
 
     public void Init()
@@ -64,8 +72,8 @@ public class UIManager : Singleton<UIManager>
 
     public void SetCubeModel(int num)
     {
-        stageManager.DimensionIdx += num;
-        cubeModelText.text = (stageManager.DimensionIdx + 2) + "x" + (stageManager.DimensionIdx + 2) + "x" + (stageManager.DimensionIdx + 2);
+        stageManager.ExerciseDimension += num;
+        cubeModelText.text = stageManager.ExerciseDimension + "x" + stageManager.ExerciseDimension + "x" + stageManager.ExerciseDimension;
     }
 
     public void SetNumberOfBlockColor(int num)

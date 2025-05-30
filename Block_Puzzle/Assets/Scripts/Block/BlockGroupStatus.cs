@@ -22,7 +22,7 @@ public class BlockGroupStatus : Singleton<BlockGroupStatus>
         {
             numOfBlockColor = value;
             if (value < 1) numOfBlockColor = 1;
-            else if (value > 6) numOfBlockColor = 6;
+            else if (value > BlockColors.colors.Length) numOfBlockColor = BlockColors.colors.Length;
         }
     }
 

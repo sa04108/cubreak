@@ -1,42 +1,17 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CubeMaterial : MonoBehaviour
 {
     bool isAlpha;
     float alphaVal;
 
-    private bool cube222;
-    private bool cube333;
-    private bool cube444;
-
     private CubeBlocks cubeBlocks;
-    Button seeThroughButton;
 
     private void Awake()
     {
         cubeBlocks = GetComponent<CubeBlocks>();
         isAlpha = false;
         alphaVal = 0.0f;
-
-        SelectCube();
-
-        seeThroughButton = GameObject.Find("See Through Button")?.GetComponent<Button>();
-        if (cube333)
-        {
-            seeThroughButton.onClick.AddListener(Set333CubeAlpha);
-        }
-        else if (cube444)
-        {
-            seeThroughButton.onClick.AddListener(Set444CubeAlpha);
-        }
-    }
-
-    private void SelectCube()
-    {
-        cube222 = cubeBlocks.floors.Count == 2;
-        cube333 = cubeBlocks.floors.Count == 3;
-        cube444 = cubeBlocks.floors.Count == 4;
     }
 
     public void Set333CubeAlpha()
@@ -70,9 +45,7 @@ public class CubeMaterial : MonoBehaviour
         {
             if (floor[pos - 1] != null)
             {
-                Color color = floor[pos - 1].GetComponent<Renderer>().material.color;
-                color.a = alpha;
-                floor[pos - 1].GetComponent<Renderer>().material.color = color;
+                floor[pos - 1].GetComponent<Block>().SetAlpha(alpha);
             }
         }
     }
@@ -88,7 +61,7 @@ public class CubeMaterial : MonoBehaviour
         foreach (int pos in positions)
         {
             if (cubeBlocks.floors[floor].floor[pos - 1] != null) {
-                cubeBlocks.floors[floor].floor[pos - 1].GetComponent<Renderer>().material.color = BlockColors.colors[(int)colorEnum];
+                cubeBlocks.floors[floor].floor[pos - 1].GetComponent<Block>().SetColor(colorEnum);
             }
         }
     }

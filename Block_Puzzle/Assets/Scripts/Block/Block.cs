@@ -1,16 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
-public class Block : MonoBehaviour, IBlockType
+public class Block : MonoBehaviour
 {
     [SerializeField] GameObject destroyEffect;
 
-    ENUM_BLOCK_TYPE blockType;
-
-    private BlockGroupStatus blockGroupStatus;
-    new private Renderer renderer;
-    private UIManager uiManager;
-    private GameManager gameManager;
+    private BlockGroupStatus blockGroupStatus => BlockGroupStatus.Instance;
+    private UIManager uiManager => UIManager.Instance;
+    private GameManager gameManager => GameManager.Instance;
+    private new Renderer renderer => GetComponent<Renderer>();
 
     private const float maxRayDistance = 1.0f;
 
@@ -39,12 +37,7 @@ public class Block : MonoBehaviour, IBlockType
 
     private void Start()
     {
-        blockGroupStatus = BlockGroupStatus.Instance;
-        uiManager = UIManager.Instance;
-        gameManager = GameManager.Instance;
-
         blockGroupStatus.BlockCount++;
-        renderer = GetComponent<Renderer>();
 
         isFalling = true;
         blockGroupStatus.FallingBlockCount++;
@@ -55,7 +48,6 @@ public class Block : MonoBehaviour, IBlockType
         isUnconnected = false; // 주변에 같은 색으로 연결될 수 있는 블럭이 없는 경우 true
         destroyed = false;
 
-        SelectBlockType();
         gameManager.blocks.Add(gameObject);
     }
 
@@ -65,29 +57,25 @@ public class Block : MonoBehaviour, IBlockType
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPos, Time.deltaTime * blockGroupStatus.BlockFallingSpeed);
     }
 
-    public void SelectBlockType()
+    public void SetColor(ENUM_COLOR? color)
     {
-        blockType = gameManager.blockType;
-        if (blockType == ENUM_BLOCK_TYPE.UNDEFINED)
+        if (color.HasValue)
         {
-            Debug.LogError("Block Type이 지정되지 않았습니다.");
-            return;
-        }
-        ResetBlockColor();
-    }
-
-    public void ResetBlockColor() {
-        if (blockType == ENUM_BLOCK_TYPE.RANDOMIZED)
-        {
-            int numOfBlockColor = blockGroupStatus.NumOfBlockColor;
-            int colorVal = Random.Range(0, numOfBlockColor);
-
-            renderer.material.color = BlockColors.colors[colorVal];
+            renderer.material.color = BlockColors.colors[(int)color];
         }
         else
         {
-            return;
+            int numOfBlockColor = blockGroupStatus.NumOfBlockColor;
+            int colorVal = Random.Range(0, numOfBlockColor);
+            renderer.material.color = BlockColors.colors[colorVal];
         }
+    }
+
+    public void SetAlpha(float alpha)
+    {
+        Color color = renderer.material.color;
+        color.a = alpha;
+        renderer.material.color = color;
     }
 
     private bool CompareColor(Renderer r1, Renderer r2)
