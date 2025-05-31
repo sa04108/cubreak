@@ -1,27 +1,30 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AudioManager : Singleton<AudioManager>
+namespace Cublocks
 {
-    [HideInInspector] public AudioSource listener;
-    [SerializeField] AudioSource bgm;
-    [SerializeField] Slider volumeSlider;
-
-    protected override void Awake()
+    public class AudioManager : Singleton<AudioManager>
     {
-        base.Awake();
-        listener = GetComponent<AudioSource>();
-    }
+        [HideInInspector] public AudioSource listener;
+        [SerializeField] AudioSource bgm;
+        [SerializeField] Slider volumeSlider;
 
-    private void Start()
-    {
-        volumeSlider.onValueChanged.AddListener(SetVolume);
-        SetVolume(volumeSlider.value);
-    }
+        protected override void Awake()
+        {
+            base.Awake();
+            listener = GetComponent<AudioSource>();
+        }
 
-    void SetVolume(float volume)
-    {
-        listener.volume = volume;
-        bgm.volume = volume;
-    }
+        private void Start()
+        {
+            volumeSlider.onValueChanged.AddListener(SetVolume);
+            SetVolume(volumeSlider.value);
+        }
+
+        void SetVolume(float volume)
+        {
+            listener.volume = volume;
+            bgm.volume = volume;
+        }
+    } 
 }

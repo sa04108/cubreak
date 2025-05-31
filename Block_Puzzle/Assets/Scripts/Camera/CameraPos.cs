@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class CameraPos : MonoBehaviour
+namespace Cublocks
 {
-    int distance;
-
-    public void SetCameraDistance(int distance)
+    public class CameraPos : MonoBehaviour
     {
-        this.distance = 6 + distance;
-        transform.position = new Vector3(-this.distance, 0.0f, -this.distance);
-    }
+        int distance;
+
+        public void SetCameraDistance(int distance)
+        {
+            this.distance = 6 + distance;
+            transform.position = new Vector3(-this.distance, 0.0f, -this.distance);
+        }
+    } 
 }

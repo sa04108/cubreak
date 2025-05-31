@@ -1343,8 +1343,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 634036189}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 634036191}
+        m_TargetAssemblyTypeName: Cublocks.UIOptions, Assembly-CSharp
         m_MethodName: SetNumberOfBlockColor
         m_Mode: 3
         m_Arguments:
@@ -1464,7 +1464,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Go Title
+  m_text: Back
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d97c0b473b276d9489d0b55d1fb43677, type: 2}
   m_sharedMaterial: {fileID: 1598248224376606287, guid: d97c0b473b276d9489d0b55d1fb43677, type: 2}
@@ -3099,6 +3099,8 @@ GameObject:
   m_Component:
   - component: {fileID: 634036188}
   - component: {fileID: 634036189}
+  - component: {fileID: 634036190}
+  - component: {fileID: 634036191}
   m_Layer: 0
   m_Name: UI Manager
   m_TagString: Untagged
@@ -3133,12 +3135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc974c6f15ce73c41bdbdcf90f7e5d66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titlePanel: {fileID: 1785113467}
-  stagesPanel: {fileID: 825774939}
-  optionPanel: {fileID: 1660416239}
-  inGamePanel: {fileID: 1175092640}
-  gameClearPanel: {fileID: 770258660}
-  gameOverPanel: {fileID: 1927021478}
+  uiPanels: {fileID: 634036190}
   selectStageButton: {fileID: 80035178}
   optionButton: {fileID: 1281100795}
   stageManager: {fileID: 923370025}
@@ -3146,8 +3143,38 @@ MonoBehaviour:
   nextStageButton: {fileID: 1164363759}
   scoreText: {fileID: 455580599}
   finalScoreText: {fileID: 30901482}
+--- !u!114 &634036190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634036187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872009a270cd99e438790899725aef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titlePanel: {fileID: 1785113467}
+  stagesPanel: {fileID: 825774939}
+  optionPanel: {fileID: 1660416239}
+  inGamePanel: {fileID: 1175092640}
+  gameClearPanel: {fileID: 770258660}
+  gameOverPanel: {fileID: 1927021478}
+--- !u!114 &634036191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634036187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ca8769f4f333b2428adc4e7b662bdd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   blockFallingSpeedText: {fileID: 1552623527}
-  cubeModelText: {fileID: 1983945707}
+  cubeDimentionText: {fileID: 1983945707}
   numOfBlockColorText: {fileID: 121904168}
 --- !u!1 &641920934
 GameObject:
@@ -3583,7 +3610,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 923370025}
         m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
-        m_MethodName: EndStage
+        m_MethodName: EscapeStage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4476,53 +4503,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &880841382
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 880841384}
-  - component: {fileID: 880841383}
-  m_Layer: 0
-  m_Name: Block Group Status
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &880841383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 880841382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b03c23aa31671a4ca71bf3ed48b25d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blockCount: 0
-  fallingBlockCount: 0
-  unconnectedBlockCount: 0
---- !u!4 &880841384
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 880841382}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &892615011
 GameObject:
   m_ObjectHideFlags: 0
@@ -5531,9 +5511,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 634036189}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SetCubeModel
+      - m_Target: {fileID: 634036191}
+        m_TargetAssemblyTypeName: Cublocks.UIOptions, Assembly-CSharp
+        m_MethodName: SetExerciseDimension
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6144,6 +6124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1175092641}
+  - component: {fileID: 1175092642}
   m_Layer: 5
   m_Name: InGame  Panel
   m_TagString: Untagged
@@ -6174,8 +6155,22 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1175092642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175092640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b03c23aa31671a4ca71bf3ed48b25d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallingBlockCount: 0
+  unconnectedBlockCount: 0
 --- !u!1 &1183127254
 GameObject:
   m_ObjectHideFlags: 0
@@ -6420,8 +6415,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 634036189}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 634036190}
+        m_TargetAssemblyTypeName: Cublocks.UIPanels, Assembly-CSharp
         m_MethodName: SetActivePanel
         m_Mode: 2
         m_Arguments:
@@ -7655,7 +7650,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 923370025}
         m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
-        m_MethodName: EndStage
+        m_MethodName: EscapeStage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8177,7 +8172,7 @@ GameObject:
   - component: {fileID: 1524276341}
   - component: {fileID: 1524276344}
   m_Layer: 5
-  m_Name: Go Title Button
+  m_Name: Back Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8248,8 +8243,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 923370025}
-        m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
-        m_MethodName: EndStage
+        m_TargetAssemblyTypeName: Cublocks.StageManager, Assembly-CSharp
+        m_MethodName: EscapeStage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8395,9 +8390,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 634036189}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SetCubeModel
+      - m_Target: {fileID: 634036191}
+        m_TargetAssemblyTypeName: Cublocks.UIOptions, Assembly-CSharp
+        m_MethodName: SetExerciseDimension
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10318,7 +10313,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -420, y: 0}
+  m_AnchoredPosition: {x: 0, y: -220}
   m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1785329669
@@ -10797,8 +10792,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 634036189}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 634036191}
+        m_TargetAssemblyTypeName: Cublocks.UIOptions, Assembly-CSharp
         m_MethodName: SetNumberOfBlockColor
         m_Mode: 3
         m_Arguments:
@@ -11081,8 +11076,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 634036189}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 634036190}
+        m_TargetAssemblyTypeName: Cublocks.UIPanels, Assembly-CSharp
         m_MethodName: SetActivePanel
         m_Mode: 2
         m_Arguments:
@@ -12207,7 +12202,7 @@ GameObject:
   - component: {fileID: 1983945708}
   - component: {fileID: 1983945707}
   m_Layer: 5
-  m_Name: Cube Model Text
+  m_Name: Cube Dimension Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12366,7 +12361,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 119
 --- !u!114 &1987051382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12426,8 +12421,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1785113468}
-  - {fileID: 1660416240}
   - {fileID: 825774940}
+  - {fileID: 1660416240}
   - {fileID: 1175092641}
   - {fileID: 770258661}
   - {fileID: 1927021479}
@@ -12832,8 +12827,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 634036189}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 634036191}
+        m_TargetAssemblyTypeName: Cublocks.UIOptions, Assembly-CSharp
         m_MethodName: SetBlockFallingSpeed
         m_Mode: 4
         m_Arguments:
@@ -13152,8 +13147,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 634036189}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 634036191}
+        m_TargetAssemblyTypeName: Cublocks.UIOptions, Assembly-CSharp
         m_MethodName: SetBlockFallingSpeed
         m_Mode: 4
         m_Arguments:
@@ -13362,51 +13357,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &5351042009593771552
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5351042009593771554}
-  - component: {fileID: 5351042009593771555}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5351042009593771554
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5351042009593771552}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5351042009593771555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5351042009593771552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9eefa070f1823c4489127b77056195fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blocks: []
 --- !u!4 &6533068037502599749
 Transform:
   m_ObjectHideFlags: 0
@@ -13466,12 +13416,10 @@ SceneRoots:
   m_Roots:
   - {fileID: 898954286}
   - {fileID: 545969820}
-  - {fileID: 880841384}
   - {fileID: 634036188}
   - {fileID: 2134073894}
   - {fileID: 2035770666}
   - {fileID: 923370026}
-  - {fileID: 5351042009593771554}
   - {fileID: 1987051384}
   - {fileID: 847076622}
   - {fileID: 1558093262}

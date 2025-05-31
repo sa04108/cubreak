@@ -1,38 +1,41 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AudioSync : MonoBehaviour
+namespace Cublocks
 {
-    [SerializeField] AudioClip audioClip;
-    [SerializeField] bool playOnEnabled;
-
-    AudioSource listener;
-
-    // Start is called before the first frame update
-    void Start()
+    public class AudioSync : MonoBehaviour
     {
-        listener = AudioManager.Instance.listener;
-        Button button = GetComponent<Button>();
-        if (button != null)
+        [SerializeField] AudioClip audioClip;
+        [SerializeField] bool playOnEnabled;
+
+        AudioSource listener;
+
+        // Start is called before the first frame update
+        void Start()
         {
-            button.onClick.AddListener(() =>
+            listener = AudioManager.Instance.listener;
+            Button button = GetComponent<Button>();
+            if (button != null)
             {
-                audioClip = Resources.Load<AudioClip>("Sounds/Click");
+                button.onClick.AddListener(() =>
+                {
+                    audioClip = Resources.Load<AudioClip>("Sounds/Click");
+                    listener.clip = audioClip;
+                    listener.Play();
+                });
+            }
+        }
+
+        private void OnEnable()
+        {
+            if (listener == null)
+                listener = AudioManager.Instance.listener;
+
+            if (playOnEnabled)
+            {
                 listener.clip = audioClip;
                 listener.Play();
-            });
+            }
         }
-    }
-
-    private void OnEnable()
-    {
-        if (listener == null)
-            listener = AudioManager.Instance.listener;
-
-        if (playOnEnabled)
-        {
-            listener.clip = audioClip;
-            listener.Play();
-        }
-    }
+    } 
 }

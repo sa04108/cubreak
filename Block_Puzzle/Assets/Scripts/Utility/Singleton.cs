@@ -1,21 +1,24 @@
 using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+namespace Cublocks
 {
-    private static T instance = default(T);
-    public static T Instance
+    public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        get
+        private static T instance = default(T);
+        public static T Instance
         {
-            if (instance == null)
-                instance = FindFirstObjectByType(typeof(T)) as T;
-            return instance;
+            get
+            {
+                if (instance == null)
+                    instance = FindFirstObjectByType(typeof(T)) as T;
+                return instance;
+            }
         }
-    }
 
-    protected virtual void Awake()
-    {
-        if (instance == null) instance = GetComponent<T>();
-        else Destroy(gameObject);
-    }
+        protected virtual void Awake()
+        {
+            if (instance == null) instance = GetComponent<T>();
+            else Destroy(gameObject);
+        }
+    } 
 }

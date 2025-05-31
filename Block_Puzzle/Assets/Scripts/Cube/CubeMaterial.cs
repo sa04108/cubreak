@@ -1,68 +1,72 @@
 using UnityEngine;
 
-public class CubeMaterial : MonoBehaviour
+namespace Cublocks
 {
-    bool isAlpha;
-    float alphaVal;
-
-    private CubeBlocks cubeBlocks;
-
-    private void Awake()
+    public class CubeMaterial : MonoBehaviour
     {
-        cubeBlocks = GetComponent<CubeBlocks>();
-        isAlpha = false;
-        alphaVal = 0.0f;
-    }
+        bool isAlpha;
+        float alphaVal;
 
-    public void Set333CubeAlpha()
-    {
-        SetFloorAlpha(cubeBlocks.floors[0].floor, new int[] { 1, 2, 3, 4, 6, 7, 8, 9 }, isAlpha ? 1.0f : alphaVal);
-        SetFloorAlpha(cubeBlocks.floors[1].floor, new int[] { 1, 2, 3, 4, 6, 7, 8, 9 }, isAlpha ? 1.0f : alphaVal);
-        SetFloorAlpha(cubeBlocks.floors[2].floor, new int[] { 1, 2, 3, 4, 6, 7, 8, 9 }, isAlpha ? 1.0f : alphaVal);
+        private CubeBlocks cubeBlocks;
 
-        isAlpha = !isAlpha;
-    }
-
-    public void Set444CubeAlpha()
-    {
-        SetFloorAlpha(cubeBlocks.floors[0].floor, new int[] { 1, 2, 3, 4, 5, 8, 9, 12, 13, 14, 15, 16 }, isAlpha ? 1.0f : alphaVal);
-        SetFloorAlpha(cubeBlocks.floors[1].floor, new int[] { 1, 2, 3, 4, 5, 8, 9, 12, 13, 14, 15, 16 }, isAlpha ? 1.0f : alphaVal);
-        SetFloorAlpha(cubeBlocks.floors[2].floor, new int[] { 1, 2, 3, 4, 5, 8, 9, 12, 13, 14, 15, 16 }, isAlpha ? 1.0f : alphaVal);
-        SetFloorAlpha(cubeBlocks.floors[3].floor, new int[] { 1, 2, 3, 4, 5, 8, 9, 12, 13, 14, 15, 16 }, isAlpha ? 1.0f : alphaVal);
-
-        isAlpha = !isAlpha;
-    }
-
-    /// <summary>
-    /// list 에 들어갈 인덱스 번호는 1~9 입니다.
-    /// </summary>
-    /// <param name="floor"></param>
-    /// <param name="positions"></param>
-    /// <param name="color"></param>
-    public void SetFloorAlpha(GameObject[] floor, int[] positions, float alpha)
-    {
-        foreach (var pos in positions)
+        private void Awake()
         {
-            if (floor[pos - 1] != null)
+            cubeBlocks = GetComponent<CubeBlocks>();
+            isAlpha = false;
+            alphaVal = 0.0f;
+        }
+
+        public void Set333CubeAlpha()
+        {
+            SetFloorAlpha(cubeBlocks.floors[0].floor, new int[] { 1, 2, 3, 4, 6, 7, 8, 9 }, isAlpha ? 1.0f : alphaVal);
+            SetFloorAlpha(cubeBlocks.floors[1].floor, new int[] { 1, 2, 3, 4, 6, 7, 8, 9 }, isAlpha ? 1.0f : alphaVal);
+            SetFloorAlpha(cubeBlocks.floors[2].floor, new int[] { 1, 2, 3, 4, 6, 7, 8, 9 }, isAlpha ? 1.0f : alphaVal);
+
+            isAlpha = !isAlpha;
+        }
+
+        public void Set444CubeAlpha()
+        {
+            SetFloorAlpha(cubeBlocks.floors[0].floor, new int[] { 1, 2, 3, 4, 5, 8, 9, 12, 13, 14, 15, 16 }, isAlpha ? 1.0f : alphaVal);
+            SetFloorAlpha(cubeBlocks.floors[1].floor, new int[] { 1, 2, 3, 4, 5, 8, 9, 12, 13, 14, 15, 16 }, isAlpha ? 1.0f : alphaVal);
+            SetFloorAlpha(cubeBlocks.floors[2].floor, new int[] { 1, 2, 3, 4, 5, 8, 9, 12, 13, 14, 15, 16 }, isAlpha ? 1.0f : alphaVal);
+            SetFloorAlpha(cubeBlocks.floors[3].floor, new int[] { 1, 2, 3, 4, 5, 8, 9, 12, 13, 14, 15, 16 }, isAlpha ? 1.0f : alphaVal);
+
+            isAlpha = !isAlpha;
+        }
+
+        /// <summary>
+        /// list 에 들어갈 인덱스 번호는 1~9 입니다.
+        /// </summary>
+        /// <param name="floor"></param>
+        /// <param name="positions"></param>
+        /// <param name="color"></param>
+        public void SetFloorAlpha(GameObject[] floor, int[] positions, float alpha)
+        {
+            foreach (var pos in positions)
             {
-                floor[pos - 1].GetComponent<Block>().SetAlpha(alpha);
+                if (floor[pos - 1] != null)
+                {
+                    floor[pos - 1].GetComponent<Block>().SetAlpha(alpha);
+                }
             }
         }
-    }
 
-    /// <summary>
-    /// list 에 들어갈 인덱스 번호는 1~9 입니다.
-    /// </summary>
-    /// <param name="floors"></param>
-    /// <param name="positions"></param>
-    /// <param name="color"></param>
-    public void SetFloorColor(int floor, int[] positions, ENUM_COLOR colorEnum)
-    {
-        foreach (int pos in positions)
+        /// <summary>
+        /// list 에 들어갈 인덱스 번호는 1~9 입니다.
+        /// </summary>
+        /// <param name="floors"></param>
+        /// <param name="positions"></param>
+        /// <param name="color"></param>
+        public void SetFloorColor(int floor, int[] positions, ENUM_COLOR colorEnum)
         {
-            if (cubeBlocks.floors[floor].floor[pos - 1] != null) {
-                cubeBlocks.floors[floor].floor[pos - 1].GetComponent<Block>().SetColor(colorEnum);
+            foreach (int pos in positions)
+            {
+                if (cubeBlocks.floors[floor].floor[pos - 1] != null)
+                {
+                    cubeBlocks.floors[floor].floor[pos - 1].GetComponent<Block>().SetColor(colorEnum);
+                }
             }
         }
-    }
+    } 
 }

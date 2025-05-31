@@ -1,117 +1,120 @@
 using UnityEngine;
 
-public class InputManager : Singleton<InputManager>
+namespace Cublocks
 {
-    [SerializeField] new CameraRotation camera;
-    bool inputReady;
-    Vector2 startPos;
-    Vector2 endPos;
-
-    private void Start()
+    public class InputManager : Singleton<InputManager>
     {
-        inputReady = true;
-        startPos = Vector2.zero;
-        endPos = Vector2.zero;
-    }
+        [SerializeField] new CameraRotation camera;
+        bool inputReady;
+        Vector2 startPos;
+        Vector2 endPos;
 
-    // Update is called once per frame
-    void Update()
-    {
-        Escape();
-    }
-
-    private void Escape()
-    {
-        if (Input.GetKey(KeyCode.Escape))
+        private void Start()
         {
+            inputReady = true;
+            startPos = Vector2.zero;
+            endPos = Vector2.zero;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            Escape();
+        }
+
+        private void Escape()
+        {
+            if (Input.GetKey(KeyCode.Escape))
+            {
 #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
+                UnityEditor.EditorApplication.isPlaying = false;
 #else
             Application.Quit();
 #endif
+            }
         }
-    }
 
-    public bool Click()
-    {
-        if (!inputReady)
+        public bool Click()
+        {
+            if (!inputReady)
+                return false;
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                startPos = Input.mousePosition;
+            }
+
+            if (Input.GetMouseButton(0))
+            {
+                endPos = Input.mousePosition;
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                if (Vector2.Distance(startPos, endPos) < Screen.width * 0.1f)
+                {
+                    return true;
+                }
+            }
+
             return false;
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            startPos = Input.mousePosition;
         }
 
-        if (Input.GetMouseButton(0))
+        public bool Slide()
         {
-            endPos = Input.mousePosition;
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            if (Vector2.Distance(startPos, endPos) < Screen.width * 0.1f)
+            if (Input.touchCount > 0)
             {
-                return true;
+                Touch touch = Input.GetTouch(0);
+
+                switch (touch.phase)
+                {
+                    case TouchPhase.Began:
+                        break;
+                    case TouchPhase.Moved:
+                        float speedX = touch.deltaPosition.x / touch.deltaTime;
+                        float speedY = touch.deltaPosition.y / touch.deltaTime;
+                        if (inputReady)
+                        {
+                            if (Mathf.Abs(speedX) > 2000f && Mathf.Abs(speedY) < 2000f)
+                            {
+                                if (speedX < 0)
+                                    camera.RotateRight();
+                                else
+                                    camera.RotateLeft();
+
+                                inputReady = false;
+                                return true;
+                            }
+                            else if (Mathf.Abs(speedX) < 2000f && Mathf.Abs(speedY) > 2000f)
+                            {
+                                if (speedY < 0)
+                                    camera.RotateUp();
+                                else
+                                    camera.RotateDown();
+
+                                inputReady = false;
+                                return true;
+                            }
+                        }
+                        break;
+                    case TouchPhase.Stationary:
+                        break;
+                    case TouchPhase.Ended:
+                        Invoke("SetInputReadyTrue", 0.2f);
+                        break;
+                    case TouchPhase.Canceled:
+                        break;
+                    default:
+                        break;
+                }
             }
+
+            return false;
         }
 
-        return false;
-    }
-
-    public bool Slide()
-    {
-        if (Input.touchCount > 0)
+        void SetInputReadyTrue()
         {
-            Touch touch = Input.GetTouch(0);
-
-            switch (touch.phase)
-            {
-                case TouchPhase.Began:
-                    break;
-                case TouchPhase.Moved:
-                    float speedX = touch.deltaPosition.x / touch.deltaTime;
-                    float speedY = touch.deltaPosition.y / touch.deltaTime;
-                    if (inputReady)
-                    {
-                        if (Mathf.Abs(speedX) > 2000f && Mathf.Abs(speedY) < 2000f)
-                        {
-                            if (speedX < 0)
-                                camera.RotateRight();
-                            else
-                                camera.RotateLeft();
-
-                            inputReady = false;
-                            return true;
-                        }
-                        else if (Mathf.Abs(speedX) < 2000f && Mathf.Abs(speedY) > 2000f)
-                        {
-                            if (speedY < 0)
-                                camera.RotateUp();
-                            else
-                                camera.RotateDown();
-
-                            inputReady = false;
-                            return true;
-                        }
-                    }
-                    break;
-                case TouchPhase.Stationary:
-                    break;
-                case TouchPhase.Ended:
-                    Invoke("SetInputReadyTrue", 0.2f);
-                    break;
-                case TouchPhase.Canceled:
-                    break;
-                default:
-                    break;
-            }
+            inputReady = true;
         }
-
-        return false;
-    }
-
-    void SetInputReadyTrue()
-    {
-        inputReady = true;
-    }
+    } 
 }
