@@ -3538,7 +3538,7 @@ GameObject:
   - component: {fileID: 716276867}
   - component: {fileID: 716276870}
   m_Layer: 5
-  m_Name: Go Title Button
+  m_Name: Back Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4761,7 +4761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageJson: {fileID: 4900000, guid: effbe79b172cbf94886bee8639d83b2d, type: 3}
-  cameraPos: {fileID: 1889819643}
+  cameraController: {fileID: 1398809614}
   cubeParent: {fileID: 1558093262}
   cubePrefab:
   - {fileID: 4156044948955534605, guid: c8c998052b78d844a8466730e483ca85, type: 3}
@@ -7169,7 +7169,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Go Title
+  m_text: Back
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d97c0b473b276d9489d0b55d1fb43677, type: 2}
   m_sharedMaterial: {fileID: 1598248224376606287, guid: d97c0b473b276d9489d0b55d1fb43677, type: 2}
@@ -7532,7 +7532,7 @@ GameObject:
   - component: {fileID: 1398809612}
   - component: {fileID: 1398809614}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7632,7 +7632,7 @@ GameObject:
   - component: {fileID: 1415733443}
   - component: {fileID: 1415733446}
   m_Layer: 5
-  m_Name: Go Title Button
+  m_Name: Back Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9806,7 +9806,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Go Title
+  m_text: Back
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d97c0b473b276d9489d0b55d1fb43677, type: 2}
   m_sharedMaterial: {fileID: 1598248224376606287, guid: d97c0b473b276d9489d0b55d1fb43677, type: 2}
@@ -11475,7 +11475,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1889819642}
-  - component: {fileID: 1889819643}
   m_Layer: 0
   m_Name: InGame Camera
   m_TagString: Untagged
@@ -11500,18 +11499,6 @@ Transform:
   - {fileID: 1499270906}
   m_Father: {fileID: 1175092641}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1889819643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1889819641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee5a9fbe75caf3c4aaf7a749cf6417b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1894980138
 GameObject:
   m_ObjectHideFlags: 0

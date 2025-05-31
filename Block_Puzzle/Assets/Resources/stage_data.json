@@ -1,2285 +1,3688 @@
 [
   {
-    "dimension": 2,
-    "difficulty": "Easy",
-    "layers": [
-      {
-        "index": 0,
-        "arrangements": [{ "color": "RED", "positions": [1, 2, 3, 4] }]
-      },
-      {
-        "index": 1,
-        "arrangements": [{ "color": "BLUE", "positions": [1, 2, 3, 4] }]
-      }
-    ]
-  },
-  {
-    "dimension": 2,
-    "difficulty": "Easy",
-    "layers": [
-      {
-        "index": 0,
-        "arrangements": [{ "color": "BLUE", "positions": [1, 2, 3, 4] }]
-      },
-      {
-        "index": 1,
-        "arrangements": [{ "color": "RED", "positions": [1, 2, 3, 4] }]
-      }
-    ]
-  },
-  {
+    "id": 1,
     "dimension": 2,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 3] },
-          { "color": "BLUE", "positions": [2, 4] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 3, 4]
+          }
         ]
       },
       {
         "index": 1,
-        "arrangements": [{ "color": "GREEN", "positions": [1, 2] }]
+        "arrangements": [
+          {
+            "color": "BLUE",
+            "positions": [1, 2, 3, 4]
+          }
+        ]
       }
     ]
   },
   {
+    "id": 2,
     "dimension": 2,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2] },
-          { "color": "BLUE", "positions": [3, 4] }
+          {
+            "color": "BLUE",
+            "positions": [1, 2, 3, 4]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2] },
-          { "color": "BLUE", "positions": [3, 4] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 3, 4]
+          }
         ]
       }
     ]
   },
   {
+    "id": 3,
     "dimension": 2,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "GREEN", "positions": [1, 3] },
-          { "color": "YELLOW", "positions": [2, 4] }
+          {
+            "color": "RED",
+            "positions": [1, 3]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 4]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "GREEN", "positions": [1, 3] },
-          { "color": "YELLOW", "positions": [2, 4] }
+          {
+            "color": "GREEN",
+            "positions": [1, 2]
+          }
         ]
       }
     ]
   },
   {
-    "dimension": 2,
-    "difficulty": "Easy",
-    "layers": [
-      {
-        "index": 0,
-        "arrangements": [{ "color": "MAGENTA", "positions": [1, 2, 3, 4] }]
-      },
-      {
-        "index": 1,
-        "arrangements": [{ "color": "MAGENTA", "positions": [1, 2, 3, 4] }]
-      }
-    ]
-  },
-  {
-    "dimension": 2,
-    "difficulty": "Easy",
-    "layers": [
-      {
-        "index": 0,
-        "arrangements": [
-          { "color": "RED", "positions": [1, 2] },
-          { "color": "BLUE", "positions": [3, 4] }
-        ]
-      },
-      {
-        "index": 1,
-        "arrangements": [
-          { "color": "GREEN", "positions": [3, 4] },
-          { "color": "YELLOW", "positions": [1, 2] }
-        ]
-      }
-    ]
-  },
-  {
+    "id": 4,
     "dimension": 2,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "MAGENTA", "positions": [1, 3] },
-          { "color": "CYAN", "positions": [2, 4] }
+          {
+            "color": "RED",
+            "positions": [1, 2]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 4]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "MAGENTA", "positions": [1, 3] },
-          { "color": "CYAN", "positions": [2, 4] }
+          {
+            "color": "RED",
+            "positions": [1, 2]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 4]
+          }
         ]
       }
     ]
   },
   {
+    "id": 5,
+    "dimension": 2,
+    "difficulty": "Easy",
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
+            "color": "GREEN",
+            "positions": [1, 3]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [2, 4]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "GREEN",
+            "positions": [1, 3]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [2, 4]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "dimension": 2,
+    "difficulty": "Easy",
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
+            "color": "MAGENTA",
+            "positions": [1, 2, 3, 4]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "MAGENTA",
+            "positions": [1, 2, 3, 4]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "dimension": 2,
+    "difficulty": "Easy",
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [1, 2]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 4]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "GREEN",
+            "positions": [3, 4]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [1, 2]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "dimension": 2,
+    "difficulty": "Easy",
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
+            "color": "MAGENTA",
+            "positions": [1, 3]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 4]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "MAGENTA",
+            "positions": [1, 3]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 4]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 9,
     "dimension": 3,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 10,
     "dimension": 3,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "BLUE", "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9] }
+          {
+            "color": "BLUE",
+            "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "BLUE", "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9] }
+          {
+            "color": "BLUE",
+            "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "BLUE", "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9] }
+          {
+            "color": "BLUE",
+            "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 11,
     "dimension": 3,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "GREEN", "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9] }
+          {
+            "color": "GREEN",
+            "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "GREEN", "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9] }
+          {
+            "color": "GREEN",
+            "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "GREEN", "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9] }
+          {
+            "color": "GREEN",
+            "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 12,
     "dimension": 3,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 13,
     "dimension": 3,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "BLUE", "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9] }
+          {
+            "color": "BLUE",
+            "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "GREEN", "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9] }
+          {
+            "color": "GREEN",
+            "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 14,
     "dimension": 3,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3] },
-          { "color": "BLUE", "positions": [4, 5, 6] },
-          { "color": "GREEN", "positions": [7, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 3]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4, 5, 6]
+          },
+          {
+            "color": "GREEN",
+            "positions": [7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3] },
-          { "color": "BLUE", "positions": [4, 5, 6] },
-          { "color": "GREEN", "positions": [7, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 3]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4, 5, 6]
+          },
+          {
+            "color": "GREEN",
+            "positions": [7, 8, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3] },
-          { "color": "BLUE", "positions": [4, 5, 6] },
-          { "color": "GREEN", "positions": [7, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 3]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4, 5, 6]
+          },
+          {
+            "color": "GREEN",
+            "positions": [7, 8, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 15,
     "dimension": 3,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 4, 7] },
-          { "color": "BLUE", "positions": [2, 5, 8] },
-          { "color": "GREEN", "positions": [3, 6, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 4, 7]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 5, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [3, 6, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [1, 4, 7] },
-          { "color": "BLUE", "positions": [2, 5, 8] },
-          { "color": "GREEN", "positions": [3, 6, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 4, 7]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 5, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [3, 6, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [1, 4, 7] },
-          { "color": "BLUE", "positions": [2, 5, 8] },
-          { "color": "GREEN", "positions": [3, 6, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 4, 7]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 5, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [3, 6, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 16,
     "dimension": 3,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3] },
-          { "color": "BLUE", "positions": [7, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 3]
+          },
+          {
+            "color": "BLUE",
+            "positions": [7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3] },
-          { "color": "BLUE", "positions": [7, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 3]
+          },
+          {
+            "color": "BLUE",
+            "positions": [7, 8, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3] },
-          { "color": "BLUE", "positions": [7, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 3]
+          },
+          {
+            "color": "BLUE",
+            "positions": [7, 8, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 17,
     "dimension": 3,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 4, 5] },
-          { "color": "BLUE", "positions": [3, 6] },
-          { "color": "GREEN", "positions": [7, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 4, 5]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 6]
+          },
+          {
+            "color": "GREEN",
+            "positions": [7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "BLUE", "positions": [1, 2, 3] },
-          { "color": "RED", "positions": [4, 5, 6] },
-          { "color": "GREEN", "positions": [7, 8, 9] }
+          {
+            "color": "BLUE",
+            "positions": [1, 2, 3]
+          },
+          {
+            "color": "RED",
+            "positions": [4, 5, 6]
+          },
+          {
+            "color": "GREEN",
+            "positions": [7, 8, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "GREEN", "positions": [1, 2, 3, 4] },
-          { "color": "RED", "positions": [5, 6] },
-          { "color": "BLUE", "positions": [7, 8, 9] }
+          {
+            "color": "GREEN",
+            "positions": [1, 2, 3, 4]
+          },
+          {
+            "color": "RED",
+            "positions": [5, 6]
+          },
+          {
+            "color": "BLUE",
+            "positions": [7, 8, 9]
+          }
         ]
       }
     ]
   },
   {
-    "dimension": 3,
-    "difficulty": "Easy",
-    "layers": [
-      {
-        "index": 0,
-        "arrangements": [{ "color": "YELLOW", "positions": [2, 4, 5, 6, 8] }]
-      },
-      {
-        "index": 1,
-        "arrangements": [{ "color": "YELLOW", "positions": [2, 4, 5, 6, 8] }]
-      },
-      {
-        "index": 2,
-        "arrangements": [{ "color": "YELLOW", "positions": [2, 4, 5, 6, 8] }]
-      }
-    ]
-  },
-  {
-    "dimension": 3,
-    "difficulty": "Easy",
-    "layers": [
-      {
-        "index": 0,
-        "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3] },
-          { "color": "BLUE", "positions": [4, 5, 6] },
-          { "color": "GREEN", "positions": [7, 8, 9] }
-        ]
-      },
-      {
-        "index": 1,
-        "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3] },
-          { "color": "BLUE", "positions": [4, 5, 6] },
-          { "color": "GREEN", "positions": [7, 8, 9] }
-        ]
-      },
-      {
-        "index": 2,
-        "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3] },
-          { "color": "BLUE", "positions": [4, 5, 6] },
-          { "color": "GREEN", "positions": [7, 8, 9] }
-        ]
-      }
-    ]
-  },
-  {
+    "id": 18,
     "dimension": 3,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 4, 7] },
-          { "color": "BLUE", "positions": [2, 5, 8] },
-          { "color": "GREEN", "positions": [3, 6, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [2, 4, 5, 6, 8]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [1, 4, 7] },
-          { "color": "BLUE", "positions": [2, 5, 8] },
-          { "color": "GREEN", "positions": [3, 6, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [2, 4, 5, 6, 8]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [1, 4, 7] },
-          { "color": "BLUE", "positions": [2, 5, 8] },
-          { "color": "GREEN", "positions": [3, 6, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [2, 4, 5, 6, 8]
+          }
         ]
       }
     ]
   },
   {
+    "id": 19,
     "dimension": 3,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 5, 9] },
-          { "color": "BLUE", "positions": [2, 4, 6, 8] },
-          { "color": "GREEN", "positions": [3, 7] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 3]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4, 5, 6]
+          },
+          {
+            "color": "GREEN",
+            "positions": [7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [1, 5, 9] },
-          { "color": "BLUE", "positions": [2, 4, 6, 8] },
-          { "color": "GREEN", "positions": [3, 7] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 3]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4, 5, 6]
+          },
+          {
+            "color": "GREEN",
+            "positions": [7, 8, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [1, 5, 9] },
-          { "color": "BLUE", "positions": [2, 4, 6, 8] },
-          { "color": "GREEN", "positions": [3, 7] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 3]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4, 5, 6]
+          },
+          {
+            "color": "GREEN",
+            "positions": [7, 8, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 20,
     "dimension": 3,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 3, 7, 9] },
-          { "color": "BLUE", "positions": [2, 4, 6, 8] },
-          { "color": "GREEN", "positions": [5] }
+          {
+            "color": "RED",
+            "positions": [1, 4, 7]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 5, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [3, 6, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [1, 3, 7, 9] },
-          { "color": "BLUE", "positions": [2, 4, 6, 8] },
-          { "color": "GREEN", "positions": [5] }
+          {
+            "color": "RED",
+            "positions": [1, 4, 7]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 5, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [3, 6, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [1, 3, 7, 9] },
-          { "color": "BLUE", "positions": [2, 4, 6, 8] },
-          { "color": "GREEN", "positions": [5] }
+          {
+            "color": "RED",
+            "positions": [1, 4, 7]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 5, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [3, 6, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 21,
     "dimension": 3,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 4, 5] },
-          { "color": "BLUE", "positions": [3, 6, 7, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 5, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [3, 7]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 4, 5] },
-          { "color": "BLUE", "positions": [3, 6, 7, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 5, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [3, 7]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 4, 5] },
-          { "color": "BLUE", "positions": [3, 6, 7, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 5, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [3, 7]
+          }
         ]
       }
     ]
   },
   {
+    "id": 22,
     "dimension": 3,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "GREEN", "positions": [1, 2, 3, 7, 8, 9] },
-          { "color": "YELLOW", "positions": [4, 5, 6] }
+          {
+            "color": "RED",
+            "positions": [1, 3, 7, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [5]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "GREEN", "positions": [1, 2, 3, 7, 8, 9] },
-          { "color": "YELLOW", "positions": [4, 5, 6] }
+          {
+            "color": "RED",
+            "positions": [1, 3, 7, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [5]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "GREEN", "positions": [1, 2, 3, 7, 8, 9] },
-          { "color": "YELLOW", "positions": [4, 5, 6] }
+          {
+            "color": "RED",
+            "positions": [1, 3, 7, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [5]
+          }
         ]
       }
     ]
   },
   {
+    "id": 23,
     "dimension": 3,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "MAGENTA", "positions": [1, 5] },
-          { "color": "CYAN", "positions": [3, 7] },
-          { "color": "RED", "positions": [2, 4, 6, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 4, 5]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 6, 7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "MAGENTA", "positions": [1, 5] },
-          { "color": "CYAN", "positions": [3, 7] },
-          { "color": "RED", "positions": [2, 4, 6, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 4, 5]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 6, 7, 8, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "MAGENTA", "positions": [1, 5] },
-          { "color": "CYAN", "positions": [3, 7] },
-          { "color": "RED", "positions": [2, 4, 6, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 4, 5]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 6, 7, 8, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 24,
     "dimension": 3,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 9] },
-          { "color": "BLUE", "positions": [3, 7] },
-          { "color": "GREEN", "positions": [2, 4, 5, 6, 8] }
+          {
+            "color": "GREEN",
+            "positions": [1, 2, 3, 7, 8, 9]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [4, 5, 6]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 9] },
-          { "color": "BLUE", "positions": [3, 7] },
-          { "color": "GREEN", "positions": [2, 4, 5, 6, 8] }
+          {
+            "color": "GREEN",
+            "positions": [1, 2, 3, 7, 8, 9]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [4, 5, 6]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 9] },
-          { "color": "BLUE", "positions": [3, 7] },
-          { "color": "GREEN", "positions": [2, 4, 5, 6, 8] }
+          {
+            "color": "GREEN",
+            "positions": [1, 2, 3, 7, 8, 9]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [4, 5, 6]
+          }
         ]
       }
     ]
   },
   {
+    "id": 25,
     "dimension": 3,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3, 6, 9] },
-          { "color": "BLUE", "positions": [4, 5, 7, 8] }
+          {
+            "color": "MAGENTA",
+            "positions": [1, 5]
+          },
+          {
+            "color": "CYAN",
+            "positions": [3, 7]
+          },
+          {
+            "color": "RED",
+            "positions": [2, 4, 6, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3, 6, 9] },
-          { "color": "BLUE", "positions": [4, 5, 7, 8] }
+          {
+            "color": "MAGENTA",
+            "positions": [1, 5]
+          },
+          {
+            "color": "CYAN",
+            "positions": [3, 7]
+          },
+          {
+            "color": "RED",
+            "positions": [2, 4, 6, 8, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3, 6, 9] },
-          { "color": "BLUE", "positions": [4, 5, 7, 8] }
+          {
+            "color": "MAGENTA",
+            "positions": [1, 5]
+          },
+          {
+            "color": "CYAN",
+            "positions": [3, 7]
+          },
+          {
+            "color": "RED",
+            "positions": [2, 4, 6, 8, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 26,
     "dimension": 3,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 3, 5, 7, 9] },
-          { "color": "CYAN", "positions": [2, 4, 6, 8] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 7]
+          },
+          {
+            "color": "GREEN",
+            "positions": [2, 4, 5, 6, 8]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [1, 3, 5, 7, 9] },
-          { "color": "CYAN", "positions": [2, 4, 6, 8] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 7]
+          },
+          {
+            "color": "GREEN",
+            "positions": [2, 4, 5, 6, 8]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [1, 3, 5, 7, 9] },
-          { "color": "CYAN", "positions": [2, 4, 6, 8] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 7]
+          },
+          {
+            "color": "GREEN",
+            "positions": [2, 4, 5, 6, 8]
+          }
         ]
       }
     ]
   },
   {
+    "id": 27,
     "dimension": 3,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "MAGENTA", "positions": [2, 4, 6, 8] },
-          { "color": "YELLOW", "positions": [1, 3, 5, 7, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 3, 6, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4, 5, 7, 8]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "MAGENTA", "positions": [2, 4, 6, 8] },
-          { "color": "YELLOW", "positions": [1, 3, 5, 7, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 3, 6, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4, 5, 7, 8]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "MAGENTA", "positions": [2, 4, 6, 8] },
-          { "color": "YELLOW", "positions": [1, 3, 5, 7, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 3, 6, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4, 5, 7, 8]
+          }
         ]
       }
     ]
   },
   {
+    "id": 28,
     "dimension": 3,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "GREEN", "positions": [1, 5] },
-          { "color": "BLUE", "positions": [3, 7] },
-          { "color": "RED", "positions": [2, 4, 6, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 3, 5, 7, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 4, 6, 8]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "GREEN", "positions": [1, 5] },
-          { "color": "BLUE", "positions": [3, 7] },
-          { "color": "RED", "positions": [2, 4, 6, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 3, 5, 7, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 4, 6, 8]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "GREEN", "positions": [1, 5] },
-          { "color": "BLUE", "positions": [3, 7] },
-          { "color": "RED", "positions": [2, 4, 6, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 3, 5, 7, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 4, 6, 8]
+          }
         ]
       }
     ]
   },
   {
+    "id": 29,
     "dimension": 3,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 9] },
-          { "color": "BLUE", "positions": [3, 7] },
-          { "color": "GREEN", "positions": [2, 4, 5, 6, 8] }
+          {
+            "color": "MAGENTA",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [1, 3, 5, 7, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 9] },
-          { "color": "BLUE", "positions": [3, 7] },
-          { "color": "GREEN", "positions": [2, 4, 5, 6, 8] }
+          {
+            "color": "MAGENTA",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [1, 3, 5, 7, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 9] },
-          { "color": "BLUE", "positions": [3, 7] },
-          { "color": "GREEN", "positions": [2, 4, 5, 6, 8] }
+          {
+            "color": "MAGENTA",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [1, 3, 5, 7, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 30,
     "dimension": 3,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3, 6, 9] },
-          { "color": "BLUE", "positions": [4, 5, 7, 8] }
+          {
+            "color": "GREEN",
+            "positions": [1, 5]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 7]
+          },
+          {
+            "color": "RED",
+            "positions": [2, 4, 6, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3, 6, 9] },
-          { "color": "BLUE", "positions": [4, 5, 7, 8] }
+          {
+            "color": "GREEN",
+            "positions": [1, 5]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 7]
+          },
+          {
+            "color": "RED",
+            "positions": [2, 4, 6, 8, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3, 6, 9] },
-          { "color": "BLUE", "positions": [4, 5, 7, 8] }
+          {
+            "color": "GREEN",
+            "positions": [1, 5]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 7]
+          },
+          {
+            "color": "RED",
+            "positions": [2, 4, 6, 8, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 31,
     "dimension": 3,
     "difficulty": "Easy",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "CYAN", "positions": [2, 4, 6, 8] },
-          { "color": "MAGENTA", "positions": [1, 3, 5, 7, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 7]
+          },
+          {
+            "color": "GREEN",
+            "positions": [2, 4, 5, 6, 8]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "CYAN", "positions": [2, 4, 6, 8] },
-          { "color": "MAGENTA", "positions": [1, 3, 5, 7, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 7]
+          },
+          {
+            "color": "GREEN",
+            "positions": [2, 4, 5, 6, 8]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "CYAN", "positions": [2, 4, 6, 8] },
-          { "color": "MAGENTA", "positions": [1, 3, 5, 7, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 7]
+          },
+          {
+            "color": "GREEN",
+            "positions": [2, 4, 5, 6, 8]
+          }
         ]
       }
     ]
   },
   {
+    "id": 32,
+    "dimension": 3,
+    "difficulty": "Easy",
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [1, 2, 3, 6, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4, 5, 7, 8]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [1, 2, 3, 6, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4, 5, 7, 8]
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [1, 2, 3, 6, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4, 5, 7, 8]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "dimension": 3,
+    "difficulty": "Easy",
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
+            "color": "CYAN",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [1, 3, 5, 7, 9]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "CYAN",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [1, 3, 5, 7, 9]
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "arrangements": [
+          {
+            "color": "CYAN",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [1, 3, 5, 7, 9]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 34,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [5] },
-          { "color": "BLUE", "positions": [1, 2, 3, 4, 6] },
-          { "color": "GREEN", "positions": [7, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [5]
+          },
+          {
+            "color": "BLUE",
+            "positions": [1, 2, 3, 4, 6]
+          },
+          {
+            "color": "GREEN",
+            "positions": [7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [2, 5, 8] },
-          { "color": "BLUE", "positions": [1, 3, 7] },
-          { "color": "GREEN", "positions": [4, 6, 9] }
+          {
+            "color": "RED",
+            "positions": [2, 5, 8]
+          },
+          {
+            "color": "BLUE",
+            "positions": [1, 3, 7]
+          },
+          {
+            "color": "GREEN",
+            "positions": [4, 6, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [4, 5, 6] },
-          { "color": "BLUE", "positions": [1, 7] },
-          { "color": "GREEN", "positions": [2, 3, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [4, 5, 6]
+          },
+          {
+            "color": "BLUE",
+            "positions": [1, 7]
+          },
+          {
+            "color": "GREEN",
+            "positions": [2, 3, 8, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 35,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 2, 3] },
-          { "color": "MAGENTA", "positions": [4, 5] },
-          { "color": "CYAN", "positions": [6, 7, 8, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 2, 3]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [4, 5]
+          },
+          {
+            "color": "CYAN",
+            "positions": [6, 7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "MAGENTA", "positions": [1, 4, 5, 7] },
-          { "color": "YELLOW", "positions": [8] },
-          { "color": "CYAN", "positions": [2, 3, 6, 9] }
+          {
+            "color": "MAGENTA",
+            "positions": [1, 4, 5, 7]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [8]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 3, 6, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "MAGENTA", "positions": [3, 5, 6, 7] },
-          { "color": "YELLOW", "positions": [1, 8, 9] },
-          { "color": "CYAN", "positions": [2, 4] }
+          {
+            "color": "MAGENTA",
+            "positions": [3, 5, 6, 7]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [1, 8, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 4]
+          }
         ]
       }
     ]
   },
   {
+    "id": 36,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 4] },
-          { "color": "GREEN", "positions": [2, 5, 8] },
-          { "color": "BLUE", "positions": [3, 6, 7, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 4]
+          },
+          {
+            "color": "GREEN",
+            "positions": [2, 5, 8]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 6, 7, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [2, 3, 5] },
-          { "color": "GREEN", "positions": [1, 6, 9] },
-          { "color": "BLUE", "positions": [4, 7, 8] }
+          {
+            "color": "RED",
+            "positions": [2, 3, 5]
+          },
+          {
+            "color": "GREEN",
+            "positions": [1, 6, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4, 7, 8]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [5, 6] },
-          { "color": "GREEN", "positions": [1, 2, 3] },
-          { "color": "BLUE", "positions": [4, 7, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [5, 6]
+          },
+          {
+            "color": "GREEN",
+            "positions": [1, 2, 3]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4, 7, 8, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 37,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 5, 9] },
-          { "color": "MAGENTA", "positions": [2, 3] },
-          { "color": "CYAN", "positions": [4, 6, 7, 8] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 5, 6, 9]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [2, 3]
+          },
+          {
+            "color": "CYAN",
+            "positions": [4, 7, 8]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "YELLOW", "positions": [3, 5, 7] },
-          { "color": "MAGENTA", "positions": [1, 9] },
-          { "color": "CYAN", "positions": [2, 4, 6, 8] }
+          {
+            "color": "MAGENTA",
+            "positions": [1, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 4, 6, 7, 8]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [3, 5]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "YELLOW", "positions": [4, 5, 6] },
-          { "color": "MAGENTA", "positions": [2, 8] },
-          { "color": "CYAN", "positions": [1, 3, 7, 9] }
+          {
+            "color": "CYAN",
+            "positions": [1, 3, 7, 9]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [2, 8]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [4, 5, 6]
+          }
         ]
       }
     ]
   },
   {
+    "id": 38,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2] },
-          { "color": "BLUE", "positions": [3, 6] },
-          { "color": "GREEN", "positions": [4, 5, 7, 8, 9] }
+          {
+            "color": "BLUE",
+            "positions": [3, 6]
+          },
+          {
+            "color": "GREEN",
+            "positions": [4, 5, 7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [5, 8] },
-          { "color": "BLUE", "positions": [1, 3, 7, 9] },
-          { "color": "GREEN", "positions": [2, 4, 6] }
+          {
+            "color": "BLUE",
+            "positions": [1, 3, 7, 9]
+          },
+          {
+            "color": "GREEN",
+            "positions": [2, 4, 6]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [2, 5, 8] },
-          { "color": "BLUE", "positions": [4, 6] },
-          { "color": "GREEN", "positions": [1, 3, 7, 9] }
+          {
+            "color": "GREEN",
+            "positions": [1, 3, 6, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4, 7]
+          }
         ]
       }
     ]
   },
   {
+    "id": 39,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 3, 4] },
-          { "color": "MAGENTA", "positions": [2, 5, 6] },
-          { "color": "CYAN", "positions": [7, 8, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 3, 4]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [2, 5, 6]
+          },
+          {
+            "color": "CYAN",
+            "positions": [7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "YELLOW", "positions": [4, 5, 6] },
-          { "color": "MAGENTA", "positions": [1, 7, 9] },
-          { "color": "CYAN", "positions": [2, 3, 8] }
+          {
+            "color": "MAGENTA",
+            "positions": [1, 4, 7, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 3, 8]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [5, 6]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "YELLOW", "positions": [2, 3, 5] },
-          { "color": "MAGENTA", "positions": [1, 9] },
-          { "color": "CYAN", "positions": [4, 6, 7, 8] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 2, 3, 5]
+          },
+          {
+            "color": "CYAN",
+            "positions": [4, 6, 7, 8]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 40,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 5] },
-          { "color": "BLUE", "positions": [2, 3, 4] },
-          { "color": "GREEN", "positions": [6, 7, 8, 9] }
+          {
+            "color": "BLACK",
+            "positions": [1, 5]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 3, 4]
+          },
+          {
+            "color": "GREEN",
+            "positions": [6, 7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [3, 5, 7] },
-          { "color": "BLUE", "positions": [1, 9] },
-          { "color": "GREEN", "positions": [2, 4, 6, 8] }
+          {
+            "color": "BLUE",
+            "positions": [1, 2]
+          },
+          {
+            "color": "BLACK",
+            "positions": [3, 5, 7]
+          },
+          {
+            "color": "GREEN",
+            "positions": [4, 6, 8, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [2, 4, 6, 8] },
-          { "color": "BLUE", "positions": [5] },
-          { "color": "GREEN", "positions": [1, 3, 7, 9] }
+          {
+            "color": "GREEN",
+            "positions": [1, 3, 7, 9]
+          },
+          {
+            "color": "BLACK",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "BLUE",
+            "positions": [5]
+          }
         ]
       }
     ]
   },
   {
+    "id": 41,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 2, 8, 9] },
-          { "color": "MAGENTA", "positions": [4, 5, 6] },
-          { "color": "CYAN", "positions": [3, 7] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 2, 4, 8, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [3, 7]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [5, 6]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "YELLOW", "positions": [5] },
-          { "color": "MAGENTA", "positions": [1, 9] },
-          { "color": "CYAN", "positions": [2, 3, 4, 6, 7, 8] }
+          {
+            "color": "MAGENTA",
+            "positions": [1, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 3, 4, 6, 7, 8]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [5]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "YELLOW", "positions": [2, 4, 6, 8] },
-          { "color": "MAGENTA", "positions": [5] },
-          { "color": "CYAN", "positions": [1, 3, 7, 9] }
+          {
+            "color": "CYAN",
+            "positions": [1, 3, 7, 9]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [2, 6, 8]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [4, 5]
+          }
         ]
       }
     ]
   },
   {
+    "id": 42,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3, 7] },
-          { "color": "BLUE", "positions": [4, 5, 8] },
-          { "color": "GREEN", "positions": [6, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 3, 7]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4, 5, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [6, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [1, 3, 9] },
-          { "color": "BLUE", "positions": [2, 4, 6, 8] },
-          { "color": "GREEN", "positions": [5, 7] }
+          {
+            "color": "RED",
+            "positions": [1, 3, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [5, 7]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [5] },
-          { "color": "BLUE", "positions": [1, 3, 7, 9] },
-          { "color": "GREEN", "positions": [2, 4, 6, 8] }
+          {
+            "color": "RED",
+            "positions": [5]
+          },
+          {
+            "color": "BLUE",
+            "positions": [1, 3, 7, 9]
+          },
+          {
+            "color": "GREEN",
+            "positions": [2, 4, 6, 8]
+          }
         ]
       }
     ]
   },
   {
+    "id": 43,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 2, 3] },
-          { "color": "MAGENTA", "positions": [4, 7] },
-          { "color": "CYAN", "positions": [5, 6, 8, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 2, 3]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [4, 7]
+          },
+          {
+            "color": "CYAN",
+            "positions": [5, 6, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "YELLOW", "positions": [2, 4, 6, 8] },
-          { "color": "MAGENTA", "positions": [5] },
-          { "color": "CYAN", "positions": [1, 3, 7, 9] }
+          {
+            "color": "CYAN",
+            "positions": [1, 3, 7, 9]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [5]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 9] },
-          { "color": "MAGENTA", "positions": [3, 5, 7] },
-          { "color": "CYAN", "positions": [2, 4, 6, 8] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 9]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [2, 5, 7]
+          },
+          {
+            "color": "CYAN",
+            "positions": [3, 4, 6, 8]
+          }
         ]
       }
     ]
   },
   {
+    "id": 44,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 4, 5] },
-          { "color": "BLUE", "positions": [2, 3, 6] },
-          { "color": "GREEN", "positions": [7, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 4, 5]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 3, 6]
+          },
+          {
+            "color": "GREEN",
+            "positions": [7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 7] },
-          { "color": "BLUE", "positions": [3, 5, 8] },
-          { "color": "GREEN", "positions": [4, 6, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 7]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 5, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [4, 6, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [1, 9] },
-          { "color": "BLUE", "positions": [2, 5, 8] },
-          { "color": "GREEN", "positions": [3, 4, 6, 7] }
+          {
+            "color": "RED",
+            "positions": [1, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 5, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [3, 4, 6, 7]
+          }
         ]
       }
     ]
   },
   {
+    "id": 45,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 3, 5, 7] },
-          { "color": "MAGENTA", "positions": [2, 4] },
-          { "color": "CYAN", "positions": [6, 8, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 3, 5, 7]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [2, 4]
+          },
+          {
+            "color": "CYAN",
+            "positions": [6, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "YELLOW", "positions": [2, 6, 8] },
-          { "color": "MAGENTA", "positions": [1, 3, 7, 9] },
-          { "color": "CYAN", "positions": [4, 5] }
+          {
+            "color": "CYAN",
+            "positions": [1, 4, 5]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [2, 6, 8]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [3, 7, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 2] },
-          { "color": "MAGENTA", "positions": [3, 5, 7, 9] },
-          { "color": "CYAN", "positions": [4, 6, 8] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 2]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [3, 4, 5, 7, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [6, 8]
+          }
         ]
       }
     ]
   },
   {
+    "id": 46,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 5, 6] },
-          { "color": "BLUE", "positions": [2, 3, 4] },
-          { "color": "GREEN", "positions": [7, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 5, 6]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 3, 4]
+          },
+          {
+            "color": "GREEN",
+            "positions": [7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [1, 4, 7] },
-          { "color": "BLUE", "positions": [2, 5, 8] },
-          { "color": "GREEN", "positions": [3, 6, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 4, 7]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 5, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [3, 6, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [3, 5, 7] },
-          { "color": "BLUE", "positions": [1, 2, 4, 6, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [3, 5, 7]
+          },
+          {
+            "color": "BLUE",
+            "positions": [1, 2, 4, 6, 8, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 47,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 9] },
-          { "color": "MAGENTA", "positions": [5] },
-          { "color": "CYAN", "positions": [2, 3, 4, 6, 7, 8] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 3, 4, 6, 7, 8]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [5]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "YELLOW", "positions": [3, 7] },
-          { "color": "MAGENTA", "positions": [1, 5, 9] },
-          { "color": "CYAN", "positions": [2, 4, 6, 8] }
+          {
+            "color": "MAGENTA",
+            "positions": [1, 5, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [3, 7]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "YELLOW", "positions": [2, 4, 6, 8] },
-          { "color": "MAGENTA", "positions": [1, 3, 7, 9] },
-          { "color": "CYAN", "positions": [5] }
+          {
+            "color": "MAGENTA",
+            "positions": [1, 2, 3, 9]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [4, 6, 7, 8]
+          },
+          {
+            "color": "CYAN",
+            "positions": [5]
+          }
         ]
       }
     ]
   },
   {
+    "id": 48,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 4, 6] },
-          { "color": "BLUE", "positions": [3, 5, 7, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 4, 6]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 5, 7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [5, 8] },
-          { "color": "BLUE", "positions": [1, 2, 3, 4, 6, 7, 9] }
+          {
+            "color": "RED",
+            "positions": [5, 8]
+          },
+          {
+            "color": "BLUE",
+            "positions": [1, 2, 3, 4, 6, 7, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [2, 3, 6, 7] },
-          { "color": "BLUE", "positions": [1, 4, 5, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [2, 3, 6, 7]
+          },
+          {
+            "color": "BLUE",
+            "positions": [1, 4, 5, 8, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 49,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "YELLOW", "positions": [2, 3, 5] },
-          { "color": "MAGENTA", "positions": [1, 4, 6, 8] },
-          { "color": "CYAN", "positions": [7, 9] }
+          {
+            "color": "MAGENTA",
+            "positions": [1, 4, 6, 8]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [2, 3, 5, 7]
+          },
+          {
+            "color": "CYAN",
+            "positions": [9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 3, 7] },
-          { "color": "MAGENTA", "positions": [2, 4, 6, 8] },
-          { "color": "CYAN", "positions": [5, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 3, 7]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "CYAN",
+            "positions": [5, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 2, 9] },
-          { "color": "MAGENTA", "positions": [3, 5, 7] },
-          { "color": "CYAN", "positions": [4, 6, 8] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 2]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [3, 5, 7]
+          },
+          {
+            "color": "CYAN",
+            "positions": [4, 6, 8, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 50,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 3, 7] },
-          { "color": "BLUE", "positions": [2, 4, 6, 8] },
-          { "color": "GREEN", "positions": [5, 9] }
+          {
+            "color": "BLACK",
+            "positions": [1, 3, 7]
+          },
+          {
+            "color": "GREEN",
+            "positions": [2, 5, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4, 6, 8]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [2, 5, 8] },
-          { "color": "BLUE", "positions": [1, 3, 7, 9] },
-          { "color": "GREEN", "positions": [4, 6] }
+          {
+            "color": "BLUE",
+            "positions": [1, 3, 4, 7, 9]
+          },
+          {
+            "color": "BLACK",
+            "positions": [2, 5, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [6]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [4, 5, 6] },
-          { "color": "BLUE", "positions": [1, 2, 3, 7, 8, 9] }
+          {
+            "color": "BLUE",
+            "positions": [1, 3, 6, 7, 8, 9]
+          },
+          {
+            "color": "BLACK",
+            "positions": [2, 4, 5]
+          }
         ]
       }
     ]
   },
   {
+    "id": 51,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 2, 3, 9] },
-          { "color": "MAGENTA", "positions": [4, 5, 6] },
-          { "color": "CYAN", "positions": [7, 8] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 2, 3]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [4, 5, 6, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [7, 8]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "YELLOW", "positions": [3, 5, 7] },
-          { "color": "MAGENTA", "positions": [1, 2, 4, 6] },
-          { "color": "CYAN", "positions": [8, 9] }
+          {
+            "color": "MAGENTA",
+            "positions": [1, 2, 4, 6]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [3, 5, 7]
+          },
+          {
+            "color": "CYAN",
+            "positions": [8, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 4, 7] },
-          { "color": "MAGENTA", "positions": [2, 5, 8] },
-          { "color": "CYAN", "positions": [3, 6, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 4, 7, 8]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [2, 5]
+          },
+          {
+            "color": "CYAN",
+            "positions": [3, 6, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 52,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 3, 5, 7, 9] },
-          { "color": "BLUE", "positions": [2, 4, 6, 8] }
+          {
+            "color": "BLACK",
+            "positions": [1, 2, 4, 8]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 6, 7, 9]
+          },
+          {
+            "color": "GREEN",
+            "positions": [5]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [2, 5, 8] },
-          { "color": "BLUE", "positions": [1, 3, 7, 9] },
-          { "color": "GREEN", "positions": [4, 6] }
+          {
+            "color": "BLUE",
+            "positions": [1, 6, 9]
+          },
+          {
+            "color": "GREEN",
+            "positions": [2, 4, 8]
+          },
+          {
+            "color": "BLACK",
+            "positions": [3, 5, 7]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [4, 6] },
-          { "color": "BLUE", "positions": [1, 2, 3, 7, 8, 9] }
+          {
+            "color": "BLACK",
+            "positions": [1, 5, 7, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 4, 6]
+          },
+          {
+            "color": "GREEN",
+            "positions": [3, 8]
+          }
         ]
       }
     ]
   },
   {
+    "id": 53,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "YELLOW", "positions": [2, 4, 6, 8] },
-          { "color": "MAGENTA", "positions": [1, 3, 5, 7, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 5]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "CYAN",
+            "positions": [3, 7, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 2, 3] },
-          { "color": "MAGENTA", "positions": [4, 5, 6] },
-          { "color": "CYAN", "positions": [7, 8, 9] }
+          {
+            "color": "MAGENTA",
+            "positions": [1, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [3, 5, 7]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "YELLOW", "positions": [7, 8, 9] },
-          { "color": "MAGENTA", "positions": [1, 3, 5, 7] },
-          { "color": "CYAN", "positions": [2, 4, 6, 8] }
+          {
+            "color": "MAGENTA",
+            "positions": [1, 5, 6]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [2, 3, 8, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [4, 7]
+          }
         ]
       }
     ]
   },
   {
+    "id": 54,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 4] },
-          { "color": "BLUE", "positions": [3, 6, 9] },
-          { "color": "GREEN", "positions": [5, 7, 8] }
+          {
+            "color": "RED",
+            "positions": [1, 4]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 3, 5]
+          },
+          {
+            "color": "GREEN",
+            "positions": [6, 7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [3, 5, 7] },
-          { "color": "BLUE", "positions": [1, 6, 9] },
-          { "color": "GREEN", "positions": [2, 4, 8] }
+          {
+            "color": "RED",
+            "positions": [2, 5, 8]
+          },
+          {
+            "color": "BLUE",
+            "positions": [1, 3, 7, 9]
+          },
+          {
+            "color": "GREEN",
+            "positions": [4, 6]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [1, 3, 5, 7, 9] },
-          { "color": "BLUE", "positions": [2, 4, 6, 8] }
+          {
+            "color": "RED",
+            "positions": [1, 2, 3, 7, 8, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4, 5, 6]
+          }
         ]
       }
     ]
   },
   {
+    "id": 55,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 3] },
-          { "color": "MAGENTA", "positions": [2, 4, 6, 8] },
-          { "color": "CYAN", "positions": [5, 7, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 3, 5, 7]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [2, 4, 6]
+          },
+          {
+            "color": "CYAN",
+            "positions": [8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "YELLOW", "positions": [4, 5, 6] },
-          { "color": "MAGENTA", "positions": [1, 3, 7, 9] },
-          { "color": "CYAN", "positions": [2, 8] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 2, 3, 9]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [4, 5, 6]
+          },
+          {
+            "color": "CYAN",
+            "positions": [7, 8]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 9] },
-          { "color": "MAGENTA", "positions": [2, 3, 4, 6, 7, 8] }
+          {
+            "color": "MAGENTA",
+            "positions": [1, 3, 5, 7, 9]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [2, 4, 6, 8]
+          }
         ]
       }
     ]
   },
   {
+    "id": 56,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [2, 3, 5] },
-          { "color": "BLUE", "positions": [1, 4, 6, 7, 8, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 3, 4, 6]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [2, 5, 7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [1, 3, 7, 9] },
-          { "color": "BLUE", "positions": [2, 4, 6, 8] }
+          {
+            "color": "YELLOW",
+            "positions": [4, 5, 6]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [1, 2, 3, 7, 8, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [1, 5, 9] },
-          { "color": "BLUE", "positions": [2, 3, 4, 6, 7, 8] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 2, 3]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [4, 6]
+          },
+          {
+            "color": "CYAN",
+            "positions": [5, 7, 8, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 57,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 5] },
-          { "color": "MAGENTA", "positions": [2, 4, 6, 8] },
-          { "color": "CYAN", "positions": [3, 7, 9] }
+          {
+            "color": "RED",
+            "positions": [1, 4, 7]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 3, 5]
+          },
+          {
+            "color": "GREEN",
+            "positions": [6, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "YELLOW", "positions": [3, 5, 7] },
-          { "color": "MAGENTA", "positions": [1, 9] },
-          { "color": "CYAN", "positions": [2, 4, 6, 8] }
+          {
+            "color": "RED",
+            "positions": [3, 5, 7]
+          },
+          {
+            "color": "BLUE",
+            "positions": [1, 2, 4, 6, 8, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "YELLOW", "positions": [2, 3, 8, 9] },
-          { "color": "MAGENTA", "positions": [1, 5, 7] },
-          { "color": "CYAN", "positions": [4, 6] }
+          {
+            "color": "RED",
+            "positions": [2, 8]
+          },
+          {
+            "color": "BLUE",
+            "positions": [1, 3, 4, 5, 6, 7, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 58,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 4] },
-          { "color": "BLUE", "positions": [2, 3, 5] },
-          { "color": "GREEN", "positions": [6, 7, 8, 9] }
+          {
+            "color": "BLUE",
+            "positions": [4, 6]
+          },
+          {
+            "color": "GREEN",
+            "positions": [5, 7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [2, 5, 8] },
-          { "color": "BLUE", "positions": [1, 3, 7, 9] },
-          { "color": "GREEN", "positions": [4, 6] }
+          {
+            "color": "BLUE",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [3]
+          },
+          {
+            "color": "BLACK",
+            "positions": [7]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3, 7, 8, 9] },
-          { "color": "BLUE", "positions": [4, 5, 6] }
+          {
+            "color": "BLUE",
+            "positions": [1, 3, 7, 9]
+          },
+          {
+            "color": "GREEN",
+            "positions": [2]
+          },
+          {
+            "color": "BLACK",
+            "positions": [8]
+          }
         ]
       }
     ]
   },
   {
+    "id": 59,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 3, 5, 7] },
-          { "color": "MAGENTA", "positions": [2, 4, 6, 8] },
-          { "color": "CYAN", "positions": [9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 3, 4, 5, 7, 9]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [2, 6, 8]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 2, 3, 9] },
-          { "color": "MAGENTA", "positions": [4, 6] },
-          { "color": "CYAN", "positions": [5, 7, 8] }
+          {
+            "color": "MAGENTA",
+            "positions": [1, 3, 4, 5, 7, 9]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [2, 6, 8]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "YELLOW", "positions": [2, 4, 6, 8] },
-          { "color": "MAGENTA", "positions": [1, 3, 5, 7, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 2, 3, 4]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [5, 6, 7, 8, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 60,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 8, 9] },
-          { "color": "BLUE", "positions": [3, 4, 5] },
-          { "color": "GREEN", "positions": [6, 7] }
+          {
+            "color": "RED",
+            "positions": [1, 6]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 3, 4, 5]
+          },
+          {
+            "color": "GREEN",
+            "positions": [7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [2, 5, 8] },
-          { "color": "BLUE", "positions": [1, 3, 7, 9] },
-          { "color": "GREEN", "positions": [4, 6] }
+          {
+            "color": "RED",
+            "positions": [3, 5, 7]
+          },
+          {
+            "color": "BLUE",
+            "positions": [1, 2, 4, 6, 8, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [1, 3, 7, 9] },
-          { "color": "BLUE", "positions": [2, 4, 6, 8] }
+          {
+            "color": "RED",
+            "positions": [2, 4, 8]
+          },
+          {
+            "color": "BLUE",
+            "positions": [1, 3, 5, 6, 7, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 61,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 3, 4, 6] },
-          { "color": "MAGENTA", "positions": [2, 5, 7, 8, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 2, 4]
+          },
+          {
+            "color": "CYAN",
+            "positions": [3, 5, 6]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "YELLOW", "positions": [4, 5, 6] },
-          { "color": "MAGENTA", "positions": [1, 2, 3, 7, 8, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 3, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 5, 8]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [4, 6]
+          },
+          {
+            "color": "BLACK",
+            "positions": [7]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 2, 3] },
-          { "color": "MAGENTA", "positions": [4, 6] },
-          { "color": "CYAN", "positions": [5, 7, 8, 9] }
+          {
+            "color": "CYAN",
+            "positions": [1, 2, 3, 7, 8, 9]
+          },
+          {
+            "color": "BLACK",
+            "positions": [4]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [5, 6]
+          }
         ]
       }
     ]
   },
   {
+    "id": 62,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 4, 7] },
-          { "color": "BLUE", "positions": [2, 3, 5] },
-          { "color": "GREEN", "positions": [6, 8, 9] }
+          {
+            "color": "GREEN",
+            "positions": [2, 4, 6, 7, 8]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 5]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [3, 5, 7] },
-          { "color": "BLUE", "positions": [1, 2, 4, 6, 8, 9] }
+          {
+            "color": "GREEN",
+            "positions": [1, 7, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 4, 6]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [2, 8] },
-          { "color": "BLUE", "positions": [1, 3, 4, 5, 6, 7, 9] }
+          {
+            "color": "GREEN",
+            "positions": [1, 2, 3, 7, 8, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 63,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "YELLOW", "positions": [2, 4, 6, 8] },
-          { "color": "MAGENTA", "positions": [1, 3, 5, 7, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 3, 4, 7]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [2, 5, 8]
+          },
+          {
+            "color": "CYAN",
+            "positions": [6, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 2, 3, 4, 5] },
-          { "color": "MAGENTA", "positions": [6, 7, 8, 9] }
+          {
+            "color": "MAGENTA",
+            "positions": [1, 3, 7, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 8]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [4, 5, 6]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "YELLOW", "positions": [7, 8, 9] },
-          { "color": "MAGENTA", "positions": [1, 3, 5, 7] },
-          { "color": "CYAN", "positions": [2, 4, 6, 8] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 2]
+          },
+          {
+            "color": "CYAN",
+            "positions": [3, 4, 6, 7, 8, 9]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [5]
+          }
         ]
       }
     ]
   },
   {
+    "id": 64,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3] },
-          { "color": "BLUE", "positions": [4, 6] },
-          { "color": "GREEN", "positions": [5, 7, 8, 9] }
+          {
+            "color": "BLUE",
+            "positions": [2, 3, 4, 6]
+          },
+          {
+            "color": "GREEN",
+            "positions": [8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [1, 5, 9] },
-          { "color": "BLUE", "positions": [2, 4, 6, 8] },
-          { "color": "GREEN", "positions": [3, 7] }
+          {
+            "color": "BLUE",
+            "positions": [1, 3, 9]
+          },
+          {
+            "color": "GREEN",
+            "positions": [4, 5, 6]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [4, 5, 6] },
-          { "color": "BLUE", "positions": [1, 3, 7, 9] }
+          {
+            "color": "BLUE",
+            "positions": [1, 2, 5, 7, 8, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 65,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 3, 5, 7, 9] },
-          { "color": "MAGENTA", "positions": [2, 4, 6, 8] }
+          {
+            "color": "BLUE",
+            "positions": [2, 3, 6]
+          },
+          {
+            "color": "GREEN",
+            "positions": [7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "YELLOW", "positions": [2, 4, 6, 8] },
-          { "color": "MAGENTA", "positions": [1, 3, 5, 7, 9] }
+          {
+            "color": "GREEN",
+            "positions": [4, 5, 7, 8, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [6]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 2, 3, 4] },
-          { "color": "MAGENTA", "positions": [5, 6, 7, 8, 9] }
+          {
+            "color": "BLUE",
+            "positions": [1, 2, 3, 5]
+          },
+          {
+            "color": "GREEN",
+            "positions": [4, 6]
+          }
         ]
       }
     ]
   },
   {
+    "id": 66,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 6] },
-          { "color": "BLUE", "positions": [2, 3, 4, 5] },
-          { "color": "GREEN", "positions": [7, 8, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 2, 3]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [4, 5, 6, 7]
+          },
+          {
+            "color": "CYAN",
+            "positions": [8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [3, 5, 7] },
-          { "color": "BLUE", "positions": [1, 2, 4, 6, 8, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 5, 8, 9]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [2, 3, 4, 6, 7]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [2, 4, 8] },
-          { "color": "BLUE", "positions": [1, 3, 5, 6, 7, 9] }
+          {
+            "color": "MAGENTA",
+            "positions": [1, 2, 4, 6, 8, 9]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [3, 5, 7]
+          }
         ]
       }
     ]
   },
   {
+    "id": 67,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 2, 4] },
-          { "color": "CYAN", "positions": [3, 5, 6] },
-          { "color": "MAGENTA", "positions": [7, 8, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 2, 4]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [3, 6]
+          },
+          {
+            "color": "CYAN",
+            "positions": [5, 7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 3, 7, 9] },
-          { "color": "CYAN", "positions": [2, 5, 8] },
-          { "color": "MAGENTA", "positions": [4, 6] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 3, 7, 9]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [2, 4, 5, 6, 8]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "YELLOW", "positions": [5] },
-          { "color": "CYAN", "positions": [1, 2, 3, 7, 8, 9] }
+          {
+            "color": "MAGENTA",
+            "positions": [1, 2, 3, 4, 7, 8, 9]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [5, 6]
+          }
         ]
       }
     ]
   },
   {
+    "id": 68,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 9] },
-          { "color": "GREEN", "positions": [2, 4, 6, 8] },
-          { "color": "BLUE", "positions": [3, 5, 7] }
+          {
+            "color": "RED",
+            "positions": [1, 3, 4]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 5, 6]
+          },
+          {
+            "color": "GREEN",
+            "positions": [7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [2, 5, 8] },
-          { "color": "GREEN", "positions": [1, 3, 7, 9] },
-          { "color": "BLUE", "positions": [4, 6] }
+          {
+            "color": "RED",
+            "positions": [2, 5, 7]
+          },
+          {
+            "color": "BLUE",
+            "positions": [1, 3, 4, 6]
+          },
+          {
+            "color": "GREEN",
+            "positions": [8, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [4, 5, 6] },
-          { "color": "GREEN", "positions": [1, 2, 3, 7, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "BLUE",
+            "positions": [1, 3, 5, 7, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 69,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 3, 7] },
-          { "color": "MAGENTA", "positions": [2, 5, 8] },
-          { "color": "CYAN", "positions": [4, 6, 9] }
+          {
+            "color": "BLUE",
+            "positions": [2, 3, 5]
+          },
+          {
+            "color": "GREEN",
+            "positions": [7, 8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "YELLOW", "positions": [4, 5, 6] },
-          { "color": "MAGENTA", "positions": [1, 3, 7, 9] },
-          { "color": "CYAN", "positions": [2, 8] }
+          {
+            "color": "BLUE",
+            "positions": [4, 5, 6, 7]
+          },
+          {
+            "color": "GREEN",
+            "positions": [8, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "YELLOW", "positions": [1, 2, 3] },
-          { "color": "MAGENTA", "positions": [5] },
-          { "color": "CYAN", "positions": [4, 6, 7, 8, 9] }
+          {
+            "color": "BLUE",
+            "positions": [1, 3]
+          },
+          {
+            "color": "GREEN",
+            "positions": [2, 4, 5, 6]
+          }
         ]
       }
     ]
   },
   {
+    "id": 70,
     "dimension": 3,
     "difficulty": "Medium",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 5, 7] },
-          { "color": "BLUE", "positions": [2, 3, 4] },
-          { "color": "GREEN", "positions": [6, 8, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [1, 2, 3]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [4, 6, 8]
+          },
+          {
+            "color": "CYAN",
+            "positions": [5, 7, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [2, 7, 8] },
-          { "color": "BLUE", "positions": [1, 3, 5, 9] },
-          { "color": "GREEN", "positions": [4, 6] }
+          {
+            "color": "YELLOW",
+            "positions": [2, 5, 8]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [1, 3, 7, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [4, 6]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [3, 4, 6] },
-          { "color": "BLUE", "positions": [1, 2, 5, 7, 8, 9] }
+          {
+            "color": "YELLOW",
+            "positions": [4, 5, 6]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [1, 2, 3, 7, 8, 9]
+          }
         ]
       }
     ]
   },
   {
-    "dimension": 3,
-    "difficulty": "Medium",
-    "layers": [
-      {
-        "index": 0,
-        "arrangements": [
-          { "color": "YELLOW", "positions": [2, 4, 6, 8] },
-          { "color": "MAGENTA", "positions": [1, 3, 5, 7, 9] }
-        ]
-      },
-      {
-        "index": 1,
-        "arrangements": [
-          { "color": "YELLOW", "positions": [1, 2, 7, 8] },
-          { "color": "MAGENTA", "positions": [3, 4, 5, 6, 9] }
-        ]
-      },
-      {
-        "index": 2,
-        "arrangements": [
-          { "color": "YELLOW", "positions": [1, 3, 9] },
-          { "color": "MAGENTA", "positions": [2, 4, 6, 7, 8] }
-        ]
-      }
-    ]
-  },
-  {
-    "dimension": 3,
-    "difficulty": "Medium",
-    "layers": [
-      {
-        "index": 0,
-        "arrangements": [
-          { "color": "RED", "positions": [1, 4, 5] },
-          { "color": "BLUE", "positions": [2, 3, 6] },
-          { "color": "GREEN", "positions": [7, 8, 9] }
-        ]
-      },
-      {
-        "index": 1,
-        "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3] },
-          { "color": "BLUE", "positions": [4, 6] },
-          { "color": "GREEN", "positions": [5, 7, 8, 9] }
-        ]
-      },
-      {
-        "index": 2,
-        "arrangements": [
-          { "color": "RED", "positions": [7, 8, 9] },
-          { "color": "BLUE", "positions": [1, 3, 5] },
-          { "color": "GREEN", "positions": [2, 4, 6] }
-        ]
-      }
-    ]
-  },
-  {
-    "dimension": 3,
-    "difficulty": "Medium",
-    "layers": [
-      {
-        "index": 0,
-        "arrangements": [
-          { "color": "YELLOW", "positions": [1, 2, 3, 7] },
-          { "color": "MAGENTA", "positions": [4, 5, 6] },
-          { "color": "CYAN", "positions": [8, 9] }
-        ]
-      },
-      {
-        "index": 1,
-        "arrangements": [
-          { "color": "YELLOW", "positions": [1, 5, 9] },
-          { "color": "MAGENTA", "positions": [2, 3, 4, 6, 7, 8] }
-        ]
-      },
-      {
-        "index": 2,
-        "arrangements": [
-          { "color": "YELLOW", "positions": [3, 5, 7] },
-          { "color": "MAGENTA", "positions": [1, 2, 4, 6, 8, 9] }
-        ]
-      }
-    ]
-  },
-  {
-    "dimension": 3,
-    "difficulty": "Medium",
-    "layers": [
-      {
-        "index": 0,
-        "arrangements": [
-          { "color": "RED", "positions": [2, 4, 6, 8] },
-          { "color": "BLUE", "positions": [1, 3, 5, 7, 9] }
-        ]
-      },
-      {
-        "index": 1,
-        "arrangements": [
-          { "color": "RED", "positions": [1, 9] },
-          { "color": "BLUE", "positions": [2, 3, 4, 6, 7, 8] },
-          { "color": "GREEN", "positions": [5] }
-        ]
-      },
-      {
-        "index": 2,
-        "arrangements": [
-          { "color": "RED", "positions": [1, 3, 7, 9] },
-          { "color": "BLUE", "positions": [2, 4, 5, 6, 8] }
-        ]
-      }
-    ]
-  },
-  {
-    "dimension": 3,
-    "difficulty": "Medium",
-    "layers": [
-      {
-        "index": 0,
-        "arrangements": [
-          { "color": "YELLOW", "positions": [1, 2, 4] },
-          { "color": "MAGENTA", "positions": [3, 6] },
-          { "color": "CYAN", "positions": [5, 7, 8, 9] }
-        ]
-      },
-      {
-        "index": 1,
-        "arrangements": [
-          { "color": "YELLOW", "positions": [1, 3, 5, 7, 9] },
-          { "color": "MAGENTA", "positions": [2, 4, 6, 8] }
-        ]
-      },
-      {
-        "index": 2,
-        "arrangements": [
-          { "color": "YELLOW", "positions": [5] },
-          { "color": "MAGENTA", "positions": [1, 2, 3, 4, 6, 7, 8, 9] }
-        ]
-      }
-    ]
-  },
-  {
-    "dimension": 3,
-    "difficulty": "Medium",
-    "layers": [
-      {
-        "index": 0,
-        "arrangements": [
-          { "color": "RED", "positions": [1, 3, 4] },
-          { "color": "BLUE", "positions": [2, 5, 6] },
-          { "color": "GREEN", "positions": [7, 8, 9] }
-        ]
-      },
-      {
-        "index": 1,
-        "arrangements": [
-          { "color": "RED", "positions": [2, 5, 7] },
-          { "color": "BLUE", "positions": [1, 3, 4, 6] },
-          { "color": "GREEN", "positions": [8, 9] }
-        ]
-      },
-      {
-        "index": 2,
-        "arrangements": [
-          { "color": "RED", "positions": [2, 4, 6, 8] },
-          { "color": "BLUE", "positions": [1, 3, 5, 7, 9] }
-        ]
-      }
-    ]
-  },
-  {
-    "dimension": 3,
-    "difficulty": "Medium",
-    "layers": [
-      {
-        "index": 0,
-        "arrangements": [
-          { "color": "YELLOW", "positions": [1, 5, 7] },
-          { "color": "MAGENTA", "positions": [2, 3, 4] },
-          { "color": "CYAN", "positions": [6, 8, 9] }
-        ]
-      },
-      {
-        "index": 1,
-        "arrangements": [
-          { "color": "YELLOW", "positions": [3, 5, 9] },
-          { "color": "MAGENTA", "positions": [1, 7] },
-          { "color": "CYAN", "positions": [2, 4, 6, 8] }
-        ]
-      },
-      {
-        "index": 2,
-        "arrangements": [
-          { "color": "YELLOW", "positions": [2, 4, 6, 8] },
-          { "color": "MAGENTA", "positions": [3, 5, 7] }
-        ]
-      }
-    ]
-  },
-  {
-    "dimension": 3,
-    "difficulty": "Medium",
-    "layers": [
-      {
-        "index": 0,
-        "arrangements": [
-          { "color": "RED", "positions": [1, 4, 6] },
-          { "color": "BLUE", "positions": [2, 3, 5] },
-          { "color": "GREEN", "positions": [7, 8, 9] }
-        ]
-      },
-      {
-        "index": 1,
-        "arrangements": [
-          { "color": "RED", "positions": [1, 2, 3] },
-          { "color": "BLUE", "positions": [4, 5, 6] },
-          { "color": "GREEN", "positions": [7, 8, 9] }
-        ]
-      },
-      {
-        "index": 2,
-        "arrangements": [
-          { "color": "RED", "positions": [7, 8, 9] },
-          { "color": "BLUE", "positions": [1, 3, 5] },
-          { "color": "GREEN", "positions": [2, 4, 6] }
-        ]
-      }
-    ]
-  },
-  {
-    "dimension": 3,
-    "difficulty": "Medium",
-    "layers": [
-      {
-        "index": 0,
-        "arrangements": [
-          { "color": "YELLOW", "positions": [1, 2, 3] },
-          { "color": "MAGENTA", "positions": [4, 6, 8] },
-          { "color": "CYAN", "positions": [5, 7, 9] }
-        ]
-      },
-      {
-        "index": 1,
-        "arrangements": [
-          { "color": "YELLOW", "positions": [2, 5, 8] },
-          { "color": "MAGENTA", "positions": [1, 3, 7, 9] },
-          { "color": "CYAN", "positions": [4, 6] }
-        ]
-      },
-      {
-        "index": 2,
-        "arrangements": [
-          { "color": "YELLOW", "positions": [4, 5, 6] },
-          { "color": "MAGENTA", "positions": [1, 2, 3, 7, 8, 9] }
-        ]
-      }
-    ]
-  },
-  {
+    "id": 71,
     "dimension": 3,
     "difficulty": "Hard",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 3, 4, 7, 9] },
-          { "color": "BLUE", "positions": [2, 5, 8] },
-          { "color": "YELLOW", "positions": [6] }
+          {
+            "color": "RED",
+            "positions": [1, 3, 4, 7, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 5, 8]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [6]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [4] },
-          { "color": "BLUE", "positions": [1, 5, 7] },
-          { "color": "YELLOW", "positions": [2, 3, 8, 9] }
+          {
+            "color": "RED",
+            "positions": [4]
+          },
+          {
+            "color": "BLUE",
+            "positions": [1, 5, 7]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [2, 3, 8, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [2, 8] },
-          { "color": "BLUE", "positions": [4] },
-          { "color": "YELLOW", "positions": [1, 3, 7, 9] }
+          {
+            "color": "RED",
+            "positions": [2, 8]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [1, 3, 7, 9]
+          }
         ]
       }
     ]
   },
   {
+    "id": 72,
     "dimension": 3,
     "difficulty": "Hard",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [1, 5, 9] },
-          { "color": "GREEN", "positions": [4, 8] },
-          { "color": "BLUE", "positions": [2, 6] },
-          { "color": "MAGENTA", "positions": [3] }
+          {
+            "color": "RED",
+            "positions": [1, 5, 9]
+          },
+          {
+            "color": "GREEN",
+            "positions": [4, 8]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 6]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [3]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [2, 4, 6, 8] },
-          { "color": "MAGENTA", "positions": [1, 3, 5, 9] }
+          {
+            "color": "RED",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [1, 3, 5, 9]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "GREEN", "positions": [7] },
-          { "color": "BLUE", "positions": [1, 2, 3] },
-          { "color": "MAGENTA", "positions": [4, 8] }
+          {
+            "color": "GREEN",
+            "positions": [7]
+          },
+          {
+            "color": "BLUE",
+            "positions": [1, 2, 3]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [4, 8]
+          }
         ]
       }
     ]
   },
   {
+    "id": 73,
     "dimension": 3,
     "difficulty": "Hard",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [3, 7] },
-          { "color": "GREEN", "positions": [1, 2] },
-          { "color": "BLUE", "positions": [4, 5, 6] },
-          { "color": "YELLOW", "positions": [8, 9] }
+          {
+            "color": "RED",
+            "positions": [3, 7]
+          },
+          {
+            "color": "GREEN",
+            "positions": [1, 2]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4, 5, 6]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [8, 9]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [5, 6, 8] },
-          { "color": "GREEN", "positions": [2, 4, 7] },
-          { "color": "BLUE", "positions": [9] },
-          { "color": "YELLOW", "positions": [1] }
+          {
+            "color": "RED",
+            "positions": [5, 6, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [2, 4, 7]
+          },
+          {
+            "color": "BLUE",
+            "positions": [9]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [1]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [8, 9] },
-          { "color": "GREEN", "positions": [1, 5] },
-          { "color": "YELLOW", "positions": [2, 3, 4, 7] }
+          {
+            "color": "RED",
+            "positions": [8, 9]
+          },
+          {
+            "color": "GREEN",
+            "positions": [1, 5]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [2, 3, 4, 7]
+          }
         ]
       }
     ]
   },
   {
+    "id": 74,
     "dimension": 3,
     "difficulty": "Hard",
     "layers": [
       {
         "index": 0,
         "arrangements": [
-          { "color": "RED", "positions": [4, 7] },
-          { "color": "GREEN", "positions": [5, 6] },
-          { "color": "BLUE", "positions": [3, 8, 9] },
-          { "color": "MAGENTA", "positions": [1, 2] }
+          {
+            "color": "RED",
+            "positions": [4, 7]
+          },
+          {
+            "color": "GREEN",
+            "positions": [5, 6]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 8, 9]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [1, 2]
+          }
         ]
       },
       {
         "index": 1,
         "arrangements": [
-          { "color": "RED", "positions": [5] },
-          { "color": "YELLOW", "positions": [6, 9] },
-          { "color": "MAGENTA", "positions": [4] },
-          { "color": "CYAN", "positions": [1, 2] }
+          {
+            "color": "RED",
+            "positions": [5]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [6, 9]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [4]
+          },
+          {
+            "color": "CYAN",
+            "positions": [1, 2]
+          }
         ]
       },
       {
         "index": 2,
         "arrangements": [
-          { "color": "RED", "positions": [8, 9] },
-          { "color": "GREEN", "positions": [5] },
-          { "color": "BLUE", "positions": [3] },
-          { "color": "MAGENTA", "positions": [1] }
+          {
+            "color": "RED",
+            "positions": [8, 9]
+          },
+          {
+            "color": "GREEN",
+            "positions": [5]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [1]
+          }
         ]
       }
     ]

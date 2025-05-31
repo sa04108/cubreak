@@ -22,7 +22,7 @@ namespace Cublocks
         [SerializeField] private GameObject gameClearPanel;
         [SerializeField] private GameObject gameOverPanel;
 
-        public void SetActivePanel(ENUM_UI_PANEL panel)
+        public void SetActivePanel(ENUM_UI_PANEL panel, bool additive = false)
         {
             GameObject panelObj = titlePanel;
             switch (panel)
@@ -47,7 +47,14 @@ namespace Cublocks
                     break;
             }
 
-            SetActivePanel(panelObj);
+            if (additive)
+            {
+                panelObj.SetActive(true);
+            }
+            else
+            {
+                SetActivePanel(panelObj);
+            }
         }
 
         public void SetActivePanel(GameObject panel)

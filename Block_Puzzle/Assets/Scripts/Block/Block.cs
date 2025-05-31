@@ -18,7 +18,6 @@ namespace Cublocks
         private bool isFalling = false;
         public bool IsFalling { get => isFalling; }
         private bool isUnconnected = false;
-        private bool isAtBottom = false;
         private float fallingSpeed;
 
         private bool destroyed;

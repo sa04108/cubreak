@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Cublocks
 {
-    public class CameraRotation : MonoBehaviour
+    public class CameraController : MonoBehaviour
     {
         [SerializeField] private Transform nextCamera;
         [SerializeField] private Transform cubeParent;
@@ -38,7 +38,7 @@ namespace Cublocks
 
         private void OnEnable()
         {
-            ResetPosition();
+            ResetPositionImmediately();
         }
 
         private Vector3 SlerpAround(Vector3 a, Vector3 b, Vector3 pivot, float t)
@@ -94,11 +94,19 @@ namespace Cublocks
             }
         }
 
-        public void ResetPosition()
+        public void ResetPositionImmediately()
         {
             RotateDown();
             nextCamera.localPosition = Vector3.zero;
             nextCamera.localRotation = Quaternion.identity;
+            transform.position = nextCamera.position;
+            transform.rotation = nextCamera.rotation;
+        }
+
+        public void SetCameraDistance(int dimension)
+        {
+            dimension += 4;
+            transform.parent.position = new Vector3(-dimension, 0.0f, -dimension);
         }
     } 
 }

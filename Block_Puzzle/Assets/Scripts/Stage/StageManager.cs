@@ -1,4 +1,8 @@
+using Newtonsoft.Json;
+using Sirenix.OdinInspector;
+using System.IO;
 using TMPro;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +20,7 @@ namespace Cublocks
         private int exerciseDimension;
 
         [SerializeField] private TextAsset stageJson;
-        [SerializeField] private CameraPos cameraPos;
+        [SerializeField] private CameraController cameraController;
         [SerializeField] private Transform cubeParent;
         [SerializeField] private GameObject[] cubePrefab;
         [SerializeField] private Button[] stageButtons;
@@ -142,7 +146,7 @@ namespace Cublocks
                 }
             }
 
-            cameraPos.SetCameraDistance(stage.Dimension - 2);
+            cameraController.SetCameraDistance(stage.Dimension);
         }
 
         private void CreateExerciseCube()
@@ -169,7 +173,7 @@ namespace Cublocks
                 }
             }
 
-            cameraPos.SetCameraDistance(exerciseDimension - 2);
+            cameraController.SetCameraDistance(exerciseDimension);
         }
 
         private void EndStage()
@@ -213,5 +217,67 @@ namespace Cublocks
                 UIManager.Instance.EscapeStage();
             }
         }
-    } 
+
+#if UNITY_EDITOR
+        [Button]
+        private void ExportStagesJsonWithId()
+        {
+            stageData = CubeStage.FromJson(stageJson.text);
+
+            for (int i = 0; i < stageData.Length; i++)
+            {
+                stageData[i].Id = i + 1;
+            }
+
+            var stageStr = JsonConvert.SerializeObject(stageData, Formatting.Indented);
+            File.WriteAllText(Path.Combine(Application.dataPath, "Resources/stage_data.json"), stageStr);
+        }
+
+        [Button]
+        private void ValidateStages()
+        {
+            stageData = CubeStage.FromJson(stageJson.text);
+
+            for (int i = 0; i < stageData.Length; i++)
+            {
+                if (!stageData[i].IsClearable())
+                {
+                    Debug.Log($"Stage {i + 1} is not clearable.");
+                }
+            }
+        }
+
+        [Button]
+        private void FixStage(int id)
+        {
+            stageData = CubeStage.FromJson(stageJson.text);
+
+            // id를 0으로 할 경우 전체 스테이지에 대해 검증
+            if (id == 0)
+            {
+                foreach (var stage in stageData)
+                {
+                    if (!stage.IsClearable())
+                    {
+                        Debug.Log($"Stage {stage.Id} is not clearable. Try fix..");
+                        if (!stage.Fix())
+                        {
+                            Debug.Log($"Failed to fix Stage {stage.Id}.");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (!stageData[id].Fix())
+                {
+                    Debug.Log($"Failed to fix Stage {id}.");
+                }
+            }
+
+            var stageStr = JsonConvert.SerializeObject(stageData, Formatting.Indented);
+            File.WriteAllText(Path.Combine(Application.dataPath, "Resources/stage_data.json"), stageStr);
+        }
+#endif
+    }
 }

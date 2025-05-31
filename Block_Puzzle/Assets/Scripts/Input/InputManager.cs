@@ -4,7 +4,7 @@ namespace Cublocks
 {
     public class InputManager : Singleton<InputManager>
     {
-        [SerializeField] new CameraRotation camera;
+        [SerializeField] new CameraController camera;
         bool inputReady;
         Vector2 startPos;
         Vector2 endPos;

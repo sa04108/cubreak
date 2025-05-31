@@ -8,6 +8,10 @@ namespace Cublocks
     // 전체 스테이지 정보
     public class CubeStage
     {
+        // 1부터 순차적으로 부여되는 ID
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
         // N×N×N 에서의 N
         [JsonProperty("dimension")]
         public int Dimension { get; set; }

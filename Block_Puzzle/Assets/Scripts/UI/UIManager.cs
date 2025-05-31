@@ -75,14 +75,14 @@ namespace Cublocks
 
         public void GameClear()
         {
-            uiPanels.SetActivePanel(UIPanels.ENUM_UI_PANEL.GameClear);
+            uiPanels.SetActivePanel(UIPanels.ENUM_UI_PANEL.GameClear, true);
             finalScoreText.text = scoreText.text;
             stageManager.StageClear();
         }
 
         public void GameOver()
         {
-            uiPanels.SetActivePanel(UIPanels.ENUM_UI_PANEL.GameOver);
+            uiPanels.SetActivePanel(UIPanels.ENUM_UI_PANEL.GameOver, true);
             finalScoreText.text = scoreText.text;
         }
     } 
