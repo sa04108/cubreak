@@ -15,11 +15,12 @@ namespace Cublocks
 
         private Vector3 targetPos;
 
-        private bool isFalling;
+        private bool isFalling = false;
         public bool IsFalling { get => isFalling; }
+        private bool isUnconnected = false;
+        private bool isAtBottom = false;
         private float fallingSpeed;
 
-        private bool isUnconnected;
         private bool destroyed;
 
         private Vector3[] rayCastVec
@@ -40,12 +41,10 @@ namespace Cublocks
         private void Start()
         {
             blockWatcher.Subscribe(this);
-            blockWatcher.FallingBlockCount++;
-            isFalling = true;
             fallingSpeed = CustomPlayerPrefs.GetFloat(ENUM_PLAYERPREFS.BlockFallingSpeed);
 
-            StartCoroutine(CoMoveDown());
-            targetPos = transform.localPosition;
+            MoveDown();
+            targetPos = transform.position;
 
             isUnconnected = false; // 주변에 같은 색으로 연결될 수 있는 블럭이 없는 경우 true
             destroyed = false;
@@ -54,7 +53,7 @@ namespace Cublocks
         // Update is called once per frame
         private void Update()
         {
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPos, Time.deltaTime * fallingSpeed);
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * fallingSpeed);
         }
 
         public void SetColor(ENUM_COLOR? color)
@@ -108,7 +107,7 @@ namespace Cublocks
                     isFalling = true;
                 }
 
-                yield return new WaitUntil(() => transform.localPosition.y - targetPos.y <= 0.1f);
+                yield return new WaitUntil(() => transform.position.y - targetPos.y <= 0.1f);
             }
 
             if (isFalling)

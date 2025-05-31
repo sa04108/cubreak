@@ -21,7 +21,7 @@ namespace Cublocks
             SetVolume(volumeSlider.value);
         }
 
-        void SetVolume(float volume)
+        private void SetVolume(float volume)
         {
             listener.volume = volume;
             bgm.volume = volume;
