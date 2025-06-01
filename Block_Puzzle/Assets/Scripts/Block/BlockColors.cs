@@ -10,7 +10,7 @@ namespace Cublocks
         YELLOW,
         MAGENTA,
         CYAN,
-        PURPLE,
+        BLACK,
         WHITE
     }
 
@@ -24,7 +24,7 @@ namespace Cublocks
             Color.yellow,
             Color.magenta,
             Color.cyan,
-            Color.purple,
+            Color.black,
             Color.white // default color
         };
     }

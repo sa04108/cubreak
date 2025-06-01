@@ -86,135 +86,6 @@ namespace Cublocks
         }
 
         /// <summary>
-        /// CubeStage 객체를 받아서 int[,,] 배열로 변환합니다.
-        /// 반환되는 배열 grid[x, y, z]에서
-        ///   - x, y, z ∈ [0 .. N-1]
-        ///   - z = 0이 바닥층(1층), z가 커질수록 위층을 의미
-        ///   - grid[x,y,z] == 0 은 빈 칸, >0 은 ENUM_COLOR를 (int)로 변환한 값입니다.
-        /// </summary>
-        /// <returns>크기 N×N×N인 int[,,] 배열</returns>
-        private static int[,,] ToInt3DArray(this CubeStage stage)
-        {
-            int N = stage.Dimension;
-            // N×N×N 크기의 3차원 배열을 0으로 초기화
-            int[,,] grid = new int[N, N, N];
-            // 모든 좌표를 순회하며 기본 색상값을 대입
-            for (int x = 0; x < N; x++)
-            {
-                for (int y = 0; y < N; y++)
-                {
-                    for (int z = 0; z < N; z++)
-                    {
-                        grid[x, y, z] = (int)ENUM_COLOR.WHITE;
-                    }
-                }
-            }
-
-            // 각 Layer를 순회하면서
-            //   layer.Index → z 인덱스로 사용
-            //   arrangement.Color → (int)로 변환하여 색 번호로 사용
-            //   arrangement.Positions → 1-based index를 x,y로 매핑
-            foreach (var layer in stage.Layers)
-            {
-                int z = layer.Index;
-                if (z < 0 || z >= N)
-                {
-                    throw new ArgumentOutOfRangeException(
-                        nameof(stage.Layers),
-                        $"Layer.Index 값이 0~{N - 1} 범위를 벗어났습니다: {z}"
-                    );
-                }
-
-                foreach (var arr in layer.Arrangements)
-                {
-                    // ENUM_COLOR → int
-                    int colorValue = (int)arr.Color;
-
-                    // positions 배열 순회
-                    foreach (int pos in arr.Positions)
-                    {
-                        if (pos < 1 || pos > N * N)
-                        {
-                            throw new ArgumentOutOfRangeException(
-                                nameof(arr.Positions),
-                                $"Position 값이 1~{N * N} 범위를 벗어났습니다: {pos}"
-                            );
-                        }
-
-                        int zeroIndex = pos - 1;
-                        int x = zeroIndex % N;       // 열(column)
-                        int y = zeroIndex / N;       // 행(row)
-
-                        grid[x, y, z] = colorValue;
-                    }
-                }
-            }
-
-            return grid;
-        }
-
-        /// <summary>
-        /// 그리드 정보를 스테이지 객체에 덮어 씌운다.
-        /// </summary>
-        private static void ApplyGrid(this CubeStage stage, int[,,] grid)
-        {
-            int N = grid.GetLength(0);
-            // stage.Dimension을 동기화(필요하다면)
-            stage.Dimension = N;
-
-            // 기존 Layers를 모두 지우고, 다시 채운다
-            stage.Layers.Clear();
-
-            for (int z = 0; z < N; z++)
-            {
-                var layer = new CubeLayer
-                {
-                    Index = z,
-                    Arrangements = new List<Arrangement>()
-                };
-
-                // 이 층(z)에 있는 블록들을 색깔별로 모으기
-                // key: ENUM_COLOR, value: List<1-based 위치 인덱스>
-                var dict = new Dictionary<ENUM_COLOR, List<int>>();
-
-                for (int y = 0; y < N; y++)
-                {
-                    for (int x = 0; x < N; x++)
-                    {
-                        int raw = grid[x, y, z];
-                        if (raw == 0)
-                            continue;  // 빈 칸이면 스킵
-
-                        var color = (ENUM_COLOR)raw;
-
-                        // 1-based 포지션 계산: (y * N + x) + 1
-                        int pos = y * N + x + 1;
-
-                        if (!dict.TryGetValue(color, out var list))
-                        {
-                            list = new List<int>();
-                            dict[color] = list;
-                        }
-                        list.Add(pos);
-                    }
-                }
-
-                // dict에 모인 색깔별 위치 정보를 Arrangement로 변환
-                foreach (var kv in dict)
-                {
-                    var arr = new Arrangement
-                    {
-                        Color = kv.Key,
-                        Positions = kv.Value.ToArray()
-                    };
-                    layer.Arrangements.Add(arr);
-                }
-
-                stage.Layers.Add(layer);
-            }
-        }
-
-        /// <summary>
         /// 재귀 탐색: 현재 grid 상태에서 파괴 가능 여부를 반환.
         /// 성공(True) 시, hint에 “제거해야 할 첫번째 그룹”이 담긴다.
         /// 실패(False) 시, hint = null.
@@ -259,6 +130,122 @@ namespace Cublocks
             // 어느 경우에도 빈 상태로 못 이끌었으면 실패
             hint = null;
             return false;
+        }
+
+        /// <summary>
+        /// CubeStage 객체를 받아서 int[,,] 배열로 변환합니다.
+        /// 반환되는 배열 grid[x, y, z]에서
+        ///   - x, y, z ∈ [0 .. N-1]
+        ///   - z = 0이 바닥층(1층), z가 커질수록 위층을 의미
+        ///   - grid[x,y,z] == 0 은 빈 칸, >0 은 ENUM_COLOR를 (int)로 변환한 값입니다.
+        /// </summary>
+        /// <returns>크기 N×N×N인 int[,,] 배열</returns>
+        private static int[,,] ToInt3DArray(this CubeStage stage)
+        {
+            int N = stage.Dimension;
+            // N×N×N 크기의 3차원 배열을 0으로 초기화
+            int[,,] grid = new int[N, N, N];
+
+            // 각 Layer를 순회하면서
+            //   layer.Index → z 인덱스로 사용
+            //   arrangement.Color → (int)로 변환하여 색 번호로 사용
+            //   arrangement.Positions → 1-based index를 x,y로 매핑
+            foreach (var layer in stage.Layers)
+            {
+                int z = layer.Index;
+                if (z < 0 || z >= N)
+                {
+                    throw new ArgumentOutOfRangeException(
+                        nameof(stage.Layers),
+                        $"Layer.Index 값이 0~{N - 1} 범위를 벗어났습니다: {z}"
+                    );
+                }
+
+                foreach (var arr in layer.Arrangements)
+                {
+                    // ENUM_COLOR → int
+                    int colorValue = (int)arr.Color;
+
+                    // positions 배열 순회
+                    foreach (int pos in arr.Positions)
+                    {
+                        if (pos < 1 || pos > N * N)
+                        {
+                            throw new ArgumentOutOfRangeException(
+                                nameof(arr.Positions),
+                                $"Position 값이 1~{N * N} 범위를 벗어났습니다: {pos}"
+                            );
+                        }
+
+                        int zeroIndex = pos - 1;
+                        int x = zeroIndex % N;       // 열(column)
+                        int y = zeroIndex / N;       // 행(row)
+
+                        // 0을 빈칸으로 해야 하므로 Color 값을 1-based로 변경
+                        grid[x, y, z] = colorValue + 1;
+                    }
+                }
+            }
+
+            return grid;
+        }
+
+        /// <summary>
+        /// 그리드 정보를 스테이지 객체에 덮어 씌운다.
+        /// </summary>
+        private static void ApplyGrid(this CubeStage stage, int[,,] grid)
+        {
+            int N = grid.GetLength(0);
+            // stage.Dimension을 동기화(필요하다면)
+            stage.Dimension = N;
+
+            // 기존 Layers를 모두 지우고, 다시 채운다
+            stage.Layers.Clear();
+
+            for (int z = 0; z < N; z++)
+            {
+                var layer = new CubeLayer
+                {
+                    Index = z,
+                    Arrangements = new List<Arrangement>()
+                };
+
+                // 이 층(z)에 있는 블록들을 색깔별로 모으기
+                // key: ENUM_COLOR, value: List<1-based 위치 인덱스>
+                var dict = new Dictionary<ENUM_COLOR, List<int>>();
+
+                for (int y = 0; y < N; y++)
+                {
+                    for (int x = 0; x < N; x++)
+                    {
+                        int raw = grid[x, y, z];
+                        var color = (ENUM_COLOR)(raw - 1);
+
+                        // 1-based 포지션 계산: (y * N + x) + 1
+                        int pos = y * N + x + 1;
+
+                        if (!dict.TryGetValue(color, out var list))
+                        {
+                            list = new List<int>();
+                            dict[color] = list;
+                        }
+                        list.Add(pos);
+                    }
+                }
+
+                // dict에 모인 색깔별 위치 정보를 Arrangement로 변환
+                foreach (var kv in dict)
+                {
+                    var arr = new Arrangement
+                    {
+                        Color = kv.Key,
+                        Positions = kv.Value.ToArray()
+                    };
+                    layer.Arrangements.Add(arr);
+                }
+
+                stage.Layers.Add(layer);
+            }
         }
 
         /// <summary>

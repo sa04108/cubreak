@@ -107,7 +107,7 @@ namespace Cublocks
             exerciseDimension = CustomPlayerPrefs.GetInt(ENUM_PLAYERPREFS.ExerciseDimension);
             nowStage = stageNum;
 
-            if (stageNum == 0)
+            if (stageNum == 0 || stageNum > stageData.Length)
             {
                 CreateExerciseCube();
             }
@@ -232,36 +232,39 @@ namespace Cublocks
             for (int i = 0; i < stageData.Length; i++)
             {
                 stageData[i].Id = i + 1;
-                foreach (var layer in stageData[i].Layers)
-                {
-                    int[] memo = new int[stageData[i].Dimension * stageData[i].Dimension];
-                    List<int> unsetPositions = new();
-                    List<ENUM_COLOR> colors = new(System.Enum.GetValues(typeof(ENUM_COLOR)).Cast<ENUM_COLOR>());
-                    foreach (var arrangement in layer.Arrangements)
-                    {
-                        foreach (var position in arrangement.Positions)
-                        {
-                            memo[position - 1] = 1;
-                        }
-                        colors.Remove(arrangement.Color);
-                    }
 
-                    for (int j = 0; j < memo.Length; j++)
-                    {
-                        if (memo[j] == 0)
-                            unsetPositions.Add(j + 1);
-                    }
+                // 기본 색이 지정되지 않은 경우 아래 코드 사용
+                // 현재 json 포맷에서는 position은 빈 블록 없이 모든 색에 대한 값을 갖고 있어야 한다.
+                //foreach (var layer in stageData[i].Layers)
+                //{
+                //    int[] memo = new int[stageData[i].Dimension * stageData[i].Dimension];
+                //    List<int> unsetPositions = new();
+                //    List<ENUM_COLOR> colors = new(System.Enum.GetValues(typeof(ENUM_COLOR)).Cast<ENUM_COLOR>());
+                //    foreach (var arrangement in layer.Arrangements)
+                //    {
+                //        foreach (var position in arrangement.Positions)
+                //        {
+                //            memo[position - 1] = 1;
+                //        }
+                //        colors.Remove(arrangement.Color);
+                //    }
 
-                    if (unsetPositions.Count > 0)
-                    {
-                        int ran = Random.Range(0, colors.Count);
-                        layer.Arrangements.Add(new Arrangement()
-                        {
-                            Color = colors[ran],
-                            Positions = unsetPositions.ToArray()
-                        });
-                    }
-                }
+                //    for (int j = 0; j < memo.Length; j++)
+                //    {
+                //        if (memo[j] == 0)
+                //            unsetPositions.Add(j + 1);
+                //    }
+
+                //    if (unsetPositions.Count > 0)
+                //    {
+                //        int ran = Random.Range(0, colors.Count);
+                //        layer.Arrangements.Add(new Arrangement()
+                //        {
+                //            Color = colors[ran],
+                //            Positions = unsetPositions.ToArray()
+                //        });
+                //    }
+                //}
             }
 
             var stageStr = JsonConvert.SerializeObject(stageData, Formatting.Indented);
