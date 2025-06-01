@@ -56,7 +56,10 @@ namespace Cublocks
                     return false;
 
                 if (Vector2.Distance(startPos, endPos) < Screen.width * 0.1f)
+                {
+                    Invoke("SetInputReadyTrue", 0.2f);
                     return true;
+                }
             }
 
             return false;
