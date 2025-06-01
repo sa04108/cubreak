@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Cublocks
 {
@@ -51,10 +52,11 @@ namespace Cublocks
 
             if (Input.GetMouseButtonUp(0))
             {
+                if (EventSystem.current.IsPointerOverGameObject())
+                    return false;
+
                 if (Vector2.Distance(startPos, endPos) < Screen.width * 0.1f)
-                {
                     return true;
-                }
             }
 
             return false;
