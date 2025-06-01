@@ -45,7 +45,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5577000253180294250}
   - component: {fileID: 1830627744709048755}
-  - component: {fileID: 2480501880231551468}
   m_Layer: 0
   m_Name: 2x2x2 Cube
   m_TagString: Untagged
@@ -93,18 +92,6 @@ MonoBehaviour:
     - {fileID: 7521103832971175179}
     - {fileID: 7521103831693280966}
     - {fileID: 7521103832112706265}
---- !u!114 &2480501880231551468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4156044948955534605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6414255f5a363d24e8a89202c1fd3f5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5442793700881096969
 GameObject:
   m_ObjectHideFlags: 0

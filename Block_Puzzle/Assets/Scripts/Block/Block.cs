@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 
@@ -15,12 +16,14 @@ namespace Cublocks
 
         private Vector3 targetPos;
 
+        public (int, int, int) Coord { get; private set; }
+        public int ColorIndex { get; private set; } = 0;
         private bool isFalling = false;
         public bool IsFalling { get => isFalling; }
         private bool isUnconnected = false;
         private float fallingSpeed;
 
-        private bool destroyed;
+        private bool dirty;
 
         private Vector3[] rayCastVec
         {
@@ -41,12 +44,10 @@ namespace Cublocks
         {
             blockWatcher.Subscribe(this);
             fallingSpeed = CustomPlayerPrefs.GetFloat(ENUM_PLAYERPREFS.BlockFallingSpeed);
-
-            MoveDown();
             targetPos = transform.position;
 
             isUnconnected = false; // 주변에 같은 색으로 연결될 수 있는 블럭이 없는 경우 true
-            destroyed = false;
+            dirty = false;
         }
 
         // Update is called once per frame
@@ -55,18 +56,51 @@ namespace Cublocks
             transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * fallingSpeed);
         }
 
+        public void SetCoord(int x, int y, int z)
+        {
+            Coord = (x, y, z);
+        }
+
         public void SetColor(ENUM_COLOR? color)
         {
             if (color.HasValue)
             {
                 renderer.material.color = BlockColors.colors[(int)color];
+                ColorIndex = (int)color;
             }
             else
             {
                 int numOfBlockColor = CustomPlayerPrefs.GetInt(ENUM_PLAYERPREFS.NumOfBlockColor);
-                int colorVal = Random.Range(0, numOfBlockColor);
+                int colorVal = UnityEngine.Random.Range(0, numOfBlockColor);
                 renderer.material.color = BlockColors.colors[colorVal];
+                ColorIndex = colorVal;
             }
+        }
+
+        public void SetHintAnimation(bool active)
+        {
+            DOTween.Kill(this);
+
+            if (active)
+            {
+                PlayHintAnimation();
+            }
+            else
+            {
+                renderer.material.SetColor("_EmissionColor", Color.black);
+            }
+        }
+
+        private void PlayHintAnimation()
+        {
+            DOTween.To(() => renderer.material.GetColor("_EmissionColor"), x => renderer.material.SetColor("_EmissionColor", x), Color.gray, 0.5f)
+                .SetId(this)
+                .OnComplete(() =>
+                {
+                    DOTween.To(() => renderer.material.GetColor("_EmissionColor"), x => renderer.material.SetColor("_EmissionColor", x), Color.black, 0.5f)
+                    .SetId(this)
+                    .OnComplete(PlayHintAnimation);
+                });
         }
 
         public void SetAlpha(float alpha)
@@ -99,6 +133,7 @@ namespace Cublocks
             while (!Physics.Raycast(transform.position, Vector3.down, maxRayDistance))
             {
                 targetPos += Vector3.down;
+                Coord = blockWatcher.OnBlockMovedDown(this);
 
                 if (!isFalling)
                 {
@@ -144,7 +179,7 @@ namespace Cublocks
 
         public void DestroyBlocks()
         {
-            if (destroyed) return;
+            if (dirty) return;
 
             RaycastHit hit;
 
@@ -154,7 +189,7 @@ namespace Cublocks
                 {
                     if (CompareColor(hit.transform.GetComponent<Renderer>(), renderer))
                     {
-                        destroyed = true;
+                        dirty = true;
                         hit.transform.GetComponent<Block>().DestroyBlocks();
 
                         // 맨 끝 블럭의 경우 다시 이 함수가 실행되지 않으므로 따로 제거해주어야 한다.
@@ -163,7 +198,7 @@ namespace Cublocks
                 }
             }
 
-            if (destroyed) DestroyAndScore();
+            if (dirty) DestroyAndScore();
         }
 
         private void DestroyAndScore()
@@ -175,6 +210,7 @@ namespace Cublocks
 
         private void OnDestroy()
         {
+            DOTween.Kill(this);
             StopAllCoroutines();
             blockWatcher?.Unsubscribe(this);
         }

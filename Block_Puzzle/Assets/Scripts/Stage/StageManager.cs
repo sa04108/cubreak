@@ -1,6 +1,8 @@
 using Newtonsoft.Json;
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,6 +40,7 @@ namespace Cublocks
             InitializeStagePanel();
 
             exerciseButton.onClick.AddListener(() => StartStage(0));
+            hintButton.onClick.AddListener(RevealHintBlocks);
 
             prevButton.onClick.AddListener(() =>
             {
@@ -100,7 +103,7 @@ namespace Cublocks
 
         private void StartStage(int stageNum)
         {
-            BlockWatcher.Instance?.Initialize();
+            cubeParent.gameObject.SetActive(true);
             exerciseDimension = CustomPlayerPrefs.GetInt(ENUM_PLAYERPREFS.ExerciseDimension);
             nowStage = stageNum;
 
@@ -126,46 +129,40 @@ namespace Cublocks
         private void CreateCube(CubeStage stage)
         {
             cubeObject = Instantiate(cubePrefab[stage.Dimension - 2], cubeParent);
-            var cubeMat = cubeObject.GetComponent<CubeMaterial>();
+            var cube = cubeObject.GetComponent<Cube>();
+            BlockWatcher.Instance.Initialize(cube);
 
             seeThroughButton.onClick.RemoveAllListeners();
             if (stage.Dimension == 3)
             {
-                seeThroughButton.onClick.AddListener(cubeMat.Set333CubeAlpha);
+                seeThroughButton.onClick.AddListener(cube.Set333CubeAlpha);
             }
             else if (stage.Dimension == 4)
             {
-                seeThroughButton.onClick.AddListener(cubeMat.Set444CubeAlpha);
+                seeThroughButton.onClick.AddListener(cube.Set444CubeAlpha);
             }
 
-            foreach (var layer in stage.Layers)
-            {
-                foreach (var arrangement in layer.Arrangements)
-                {
-                    cubeMat.SetFloorColor(layer.Index, arrangement.Positions, arrangement.Color);
-                }
-            }
-
+            cube.InitializeCube(stage);
             cameraController.SetCameraDistance(stage.Dimension);
         }
 
         private void CreateExerciseCube()
         {
             cubeObject = Instantiate(cubePrefab[exerciseDimension - 2], cubeParent);
-            var cubeMat = cubeObject.GetComponent<CubeMaterial>();
-            var cubeBlocks = cubeObject.GetComponent<CubeBlocks>();
+            var cube = cubeObject.GetComponent<Cube>();
+            BlockWatcher.Instance.Initialize(cube);
 
             seeThroughButton.onClick.RemoveAllListeners();
             if (exerciseDimension == 3)
             {
-                seeThroughButton.onClick.AddListener(cubeMat.Set333CubeAlpha);
+                seeThroughButton.onClick.AddListener(cube.Set333CubeAlpha);
             }
             else if (exerciseDimension == 4)
             {
-                seeThroughButton.onClick.AddListener(cubeMat.Set444CubeAlpha);
+                seeThroughButton.onClick.AddListener(cube.Set444CubeAlpha);
             }
 
-            foreach (var floor in cubeBlocks.floors)
+            foreach (var floor in cube.floors)
             {
                 foreach (var block in floor.floor)
                 {
@@ -176,9 +173,13 @@ namespace Cublocks
             cameraController.SetCameraDistance(exerciseDimension);
         }
 
-        private void EndStage()
+        private void RevealHintBlocks()
         {
-            Destroy(cubeObject);
+            if (cubeObject == null)
+                return;
+
+            var cube = cubeObject.GetComponent<Cube>();
+            cube.RevealHintBlocks();
         }
 
         public void StageClear()
@@ -194,14 +195,12 @@ namespace Cublocks
         {
             EndStage();
             StartStage(nowStage + 1);
-            UIManager.Instance.SetStageUI(nowStage + 1);
         }
 
         public void RestartStage()
         {
             EndStage();
             StartStage(nowStage);
-            UIManager.Instance.SetStageUI(nowStage);
         }
 
         public void EscapeStage()
@@ -218,15 +217,51 @@ namespace Cublocks
             }
         }
 
+        private void EndStage()
+        {
+            cubeParent.gameObject.SetActive(false);
+            Destroy(cubeObject);
+        }
+
 #if UNITY_EDITOR
         [Button]
-        private void ExportStagesJsonWithId()
+        private void ExportStagesJson()
         {
             stageData = CubeStage.FromJson(stageJson.text);
 
             for (int i = 0; i < stageData.Length; i++)
             {
                 stageData[i].Id = i + 1;
+                foreach (var layer in stageData[i].Layers)
+                {
+                    int[] memo = new int[stageData[i].Dimension * stageData[i].Dimension];
+                    List<int> unsetPositions = new();
+                    List<ENUM_COLOR> colors = new(System.Enum.GetValues(typeof(ENUM_COLOR)).Cast<ENUM_COLOR>());
+                    foreach (var arrangement in layer.Arrangements)
+                    {
+                        foreach (var position in arrangement.Positions)
+                        {
+                            memo[position - 1] = 1;
+                        }
+                        colors.Remove(arrangement.Color);
+                    }
+
+                    for (int j = 0; j < memo.Length; j++)
+                    {
+                        if (memo[j] == 0)
+                            unsetPositions.Add(j + 1);
+                    }
+
+                    if (unsetPositions.Count > 0)
+                    {
+                        int ran = Random.Range(0, colors.Count);
+                        layer.Arrangements.Add(new Arrangement()
+                        {
+                            Color = colors[ran],
+                            Positions = unsetPositions.ToArray()
+                        });
+                    }
+                }
             }
 
             var stageStr = JsonConvert.SerializeObject(stageData, Formatting.Indented);
@@ -265,13 +300,24 @@ namespace Cublocks
                             Debug.Log($"Failed to fix Stage {stage.Id}.");
                         }
                     }
+                    else
+                    {
+                        Debug.Log($"Stage {stage.Id} is clearable.");
+                    }
                 }
             }
             else
             {
-                if (!stageData[id].Fix())
+                if (!stageData[id - 1].IsClearable())
                 {
-                    Debug.Log($"Failed to fix Stage {id}.");
+                    if (!stageData[id - 1].Fix())
+                    {
+                        Debug.Log($"Failed to fix Stage {id}.");
+                    }
+                }
+                else
+                {
+                    Debug.Log($"Stage {id} is clearable.");
                 }
             }
 

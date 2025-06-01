@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Cublocks
 {
@@ -37,6 +38,9 @@ namespace Cublocks
         public bool Click()
         {
             if (!inputReady)
+                return false;
+
+            if (EventSystem.current.IsPointerOverGameObject())
                 return false;
 
             if (Input.GetMouseButtonDown(0))

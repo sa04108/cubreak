@@ -12,8 +12,6 @@ namespace Cublocks
     /// </summary>
     public static class StageUtility
     {
-        private static int N;  // 한 변의 길이
-
         /// <summary>
         /// 외부 호출용: 스테이지에 있는 큐브의 "파괴 가능(true) / 불가(false)" 판별.
         /// 색깔은 1,2,3,... 처럼 양의 정수로 가정하고, 빈 칸(제거된 칸)은 0. 
@@ -22,7 +20,6 @@ namespace Cublocks
         public static bool IsClearable(this CubeStage stage)
         {
             // 재귀 탐색 전용 함수 호출
-            N = stage.Dimension;
             return Solve(stage.ToInt3DArray(), out _);
         }
 
@@ -219,16 +216,16 @@ namespace Cublocks
 
         /// <summary>
         /// 재귀 탐색: 현재 grid 상태에서 파괴 가능 여부를 반환.
-        /// 성공(True) 시, hints에 “제거해야 할 그룹 순서”가 담긴다.
-        /// 실패(False) 시, hints = null.
+        /// 성공(True) 시, hint에 “제거해야 할 첫번째 그룹”이 담긴다.
+        /// 실패(False) 시, hint = null.
         /// </summary>
-        private static bool Solve(int[,,] grid, out List<List<Tuple<int, int, int>>> hints)
+        public static bool Solve(int[,,] grid, out List<Tuple<int, int, int>> hint)
         {
             // 1) 만약 이미 모두 빈 상태라면 파괴 가능
             if (IsEmpty(grid))
             {
                 // 더 이상 제거할 그룹이 없으므로, 빈 리스트로 초기화
-                hints = new List<List<Tuple<int, int, int>>>();
+                hint = new();
                 return true;
             }
 
@@ -238,7 +235,7 @@ namespace Cublocks
             // 그룹이 하나도 없다면 더 이상 제거할 수 없으므로 불가
             if (allGroups.Count == 0)
             {
-                hints = null;
+                hint = null;
                 return false;
             }
 
@@ -250,20 +247,17 @@ namespace Cublocks
                 RemoveGroup(next, group);
                 ApplyGravity(next);
 
-                // 재귀 호출: next 상태에서 클리어 가능한지, 그리고 subHints(이후 제거 순서)를 받아본다.
-                if (Solve(next, out List<List<Tuple<int, int, int>>> subHints))
+                // 재귀 호출: next 상태에서 클리어 가능한지, 그리고 현재 그룹을 hint로 한다.
+                if (Solve(next, out _))
                 {
-                    // 성공 케이스: 현재 group을 맨 앞에 추가한 뒤, subHints를 뒤에 붙인다.
-                    hints = new List<List<Tuple<int, int, int>>>();
-                    hints.Add(group);
-                    hints.AddRange(subHints);
+                    hint = group;
                     return true;
                 }
                 // 만약 재귀에서 실패하면 그대로 다음 그룹을 시도
             }
 
             // 어느 경우에도 빈 상태로 못 이끌었으면 실패
-            hints = null;
+            hint = null;
             return false;
         }
 
@@ -272,6 +266,8 @@ namespace Cublocks
         /// </summary>
         private static bool IsEmpty(int[,,] grid)
         {
+            int N = grid.GetLength(0);
+
             for (int x = 0; x < N; x++)
                 for (int y = 0; y < N; y++)
                     for (int z = 0; z < N; z++)
@@ -286,6 +282,7 @@ namespace Cublocks
         /// </summary>
         private static List<List<Tuple<int, int, int>>> FindAllGroups(int[,,] grid)
         {
+            int N = grid.GetLength(0);
             bool[,,] visited = new bool[N, N, N];
             var groups = new List<List<Tuple<int, int, int>>>();
 
@@ -366,6 +363,7 @@ namespace Cublocks
         /// </summary>
         private static void ApplyGravity(int[,,] grid)
         {
+            int N = grid.GetLength(0);
             // x와 y를 고정하고 z축 방향(0→N-1)으로 블록을 모아서 아래로 채움.
             for (int x = 0; x < N; x++)
             {
@@ -397,6 +395,7 @@ namespace Cublocks
         /// </summary>
         private static int[,,] CloneGrid(int[,,] original)
         {
+            int N = original.GetLength(0);
             int[,,] copy = new int[N, N, N];
             for (int x = 0; x < N; x++)
                 for (int y = 0; y < N; y++)
