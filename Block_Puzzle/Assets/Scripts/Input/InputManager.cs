@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Cublocks
 {
@@ -40,9 +39,6 @@ namespace Cublocks
             if (!inputReady)
                 return false;
 
-            if (EventSystem.current.IsPointerOverGameObject())
-                return false;
-
             if (Input.GetMouseButtonDown(0))
             {
                 startPos = Input.mousePosition;
@@ -79,7 +75,7 @@ namespace Cublocks
                         float speedY = touch.deltaPosition.y / touch.deltaTime;
                         if (inputReady)
                         {
-                            if (Mathf.Abs(speedX) > 2000f && Mathf.Abs(speedY) < 2000f)
+                            if (Mathf.Abs(speedX) > 1500f && Mathf.Abs(speedY) < 1500f)
                             {
                                 if (speedX < 0)
                                     camera.RotateRight();
@@ -89,7 +85,7 @@ namespace Cublocks
                                 inputReady = false;
                                 return true;
                             }
-                            else if (Mathf.Abs(speedX) < 2000f && Mathf.Abs(speedY) > 2000f)
+                            else if (Mathf.Abs(speedX) < 1500f && Mathf.Abs(speedY) > 1500f)
                             {
                                 if (speedY < 0)
                                     camera.RotateUp();

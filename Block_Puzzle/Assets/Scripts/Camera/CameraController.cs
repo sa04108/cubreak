@@ -30,7 +30,7 @@ namespace Cublocks
                 RotateDown();
 
             if (slerpVal < 1.0f)
-                slerpVal += Time.deltaTime / 3.0f;
+                slerpVal += Time.deltaTime;
 
             transform.position = SlerpAround(transform.position, nextCamera.position, Vector3.up * nextCamera.position.y, slerpVal);
             transform.LookAt(cubeParent);

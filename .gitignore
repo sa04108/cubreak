@@ -70,5 +70,6 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+Block_Puzzle/.utmp/*
 Block_Puzzle/Assets/External Assets/EffectTexturesAndPrefabs/Materials/LightRing.mat
 Block_Puzzle/Assets/External Assets/EffectTexturesAndPrefabs/Materials/Star_B.mat
