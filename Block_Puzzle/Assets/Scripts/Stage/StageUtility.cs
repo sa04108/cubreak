@@ -108,7 +108,7 @@ namespace Cublocks
                 {
                     for (int z = 0; z < N; z++)
                     {
-                        grid[x, y, z] = (int)ENUM_COLOR.BLACK;
+                        grid[x, y, z] = (int)ENUM_COLOR.WHITE;
                     }
                 }
             }

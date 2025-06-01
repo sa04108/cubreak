@@ -10,8 +10,8 @@ namespace Cublocks
         YELLOW,
         MAGENTA,
         CYAN,
-        WHITE,
-        BLACK
+        PURPLE,
+        WHITE
     }
 
     public class BlockColors
@@ -24,8 +24,8 @@ namespace Cublocks
             Color.yellow,
             Color.magenta,
             Color.cyan,
-            Color.white,
-            Color.black // black is default color
+            Color.purple,
+            Color.white // default color
         };
     }
 }
