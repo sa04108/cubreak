@@ -45,19 +45,11 @@ namespace Cublocks
                 startPos = Input.mousePosition;
             }
 
-            if (Input.GetMouseButton(0))
-            {
-                endPos = Input.mousePosition;
-            }
-
             if (Input.GetMouseButtonUp(0))
             {
-                if (EventSystem.current.IsPointerOverGameObject())
-                    return false;
-
+                endPos = Input.mousePosition;
                 if (Vector2.Distance(startPos, endPos) < Screen.width * 0.1f)
                 {
-                    Invoke("SetInputReadyTrue", 0.2f);
                     return true;
                 }
             }

@@ -20,7 +20,7 @@ namespace Cublocks
         private int unconnectedBlockCount;
         public int UnconnectedBlockCount { get => unconnectedBlockCount; set => unconnectedBlockCount = value; }
 
-        private void LateUpdate()
+        private void Update()
         {
             InputManager.Instance.Slide();
             if (InputManager.Instance.Click() && FallingBlockCount == 0)

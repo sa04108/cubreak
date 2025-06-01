@@ -109,6 +109,7 @@ namespace Cublocks
 
         private void StartStage(int stageNum)
         {
+            cameraController.ResetPositionImmediately();
             cubeParent.gameObject.SetActive(true);
             exerciseDimension = CustomPlayerPrefs.GetInt(ENUM_PLAYERPREFS.ExerciseDimension);
             nowStage = stageNum;

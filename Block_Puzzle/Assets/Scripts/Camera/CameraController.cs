@@ -36,11 +36,6 @@ namespace Cublocks
             transform.LookAt(cubeParent);
         }
 
-        private void OnEnable()
-        {
-            ResetPositionImmediately();
-        }
-
         private Vector3 SlerpAround(Vector3 a, Vector3 b, Vector3 pivot, float t)
         {
             // A, B, P는 Vector3 타입 (월드 좌표계)
