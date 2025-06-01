@@ -2,7 +2,6 @@ using Newtonsoft.Json;
 using Sirenix.OdinInspector;
 using System.IO;
 using TMPro;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,6 +26,7 @@ namespace Cublocks
         [SerializeField] private Button exerciseButton;
         [SerializeField] private Button prevButton;
         [SerializeField] private Button nextButton;
+        [SerializeField] private Button hintButton;
         [SerializeField] private Button seeThroughButton;
 
         private void Start()

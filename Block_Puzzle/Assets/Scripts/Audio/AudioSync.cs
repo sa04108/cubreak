@@ -17,9 +17,13 @@ namespace Cublocks
             Button button = GetComponent<Button>();
             if (button != null)
             {
-                button.onClick.AddListener(() =>
+                if (audioClip == null)
                 {
                     audioClip = Resources.Load<AudioClip>("Sounds/Click");
+                }
+
+                button.onClick.AddListener(() =>
+                {
                     listener.clip = audioClip;
                     listener.Play();
                 });

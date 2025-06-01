@@ -6,7 +6,6 @@ namespace Cublocks
     public class AudioManager : Singleton<AudioManager>
     {
         [HideInInspector] public AudioSource listener;
-        [SerializeField] AudioSource bgm;
         [SerializeField] Slider volumeSlider;
 
         protected override void Awake()
@@ -24,7 +23,6 @@ namespace Cublocks
         private void SetVolume(float volume)
         {
             listener.volume = volume;
-            bgm.volume = volume;
         }
     } 
 }
