@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Cublocks
+namespace Cubreak
 {
 	[System.Serializable]
 	public class Floor

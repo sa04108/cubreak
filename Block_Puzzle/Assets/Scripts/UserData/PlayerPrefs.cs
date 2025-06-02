@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Cublocks
+namespace Cubreak
 {
     public enum ENUM_PLAYERPREFS
     {

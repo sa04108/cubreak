@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Cublocks
+namespace Cubreak
 {
     public class StageManager : MonoBehaviour
     {

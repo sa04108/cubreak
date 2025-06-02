@@ -2,7 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 
-namespace Cublocks
+namespace Cubreak
 {
     public class Block : MonoBehaviour
     {

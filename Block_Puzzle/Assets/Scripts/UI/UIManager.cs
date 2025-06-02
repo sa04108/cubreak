@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Cublocks
+namespace Cubreak
 {
     public class UIManager : Singleton<UIManager>
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Cublocks
+namespace Cubreak
 {
     // 전체 스테이지 정보
     public class CubeStage

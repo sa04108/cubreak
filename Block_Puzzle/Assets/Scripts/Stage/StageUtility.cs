@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Cublocks
+namespace Cubreak
 {
     /// <summary>
     /// Cube Stage에 대하여 다음 기능을 제공합니다.

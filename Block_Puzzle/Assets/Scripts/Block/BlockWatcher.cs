@@ -2,7 +2,7 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Cublocks
+namespace Cubreak
 {
     public class BlockWatcher : Singleton<BlockWatcher>
     {

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Cublocks
+namespace Cubreak
 {
     public class AudioSync : MonoBehaviour
     {

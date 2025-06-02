@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Cublocks
+namespace Cubreak
 {
     public class InputManager : Singleton<InputManager>
     {

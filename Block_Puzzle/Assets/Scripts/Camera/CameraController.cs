@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Cublocks
+namespace Cubreak
 {
     public class CameraController : MonoBehaviour
     {

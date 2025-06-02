@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Cublocks
+namespace Cubreak
 {
     public class UIOptions : MonoBehaviour
     {
