@@ -189,7 +189,7 @@ namespace Cubreak
                 // f1) g = (파괴한 블록 수), h = (이 그룹이 파괴된 후 남은 블록 수)
                 int heuristic = grid.Length - group.Count;
                 // 이 그룹의 f가 방문 목록의 가장 작은 f보다 크면 가지치기(Pruning)
-                if (heuristic > fList.Min)
+                if (fList.Count > 0 && heuristic > fList.Min)
                 {
                     fList.Add(heuristic);
                     continue;

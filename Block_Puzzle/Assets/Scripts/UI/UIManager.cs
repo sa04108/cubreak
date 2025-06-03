@@ -77,7 +77,7 @@ namespace Cubreak
         {
             uiPanels.SetActivePanel(UIPanels.ENUM_UI_PANEL.GameClear, true);
             finalScoreText.text = scoreText.text;
-            stageManager.StageClear();
+            stageManager.ClearStage();
         }
 
         public void GameOver()

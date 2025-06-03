@@ -28,6 +28,7 @@ namespace Cubreak
         [SerializeField] private Button nextButton;
         [SerializeField] private Button hintButton;
         [SerializeField] private Button seeThroughButton;
+        [SerializeField] private Button nextStageButton;
 
         private void Start()
         {
@@ -47,6 +48,7 @@ namespace Cubreak
 
             exerciseButton.onClick.AddListener(() => StartStage(0));
             hintButton.onClick.AddListener(RevealHintBlocks);
+            nextStageButton.onClick.AddListener(NextStage);
 
             prevButton.onClick.AddListener(() =>
             {
@@ -178,8 +180,10 @@ namespace Cubreak
             cube.RevealHintBlocks();
         }
 
-        public void StageClear()
+        public void ClearStage()
         {
+            nextStageButton.gameObject.SetActive(nowStage < stageData.Length);
+
             if (nowStage > clearedStage)
             {
                 stageButtons[nowStage % stageButtons.Length].interactable = true;
@@ -187,18 +191,26 @@ namespace Cubreak
             }
         }
 
-        public void NextStage()
+        private void EndStage()
+        {
+            cubeParent.gameObject.SetActive(false);
+            Destroy(cubeObject);
+        }
+
+        private void NextStage()
         {
             EndStage();
             StartStage(nowStage + 1);
         }
 
+        // Button Linked
         public void RestartStage()
         {
             EndStage();
             StartStage(nowStage);
         }
 
+        // Button Linked
         public void EscapeStage()
         {
             EndStage();
@@ -211,12 +223,6 @@ namespace Cubreak
             {
                 UIManager.Instance.EscapeStage();
             }
-        }
-
-        private void EndStage()
-        {
-            cubeParent.gameObject.SetActive(false);
-            Destroy(cubeObject);
         }
 
 #if UNITY_EDITOR
