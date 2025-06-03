@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Cubreak
@@ -12,6 +13,7 @@ namespace Cubreak
     /// </summary>
     public static class StageUtility
     {
+        //public static int Count = 0;
         /// <summary>
         /// 외부 호출용: 스테이지에 있는 큐브의 "파괴 가능(true) / 불가(false)" 판별.
         /// 색깔은 1,2,3,... 처럼 양의 정수로 가정하고, 빈 칸(제거된 칸)은 0. 
@@ -86,31 +88,59 @@ namespace Cubreak
         }
 
         /// <summary>
-        /// 재귀 탐색: 현재 grid 상태에서 파괴 가능 여부를 반환.
-        /// 성공(True) 시, hint에 “제거해야 할 첫번째 그룹”이 담긴다.
-        /// 실패(False) 시, hint = null.
+        /// 재귀 탐색을 통해 Grid에 있는 모든 블록이 파괴 가능한지 확인한다.
         /// </summary>
-        public static bool Solve(int[,,] grid, out List<Tuple<int, int, int>> hint)
+        /// <param name="hint">hint: 파괴가 가능하다면 현재 상태에서 처음으로 파괴해야할 블록 리스트가 반환되며 그렇지 않으면 null</param>
+        /// <param name="heuristic">휴리스틱 알고리즘을 사용할 것인지 여부</param>
+        /// <returns>true: 파괴가 가능하다. / false: 불가능하다.</returns>
+        public static bool Solve(int[,,] grid, out List<Tuple<int, int, int>> hint, bool heuristic = true)
         {
-            // 1) 만약 이미 모두 빈 상태라면 파괴 가능
+            if (heuristic)
+            {
+                SortedSet<int> fList = new();
+
+                do
+                {
+                    hint = SolveIDAStar(grid, fList);
+                    fList.Remove(fList.Min);
+                } while (fList.Count > 0);
+            }
+            else
+            {
+                hint = SolveBruteForce(grid);
+            }
+
+            if (hint == null)
+                return false;
+
+            return true;
+        }
+
+        /// <summary>
+        /// 완전탐색을 통해 Grid의 파괴 여부를 확인한다.
+        /// </summary>
+        private static List<Tuple<int, int, int>> SolveBruteForce(int[,,] grid)
+        {
+            // 만약 이미 모두 빈 상태라면 파괴 가능
             if (IsEmpty(grid))
             {
                 // 더 이상 제거할 그룹이 없으므로, 빈 리스트로 초기화
-                hint = new();
-                return true;
+                return new();
             }
 
-            // 2) 제거할 수 있는 모든 그룹을 찾는다.
+            // 제거할 수 있는 모든 그룹을 찾는다.
             List<List<Tuple<int, int, int>>> allGroups = FindAllGroups(grid);
 
             // 그룹이 하나도 없다면 더 이상 제거할 수 없으므로 불가
             if (allGroups.Count == 0)
             {
-                hint = null;
-                return false;
+                return null;
             }
 
-            // 3) 각 그룹을 하나씩 제거해 보고, 재귀 호출
+            // 블록 개수가 많은 그룹부터 파괴한다. 그러면 이후 탐색해야 하는 블록 개수가 줄어서 탐색 시간이 줄어듦.
+            allGroups = allGroups.OrderByDescending(group => group.Count).ToList();
+
+            // 각 그룹을 하나씩 제거해 보고, 재귀 호출
             foreach (var group in allGroups)
             {
                 // 현재 그룹을 제거한 다음 상태를 만들어 본다.
@@ -119,17 +149,67 @@ namespace Cubreak
                 ApplyGravity(next);
 
                 // 재귀 호출: next 상태에서 클리어 가능한지, 그리고 현재 그룹을 hint로 한다.
-                if (Solve(next, out _))
+                if (SolveBruteForce(next) != null)
                 {
-                    hint = group;
-                    return true;
+                    return group;
                 }
                 // 만약 재귀에서 실패하면 그대로 다음 그룹을 시도
             }
 
             // 어느 경우에도 빈 상태로 못 이끌었으면 실패
-            hint = null;
-            return false;
+            return null;
+        }
+
+        /// <summary>
+        /// IDA* 알고리즘을 활용한다. IDDFS와의 차이는 여기서는 깊이 한계값을 정할 때 휴리스틱을 활용한다.
+        /// </summary>
+        /// <param name="fList">방문한 f score 목록. f = g + h</param>
+        private static List<Tuple<int, int, int>> SolveIDAStar(int[,,] grid, SortedSet<int> fList)
+        {
+            // 만약 이미 모두 빈 상태라면 파괴 가능
+            if (IsEmpty(grid))
+            {
+                // 더 이상 제거할 그룹이 없으므로, 빈 리스트로 초기화
+                return new();
+            }
+
+            // 제거할 수 있는 모든 그룹을 찾는다.
+            List<List<Tuple<int, int, int>>> allGroups = FindAllGroups(grid);
+
+            // 그룹이 하나도 없다면 더 이상 제거할 수 없으므로 불가
+            if (allGroups.Count == 0)
+            {
+                return null;
+            }
+
+            // 각 그룹을 하나씩 제거해 보고, 재귀 호출
+            foreach (var group in allGroups)
+            {
+                // f score = g + h
+                // f1) g = (파괴한 블록 수), h = (이 그룹이 파괴된 후 남은 블록 수)
+                int heuristic = grid.Length - group.Count;
+                // 이 그룹의 f가 방문 목록의 가장 작은 f보다 크면 가지치기(Pruning)
+                if (heuristic > fList.Min)
+                {
+                    fList.Add(heuristic);
+                    continue;
+                }
+
+                // 현재 그룹을 제거한 다음 상태를 만들어 본다.
+                int[,,] next = CloneGrid(grid);
+                RemoveGroup(next, group);
+                ApplyGravity(next);
+
+                // 재귀 호출: next 상태에서 클리어 가능한지, 그리고 현재 그룹을 hint로 한다.
+                if (SolveIDAStar(next, fList) != null)
+                {
+                    return group;
+                }
+                // 만약 재귀에서 실패하면 그대로 다음 그룹을 시도
+            }
+
+            // 어느 경우에도 빈 상태로 못 이끌었으면 실패
+            return null;
         }
 
         /// <summary>
@@ -193,7 +273,7 @@ namespace Cubreak
         /// <summary>
         /// 그리드 정보를 스테이지 객체에 덮어 씌운다.
         /// </summary>
-        private static void ApplyGrid(this CubeStage stage, int[,,] grid)
+        public static void ApplyGrid(this CubeStage stage, int[,,] grid)
         {
             int N = grid.GetLength(0);
             // stage.Dimension을 동기화(필요하다면)
@@ -309,6 +389,7 @@ namespace Cubreak
                                     if (nx < 0 || nx >= N || ny < 0 || ny >= N || nz < 0 || nz >= N)
                                         continue;
                                     if (visited[nx, ny, nz]) continue;
+                                    //Count++;
                                     if (grid[nx, ny, nz] == color)
                                     {
                                         visited[nx, ny, nz] = true;

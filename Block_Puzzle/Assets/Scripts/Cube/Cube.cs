@@ -1,4 +1,7 @@
+using Newtonsoft.Json;
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 namespace Cubreak
@@ -23,20 +26,33 @@ namespace Cubreak
             alphaVal = 0.0f;
         }
 
-        public void InitializeCube(CubeStage stage)
+        public void InitializeCube(CubeStage stage = null)
         {
-            foreach (var layer in stage.Layers)
+            if (stage != null)
             {
-                foreach (var arrangement in layer.Arrangements)
+                foreach (var layer in stage.Layers)
                 {
-                    foreach (int pos in arrangement.Positions)
+                    foreach (var arrangement in layer.Arrangements)
                     {
-                        if (floors[layer.Index].floor[pos - 1] != null)
+                        foreach (int pos in arrangement.Positions)
                         {
-                            var block = floors[layer.Index].floor[pos - 1].GetComponent<Block>();
-                            block.SetCoord((pos - 1) % dimension, (pos - 1) / dimension, layer.Index);
-                            block.SetColor(arrangement.Color);
+                            if (floors[layer.Index].floor[pos - 1] != null)
+                            {
+                                var block = floors[layer.Index].floor[pos - 1].GetComponent<Block>();
+                                block.SetCoord((pos - 1) % dimension, (pos - 1) / dimension, layer.Index);
+                                block.SetColor(arrangement.Color);
+                            }
                         }
+                    }
+                }
+            }
+            else
+            {
+                foreach (var floor in floors)
+                {
+                    foreach (var block in floor.floor)
+                    {
+                        block.GetComponent<Block>().SetColor(null);
                     }
                 }
             }
@@ -138,6 +154,41 @@ namespace Cubreak
             {
                 Debug.Log("This stage is not clearable now.");
             }
+        }
+
+        [Button]
+        private void ExportAsJson()
+        {
+            var stage = new CubeStage()
+            {
+                Id = 0,
+                Dimension = dimension,
+                Difficulty = "None",
+                Layers = new()
+            };
+
+            int N = dimension;
+            int[,,] grid = new int[N, N, N];
+
+            for (int x = 0; x < N; x++)
+                for (int y = 0; y < N; y++)
+                    for (int z = 0; z < N; z++)
+                    {
+                        var blockObj = floors[z].floor[x + y * N];
+                        if (blockObj == null)
+                        {
+                            Debug.LogWarning("Block must be not empty.");
+                            return;
+                        }
+
+                        var block = blockObj.GetComponent<Block>();
+                        grid[x, y, z] = block.ColorIndex + 1;
+                    }
+
+            stage.ApplyGrid(grid);
+
+            var stageStr = JsonConvert.SerializeObject(stage, Formatting.Indented);
+            File.WriteAllText(Path.Combine(Application.dataPath, "Resources/stage_data_ex.json"), stageStr);
         }
     }
 }

@@ -116,7 +116,7 @@ namespace Cubreak
 
             if (stageNum == 0 || stageNum > stageData.Length)
             {
-                CreateExerciseCube();
+                CreateCube();
             }
             else
             {
@@ -133,51 +133,40 @@ namespace Cubreak
             UIManager.Instance.SetStageUI(nowStage);
         }
 
-        private void CreateCube(CubeStage stage)
+        private void CreateCube(CubeStage stage = null)
         {
-            cubeObject = Instantiate(cubePrefab[stage.Dimension - 2], cubeParent);
+            int dimension;
+            if (stage != null)
+            {
+                dimension = stage.Dimension;
+            }
+            else
+            {
+                dimension = exerciseDimension;
+            }
+
+            cubeObject = Instantiate(cubePrefab[dimension - 2], cubeParent);
             var cube = cubeObject.GetComponent<Cube>();
             BlockWatcher.Instance.Initialize(cube);
 
             seeThroughButton.onClick.RemoveAllListeners();
-            if (stage.Dimension == 3)
+            if (dimension == 2)
             {
+                seeThroughButton.gameObject.SetActive(false);
+            }
+            else if (dimension == 3)
+            {
+                seeThroughButton.gameObject.SetActive(true);
                 seeThroughButton.onClick.AddListener(cube.Set333CubeAlpha);
             }
-            else if (stage.Dimension == 4)
+            else if (dimension == 4)
             {
+                seeThroughButton.gameObject.SetActive(true);
                 seeThroughButton.onClick.AddListener(cube.Set444CubeAlpha);
             }
 
             cube.InitializeCube(stage);
-            cameraController.SetCameraDistance(stage.Dimension);
-        }
-
-        private void CreateExerciseCube()
-        {
-            cubeObject = Instantiate(cubePrefab[exerciseDimension - 2], cubeParent);
-            var cube = cubeObject.GetComponent<Cube>();
-            BlockWatcher.Instance.Initialize(cube);
-
-            seeThroughButton.onClick.RemoveAllListeners();
-            if (exerciseDimension == 3)
-            {
-                seeThroughButton.onClick.AddListener(cube.Set333CubeAlpha);
-            }
-            else if (exerciseDimension == 4)
-            {
-                seeThroughButton.onClick.AddListener(cube.Set444CubeAlpha);
-            }
-
-            foreach (var floor in cube.floors)
-            {
-                foreach (var block in floor.floor)
-                {
-                    block.GetComponent<Block>().SetColor(null);
-                }
-            }
-
-            cameraController.SetCameraDistance(exerciseDimension);
+            cameraController.SetCameraDistance(dimension);
         }
 
         private void RevealHintBlocks()
@@ -232,7 +221,7 @@ namespace Cubreak
 
 #if UNITY_EDITOR
         [Button]
-        private void ExportStagesJson()
+        private void ExportStagesAsJson()
         {
             stageData = CubeStage.FromJson(stageJson.text);
 
