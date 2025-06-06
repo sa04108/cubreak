@@ -41,13 +41,20 @@ namespace Cubreak
             QualitySettings.vSyncCount = 0;
             Application.targetFrameRate = 60;
 
+#if DEBUG
+            CustomPlayerPrefs.SetInt(ENUM_PLAYERPREFS.ClearedStage, 100);
+            exerciseButton.onClick.AddListener(() => StartStage(0));
+
+#else
+            exerciseButton.gameObject.SetActive(false);
+#endif
+
             stageData = CubeStage.FromArrayJson(stageJson.text);
             clearedStage = CustomPlayerPrefs.GetInt(ENUM_PLAYERPREFS.ClearedStage, 0);
             stageGroupIndex = clearedStage / stageButtons.Length;
 
             InitializeStagePanel();
 
-            exerciseButton.onClick.AddListener(() => StartStage(0));
             hintButton.onClick.AddListener(RevealHintBlocks);
             nextStageButton.onClick.AddListener(NextStage);
 

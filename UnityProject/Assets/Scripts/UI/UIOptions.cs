@@ -8,10 +8,9 @@ namespace Cubreak
         [Header("Block Falling Speed Text")]
         [SerializeField] private TMP_Text blockFallingSpeedText;
 
-        [Header("Cube Model Text")]
+        [Header("Exercise Tab")]
+        [SerializeField] private GameObject exerciseTab;
         [SerializeField] private TMP_Text cubeDimentionText;
-
-        [Header("Number of Block Colors Text")]
         [SerializeField] private TMP_Text numOfBlockColorText;
 
         private float blockFallingSpeed;
@@ -52,16 +51,21 @@ namespace Cubreak
 
         private void Awake()
         {
-            NumOfBlockColor = CustomPlayerPrefs.GetInt(ENUM_PLAYERPREFS.NumOfBlockColor, 4);
-            ExerciseDimension = CustomPlayerPrefs.GetInt(ENUM_PLAYERPREFS.ExerciseDimension, 3);
             BlockFallingSpeed = CustomPlayerPrefs.GetFloat(ENUM_PLAYERPREFS.BlockFallingSpeed, 3f);
+#if DEBUG
+            ExerciseDimension = CustomPlayerPrefs.GetInt(ENUM_PLAYERPREFS.ExerciseDimension, 3);
+            NumOfBlockColor = CustomPlayerPrefs.GetInt(ENUM_PLAYERPREFS.NumOfBlockColor, 4);
+#endif
         }
 
         private void Start()
         {
             SetBlockFallingSpeed(0);
+#if DEBUG
+            exerciseTab.SetActive(true);
             SetExerciseDimension(0);
             SetNumberOfBlockColor(0);
+#endif
         }
 
         public void SetBlockFallingSpeed(float delta)
