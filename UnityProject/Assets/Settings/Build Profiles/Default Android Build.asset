@@ -57,7 +57,7 @@ MonoBehaviour:
     - line: '|   useOnDemandResources: 0'
     - line: '|   accelerometerFrequency: 60'
     - line: '|   companyName: Jeon Hyeon Bae'
-    - line: '|   productName: Cublocks'
+    - line: '|   productName: Cubreak'
     - line: '|   defaultCursor: {instanceID: 0}'
     - line: '|   cursorHotspot: {x: 0, y: 0}'
     - line: '|   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b:
@@ -336,7 +336,7 @@ MonoBehaviour:
     - line: '|   - m_BuildTarget: '
     - line: '|     m_Icons:'
     - line: '|     - serializedVersion: 2'
-    - line: '|       m_Icon: {fileID: 2800000, guid: d23ee678f6f3d624095e1b52e9c292fb,
+    - line: '|       m_Icon: {fileID: 2800000, guid: 5b249b19a990a314da5938f7c70605ed,
         type: 3}'
     - line: '|       m_Width: 128'
     - line: '|       m_Height: 128'
