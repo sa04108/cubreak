@@ -1118,6 +1118,63 @@
         "index": 0,
         "arrangements": [
           {
+            "color": "YELLOW",
+            "positions": [1, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 3, 4, 6, 7, 8]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [5]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "MAGENTA",
+            "positions": [1, 4, 5, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 6, 8]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [3, 7]
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "arrangements": [
+          {
+            "color": "MAGENTA",
+            "positions": [1, 2, 3, 9]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [4, 6, 7, 8]
+          },
+          {
+            "color": "CYAN",
+            "positions": [5]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "dimension": 3,
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
             "color": "RED",
             "positions": [5]
           },
@@ -1168,7 +1225,7 @@
     ]
   },
   {
-    "id": 28,
+    "id": 29,
     "dimension": 3,
     "layers": [
       {
@@ -1225,7 +1282,7 @@
     ]
   },
   {
-    "id": 29,
+    "id": 30,
     "dimension": 3,
     "layers": [
       {
@@ -1282,7 +1339,7 @@
     ]
   },
   {
-    "id": 30,
+    "id": 31,
     "dimension": 3,
     "layers": [
       {
@@ -1335,7 +1392,7 @@
     ]
   },
   {
-    "id": 31,
+    "id": 32,
     "dimension": 3,
     "layers": [
       {
@@ -1392,7 +1449,7 @@
     ]
   },
   {
-    "id": 32,
+    "id": 33,
     "dimension": 3,
     "layers": [
       {
@@ -1449,7 +1506,7 @@
     ]
   },
   {
-    "id": 33,
+    "id": 34,
     "dimension": 3,
     "layers": [
       {
@@ -1502,7 +1559,7 @@
     ]
   },
   {
-    "id": 34,
+    "id": 35,
     "dimension": 3,
     "layers": [
       {
@@ -1555,7 +1612,7 @@
     ]
   },
   {
-    "id": 35,
+    "id": 36,
     "dimension": 3,
     "layers": [
       {
@@ -1620,7 +1677,7 @@
     ]
   },
   {
-    "id": 36,
+    "id": 37,
     "dimension": 3,
     "layers": [
       {
@@ -1673,7 +1730,7 @@
     ]
   },
   {
-    "id": 37,
+    "id": 38,
     "dimension": 3,
     "layers": [
       {
@@ -1724,63 +1781,6 @@
           {
             "color": "MAGENTA",
             "positions": [7, 8, 9]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 38,
-    "dimension": 3,
-    "layers": [
-      {
-        "index": 0,
-        "arrangements": [
-          {
-            "color": "YELLOW",
-            "positions": [1, 9]
-          },
-          {
-            "color": "CYAN",
-            "positions": [2, 3, 4, 6, 7, 8]
-          },
-          {
-            "color": "MAGENTA",
-            "positions": [5]
-          }
-        ]
-      },
-      {
-        "index": 1,
-        "arrangements": [
-          {
-            "color": "MAGENTA",
-            "positions": [1, 5, 9]
-          },
-          {
-            "color": "CYAN",
-            "positions": [2, 4, 6, 8]
-          },
-          {
-            "color": "YELLOW",
-            "positions": [3, 7]
-          }
-        ]
-      },
-      {
-        "index": 2,
-        "arrangements": [
-          {
-            "color": "MAGENTA",
-            "positions": [1, 2, 3, 9]
-          },
-          {
-            "color": "YELLOW",
-            "positions": [4, 6, 7, 8]
-          },
-          {
-            "color": "CYAN",
-            "positions": [5]
           }
         ]
       }

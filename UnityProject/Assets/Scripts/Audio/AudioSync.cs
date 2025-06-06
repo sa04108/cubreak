@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Cubreak
 {
-    public class AudioSync : MonoBehaviour
+    public class AudioSync : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField] AudioClip audioClip;
         [SerializeField] bool playOnEnabled;
@@ -21,12 +22,6 @@ namespace Cubreak
                 {
                     audioClip = Resources.Load<AudioClip>("Sounds/Click");
                 }
-
-                button.onClick.AddListener(() =>
-                {
-                    listener.clip = audioClip;
-                    listener.Play();
-                });
             }
         }
 
@@ -40,6 +35,12 @@ namespace Cubreak
                 listener.clip = audioClip;
                 listener.Play();
             }
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            listener.clip = audioClip;
+            listener.Play();
         }
     } 
 }
