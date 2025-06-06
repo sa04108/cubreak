@@ -99,7 +99,7 @@ namespace Cubreak
                     stageButtons[i].gameObject.SetActive(true);
                     stageButtons[i].onClick.RemoveAllListeners();
                     stageButtons[i].onClick.AddListener(() => StartStage(stageNum));
-                    stageButtons[i].GetComponentInChildren<TMP_Text>().text = $"stage\n{stageNum}";
+                    stageButtons[i].GetComponentInChildren<TMP_Text>().text = $"{stageNum}";
 
                     if (stageNum - 1 <= clearedStage)
                     {
