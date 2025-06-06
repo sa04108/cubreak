@@ -4,6 +4,7 @@ using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 namespace Cubreak
 {
@@ -227,13 +228,18 @@ namespace Cubreak
 
 #if UNITY_EDITOR
         [Button]
-        private void ExportStagesAsJson()
+        private void ReorderAndExportStages()
         {
+            var sw = new System.Diagnostics.Stopwatch();
             stageData = CubeStage.FromJson(stageJson.text);
 
             for (int i = 0; i < stageData.Length; i++)
             {
-                stageData[i].Id = i + 1;
+                sw.Restart();
+                stageData[i].IsClearable();
+                sw.Stop();
+                stageData[i].MinimumTime = sw.ElapsedMilliseconds;
+                Debug.Log("Elapsed: " + sw.ElapsedMilliseconds);
 
                 // 기본 색이 지정되지 않은 경우 아래 코드 사용
                 // 현재 json 포맷에서는 position은 빈 블록 없이 모든 색에 대한 값을 갖고 있어야 한다.
@@ -267,6 +273,13 @@ namespace Cubreak
                 //        });
                 //    }
                 //}
+            }
+
+            stageData = stageData.OrderBy(stage => stage.MinimumTime).ToArray();
+
+            for (int i = 0; i < stageData.Length; i++)
+            {
+                stageData[i].Id = i + 1;
             }
 
             var stageStr = JsonConvert.SerializeObject(stageData, Formatting.Indented);

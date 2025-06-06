@@ -163,7 +163,6 @@ namespace Cubreak
             {
                 Id = 0,
                 Dimension = dimension,
-                Difficulty = "None",
                 Layers = new()
             };
 

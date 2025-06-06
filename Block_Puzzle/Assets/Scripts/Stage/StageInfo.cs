@@ -16,9 +16,9 @@ namespace Cubreak
         [JsonProperty("dimension")]
         public int Dimension { get; set; }
 
-        // 스테이지 난이도 (Easy, Medium, Hard 등)
-        [JsonProperty("difficulty")]
-        public string Difficulty { get; set; } = string.Empty;
+        // 알고리즘 적으로 이 큐브를 푸는데 걸리는 최소 시간(ms)
+        [JsonIgnore]
+        public long MinimumTime { get; set; }
 
         // 각 층별 색상 배치 목록
         [JsonProperty("layers")]
