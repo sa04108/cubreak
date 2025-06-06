@@ -1563,6 +1563,71 @@
         "arrangements": [
           {
             "color": "RED",
+            "positions": [5, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [1, 7]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [2, 4]
+          },
+          {
+            "color": "WHITE",
+            "positions": [3, 6, 9]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [9]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [1, 2, 3, 4, 5, 7]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [6]
+          },
+          {
+            "color": "WHITE",
+            "positions": [8]
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [5, 6, 7, 8, 9]
+          },
+          {
+            "color": "GREEN",
+            "positions": [1, 2, 4]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [3]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "dimension": 3,
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
+            "color": "RED",
             "positions": [1, 5, 6]
           },
           {
@@ -1608,7 +1673,7 @@
     ]
   },
   {
-    "id": 36,
+    "id": 37,
     "dimension": 3,
     "layers": [
       {
@@ -1665,7 +1730,7 @@
     ]
   },
   {
-    "id": 37,
+    "id": 38,
     "dimension": 3,
     "layers": [
       {
@@ -1722,7 +1787,7 @@
     ]
   },
   {
-    "id": 38,
+    "id": 39,
     "dimension": 3,
     "layers": [
       {
@@ -1775,63 +1840,6 @@
     ]
   },
   {
-    "id": 39,
-    "dimension": 3,
-    "layers": [
-      {
-        "index": 0,
-        "arrangements": [
-          {
-            "color": "MAGENTA",
-            "positions": [1, 5]
-          },
-          {
-            "color": "CYAN",
-            "positions": [3, 7]
-          },
-          {
-            "color": "RED",
-            "positions": [2, 4, 6, 8, 9]
-          }
-        ]
-      },
-      {
-        "index": 1,
-        "arrangements": [
-          {
-            "color": "MAGENTA",
-            "positions": [1, 5]
-          },
-          {
-            "color": "CYAN",
-            "positions": [3, 7]
-          },
-          {
-            "color": "RED",
-            "positions": [2, 4, 6, 8, 9]
-          }
-        ]
-      },
-      {
-        "index": 2,
-        "arrangements": [
-          {
-            "color": "MAGENTA",
-            "positions": [1, 5]
-          },
-          {
-            "color": "CYAN",
-            "positions": [3, 7]
-          },
-          {
-            "color": "RED",
-            "positions": [2, 4, 6, 8, 9]
-          }
-        ]
-      }
-    ]
-  },
-  {
     "id": 40,
     "dimension": 3,
     "layers": [
@@ -1839,11 +1847,11 @@
         "index": 0,
         "arrangements": [
           {
-            "color": "GREEN",
+            "color": "MAGENTA",
             "positions": [1, 5]
           },
           {
-            "color": "BLUE",
+            "color": "CYAN",
             "positions": [3, 7]
           },
           {
@@ -1856,11 +1864,11 @@
         "index": 1,
         "arrangements": [
           {
-            "color": "GREEN",
+            "color": "MAGENTA",
             "positions": [1, 5]
           },
           {
-            "color": "BLUE",
+            "color": "CYAN",
             "positions": [3, 7]
           },
           {
@@ -1873,11 +1881,11 @@
         "index": 2,
         "arrangements": [
           {
-            "color": "GREEN",
+            "color": "MAGENTA",
             "positions": [1, 5]
           },
           {
-            "color": "BLUE",
+            "color": "CYAN",
             "positions": [3, 7]
           },
           {
@@ -1890,6 +1898,63 @@
   },
   {
     "id": 41,
+    "dimension": 3,
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
+            "color": "GREEN",
+            "positions": [1, 5]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 7]
+          },
+          {
+            "color": "RED",
+            "positions": [2, 4, 6, 8, 9]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "GREEN",
+            "positions": [1, 5]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 7]
+          },
+          {
+            "color": "RED",
+            "positions": [2, 4, 6, 8, 9]
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "arrangements": [
+          {
+            "color": "GREEN",
+            "positions": [1, 5]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 7]
+          },
+          {
+            "color": "RED",
+            "positions": [2, 4, 6, 8, 9]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 42,
     "dimension": 3,
     "layers": [
       {
@@ -1962,7 +2027,7 @@
     ]
   },
   {
-    "id": 42,
+    "id": 43,
     "dimension": 3,
     "layers": [
       {
@@ -2015,7 +2080,7 @@
     ]
   },
   {
-    "id": 43,
+    "id": 44,
     "dimension": 3,
     "layers": [
       {
@@ -2072,7 +2137,7 @@
     ]
   },
   {
-    "id": 44,
+    "id": 45,
     "dimension": 3,
     "layers": [
       {
@@ -2117,7 +2182,7 @@
     ]
   },
   {
-    "id": 45,
+    "id": 46,
     "dimension": 3,
     "layers": [
       {
@@ -2186,7 +2251,7 @@
     ]
   },
   {
-    "id": 46,
+    "id": 47,
     "dimension": 3,
     "layers": [
       {
@@ -2243,7 +2308,7 @@
     ]
   },
   {
-    "id": 47,
+    "id": 48,
     "dimension": 3,
     "layers": [
       {
@@ -2300,7 +2365,7 @@
     ]
   },
   {
-    "id": 48,
+    "id": 49,
     "dimension": 3,
     "layers": [
       {
@@ -2357,7 +2422,7 @@
     ]
   },
   {
-    "id": 49,
+    "id": 50,
     "dimension": 3,
     "layers": [
       {
@@ -2430,7 +2495,72 @@
     ]
   },
   {
-    "id": 50,
+    "id": 51,
+    "dimension": 3,
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [5]
+          },
+          {
+            "color": "GREEN",
+            "positions": [7, 8, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [2, 6]
+          },
+          {
+            "color": "BLACK",
+            "positions": [1, 4]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [3, 6, 7, 8, 9]
+          },
+          {
+            "color": "GREEN",
+            "positions": [1, 2, 4, 5]
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [6]
+          },
+          {
+            "color": "BLUE",
+            "positions": [1, 3, 4]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [2, 8, 9]
+          },
+          {
+            "color": "BLACK",
+            "positions": [5, 7]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 52,
     "dimension": 3,
     "layers": [
       {
@@ -2503,7 +2633,7 @@
     ]
   },
   {
-    "id": 51,
+    "id": 53,
     "dimension": 3,
     "layers": [
       {
@@ -2580,7 +2710,7 @@
     ]
   },
   {
-    "id": 52,
+    "id": 54,
     "dimension": 3,
     "layers": [
       {
@@ -2645,7 +2775,80 @@
     ]
   },
   {
-    "id": 53,
+    "id": 55,
+    "dimension": 3,
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [6, 8, 9]
+          },
+          {
+            "color": "GREEN",
+            "positions": [1, 4]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [3]
+          },
+          {
+            "color": "WHITE",
+            "positions": [2, 5, 7]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "GREEN",
+            "positions": [6, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4, 8]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [2, 3]
+          },
+          {
+            "color": "WHITE",
+            "positions": [1, 5, 7]
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [3, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4, 7, 8]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [6]
+          },
+          {
+            "color": "BLACK",
+            "positions": [2, 5]
+          },
+          {
+            "color": "WHITE",
+            "positions": [1]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 56,
     "dimension": 3,
     "layers": [
       {
@@ -2722,165 +2925,6 @@
     ]
   },
   {
-    "id": 54,
-    "dimension": 3,
-    "layers": [
-      {
-        "index": 0,
-        "arrangements": [
-          {
-            "color": "RED",
-            "positions": [1, 5, 9]
-          },
-          {
-            "color": "BLUE",
-            "positions": [2, 4, 6, 8]
-          },
-          {
-            "color": "GREEN",
-            "positions": [3, 7]
-          }
-        ]
-      },
-      {
-        "index": 1,
-        "arrangements": [
-          {
-            "color": "RED",
-            "positions": [1, 5, 9]
-          },
-          {
-            "color": "BLUE",
-            "positions": [2, 4, 6, 8]
-          },
-          {
-            "color": "GREEN",
-            "positions": [3, 7]
-          }
-        ]
-      },
-      {
-        "index": 2,
-        "arrangements": [
-          {
-            "color": "RED",
-            "positions": [1, 5, 9]
-          },
-          {
-            "color": "BLUE",
-            "positions": [2, 4, 6, 8]
-          },
-          {
-            "color": "GREEN",
-            "positions": [3, 7]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 55,
-    "dimension": 3,
-    "layers": [
-      {
-        "index": 0,
-        "arrangements": [
-          {
-            "color": "RED",
-            "positions": [1, 3, 7, 9]
-          },
-          {
-            "color": "BLUE",
-            "positions": [2, 4, 6, 8]
-          },
-          {
-            "color": "GREEN",
-            "positions": [5]
-          }
-        ]
-      },
-      {
-        "index": 1,
-        "arrangements": [
-          {
-            "color": "RED",
-            "positions": [1, 3, 7, 9]
-          },
-          {
-            "color": "BLUE",
-            "positions": [2, 4, 6, 8]
-          },
-          {
-            "color": "GREEN",
-            "positions": [5]
-          }
-        ]
-      },
-      {
-        "index": 2,
-        "arrangements": [
-          {
-            "color": "RED",
-            "positions": [1, 3, 7, 9]
-          },
-          {
-            "color": "BLUE",
-            "positions": [2, 4, 6, 8]
-          },
-          {
-            "color": "GREEN",
-            "positions": [5]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 56,
-    "dimension": 3,
-    "layers": [
-      {
-        "index": 0,
-        "arrangements": [
-          {
-            "color": "RED",
-            "positions": [1, 3, 5, 7, 9]
-          },
-          {
-            "color": "CYAN",
-            "positions": [2, 4, 6, 8]
-          }
-        ]
-      },
-      {
-        "index": 1,
-        "arrangements": [
-          {
-            "color": "RED",
-            "positions": [1, 3, 5, 7, 9]
-          },
-          {
-            "color": "CYAN",
-            "positions": [2, 4, 6, 8]
-          }
-        ]
-      },
-      {
-        "index": 2,
-        "arrangements": [
-          {
-            "color": "RED",
-            "positions": [1, 3, 5, 7, 9]
-          },
-          {
-            "color": "CYAN",
-            "positions": [2, 4, 6, 8]
-          }
-        ]
-      }
-    ]
-  },
-  {
     "id": 57,
     "dimension": 3,
     "layers": [
@@ -2888,12 +2932,16 @@
         "index": 0,
         "arrangements": [
           {
-            "color": "MAGENTA",
+            "color": "RED",
+            "positions": [1, 5, 9]
+          },
+          {
+            "color": "BLUE",
             "positions": [2, 4, 6, 8]
           },
           {
-            "color": "YELLOW",
-            "positions": [1, 3, 5, 7, 9]
+            "color": "GREEN",
+            "positions": [3, 7]
           }
         ]
       },
@@ -2901,12 +2949,16 @@
         "index": 1,
         "arrangements": [
           {
-            "color": "MAGENTA",
+            "color": "RED",
+            "positions": [1, 5, 9]
+          },
+          {
+            "color": "BLUE",
             "positions": [2, 4, 6, 8]
           },
           {
-            "color": "YELLOW",
-            "positions": [1, 3, 5, 7, 9]
+            "color": "GREEN",
+            "positions": [3, 7]
           }
         ]
       },
@@ -2914,12 +2966,16 @@
         "index": 2,
         "arrangements": [
           {
-            "color": "MAGENTA",
+            "color": "RED",
+            "positions": [1, 5, 9]
+          },
+          {
+            "color": "BLUE",
             "positions": [2, 4, 6, 8]
           },
           {
-            "color": "YELLOW",
-            "positions": [1, 3, 5, 7, 9]
+            "color": "GREEN",
+            "positions": [3, 7]
           }
         ]
       }
@@ -2933,6 +2989,153 @@
         "index": 0,
         "arrangements": [
           {
+            "color": "RED",
+            "positions": [1, 3, 7, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [5]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [1, 3, 7, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [5]
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [1, 3, 7, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [5]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 59,
+    "dimension": 3,
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [1, 3, 5, 7, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 4, 6, 8]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [1, 3, 5, 7, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 4, 6, 8]
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [1, 3, 5, 7, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 4, 6, 8]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 60,
+    "dimension": 3,
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
+            "color": "MAGENTA",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [1, 3, 5, 7, 9]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "MAGENTA",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [1, 3, 5, 7, 9]
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "arrangements": [
+          {
+            "color": "MAGENTA",
+            "positions": [2, 4, 6, 8]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [1, 3, 5, 7, 9]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 61,
+    "dimension": 3,
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
             "color": "CYAN",
             "positions": [2, 4, 6, 8]
           },
@@ -2971,7 +3174,161 @@
     ]
   },
   {
-    "id": 59,
+    "id": 62,
+    "dimension": 3,
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [6, 8, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [2, 5]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [7]
+          },
+          {
+            "color": "WHITE",
+            "positions": [1, 4]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [7]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [8]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [4, 5, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [1, 2]
+          },
+          {
+            "color": "WHITE",
+            "positions": [3, 6]
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "arrangements": [
+          {
+            "color": "BLUE",
+            "positions": [2, 4, 7]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [3, 5, 6, 8]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [1, 9]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 63,
+    "dimension": 3,
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
+            "color": "GREEN",
+            "positions": [7, 9]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2, 3]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [4, 8]
+          },
+          {
+            "color": "CYAN",
+            "positions": [5]
+          },
+          {
+            "color": "BLACK",
+            "positions": [6]
+          },
+          {
+            "color": "WHITE",
+            "positions": [1]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "GREEN",
+            "positions": [1, 4]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [7, 8]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 5]
+          },
+          {
+            "color": "BLACK",
+            "positions": [6]
+          },
+          {
+            "color": "WHITE",
+            "positions": [3, 9]
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "arrangements": [
+          {
+            "color": "GREEN",
+            "positions": [6]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [5]
+          },
+          {
+            "color": "BLACK",
+            "positions": [3, 7, 8]
+          },
+          {
+            "color": "WHITE",
+            "positions": [1, 2, 4, 9]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 64,
     "dimension": 3,
     "layers": [
       {
@@ -3040,7 +3397,7 @@
     ]
   },
   {
-    "id": 60,
+    "id": 65,
     "dimension": 3,
     "layers": [
       {
@@ -3097,7 +3454,7 @@
     ]
   },
   {
-    "id": 61,
+    "id": 66,
     "dimension": 3,
     "layers": [
       {
@@ -3154,7 +3511,7 @@
     ]
   },
   {
-    "id": 62,
+    "id": 67,
     "dimension": 3,
     "layers": [
       {
@@ -3227,7 +3584,7 @@
     ]
   },
   {
-    "id": 63,
+    "id": 68,
     "dimension": 3,
     "layers": [
       {
@@ -3296,7 +3653,7 @@
     ]
   },
   {
-    "id": 64,
+    "id": 69,
     "dimension": 3,
     "layers": [
       {
@@ -3361,7 +3718,7 @@
     ]
   },
   {
-    "id": 65,
+    "id": 70,
     "dimension": 3,
     "layers": [
       {
@@ -3414,7 +3771,7 @@
     ]
   },
   {
-    "id": 66,
+    "id": 71,
     "dimension": 3,
     "layers": [
       {
@@ -3475,7 +3832,88 @@
     ]
   },
   {
-    "id": 67,
+    "id": 72,
+    "dimension": 3,
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [4, 5, 8]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [9]
+          },
+          {
+            "color": "BLACK",
+            "positions": [3, 6, 7]
+          },
+          {
+            "color": "WHITE",
+            "positions": [1, 2]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [2]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4, 7]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [1, 6]
+          },
+          {
+            "color": "CYAN",
+            "positions": [9]
+          },
+          {
+            "color": "BLACK",
+            "positions": [3]
+          },
+          {
+            "color": "WHITE",
+            "positions": [5, 8]
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [5, 6]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [1, 2]
+          },
+          {
+            "color": "CYAN",
+            "positions": [8, 9]
+          },
+          {
+            "color": "BLACK",
+            "positions": [3, 4]
+          },
+          {
+            "color": "WHITE",
+            "positions": [7]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 73,
     "dimension": 3,
     "layers": [
       {
@@ -3544,7 +3982,7 @@
     ]
   },
   {
-    "id": 68,
+    "id": 74,
     "dimension": 3,
     "layers": [
       {
@@ -3601,7 +4039,7 @@
     ]
   },
   {
-    "id": 69,
+    "id": 75,
     "dimension": 3,
     "layers": [
       {
@@ -3658,7 +4096,84 @@
     ]
   },
   {
-    "id": 70,
+    "id": 76,
+    "dimension": 3,
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
+            "color": "GREEN",
+            "positions": [7]
+          },
+          {
+            "color": "CYAN",
+            "positions": [1, 2, 5]
+          },
+          {
+            "color": "BLACK",
+            "positions": [4, 6, 9]
+          },
+          {
+            "color": "WHITE",
+            "positions": [3, 8]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [1]
+          },
+          {
+            "color": "GREEN",
+            "positions": [4, 8, 9]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [2, 6]
+          },
+          {
+            "color": "BLACK",
+            "positions": [5]
+          },
+          {
+            "color": "WHITE",
+            "positions": [3, 7]
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [1]
+          },
+          {
+            "color": "GREEN",
+            "positions": [9]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [2, 6]
+          },
+          {
+            "color": "BLACK",
+            "positions": [3, 5]
+          },
+          {
+            "color": "WHITE",
+            "positions": [4, 7, 8]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 77,
     "dimension": 3,
     "layers": [
       {
@@ -3715,7 +4230,7 @@
     ]
   },
   {
-    "id": 71,
+    "id": 78,
     "dimension": 3,
     "layers": [
       {
@@ -3772,7 +4287,7 @@
     ]
   },
   {
-    "id": 72,
+    "id": 79,
     "dimension": 3,
     "layers": [
       {
@@ -3829,7 +4344,7 @@
     ]
   },
   {
-    "id": 73,
+    "id": 80,
     "dimension": 3,
     "layers": [
       {
@@ -3902,7 +4417,7 @@
     ]
   },
   {
-    "id": 74,
+    "id": 81,
     "dimension": 3,
     "layers": [
       {
@@ -3959,7 +4474,161 @@
     ]
   },
   {
-    "id": 75,
+    "id": 82,
+    "dimension": 3,
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
+            "color": "GREEN",
+            "positions": [9]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [3, 6, 8]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [4]
+          },
+          {
+            "color": "BLACK",
+            "positions": [1, 2, 5]
+          },
+          {
+            "color": "WHITE",
+            "positions": [7]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "GREEN",
+            "positions": [4, 7, 9]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [5]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [8]
+          },
+          {
+            "color": "BLACK",
+            "positions": [1, 2, 6]
+          },
+          {
+            "color": "WHITE",
+            "positions": [3]
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "arrangements": [
+          {
+            "color": "YELLOW",
+            "positions": [6]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [1, 4, 5, 9]
+          },
+          {
+            "color": "BLACK",
+            "positions": [2]
+          },
+          {
+            "color": "WHITE",
+            "positions": [3, 7, 8]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 83,
+    "dimension": 3,
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
+            "color": "YELLOW",
+            "positions": [7]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [1, 4, 8, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 3]
+          },
+          {
+            "color": "BLACK",
+            "positions": [6]
+          },
+          {
+            "color": "WHITE",
+            "positions": [5]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "YELLOW",
+            "positions": [4]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [3]
+          },
+          {
+            "color": "CYAN",
+            "positions": [1, 7, 8]
+          },
+          {
+            "color": "BLACK",
+            "positions": [9]
+          },
+          {
+            "color": "WHITE",
+            "positions": [2, 5, 6]
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "arrangements": [
+          {
+            "color": "MAGENTA",
+            "positions": [5, 6, 7]
+          },
+          {
+            "color": "CYAN",
+            "positions": [1, 8, 9]
+          },
+          {
+            "color": "BLACK",
+            "positions": [3]
+          },
+          {
+            "color": "WHITE",
+            "positions": [2, 4]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 84,
     "dimension": 3,
     "layers": [
       {
@@ -4028,7 +4697,7 @@
     ]
   },
   {
-    "id": 76,
+    "id": 85,
     "dimension": 3,
     "layers": [
       {
@@ -4097,7 +4766,7 @@
     ]
   },
   {
-    "id": 77,
+    "id": 86,
     "dimension": 3,
     "layers": [
       {
@@ -4170,7 +4839,7 @@
     ]
   },
   {
-    "id": 78,
+    "id": 87,
     "dimension": 3,
     "layers": [
       {
@@ -4239,7 +4908,84 @@
     ]
   },
   {
-    "id": 79,
+    "id": 88,
+    "dimension": 3,
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
+            "color": "GREEN",
+            "positions": [7, 9]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [2, 5]
+          },
+          {
+            "color": "BLACK",
+            "positions": [1, 3, 6]
+          },
+          {
+            "color": "WHITE",
+            "positions": [4, 8]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "GREEN",
+            "positions": [1, 7]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [5]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [3]
+          },
+          {
+            "color": "BLACK",
+            "positions": [2, 6, 8, 9]
+          },
+          {
+            "color": "WHITE",
+            "positions": [4]
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "arrangements": [
+          {
+            "color": "GREEN",
+            "positions": [1, 8]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [5]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [2, 4]
+          },
+          {
+            "color": "BLACK",
+            "positions": [9]
+          },
+          {
+            "color": "WHITE",
+            "positions": [3, 6, 7]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 89,
     "dimension": 3,
     "layers": [
       {
@@ -4308,7 +5054,169 @@
     ]
   },
   {
-    "id": 80,
+    "id": 90,
+    "dimension": 3,
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [5]
+          },
+          {
+            "color": "BLUE",
+            "positions": [2]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [3, 7, 8]
+          },
+          {
+            "color": "CYAN",
+            "positions": [6, 9]
+          },
+          {
+            "color": "WHITE",
+            "positions": [1, 4]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [1, 2]
+          },
+          {
+            "color": "BLUE",
+            "positions": [4, 6, 9]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [5]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [3]
+          },
+          {
+            "color": "WHITE",
+            "positions": [7, 8]
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [2, 6]
+          },
+          {
+            "color": "BLUE",
+            "positions": [1, 5]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [4, 8]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [3]
+          },
+          {
+            "color": "CYAN",
+            "positions": [9]
+          },
+          {
+            "color": "WHITE",
+            "positions": [7]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 91,
+    "dimension": 3,
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [3]
+          },
+          {
+            "color": "GREEN",
+            "positions": [1, 5, 9]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [2, 8]
+          },
+          {
+            "color": "CYAN",
+            "positions": [4, 7]
+          },
+          {
+            "color": "WHITE",
+            "positions": [6]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "GREEN",
+            "positions": [4, 6, 7, 9]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [8]
+          },
+          {
+            "color": "CYAN",
+            "positions": [5]
+          },
+          {
+            "color": "WHITE",
+            "positions": [1, 2, 3]
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [2, 7, 8]
+          },
+          {
+            "color": "GREEN",
+            "positions": [9]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [1, 5]
+          },
+          {
+            "color": "CYAN",
+            "positions": [4]
+          },
+          {
+            "color": "WHITE",
+            "positions": [3, 6]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 92,
     "dimension": 3,
     "layers": [
       {
@@ -4365,7 +5273,7 @@
     ]
   },
   {
-    "id": 81,
+    "id": 93,
     "dimension": 3,
     "layers": [
       {
@@ -4434,7 +5342,7 @@
     ]
   },
   {
-    "id": 82,
+    "id": 94,
     "dimension": 3,
     "layers": [
       {
@@ -4499,7 +5407,7 @@
     ]
   },
   {
-    "id": 83,
+    "id": 95,
     "dimension": 3,
     "layers": [
       {
@@ -4564,7 +5472,7 @@
     ]
   },
   {
-    "id": 84,
+    "id": 96,
     "dimension": 3,
     "layers": [
       {
@@ -4641,7 +5549,7 @@
     ]
   },
   {
-    "id": 85,
+    "id": 97,
     "dimension": 3,
     "layers": [
       {
@@ -4714,7 +5622,88 @@
     ]
   },
   {
-    "id": 86,
+    "id": 98,
+    "dimension": 3,
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [5, 6]
+          },
+          {
+            "color": "GREEN",
+            "positions": [7, 8]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [2, 3, 9]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [4]
+          },
+          {
+            "color": "CYAN",
+            "positions": [1]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [1, 3, 4]
+          },
+          {
+            "color": "GREEN",
+            "positions": [7]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [6]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [5]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 8, 9]
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [7]
+          },
+          {
+            "color": "GREEN",
+            "positions": [8]
+          },
+          {
+            "color": "BLUE",
+            "positions": [5, 6]
+          },
+          {
+            "color": "YELLOW",
+            "positions": [1, 2, 4]
+          },
+          {
+            "color": "CYAN",
+            "positions": [3, 9]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 99,
     "dimension": 3,
     "layers": [
       {
@@ -4785,6 +5774,79 @@
           {
             "color": "WHITE",
             "positions": [2, 4, 6, 7]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 100,
+    "dimension": 3,
+    "layers": [
+      {
+        "index": 0,
+        "arrangements": [
+          {
+            "color": "GREEN",
+            "positions": [6, 8]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [2, 5, 9]
+          },
+          {
+            "color": "CYAN",
+            "positions": [1, 3]
+          },
+          {
+            "color": "WHITE",
+            "positions": [4, 7]
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "arrangements": [
+          {
+            "color": "GREEN",
+            "positions": [3, 8]
+          },
+          {
+            "color": "BLUE",
+            "positions": [5]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [1, 6]
+          },
+          {
+            "color": "CYAN",
+            "positions": [2, 4, 7, 9]
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "arrangements": [
+          {
+            "color": "RED",
+            "positions": [2, 4, 5]
+          },
+          {
+            "color": "BLUE",
+            "positions": [3, 6, 8]
+          },
+          {
+            "color": "MAGENTA",
+            "positions": [1]
+          },
+          {
+            "color": "CYAN",
+            "positions": [9]
+          },
+          {
+            "color": "WHITE",
+            "positions": [7]
           }
         ]
       }

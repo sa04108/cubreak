@@ -115,6 +115,7 @@ namespace Cubreak
             cameraController.ResetPositionImmediately();
             cubeParent.gameObject.SetActive(true);
             exerciseDimension = CustomPlayerPrefs.GetInt(ENUM_PLAYERPREFS.ExerciseDimension);
+            hintButton.interactable = true;
             nowStage = stageNum;
 
             if (stageNum == 0 || stageNum > stageData.Length)
@@ -177,8 +178,14 @@ namespace Cubreak
             if (cubeObject == null)
                 return;
 
+            if (BlockWatcher.Instance.FallingBlockCount != 0)
+                return;
+
             var cube = cubeObject.GetComponent<Cube>();
-            cube.RevealHintBlocks();
+            var solved = cube.RevealHintBlocks();
+
+            if (!solved)
+                hintButton.interactable = false;
         }
 
         public void ClearStage()

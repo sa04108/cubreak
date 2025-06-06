@@ -210,7 +210,7 @@ std::vector<std::vector<std::vector<int>>> GenerateRandomGrid(int N, int colorCo
 }
 
 // Read configuration from 'stage-maker.config'
-void ReadConfig(int& N, int& colorCount, int& maxRepeats) {
+void ReadConfig(int& N, int& colorCount, int& maxStages, int& maxRepeats) {
     std::ifstream configFile("stage-maker.config");
     if (!configFile.is_open()) {
         std::cerr << "Could not open stage-maker.config; using defaults.\n";
@@ -229,6 +229,9 @@ void ReadConfig(int& N, int& colorCount, int& maxRepeats) {
                 }
                 else if (key == "colorCount") {
                     colorCount = std::stoi(value);
+                }
+                else if (key == "maxStages") {
+                    maxStages = std::stoi(value);
                 }
                 else if (key == "maxRepeats") {
                     maxRepeats = std::stoi(value);
@@ -281,17 +284,22 @@ void SaveStagesToJson(const std::vector<CubeStage>& stages, const std::string& f
 int main() {
     int N = 3;           // 기본값: 큐브 한 변 길이
     int colorCount = 4;  // 기본값: 큐브에 사용할 색상 개수 (0~8 중 랜덤 선택)
+    int maxStages = 1;   // 기본값: 가져오고자 하는 스테이지(큐브) 최대 개수
     int maxRepeats = 10; // 기본값: 반복 횟수
 
     if (colorCount > 8)
         colorCount = 8;
 
-    ReadConfig(N, colorCount, maxRepeats);
+    ReadConfig(N, colorCount, maxStages, maxRepeats);
 
     std::vector<CubeStage> foundStages;
     int stageId = 1;
 
     for (int repeat = 0; repeat < maxRepeats; repeat++) {
+        // 찾은 스테이지 수가 목표 스테이지 수를 초과하면 반복 종료
+        if (maxStages <= foundStages.size())
+            break;
+
         auto grid = GenerateRandomGrid(N, colorCount);
         if (IsClearable(grid) || Fix(grid)) {
             CubeStage stage;

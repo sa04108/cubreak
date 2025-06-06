@@ -121,11 +121,8 @@ namespace Cubreak
             }
         }
 
-        public void RevealHintBlocks()
+        public bool RevealHintBlocks()
         {
-            if (BlockWatcher.Instance.FallingBlockCount != 0)
-                return;
-
             int N = dimension;
             int[,,] grid = new int[N, N, N];
 
@@ -142,7 +139,8 @@ namespace Cubreak
                         }
                     }
 
-            if (StageUtility.Solve(grid, out var hintBlocks, out int tick))
+            bool solved = StageUtility.Solve(grid, out var hintBlocks, out int tick);
+            if (solved)
             {
                 foreach (var coord in hintBlocks)
                 {
@@ -157,6 +155,8 @@ namespace Cubreak
                 Debug.Log("This stage is not clearable now.");
             }
             Debug.Log("Tick: " + tick);
+
+            return solved;
         }
 
         [Button]
