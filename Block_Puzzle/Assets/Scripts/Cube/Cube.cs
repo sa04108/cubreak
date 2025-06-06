@@ -48,11 +48,13 @@ namespace Cubreak
             }
             else
             {
+                int colorNum = CustomPlayerPrefs.GetInt(ENUM_PLAYERPREFS.NumOfBlockColor);
+                int[] colorIndices = BlockColors.GetRandomColorIndices(colorNum);
                 foreach (var floor in floors)
                 {
                     foreach (var block in floor.floor)
                     {
-                        block.GetComponent<Block>().SetColor(null);
+                        block.GetComponent<Block>().SetColor((ENUM_COLOR)colorIndices[Random.Range(0, colorIndices.Length)]);
                     }
                 }
             }
@@ -140,7 +142,7 @@ namespace Cubreak
                         }
                     }
 
-            if (StageUtility.Solve(grid, out var hintBlocks))
+            if (StageUtility.Solve(grid, out var hintBlocks, out int tick))
             {
                 foreach (var coord in hintBlocks)
                 {
@@ -154,10 +156,11 @@ namespace Cubreak
             {
                 Debug.Log("This stage is not clearable now.");
             }
+            Debug.Log("Tick: " + tick);
         }
 
         [Button]
-        private void ExportAsJson()
+        private void TryFixAndExportJson()
         {
             var stage = new CubeStage()
             {
@@ -186,8 +189,44 @@ namespace Cubreak
 
             stage.ApplyGrid(grid);
 
+            if (!stage.IsClearable(out _))
+            {
+                if (!stage.Fix())
+                {
+                    Debug.Log($"<color=red>Failed to fix Ex Stage.</color>");
+                    return;
+                }
+            }
+            else
+            {
+                Debug.Log($"<color=green>Ex Stage is clearable.</color>");
+            }
+
             var stageStr = JsonConvert.SerializeObject(stage, Formatting.Indented);
-            File.WriteAllText(Path.Combine(Application.dataPath, "Resources/stage_data_ex.json"), stageStr);
+            File.WriteAllText(Path.Combine(Application.dataPath, FilePaths.StageExJsonPath), stageStr);
+        }
+
+        [Button]
+        private void FixJson()
+        {
+            var jsonPath = FilePaths.GetResourcesRelativePath(FilePaths.StageExJsonPath);
+            var json = Resources.Load<TextAsset>(jsonPath).text;
+            var stage = CubeStage.FromJson(json);
+
+            if (!stage.IsClearable(out _))
+            {
+                if (!stage.Fix())
+                {
+                    Debug.Log($"Failed to fix Ex Stage.");
+                }
+            }
+            else
+            {
+                Debug.Log($"Ex Stage is clearable.");
+            }
+
+            var stageStr = JsonConvert.SerializeObject(stage, Formatting.Indented);
+            File.WriteAllText(Path.Combine(Application.dataPath, FilePaths.StageExJsonPath), stageStr);
         }
     }
 }

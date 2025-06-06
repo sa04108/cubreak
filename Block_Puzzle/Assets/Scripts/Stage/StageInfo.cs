@@ -16,19 +16,25 @@ namespace Cubreak
         [JsonProperty("dimension")]
         public int Dimension { get; set; }
 
-        // 알고리즘 적으로 이 큐브를 푸는데 걸리는 최소 시간(ms)
+        // 알고리즘적으로 이 큐브를 푸는 동안 블록을 탐색한 횟수
         [JsonIgnore]
-        public long MinimumTime { get; set; }
+        public long SolveTicks { get; set; }
 
         // 각 층별 색상 배치 목록
         [JsonProperty("layers")]
         public List<CubeLayer> Layers { get; set; } = new List<CubeLayer>();
 
         /// <summary>
+        /// JSON 문자열을 Stage 객체 배열로 역직렬화
+        /// </summary>
+        public static CubeStage[] FromArrayJson(string json) =>
+            JsonConvert.DeserializeObject<CubeStage[]>(json);
+
+        /// <summary>
         /// JSON 문자열을 Stage 객체로 역직렬화
         /// </summary>
-        public static CubeStage[] FromJson(string json) =>
-            JsonConvert.DeserializeObject<CubeStage[]>(json);
+        public static CubeStage FromJson(string json) =>
+            JsonConvert.DeserializeObject<CubeStage>(json);
 
         /// <summary>
         /// Stage 객체를 JSON 문자열로 직렬화

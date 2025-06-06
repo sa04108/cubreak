@@ -1,10 +1,10 @@
 using Newtonsoft.Json;
 using Sirenix.OdinInspector;
 using System.IO;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
 
 namespace Cubreak
 {
@@ -41,7 +41,7 @@ namespace Cubreak
             QualitySettings.vSyncCount = 0;
             Application.targetFrameRate = 60;
 
-            stageData = CubeStage.FromJson(stageJson.text);
+            stageData = CubeStage.FromArrayJson(stageJson.text);
             clearedStage = CustomPlayerPrefs.GetInt(ENUM_PLAYERPREFS.ClearedStage, 0);
             stageGroupIndex = clearedStage / stageButtons.Length;
 
@@ -230,16 +230,12 @@ namespace Cubreak
         [Button]
         private void ReorderAndExportStages()
         {
-            var sw = new System.Diagnostics.Stopwatch();
-            stageData = CubeStage.FromJson(stageJson.text);
+            stageData = CubeStage.FromArrayJson(stageJson.text);
 
             for (int i = 0; i < stageData.Length; i++)
             {
-                sw.Restart();
-                stageData[i].IsClearable();
-                sw.Stop();
-                stageData[i].MinimumTime = sw.ElapsedMilliseconds;
-                Debug.Log("Elapsed: " + sw.ElapsedMilliseconds);
+                stageData[i].IsClearable(out int tick);
+                stageData[i].SolveTicks = tick;
 
                 // 기본 색이 지정되지 않은 경우 아래 코드 사용
                 // 현재 json 포맷에서는 position은 빈 블록 없이 모든 색에 대한 값을 갖고 있어야 한다.
@@ -275,72 +271,30 @@ namespace Cubreak
                 //}
             }
 
-            stageData = stageData.OrderBy(stage => stage.MinimumTime).ToArray();
+            stageData = stageData.OrderBy(stage => stage.SolveTicks).ToArray();
 
             for (int i = 0; i < stageData.Length; i++)
             {
                 stageData[i].Id = i + 1;
+                Debug.Log("Tick: " + stageData[i].SolveTicks);
             }
 
             var stageStr = JsonConvert.SerializeObject(stageData, Formatting.Indented);
-            File.WriteAllText(Path.Combine(Application.dataPath, "Resources/stage_data.json"), stageStr);
+            File.WriteAllText(Path.Combine(Application.dataPath, FilePaths.StageJsonPath), stageStr);
         }
 
         [Button]
         private void ValidateStages()
         {
-            stageData = CubeStage.FromJson(stageJson.text);
+            stageData = CubeStage.FromArrayJson(stageJson.text);
 
             for (int i = 0; i < stageData.Length; i++)
             {
-                if (!stageData[i].IsClearable())
+                if (!stageData[i].IsClearable(out _))
                 {
                     Debug.Log($"Stage {i + 1} is not clearable.");
                 }
             }
-        }
-
-        [Button]
-        private void FixStage(int id)
-        {
-            stageData = CubeStage.FromJson(stageJson.text);
-
-            // id를 0으로 할 경우 전체 스테이지에 대해 검증
-            if (id == 0)
-            {
-                foreach (var stage in stageData)
-                {
-                    if (!stage.IsClearable())
-                    {
-                        Debug.Log($"Stage {stage.Id} is not clearable. Try fix..");
-                        if (!stage.Fix())
-                        {
-                            Debug.Log($"Failed to fix Stage {stage.Id}.");
-                        }
-                    }
-                    else
-                    {
-                        Debug.Log($"Stage {stage.Id} is clearable.");
-                    }
-                }
-            }
-            else
-            {
-                if (!stageData[id - 1].IsClearable())
-                {
-                    if (!stageData[id - 1].Fix())
-                    {
-                        Debug.Log($"Failed to fix Stage {id}.");
-                    }
-                }
-                else
-                {
-                    Debug.Log($"Stage {id} is clearable.");
-                }
-            }
-
-            var stageStr = JsonConvert.SerializeObject(stageData, Formatting.Indented);
-            File.WriteAllText(Path.Combine(Application.dataPath, "Resources/stage_data.json"), stageStr);
         }
 #endif
     }

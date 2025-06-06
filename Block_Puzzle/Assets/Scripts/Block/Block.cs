@@ -61,20 +61,10 @@ namespace Cubreak
             Coord = (x, y, z);
         }
 
-        public void SetColor(ENUM_COLOR? color)
+        public void SetColor(ENUM_COLOR color)
         {
-            if (color.HasValue)
-            {
-                renderer.material.color = BlockColors.colors[(int)color];
-                ColorIndex = (int)color;
-            }
-            else
-            {
-                int numOfBlockColor = CustomPlayerPrefs.GetInt(ENUM_PLAYERPREFS.NumOfBlockColor);
-                int colorVal = UnityEngine.Random.Range(0, numOfBlockColor);
-                renderer.material.color = BlockColors.colors[colorVal];
-                ColorIndex = colorVal;
-            }
+            renderer.material.color = BlockColors.colors[(int)color];
+            ColorIndex = (int)color;
         }
 
         public void SetHintAnimation(bool active)

@@ -13,6 +13,9 @@ namespace Cubreak
     /// </summary>
     public static class StageUtility
     {
+        // Solve 과정에서의 블록 탐색 횟수
+        private static int Tick = 0;
+
         private struct BlockGroup
         {
             public int color;
@@ -29,10 +32,10 @@ namespace Cubreak
         /// 색깔은 1,2,3,... 처럼 양의 정수로 가정하고, 빈 칸(제거된 칸)은 0. 
         /// </summary>
         /// <returns>이 큐브를 차례대로 그룹 제거 후 빈 상태(전부 0)로 만들 수 있으면 true, 아니면 false.</returns>
-        public static bool IsClearable(this CubeStage stage)
+        public static bool IsClearable(this CubeStage stage, out int tick)
         {
             // 재귀 탐색 전용 함수 호출
-            return Solve(stage.ToInt3DArray(), out _);
+            return Solve(stage.ToInt3DArray(), out _, out tick);
         }
 
         /// <summary>
@@ -40,7 +43,7 @@ namespace Cubreak
         /// 무작위 두 위치에 있는 블록의 색을 서로 교체
         /// </summary>
         /// <returns></returns>
-        public static bool Fix(this CubeStage stage, int maxAttempt = 10)
+        public static bool Fix(this CubeStage stage, int maxAttempt = 20)
         {
             int N = stage.Dimension;
             int[,,] grid = stage.ToInt3DArray();
@@ -81,10 +84,11 @@ namespace Cubreak
                 grid[b.x, b.y, b.z] = temp;
 
                 // 2) swap 이후 “클리어 가능?” 판정
-                if (Solve(grid, out _))
+                if (Solve(grid, out _, out int tick))
                 {
-                    Debug.Log($"Stage {stage.Id} Fixed: {attempt}회 시도 후 성공.");
                     stage.ApplyGrid(grid);
+                    Debug.Log($"<color=green>Stage {stage.Id} Fixed: {attempt}회 시도 후 성공.</color>");
+                    Debug.Log("Tick: " + tick);
                     return true;
                 }
 
@@ -103,8 +107,10 @@ namespace Cubreak
         /// <param name="hint">hint: 파괴가 가능하다면 현재 상태에서 처음으로 파괴해야할 블록 리스트가 반환되며 그렇지 않으면 null</param>
         /// <param name="heuristic">휴리스틱 알고리즘을 사용할 것인지 여부</param>
         /// <returns>true: 파괴가 가능하다. / false: 불가능하다.</returns>
-        public static bool Solve(int[,,] grid, out List<Tuple<int, int, int>> hint, bool heuristic = false)
+        public static bool Solve(int[,,] grid, out List<Tuple<int, int, int>> hint, out int tick, bool heuristic = false)
         {
+            Tick = 0;
+
             if (heuristic)
             {
                 SortedSet<int> fList = new();
@@ -119,6 +125,8 @@ namespace Cubreak
             {
                 hint = SolveBruteForce(grid);
             }
+
+            tick = Tick;
 
             if (hint == null)
                 return false;
@@ -411,6 +419,7 @@ namespace Cubreak
                             var component = new BlockGroup(color, new());
                             stack.Push(Tuple.Create(x, y, z));
                             visited[x, y, z] = true;
+                            Tick++;
 
                             while (stack.Count > 0)
                             {
@@ -432,6 +441,7 @@ namespace Cubreak
                                     if (grid[nx, ny, nz] == color)
                                     {
                                         visited[nx, ny, nz] = true;
+                                        Tick++;
                                         stack.Push(Tuple.Create(nx, ny, nz));
                                     }
                                 }
