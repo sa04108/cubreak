@@ -2674,6 +2674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiPanels: {fileID: 634036190}
   selectStageButton: {fileID: 80035178}
+  exerciseButton: {fileID: 186226268}
   optionButton: {fileID: 1281100795}
   stageManager: {fileID: 923370025}
   stageText: {fileID: 1936588218}
@@ -4359,7 +4360,6 @@ MonoBehaviour:
   - {fileID: 1841259170}
   - {fileID: 1281194347}
   - {fileID: 1973294516}
-  exerciseButton: {fileID: 186226268}
   prevButton: {fileID: 1091832988}
   nextButton: {fileID: 1638501476}
   hintButton: {fileID: 1604613841}
@@ -5283,7 +5283,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 70, y: 0}
-  m_SizeDelta: {x: 120, y: 120}
+  m_SizeDelta: {x: 120, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1091832988
 MonoBehaviour:
@@ -9085,7 +9085,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -70, y: 0}
-  m_SizeDelta: {x: 120, y: 120}
+  m_SizeDelta: {x: 120, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1638501476
 MonoBehaviour:

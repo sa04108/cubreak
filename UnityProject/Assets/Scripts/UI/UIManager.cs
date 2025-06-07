@@ -10,6 +10,7 @@ namespace Cubreak
 
         [Header("Title Buttons")]
         [SerializeField] private Button selectStageButton;
+        [SerializeField] private Button exerciseButton;
         [SerializeField] private Button optionButton;
 
         [Header("Stage Manager")]
@@ -28,6 +29,13 @@ namespace Cubreak
 
             selectStageButton.onClick.AddListener(() => uiPanels.SetActivePanel(UIPanels.ENUM_UI_PANEL.Stages));
             optionButton.onClick.AddListener(() => uiPanels.SetActivePanel(UIPanels.ENUM_UI_PANEL.Option));
+
+#if DEBUG
+            exerciseButton.onClick.AddListener(() => stageManager.StartStage(0));
+
+#else
+            exerciseButton.gameObject.SetActive(false);
+#endif
         }
 
         public void ResetGame()

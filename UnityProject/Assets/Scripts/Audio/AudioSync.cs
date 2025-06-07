@@ -10,12 +10,13 @@ namespace Cubreak
         [SerializeField] bool playOnEnabled;
 
         AudioSource listener;
+        Button button;
 
         // Start is called before the first frame update
         void Start()
         {
             listener = AudioManager.Instance.listener;
-            Button button = GetComponent<Button>();
+            button = GetComponent<Button>();
             if (button != null)
             {
                 if (audioClip == null)
@@ -39,8 +40,11 @@ namespace Cubreak
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            listener.clip = audioClip;
-            listener.Play();
+            if (button != null)
+            {
+                listener.clip = audioClip;
+                listener.Play();
+            }
         }
     } 
 }

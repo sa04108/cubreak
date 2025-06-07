@@ -19,14 +19,18 @@ namespace Cubreak
         private CubeStage[] stageData;
         private int exerciseDimension;
 
+        [Header("Links")]
         [SerializeField] private TextAsset stageJson;
         [SerializeField] private CameraController cameraController;
         [SerializeField] private Transform cubeParent;
         [SerializeField] private GameObject[] cubePrefab;
+
+        [Header("Stage Panel UI")]
         [SerializeField] private Button[] stageButtons;
-        [SerializeField] private Button exerciseButton;
         [SerializeField] private Button prevButton;
         [SerializeField] private Button nextButton;
+
+        [Header("Ingame Panel UI")]
         [SerializeField] private Button hintButton;
         [SerializeField] private Button seeThroughButton;
         [SerializeField] private Button nextStageButton;
@@ -43,16 +47,11 @@ namespace Cubreak
 
 #if DEBUG
             CustomPlayerPrefs.SetInt(ENUM_PLAYERPREFS.ClearedStage, 100);
-            exerciseButton.onClick.AddListener(() => StartStage(0));
-
-#else
-            exerciseButton.gameObject.SetActive(false);
 #endif
 
             stageData = CubeStage.FromArrayJson(stageJson.text);
             clearedStage = CustomPlayerPrefs.GetInt(ENUM_PLAYERPREFS.ClearedStage, 0);
             stageGroupIndex = clearedStage / stageButtons.Length;
-
             InitializeStagePanel();
 
             hintButton.onClick.AddListener(RevealHintBlocks);
@@ -117,7 +116,7 @@ namespace Cubreak
             }
         }
 
-        private void StartStage(int stageNum)
+        public void StartStage(int stageNum)
         {
             cameraController.ResetPositionImmediately();
             cubeParent.gameObject.SetActive(true);
@@ -203,6 +202,9 @@ namespace Cubreak
             {
                 stageButtons[nowStage % stageButtons.Length].interactable = true;
                 CustomPlayerPrefs.SetInt(ENUM_PLAYERPREFS.ClearedStage, ++clearedStage);
+
+                stageGroupIndex = clearedStage / stageButtons.Length;
+                InitializeStagePanel();
             }
         }
 
