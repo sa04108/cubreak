@@ -121,7 +121,7 @@ namespace Cubreak
             }
         }
 
-        public bool RevealHintBlocks()
+        public bool RevealHintBlocks(CameraController cameraController)
         {
             int N = dimension;
             int[,,] grid = new int[N, N, N];
@@ -142,13 +142,19 @@ namespace Cubreak
             bool solved = StageUtility.Solve(grid, out var hintBlocks, out int tick);
             if (solved)
             {
+                List<GameObject> blockObjs = new();
                 foreach (var coord in hintBlocks)
                 {
                     int x = coord.Item1;
                     int y = coord.Item2;
                     int z = coord.Item3;
-                    floors[z].floor[x + y * N].GetComponent<Block>().SetHintAnimation(true);
+
+                    var blockObj = floors[z].floor[x + y * N];
+                    blockObj.GetComponent<Block>().SetHintAnimation(true);
+                    blockObjs.Add(blockObj);
                 }
+
+                cameraController.RotateSideTowardObjects(blockObjs.ToArray());
             }
             else
             {

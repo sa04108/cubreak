@@ -188,7 +188,7 @@ namespace Cubreak
                 return;
 
             var cube = cubeObject.GetComponent<Cube>();
-            var solved = cube.RevealHintBlocks();
+            var solved = cube.RevealHintBlocks(cameraController);
 
             if (!solved)
                 hintButton.interactable = false;

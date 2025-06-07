@@ -89,6 +89,36 @@ namespace Cubreak
             }
         }
 
+        /// <summary>
+        /// 대상 게임오브젝트들이 위치한 곳으로 카메라를 측면으로 회전시킵니다.
+        /// </summary>
+        public void RotateSideTowardObjects(GameObject[] objs)
+        {
+            Vector3 avgPos = Vector3.zero;
+            foreach (GameObject obj in objs)
+            {
+                avgPos += obj.transform.position;
+            }
+            avgPos /= objs.Length;
+
+            float minDist = float.MaxValue;
+            int minIndex = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                RotateRight();
+
+                float dist = (avgPos - nextCamera.position).magnitude;
+                if (minDist > dist)
+                {
+                    minDist = dist;
+                    minIndex = i;
+                }
+            }
+
+            for (int i = 0; i < minIndex + 1; i++)
+                RotateRight();
+        }
+
         public void ResetPositionImmediately()
         {
             RotateDown();
