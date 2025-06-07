@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Cubreak
 {
-    public class AudioListener : MonoBehaviour, IPointerClickHandler
+    public class AudioObject : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField] bool playOnEnabled;
         [SerializeField] bool background;
