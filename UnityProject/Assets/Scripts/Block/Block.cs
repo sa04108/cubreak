@@ -6,6 +6,7 @@ namespace Cubreak
 {
     public class Block : MonoBehaviour
     {
+        [Header("Effects")]
         [SerializeField] GameObject destroyEffect;
 
         private BlockWatcher blockWatcher => BlockWatcher.Instance;
@@ -154,9 +155,10 @@ namespace Cubreak
             isUnconnected = true;
         }
 
-        public void DestroyBlocks()
+        public bool DestroyBlocks()
         {
-            if (dirty) return;
+            if (dirty)
+                return true;
 
             RaycastHit hit;
 
@@ -175,7 +177,13 @@ namespace Cubreak
                 }
             }
 
-            if (dirty) DestroyAndScore();
+            if (dirty)
+            {
+                DestroyAndScore();
+                return true;
+            }
+
+            return false;
         }
 
         private void DestroyAndScore()

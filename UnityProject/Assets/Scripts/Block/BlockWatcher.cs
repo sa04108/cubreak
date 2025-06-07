@@ -13,12 +13,21 @@ namespace Cubreak
         public int BlockCount => blocks.Count;
 
         [ReadOnly, SerializeField]
+        private int destroyCount;
+
+        [ReadOnly, SerializeField]
         private int fallingBlockCount;
         public int FallingBlockCount { get => fallingBlockCount; set => fallingBlockCount = value; }
 
         [ReadOnly, SerializeField]
         private int unconnectedBlockCount;
         public int UnconnectedBlockCount { get => unconnectedBlockCount; set => unconnectedBlockCount = value; }
+
+        [SerializeField]
+        private AudioClip blocUndestroyClip;
+
+        [SerializeField]
+        private AudioClip blockDestroyClip;
 
         private void Update()
         {
@@ -30,7 +39,16 @@ namespace Cubreak
 
                 if (Physics.Raycast(ray, out hit, 100.0f, 1 << 6))
                 {
-                    hit.transform.GetComponent<Block>().DestroyBlocks();
+                    if (hit.transform.GetComponent<Block>().DestroyBlocks())
+                    {
+                        AudioManager.Instance.PlayPitch(blockDestroyClip, destroyCount);
+                        destroyCount++;
+                    }
+                    else
+                    {
+                        AudioManager.Instance.Play(blocUndestroyClip);
+                    }
+
                     SetBlocksHintOff();
                 }
             }
@@ -44,6 +62,7 @@ namespace Cubreak
         {
             this.cube = cube;
             blocks.Clear();
+            destroyCount = 0;
             FallingBlockCount = 0;
             UnconnectedBlockCount = 0;
         }
