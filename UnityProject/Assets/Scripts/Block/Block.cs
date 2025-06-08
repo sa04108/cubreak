@@ -187,7 +187,10 @@ namespace Cubreak
         private void DestroyAndScore()
         {
             uiManager.ScoreUp();
-            Destroy(Instantiate(destroyEffect, transform.position, Quaternion.identity, transform.parent), 0.8f);
+
+            var effectObj = Instantiate(destroyEffect, transform.position, Quaternion.identity);
+            effectObj.transform.localScale = Vector3.one * 0.3f;
+            Destroy(effectObj, 0.8f);
             Destroy(gameObject);
         }
 
