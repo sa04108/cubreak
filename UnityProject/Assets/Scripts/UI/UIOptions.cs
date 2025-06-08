@@ -6,6 +6,9 @@ namespace Cubreak
 {
     public class UIOptions : MonoBehaviour
     {
+        [Header("Volume")]
+        [SerializeField] private Slider volumeSlider;
+
         [Header("Frame Rate")]
         [SerializeField] private Button frameSwitch;
         [SerializeField] private Sprite[] frameSprites;
@@ -49,6 +52,9 @@ namespace Cubreak
             // Desktop과 Mobile에서의 동일한 애니메이션 속도를 제공하기 위해 동일한 프레임으로 고정하는 것을 권장
             QualitySettings.vSyncCount = 0;
 
+            volumeSlider.onValueChanged.AddListener(SetVolume);
+            volumeSlider.value = CustomPlayerPrefs.GetFloat(ENUM_PLAYERPREFS.Volume, CustomPlayerPrefs.DefaultVolume);
+
             int frameRate = CustomPlayerPrefs.GetInt(ENUM_PLAYERPREFS.FrameRate, CustomPlayerPrefs.DefaultFrameRate);
             SetFrameRate(frameRate);
             frameSwitch.onClick.AddListener(ToggleFrameRate);
@@ -61,6 +67,12 @@ namespace Cubreak
             SetExerciseDimension(ExerciseDimension);
             SetNumberOfBlockColor(NumOfBlockColor);
 #endif
+        }
+
+        private void SetVolume(float volume)
+        {
+            AudioManager.Instance.SetVolume(volume);
+            CustomPlayerPrefs.SetFloat(ENUM_PLAYERPREFS.Volume, volume);
         }
 
         private void ToggleFrameRate()
@@ -129,6 +141,8 @@ namespace Cubreak
         {
             CustomPlayerPrefs.SetDefaultValues();
 
+            volumeSlider.value = CustomPlayerPrefs.DefaultVolume;
+            SetVolume(CustomPlayerPrefs.DefaultVolume);
             SetFrameRate(CustomPlayerPrefs.DefaultFrameRate);
             SetExerciseDimension(CustomPlayerPrefs.DefaultExerciseDimension);
             SetNumberOfBlockColor(CustomPlayerPrefs.DefaultNumOfBlockColor);

@@ -1927,7 +1927,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 670, y: -675}
+  m_AnchoredPosition: {x: 670, y: -1575}
   m_SizeDelta: {x: 1340, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &535141233
@@ -2787,6 +2787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca8769f4f333b2428adc4e7b662bdd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 967359536}
   frameSwitch: {fileID: 1184735654}
   frameSprites:
   - {fileID: -4006969498744827493, guid: 2497ab3b270125b4f9436d5227725998, type: 3}
@@ -4983,7 +4984,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &977013421
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5003,7 +5004,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 670, y: -750}
+  m_AnchoredPosition: {x: 670, y: -1000}
   m_SizeDelta: {x: 1340, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &977013422
@@ -5137,7 +5138,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -9344,7 +9345,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -100, y: -2110}
+  m_SizeDelta: {x: -100, y: -1210}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1660416242
 MonoBehaviour:
@@ -12800,7 +12801,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectPlayer: {fileID: 2134073896}
   backgroundPlayer: {fileID: 2006865283}
-  volumeSlider: {fileID: 967359536}
 --- !u!82 &2134073896
 AudioSource:
   m_ObjectHideFlags: 0

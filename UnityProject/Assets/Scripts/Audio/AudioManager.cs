@@ -7,15 +7,8 @@ namespace Cubreak
     {
         [SerializeField] AudioSource effectPlayer;
         [SerializeField] AudioSource backgroundPlayer;
-        [SerializeField] Slider volumeSlider;
 
-        private void Start()
-        {
-            volumeSlider.onValueChanged.AddListener(SetVolume);
-            SetVolume(volumeSlider.value);
-        }
-
-        private void SetVolume(float volume)
+        public void SetVolume(float volume)
         {
             effectPlayer.volume = volume;
             backgroundPlayer.volume = volume;

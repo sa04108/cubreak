@@ -4,6 +4,7 @@ namespace Cubreak
 {
     public enum ENUM_PLAYERPREFS
     {
+        Volume,
         FrameRate,
         NumOfBlockColor,
         ExerciseDimension,
@@ -12,6 +13,7 @@ namespace Cubreak
 
     public class CustomPlayerPrefs
     {
+        public const float DefaultVolume = 0.5f;
         public const int DefaultFrameRate = 30;
         public const int DefaultNumOfBlockColor = 4;
         public const int DefaultExerciseDimension = 3;
@@ -53,6 +55,7 @@ namespace Cubreak
 
         public static void SetDefaultValues()
         {
+            SetFloat(ENUM_PLAYERPREFS.Volume, DefaultVolume);
             SetInt(ENUM_PLAYERPREFS.FrameRate, DefaultFrameRate);
             SetInt(ENUM_PLAYERPREFS.NumOfBlockColor, DefaultNumOfBlockColor);
             SetInt(ENUM_PLAYERPREFS.ExerciseDimension, DefaultExerciseDimension);
