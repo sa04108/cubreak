@@ -14,6 +14,11 @@ namespace Cubreak
             GameOver
         }
 
+        [Header("Backgrounds")]
+        [SerializeField] private GameObject backgroundMain;
+        [SerializeField] private GameObject backgroundEasyMode;
+        [SerializeField] private GameObject backgroundHardMode;
+
         [Header("Panels")]
         [SerializeField] private GameObject titlePanel;
         [SerializeField] private GameObject stagesPanel;
@@ -59,12 +64,15 @@ namespace Cubreak
 
         public void SetActivePanel(GameObject panel)
         {
-            titlePanel.SetActive(panel.name == titlePanel.name);
-            stagesPanel.SetActive(panel.name == stagesPanel.name);
-            optionPanel.SetActive(panel.name == optionPanel.name);
-            inGamePanel.SetActive(panel.name == inGamePanel.name);
-            gameClearPanel.SetActive(panel.name == gameClearPanel.name);
-            gameOverPanel.SetActive(panel.name == gameOverPanel.name);
+            titlePanel.SetActive(panel == titlePanel);
+            stagesPanel.SetActive(panel == stagesPanel);
+            optionPanel.SetActive(panel == optionPanel);
+            inGamePanel.SetActive(panel == inGamePanel);
+            gameClearPanel.SetActive(panel == gameClearPanel);
+            gameOverPanel.SetActive(panel == gameOverPanel);
+
+            backgroundMain.SetActive(panel != inGamePanel);
+            backgroundEasyMode.SetActive(panel == inGamePanel);
         }
     } 
 }
