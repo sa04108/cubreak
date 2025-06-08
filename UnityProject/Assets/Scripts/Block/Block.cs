@@ -22,7 +22,6 @@ namespace Cubreak
         private bool isFalling = false;
         public bool IsFalling { get => isFalling; }
         private bool isUnconnected = false;
-        private float fallingSpeed;
 
         private bool dirty;
 
@@ -44,7 +43,6 @@ namespace Cubreak
         private void Start()
         {
             blockWatcher.Subscribe(this);
-            fallingSpeed = CustomPlayerPrefs.GetFloat(ENUM_PLAYERPREFS.BlockFallingSpeed);
             targetPos = transform.position;
 
             isUnconnected = false; // 주변에 같은 색으로 연결될 수 있는 블럭이 없는 경우 true
@@ -54,7 +52,7 @@ namespace Cubreak
         // Update is called once per frame
         private void Update()
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * fallingSpeed);
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * 3f);
         }
 
         public void SetCoord(int x, int y, int z)

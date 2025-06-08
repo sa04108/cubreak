@@ -37,20 +37,12 @@ namespace Cubreak
 
         private void Start()
         {
-            // NOTE
-            // https://docs.unity3d.com/6000.1/Documentation/ScriptReference/Application-targetFrameRate.html
-            // Desktop 플래폼에서는 vSync = 0일때에만 Target FrameRate가 작동함
-            // Android, IOS는 vSync를 항상 무시함
-            // Desktop과 Mobile에서의 동일한 애니메이션 속도를 제공하기 위해 동일한 프레임으로 고정하는 것을 권장
-            QualitySettings.vSyncCount = 0;
-            Application.targetFrameRate = 60;
-
 #if DEBUG
             CustomPlayerPrefs.SetInt(ENUM_PLAYERPREFS.ClearedStage, 100);
 #endif
 
             stageData = CubeStage.FromArrayJson(stageJson.text);
-            clearedStage = CustomPlayerPrefs.GetInt(ENUM_PLAYERPREFS.ClearedStage, 0);
+            clearedStage = CustomPlayerPrefs.GetInt(ENUM_PLAYERPREFS.ClearedStage, CustomPlayerPrefs.DefaultClearedStage);
             stageGroupIndex = clearedStage / stageButtons.Length;
             InitializeStagePanel();
 

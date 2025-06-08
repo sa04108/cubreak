@@ -38,12 +38,6 @@ namespace Cubreak
 #endif
         }
 
-        public void ResetGame()
-        {
-            PlayerPrefs.DeleteAll();
-            uiPanels.SetActivePanel(UIPanels.ENUM_UI_PANEL.Title);
-        }
-
         public void ScoreUp()
         {
             score++;
