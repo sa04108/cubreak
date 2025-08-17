@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Unity Web Player | {{{ PRODUCT_NAME }}}</title>
+  #if SHOW_DIAGNOSTICS
+  <link rel="stylesheet" href="<<<TemplateData/diagnostics.css>>>">
+  <script src="<<<TemplateData/diagnostics.js>>>"></script>
+  #endif
+  <style>
+    /* 페이지 기본 리셋 + 배경 */
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: #000;
+    }
+
+    body {
+      text-align: center;
+    }
+
+    /* 9:18.5 세로 비율 컨테이너
+         - 세로는 항상 화면 꽉(100vh)
+         - 가로는 100vh * (9/18.5)
+         - 가운데 정렬, 좌우는 필러박스 처리 */
+    #unity-container-portrait {
+      position: fixed;
+      /* 스크롤 영향 없이 항상 화면에 붙이기 */
+      top: 0;
+      left: 50%;
+      height: 100vh;
+      width: calc(100vh * (9 / 18.5));
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* 필요하면 여백 색을 바꾸기 */
+      /* outline: 1px solid red;  */
+    }
+
+    /* 캔버스는 컨테이너에 꽉 차게 */
+    #unity-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+
+      /* 여분의 inline-space 제거 */
+      background: {{{ BACKGROUND_FILENAME ? 'url(\'Build/'+BACKGROUND_FILENAME.replace(/\'/g, '%27')+'\') center / cover': BACKGROUND_COLOR }}};
+    }
+
+    /* (선택) 아주 좁은 창에서 가로가 모자라면 수평 스크롤이 생길 수 있음.
+         데스크톱 환경에선 드물지만, 원치 않으면 아래 overflow-x를 주석 해제하세요. */
+    /* body { overflow-x: hidden; } */
+
+    #if SHOW_DIAGNOSTICS
+
+    /* 진단 아이콘을 컨테이너 안 오른쪽 아래 고정 */
+    #diagnostics-icon {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      z-index: 10;
+    }
+
+    #endif
+  </style>
+</head>
+
+<body>
+  <!-- 비율 컨테이너 내부에 캔버스 배치 -->
+  <div id="unity-container-portrait">
+    <canvas id="unity-canvas" width={{{ WIDTH }}} height={{{ HEIGHT }}} tabindex="-1">
+    </canvas>
+  </div>
+
+  #if SHOW_DIAGNOSTICS
+  <div id="unity-footer">
+    <img id="diagnostics-icon" src="TemplateData/webmemd-icon.png">
+  </div>
+  #endif
+
+  <script src="Build/{{{ LOADER_FILENAME }}}"></script>
+  <script>
+    // 모바일에선 뷰포트 메타만 주입 (비율은 그대로 유지)
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      var meta = document.createElement('meta');
+      meta.name = 'viewport';
+      meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+      document.getElementsByTagName('head')[0].appendChild(meta);
+      // 필요 시: 모바일은 가로폭이 너무 좁아질 수 있어 세로가 100vh를 다 못 쓰게 만들고 싶다면
+      // JS로 width/height를 동적으로 재계산하도록 확장 가능(요청하면 코드 추가해줄게).
+    }
+
+    // Unity 인스턴스 생성
+    let unityInstance = null;
+    createUnityInstance(document.querySelector("#unity-canvas"), {
+      arguments: [],
+      dataUrl: "Build/{{{ DATA_FILENAME }}}",
+      frameworkUrl: "Build/{{{ FRAMEWORK_FILENAME }}}",
+#if USE_THREADS
+      workerUrl: "Build/{{{ WORKER_FILENAME }}}",
+#endif
+#if USE_WASM
+      codeUrl: "Build/{{{ CODE_FILENAME }}}",
+#endif
+#if SYMBOLS_FILENAME
+      symbolsUrl: "Build/{{{ SYMBOLS_FILENAME }}}",
+#endif
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: {{{ JSON.stringify(COMPANY_NAME) }}},
+      productName: {{{ JSON.stringify(PRODUCT_NAME) }}},
+      productVersion: {{{ JSON.stringify(PRODUCT_VERSION) }}},
+        // 기본값 그대로 두면 캔버스 CSS 크기에 맞춰 WebGL 렌더 크기가 자동 동기화됨:
+        // matchWebGLToCanvasSize: true,
+        // 고DPI에서 너무 무거우면 아래 주석 해제하여 스케일 다운 가능:
+        // devicePixelRatio: 1,
+      }).then((u) => {
+        unityInstance = u;
+#if SHOW_DIAGNOSTICS
+        document.getElementById("diagnostics-icon").onclick = () => {
+          unityDiagnostics.openDiagnosticsDiv(unityInstance.GetMetricsInfo);
+        };
+#endif
+      }).catch((message) => {
+        alert(message);
+      });
+
+    // (선택) 창 크기 변경 시 컨테이너 재계산이 필요하면 여기에서 처리할 수 있어요.
+    // 현재 CSS만으로 충분하지만, 특수한 레이아웃 요구가 있으면 알려줘!
+    // window.addEventListener('resize', () => { ... });
+  </script>
+</body>
+
+</html>
