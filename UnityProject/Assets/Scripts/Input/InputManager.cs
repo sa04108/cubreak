@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Cubreak
 {
@@ -30,7 +29,7 @@ namespace Cubreak
 #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;
 #else
-            Application.Quit();
+                Application.Quit();
 #endif
             }
         }
@@ -109,7 +108,7 @@ namespace Cubreak
             return false;
         }
 
-        void SetInputReadyTrue()
+        private void SetInputReadyTrue()
         {
             inputReady = true;
         }

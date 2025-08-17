@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,33 +30,38 @@ namespace Cubreak
         [SerializeField]
         private AudioClip blockDestroyClip;
 
-        private void Update()
+        private IEnumerator CoInput()
         {
-            InputManager.Instance.Slide();
-            if (InputManager.Instance.Click() && FallingBlockCount == 0)
+            while (true)
             {
-                Ray ray = Camera.main?.ScreenPointToRay(Input.mousePosition) ?? default;
-                RaycastHit hit;
+                yield return null;
 
-                if (Physics.Raycast(ray, out hit, 100.0f, 1 << 6))
+                InputManager.Instance.Slide();
+                if (InputManager.Instance.Click() && FallingBlockCount == 0)
                 {
-                    if (hit.transform.GetComponent<Block>().DestroyBlocks())
-                    {
-                        AudioManager.Instance.PlayPitch(blockDestroyClip, destroyCount);
-                        destroyCount++;
-                    }
-                    else
-                    {
-                        AudioManager.Instance.Play(blocUndestroyClip);
-                    }
+                    Ray ray = Camera.main?.ScreenPointToRay(Input.mousePosition) ?? default;
+                    RaycastHit hit;
 
-                    SetBlocksHintOff();
+                    if (Physics.Raycast(ray, out hit, 100.0f, 1 << 6))
+                    {
+                        if (hit.transform.GetComponent<Block>().DestroyBlocks())
+                        {
+                            AudioManager.Instance.PlayPitch(blockDestroyClip, destroyCount);
+                            destroyCount++;
+                        }
+                        else
+                        {
+                            AudioManager.Instance.Play(blocUndestroyClip);
+                        }
+
+                        SetBlocksHintOff();
+                    }
                 }
-            }
 
-            CheckBlockStatus();
-            CheckGameClear();
-            CheckGameOver();
+                CheckBlockStatus();
+                CheckGameClear();
+                CheckGameOver();
+            }
         }
 
         public void Initialize(Cube cube)
@@ -65,6 +71,8 @@ namespace Cubreak
             destroyCount = 0;
             FallingBlockCount = 0;
             UnconnectedBlockCount = 0;
+
+            StartCoroutine(CoInput());
         }
 
         public void Subscribe(Block block)
@@ -103,6 +111,7 @@ namespace Cubreak
                 && UnconnectedBlockCount == 0
                 && FallingBlockCount == 0)
             {
+                StopAllCoroutines();
                 UIManager.Instance.GameClear();
             }
         }
@@ -113,6 +122,7 @@ namespace Cubreak
                 && BlockCount == UnconnectedBlockCount
                 && FallingBlockCount == 0)
             {
+                StopAllCoroutines();
                 UIManager.Instance.GameOver();
             }
         }
