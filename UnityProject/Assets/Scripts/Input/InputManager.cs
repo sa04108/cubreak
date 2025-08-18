@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Cubreak
 {
@@ -7,18 +8,28 @@ namespace Cubreak
         [SerializeField] new CameraController camera;
         bool inputReady;
         Vector2 startPos;
+        Vector2 currentPos;
         Vector2 endPos;
+
+        public UnityEvent OnClick;
+        public UnityEvent OnSlideLeft;
+        public UnityEvent OnSlideRight;
+        public UnityEvent OnSlideUp;
+        public UnityEvent OnSlideDown;
 
         private void Start()
         {
             inputReady = true;
             startPos = Vector2.zero;
+            currentPos = Vector2.zero;
             endPos = Vector2.zero;
         }
 
         // Update is called once per frame
         void Update()
         {
+            Click();
+            Slide();
             Escape();
         }
 
@@ -34,14 +45,15 @@ namespace Cubreak
             }
         }
 
-        public bool Click()
+        private void Click()
         {
             if (!inputReady)
-                return false;
+                return;
 
             if (Input.GetMouseButtonDown(0))
             {
                 startPos = Input.mousePosition;
+                currentPos = startPos;
             }
 
             if (Input.GetMouseButtonUp(0))
@@ -49,59 +61,82 @@ namespace Cubreak
                 endPos = Input.mousePosition;
                 if (Vector2.Distance(startPos, endPos) < Screen.width * 0.1f)
                 {
-                    return true;
+                    OnClick?.Invoke();
                 }
             }
-
-            return false;
         }
 
-        public bool Slide()
+        private void Slide()
         {
-            if (Input.touchCount > 0)
+            if (Input.touchSupported)
             {
-                Touch touch = Input.GetTouch(0);
-
-                switch (touch.phase)
+                if (Input.touchCount > 0)
                 {
-                    case TouchPhase.Began:
-                        break;
-                    case TouchPhase.Moved:
-                        float speedX = touch.deltaPosition.x / touch.deltaTime;
-                        float speedY = touch.deltaPosition.y / touch.deltaTime;
-                        if (inputReady)
-                        {
-                            if (Mathf.Abs(speedX) > 1500f && Mathf.Abs(speedY) < 1500f)
-                            {
-                                if (speedX < 0)
-                                    camera.RotateRight();
-                                else
-                                    camera.RotateLeft();
+                    Touch touch = Input.GetTouch(0);
 
-                                inputReady = false;
-                                return true;
-                            }
-                            else if (Mathf.Abs(speedX) < 1500f && Mathf.Abs(speedY) > 1500f)
-                            {
-                                if (speedY < 0)
-                                    camera.RotateUp();
-                                else
-                                    camera.RotateDown();
+                    switch (touch.phase)
+                    {
+                        case TouchPhase.Began:
+                            break;
+                        case TouchPhase.Moved:
+                            float speedX = touch.deltaPosition.x / touch.deltaTime;
+                            float speedY = touch.deltaPosition.y / touch.deltaTime;
 
-                                inputReady = false;
-                                return true;
-                            }
-                        }
-                        break;
-                    case TouchPhase.Stationary:
-                        break;
-                    case TouchPhase.Ended:
-                        Invoke("SetInputReadyTrue", 0.2f);
-                        break;
-                    case TouchPhase.Canceled:
-                        break;
-                    default:
-                        break;
+                            CheckSlide(speedX, speedY);
+                            break;
+                        case TouchPhase.Stationary:
+                            break;
+                        case TouchPhase.Ended:
+                            Invoke("SetInputReadyTrue", 0.2f);
+                            break;
+                        case TouchPhase.Canceled:
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            else
+            {
+                Vector2 prevPos = currentPos;
+
+                if (Input.GetMouseButton(0))
+                {
+                    currentPos = Input.mousePosition;
+                }
+
+                float deltaTime = Time.deltaTime;
+                float speedX = (currentPos.x - prevPos.x) / deltaTime;
+                float speedY = (currentPos.y - prevPos.y) / deltaTime;
+
+                if (CheckSlide(speedX, speedY))
+                    Invoke("SetInputReadyTrue", 0.2f);
+            }
+        }
+
+        private bool CheckSlide(float speedX, float speedY)
+        {
+            if (inputReady)
+            {
+                if (Mathf.Abs(speedX) > 1500f && Mathf.Abs(speedY) < 1500f)
+                {
+                    if (speedX < 0)
+                        OnSlideRight?.Invoke();
+                    else
+                        OnSlideLeft?.Invoke();
+
+                    inputReady = false;
+                    return true;
+                }
+                else if (Mathf.Abs(speedX) < 1500f && Mathf.Abs(speedY) > 1500f)
+                {
+                    if (speedY < 0)
+                        OnSlideUp?.Invoke();
+                    else
+                        OnSlideDown?.Invoke();
+
+                    inputReady = false;
+                    return true;
                 }
             }
 

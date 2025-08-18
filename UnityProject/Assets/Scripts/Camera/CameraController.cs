@@ -11,14 +11,19 @@ namespace Cubreak
         bool isUp;
 
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             slerpVal = 0.0f;
             isUp = false;
+
+            InputManager.Instance.OnSlideLeft.AddListener(RotateLeft);
+            InputManager.Instance.OnSlideRight.AddListener(RotateRight);
+            InputManager.Instance.OnSlideUp.AddListener(RotateUp);
+            InputManager.Instance.OnSlideDown.AddListener(RotateDown);
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             if (Input.GetKeyDown(KeyCode.A))
                 RotateLeft();
@@ -57,19 +62,19 @@ namespace Cubreak
             return result;
         }
 
-        public void RotateLeft()
+        private void RotateLeft()
         {
             slerpVal = 0.0f;
             nextCamera.RotateAround(cubeParent.position, Vector3.up, 90f);
         }
 
-        public void RotateRight()
+        private void RotateRight()
         {
             slerpVal = 0.0f;
             nextCamera.RotateAround(cubeParent.position, Vector3.up, -90f);
         }
 
-        public void RotateUp()
+        private void RotateUp()
         {
             if (!isUp)
             {
@@ -79,7 +84,7 @@ namespace Cubreak
             }
         }
 
-        public void RotateDown()
+        private void RotateDown()
         {
             if (isUp)
             {

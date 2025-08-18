@@ -30,33 +30,16 @@ namespace Cubreak
         [SerializeField]
         private AudioClip blockDestroyClip;
 
+        private void Start()
+        {
+            InputManager.Instance.OnClick.AddListener(OnClickBlock);
+        }
+
         private IEnumerator CoInput()
         {
             while (true)
             {
                 yield return null;
-
-                InputManager.Instance.Slide();
-                if (InputManager.Instance.Click() && FallingBlockCount == 0)
-                {
-                    Ray ray = Camera.main?.ScreenPointToRay(Input.mousePosition) ?? default;
-                    RaycastHit hit;
-
-                    if (Physics.Raycast(ray, out hit, 100.0f, 1 << 6))
-                    {
-                        if (hit.transform.GetComponent<Block>().DestroyBlocks())
-                        {
-                            AudioManager.Instance.PlayPitch(blockDestroyClip, destroyCount);
-                            destroyCount++;
-                        }
-                        else
-                        {
-                            AudioManager.Instance.Play(blocUndestroyClip);
-                        }
-
-                        SetBlocksHintOff();
-                    }
-                }
 
                 CheckBlockStatus();
                 CheckGameClear();
@@ -88,6 +71,30 @@ namespace Cubreak
         public (int, int, int) OnBlockMovedDown(Block block)
         {
             return cube.MoveBlockDown(block.Coord);
+        }
+
+        private void OnClickBlock()
+        {
+            if (FallingBlockCount > 0)
+                return;
+
+            Ray ray = Camera.main?.ScreenPointToRay(Input.mousePosition) ?? default;
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 100.0f, 1 << 6))
+            {
+                if (hit.transform.GetComponent<Block>().DestroyBlocks())
+                {
+                    AudioManager.Instance.PlayPitch(blockDestroyClip, destroyCount);
+                    destroyCount++;
+                }
+                else
+                {
+                    AudioManager.Instance.Play(blocUndestroyClip);
+                }
+
+                SetBlocksHintOff();
+            }
         }
 
         private void CheckBlockStatus()
