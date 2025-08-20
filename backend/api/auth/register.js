@@ -1,7 +1,13 @@
 import { supabase, corsHeaders } from '../_lib/supabase.js';
 
+export const config = { runtime: 'nodejs' };
+
 export default async function handler(req, res) {
   // CORS preflight 처리
+  for (const [key, value] of Object.entries(corsHeaders)) {
+    res.setHeader(key, value);
+  }
+
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
@@ -23,11 +29,16 @@ export default async function handler(req, res) {
     }
 
     // username 중복 체크
-    const { data: existingUser } = await supabase
+    const { data: existingUser, error: existingErr } = await supabase
       .from('profiles')
       .select('username')
       .eq('username', username)
-      .single();
+      .maybeSingle(); // 빈 row에서 no error
+
+    if (existingErr) {
+      // RLS/권한 이슈 등 디버그용 응답 (운영에선 메시지 축약 가능)
+      return res.status(400).json({ error: `중복 체크 실패: ${existingErr.message}` });
+    }
 
     if (existingUser) {
       return res.status(400).json({
@@ -70,8 +81,3 @@ export default async function handler(req, res) {
     });
   }
 }
-
-// Vercel Edge Config (선택사항 - 더 빠른 응답)
-export const config = {
-  runtime: 'edge',
-};
