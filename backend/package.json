@@ -12,6 +12,7 @@
   "type": "module",
   "dependencies": {
     "@supabase/supabase-js": "^2.55.0",
+    "dotenv": "^17.2.1",
     "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
