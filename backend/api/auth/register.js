@@ -1,4 +1,4 @@
-import { supabase, corsHeaders } from '../_lib/supabase.js';
+import { supabaseClient, corsHeaders } from '../_lib/supabase.js';
 
 export const config = { runtime: 'nodejs' };
 
@@ -13,8 +13,8 @@ export default async function handler(req, res) {
   }
 
   if (req.method !== 'POST') {
-    return res.status(405).json({ 
-      error: 'Method not allowed' 
+    return res.status(405).json({
+      error: 'Method not allowed'
     });
   }
 
@@ -29,7 +29,7 @@ export default async function handler(req, res) {
     }
 
     // username 중복 체크
-    const { data: existingUser, error: existingErr } = await supabase
+    const { data: existingUser, error: existingErr } = await supabaseClient
       .from('profiles')
       .select('username')
       .eq('username', username)
@@ -47,7 +47,7 @@ export default async function handler(req, res) {
     }
 
     // Supabase Auth로 회원가입
-    const { data, error } = await supabase.auth.signUp({
+    const { data, error } = await supabaseClient.auth.signUp({
       email,
       password,
       options: {
