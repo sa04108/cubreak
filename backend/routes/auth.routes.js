@@ -33,11 +33,14 @@ router.post('/register', async (req, res) => {
     const token = createToken(user);
     return res.status(201).json({ user, token });
   } catch (e) {
-    if (e.code === 'ER_DUP_ENTRY') {
+    if (e.code === 'ER_DUP_ENTRY') { // 엄격 비교
       return res.status(409).json({ error: 'Email or username already exists' });
     }
-    else if (e.code == 'ER_ACCESS_DENIED_ERROR') {
-      return res.status(404).json({ error: 'MySQL Access denied. Check db username or password.'});
+    else if (e.code === 'ER_ACCESS_DENIED_ERROR') {
+      return res.status(401).json({ error: 'MySQL Access denied. Check db username or password' });
+    }
+    else if (e.code === 'ECONNREFUSED') {
+      return res.status(503).json({ error: 'MySQL Connection Failed. DB service is not available now' })
     }
     console.error(e);
     return res.status(500).json({ error: 'Server error' });
