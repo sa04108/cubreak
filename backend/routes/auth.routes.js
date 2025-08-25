@@ -59,10 +59,10 @@ router.post('/login', async (req, res) => {
     );
 
     const row = rows[0];
-    if (!row) return res.status(401).json({ error: 'Invalid credentials' });
+    if (!row) return res.status(401).json({ error: 'User not found' });
 
     const ok = await bcrypt.compare(password, row.password_hash);
-    if (!ok) return res.status(401).json({ error: 'Invalid credentials' });
+    if (!ok) return res.status(401).json({ error: 'Wrong password' });
 
     const user = { id: row.id, email: row.email, username: row.username };
     const token = createToken(user);
