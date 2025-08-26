@@ -101,10 +101,6 @@ crashlytics-build.properties
 *.out
 *.app
 
-# Backend
-*.env
-[Dd]ist
-
 # Postcompiled Folders
 [Dd]ebug
 [Rr]elease
