@@ -103,6 +103,7 @@ crashlytics-build.properties
 
 # Backend
 *.env
+[Dd]ist
 
 # Postcompiled Folders
 [Dd]ebug
