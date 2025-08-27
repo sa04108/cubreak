@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Cubreak | a simple puzzle game</title>
+
+  <style>
+    /* --- 기본 리셋/배경 --- */
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: #000;
+    }
+
+    /* --- 9:18.5 세로 비율 컨테이너 ---
+         - 세로는 항상 100vh(위/아래 여백 없음)
+         - 가로는 100vh * (9/18.5)
+         - 화면 가운데 정렬(좌우는 필러박스) */
+    #unity-container-portrait {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      height: 100vh;
+      width: calc(100vh * (9 / 18.5));
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* 필요하면 여백 색을 바꾸기 */
+      /* outline: 1px solid red;  */
+    }
+
+    /* --- 캔버스: 컨테이너에 맞춰 100% --- */
+    #unity-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+
+      /* inline 여백 제거 */
+      background: #CCCCCC;
+    }
+
+    /* --- 로더 오버레이 (CSS-only 애니메이션) --- */
+    #loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+      transition: opacity .3s ease;
+    }
+
+    #loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .loader-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .spinner {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, .25);
+      border-top-color: #fff;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .progress {
+      width: clamp(160px, 30vw, 360px);
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .2);
+      overflow: hidden;
+    }
+
+    .progress>i {
+      display: block;
+      height: 100%;
+      width: calc(var(--p, 0) * 100%);
+      background: #fff;
+      transform: translateZ(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .spinner {
+        animation: none;
+      }
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      border: 0;
+      clip: rect(0 0 0 0);
+      overflow: hidden;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- 로더 오버레이 -->
+  <div id="loader" aria-live="polite" aria-busy="true">
+    <div class="loader-box">
+      <div class="spinner" role="img" aria-label="Loading"></div>
+      <div class="progress" aria-hidden="true"><i></i></div>
+      <div class="sr-only" id="loadingText">Loading…</div>
+    </div>
+  </div>
+
+  <!-- 세로 비율 컨테이너 + 캔버스 -->
+  <div id="unity-container-portrait">
+    <canvas id="unity-canvas" width=1440 height=2960 tabindex="-1">
+    </canvas>
+  </div>
+
+
+  <script src="Build/unity.loader.js"></script>
+  <script>
+    // (모바일) 뷰포트 메타 삽입
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      var meta = document.createElement('meta');
+      meta.name = 'viewport';
+      meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+      document.getElementsByTagName('head')[0].appendChild(meta);
+    }
+
+    const canvasEl = document.querySelector("#unity-canvas");
+    const loaderEl = document.getElementById("loader");
+    const progFill = document.querySelector(".progress > i");
+
+    // 진행률 콜백 (0.0 ~ 1.0)
+    const onProgress = (p) => { if (progFill) progFill.style.setProperty("--p", p); };
+
+    // Unity 인스턴스 생성
+    createUnityInstance(canvasEl, {
+      arguments: [],
+      dataUrl: "Build/unity.data.unityweb",
+      frameworkUrl: "Build/unity.framework.js.unityweb",
+      codeUrl: "Build/unity.wasm.unityweb",
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: "Jeon Hyeon Bae",
+      productName: "Cubreak",
+      productVersion: "0.1",
+        // matchWebGLToCanvasSize: true, // (기본값) 캔버스 CSS 크기에 맞춰 렌더 크기 자동 조정
+        // devicePixelRatio: 1,          // 고DPI에서 성능이 떨어지면 주석 해제해 다운스케일
+      }, onProgress).then((unityInstance) => {
+        // 로더 페이드아웃 후 제거
+        loaderEl.classList.add("hidden");
+        setTimeout(() => loaderEl.remove(), 400);
+
+      }).catch((message) => {
+        // 실패 시 메시지 표시(로더 유지)
+        const txt = document.getElementById("loadingText");
+        if (txt) txt.textContent = "Failed to load — " + message;
+        alert(message);
+      });
+  </script>
+</body>
+
+</html>

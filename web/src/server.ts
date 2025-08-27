@@ -28,7 +28,7 @@ app.get('/protected', auth(true), (req: AuthRequest, res) => {
 });
 
 // Unity WebGL index.html 서빙 (SPA 대응)
-app.get('*', (_req, res) => {
+app.get('/{*any}', (_req, res) => {
     res.sendFile(path.join(unityPath, 'index.html'));
 });
 
