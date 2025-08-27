@@ -25,7 +25,7 @@ namespace Cubreak
 
         private void Start()
         {
-            uiPanels.SetActivePanel(UIPanels.ENUM_UI_PANEL.Title);
+            uiPanels.SetActivePanel(UIPanels.ENUM_UI_PANEL.SignIn);
 
             selectStageButton.onClick.AddListener(() => uiPanels.SetActivePanel(UIPanels.ENUM_UI_PANEL.Stages));
             optionButton.onClick.AddListener(() => uiPanels.SetActivePanel(UIPanels.ENUM_UI_PANEL.Option));

@@ -8,7 +8,8 @@ namespace Cubreak
         FrameRate,
         NumOfBlockColor,
         ExerciseDimension,
-        ClearedStage
+        ClearedStage,
+        JWT_Token
     }
 
     public class CustomPlayerPrefs
@@ -18,6 +19,7 @@ namespace Cubreak
         public const int DefaultNumOfBlockColor = 4;
         public const int DefaultExerciseDimension = 3;
         public const int DefaultClearedStage = 0;
+        public const string DefaultJWTToken = "";
 
         public static int GetInt(ENUM_PLAYERPREFS key, int? defaultValue = null)
         {
@@ -43,6 +45,18 @@ namespace Cubreak
             }
         }
 
+        public static string GetString(ENUM_PLAYERPREFS key, string defaultValue = null)
+        {
+            if (!string.IsNullOrEmpty(defaultValue))
+            {
+                return PlayerPrefs.GetString(key.ToString(), defaultValue);
+            }
+            else
+            {
+                return PlayerPrefs.GetString(key.ToString());
+            }
+        }
+
         public static void SetInt(ENUM_PLAYERPREFS key, int value)
         {
             PlayerPrefs.SetInt(key.ToString(), value);
@@ -53,12 +67,18 @@ namespace Cubreak
             PlayerPrefs.SetFloat(key.ToString(), value);
         }
 
+        public static void SetString(ENUM_PLAYERPREFS key, string value)
+        {
+            PlayerPrefs.SetString(key.ToString(), value);
+        }
+
         public static void SetDefaultValues()
         {
             SetFloat(ENUM_PLAYERPREFS.Volume, DefaultVolume);
             SetInt(ENUM_PLAYERPREFS.FrameRate, DefaultFrameRate);
             SetInt(ENUM_PLAYERPREFS.NumOfBlockColor, DefaultNumOfBlockColor);
             SetInt(ENUM_PLAYERPREFS.ExerciseDimension, DefaultExerciseDimension);
+            SetInt(ENUM_PLAYERPREFS.ClearedStage, DefaultClearedStage);
         }
     }
 }
