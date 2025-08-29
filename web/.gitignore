@@ -1,3 +1,7 @@
-# Backend
 *.env
-[Dd]ist
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/
