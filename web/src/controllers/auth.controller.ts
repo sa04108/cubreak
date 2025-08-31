@@ -123,9 +123,9 @@ export async function requestPasswordReset(req: Request, res: Response) {
         });
         if (!profile) {
             // 보안상 이메일 존재 여부 노출 X
-            return res.json({
+            return res.status(400).json({
                 message:
-                    '등록된 이메일 주소로 임시 비밀번호를 발송했습니다. (존재하지 않더라도 동일 메시지)',
+                    `Couldn't find user by email.`,
             });
         }
 
@@ -147,14 +147,14 @@ export async function requestPasswordReset(req: Request, res: Response) {
         });
 
         await transporter.sendMail({
-            from: `"관리자" <${process.env.SMTP_USER}>`,
+            from: `"Admin" <${process.env.SMTP_USER}>`,
             to: email,
-            subject: '임시 비밀번호 안내',
-            text: `임시 비밀번호: ${tempPassword}\n\n로그인 후 반드시 비밀번호를 변경해주세요.`,
+            subject: 'Cubreak',
+            text: `Temporary password: ${tempPassword}\n\nYou should change your password after logged in.`,
         });
 
         return res.json({
-            message: '등록된 이메일 주소로 임시 비밀번호를 발송했습니다.',
+            message: 'The temporary password sent to your email.',
         });
     } catch (error) {
         console.error('reset-password error:', error);

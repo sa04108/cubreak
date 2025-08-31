@@ -9,15 +9,22 @@ using UnityEngine.UI;
 
 public class Authentication : MonoBehaviour
 {
+    [SerializeField] private TMP_Text alarmText;
+
+    [Header("Sign In Panel")]
     [SerializeField] private TMP_InputField signInEmailInput;
     [SerializeField] private TMP_InputField signInPasswordInput;
     [SerializeField] private TMP_InputField signUpEmailInput;
+    [SerializeField] private Button signInButton;
+
+    [Header("Sign Up Panel")]
     [SerializeField] private TMP_InputField signUpPasswordInput;
     [SerializeField] private TMP_InputField signUpPasswordConfirmInput;
-
-    [SerializeField] private Button signInButton;
     [SerializeField] private Button signUpButton;
-    [SerializeField] private TMP_Text alarmText;
+
+    [Header("New Password Panel")]
+    [SerializeField] private TMP_InputField verificationEmailInput;
+    [SerializeField] private Button sendEmailButton;
 
     private string baseUrl = "http://localhost:3000/auth"; // 서버 주소 (배포 시 도메인/아이피로 교체)
 
@@ -39,6 +46,11 @@ public class Authentication : MonoBehaviour
             }
 
             StartCoroutine(CoRegister(signUpEmailInput.text, signUpPasswordInput.text));
+        });
+
+        sendEmailButton.onClick.AddListener(() =>
+        {
+            StartCoroutine(CoSendTemporaryPassword(verificationEmailInput.text));
         });
     }
 
@@ -103,7 +115,33 @@ public class Authentication : MonoBehaviour
             }
             else
             {
-                alarmText.text = "Log in failed" + req.downloadHandler.text;
+                alarmText.text = "Log in failed. " + req.downloadHandler.text;
+            }
+        }
+    }
+
+    // 임시 비밀번호 요청
+    private IEnumerator CoSendTemporaryPassword(string email)
+    {
+        var json = $"{{\"email\":\"{email}\"}}";
+        byte[] bodyRaw = Encoding.UTF8.GetBytes(json);
+
+        using (UnityWebRequest req = new UnityWebRequest(baseUrl + "/reset-password", "POST"))
+        {
+            req.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            req.downloadHandler = new DownloadHandlerBuffer();
+            req.SetRequestHeader("Content-Type", "application/json");
+
+            yield return req.SendWebRequest();
+
+            if (req.result == UnityWebRequest.Result.Success)
+            {
+                alarmText.text = "Success. Please check your email to find the temporary password";
+                Debug.Log("Sent success");
+            }
+            else
+            {
+                alarmText.text = "Failed. Check the email address you entered. " + req.downloadHandler.text;
             }
         }
     }

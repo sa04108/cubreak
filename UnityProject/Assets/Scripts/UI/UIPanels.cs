@@ -8,6 +8,7 @@ namespace Cubreak
         {
             SignIn,
             SignUp,
+            NewPassword,
             Title,
             Stages,
             Option,
@@ -24,6 +25,7 @@ namespace Cubreak
         [Header("Panels")]
         [SerializeField] private GameObject signInPanel;
         [SerializeField] private GameObject signUpPanel;
+        [SerializeField] private GameObject newPasswordPanel;
         [SerializeField] private GameObject titlePanel;
         [SerializeField] private GameObject stagesPanel;
         [SerializeField] private GameObject optionPanel;
@@ -41,6 +43,9 @@ namespace Cubreak
                     break;
                 case ENUM_UI_PANEL.SignUp:
                     panelObj = signUpPanel;
+                    break;
+                case ENUM_UI_PANEL.NewPassword:
+                    panelObj = newPasswordPanel;
                     break;
                 case ENUM_UI_PANEL.Title:
                     panelObj = titlePanel;
@@ -76,6 +81,7 @@ namespace Cubreak
         {
             signInPanel.SetActive(panel == signInPanel);
             signUpPanel.SetActive(panel == signUpPanel);
+            newPasswordPanel.SetActive(panel == newPasswordPanel);
             titlePanel.SetActive(panel == titlePanel);
             stagesPanel.SetActive(panel == stagesPanel);
             optionPanel.SetActive(panel == optionPanel);
