@@ -7,6 +7,7 @@ import { pool } from '../config/db';
 import { UserPayload, AuthRequest } from '../middleware/auth';
 import { User } from '../entity/User';
 import { AppDataSource } from '../data-source';
+import { PasswordResetToken } from '../entity/PasswordResetToken';
 
 const createToken = (u: UserPayload): string =>
     jwt.sign(
@@ -15,6 +16,7 @@ const createToken = (u: UserPayload): string =>
         { expiresIn: '1h' },
     );
 
+// req body: { email, username, password }
 export async function requestRegister(req: Request, res: Response) {
     try {
         const {
@@ -68,6 +70,7 @@ export async function requestRegister(req: Request, res: Response) {
     }
 }
 
+// req body: { emailOrUsername, password }
 export async function requestLogin(req: Request, res: Response) {
     try {
         const { emailOrUsername = '', password = '' } = req.body as {
@@ -105,10 +108,21 @@ export async function requestLogin(req: Request, res: Response) {
     }
 }
 
+// req header: {Authorization: Bearer ~}
 export async function requestMe(req: AuthRequest, res: Response) {
     return res.json({ user: req.user });
 }
 
+// req body: email
+export async function requestPasswordEmail(req: Request, res: Response) {
+    try {
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Server error' });
+    }
+}
+
+// req body: { token, password }
 export async function requestPasswordReset(req: Request, res: Response) {
     try {
         const { email } = req.body;
@@ -117,9 +131,7 @@ export async function requestPasswordReset(req: Request, res: Response) {
         }
 
         // 1. 유저 확인
-        const profile = await User.findOne({
-            where: { email },
-        });
+        const profile = await User.findOne({ where: { email } });
         if (!profile) {
             // 보안상 이메일 존재 여부 노출 X
             return res.status(400).json({
@@ -133,7 +145,7 @@ export async function requestPasswordReset(req: Request, res: Response) {
         // 3. 해싱 후 DB 저장
         const hashed = await bcrypt.hash(tempPassword, 10);
         profile.password_hash = hashed;
-        await AppDataSource.manager.save(profile);
+        await profile.save();
 
         // 4. 메일 발송
         const transporter = nodemailer.createTransport({
