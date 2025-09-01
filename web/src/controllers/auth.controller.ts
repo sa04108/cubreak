@@ -124,8 +124,7 @@ export async function requestPasswordReset(req: Request, res: Response) {
         if (!profile) {
             // 보안상 이메일 존재 여부 노출 X
             return res.status(400).json({
-                message:
-                    `Couldn't find user by email.`,
+                message: `Couldn't find user by email.`,
             });
         }
 
