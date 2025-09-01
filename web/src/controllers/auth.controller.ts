@@ -117,8 +117,7 @@ export async function requestPasswordReset(req: Request, res: Response) {
         }
 
         // 1. 유저 확인
-        const repo = AppDataSource.getRepository(User);
-        const profile = await repo.findOne({
+        const profile = await User.findOne({
             where: { email },
         });
         if (!profile) {
