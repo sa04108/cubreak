@@ -26,7 +26,7 @@ public class Authentication : MonoBehaviour
     [SerializeField] private TMP_InputField verificationEmailInput;
     [SerializeField] private Button sendEmailButton;
 
-    private string baseUrl = "http://localhost:3000/auth"; // 서버 주소 (배포 시 도메인/아이피로 교체)
+    private string baseUrl = "http://0.0.0.0:3000/auth"; // 서버 주소 (배포 시 도메인/아이피로 교체)
 
     private void Start()
     {

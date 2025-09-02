@@ -8,7 +8,7 @@ import { auth, AuthRequest } from './middleware/auth';
 
 export function startServer() {
     const app = express();
-    app.use(cors({ origin: true }));
+    app.use(cors({ origin: true, methods: ['GET', 'POST'] }));
     app.use(express.json());
     app.use(morgan('dev'));
 
@@ -34,8 +34,10 @@ export function startServer() {
         res.sendFile(path.join(unityPath, 'index.html'));
     });
 
-    const port = process.env.PORT || 3000;
-    app.listen(port, () => {
-        console.log(`API running on http://localhost:${port}`);
+    const port: number = Number(process.env.PORT) || 3000;
+    const host: string = process.env.HOST || '0.0.0.0';
+
+    app.listen(port, host, () => {
+        console.log(`API running on http://${host}:${port}`);
     });
 }
