@@ -25,6 +25,10 @@ export function startServer() {
         res.json({ message: `Hello ${req.user.username}!` });
     });
 
+    app.get('/reset-password', (_req, res) => {
+        res.sendFile(path.join(__dirname, '../reset-password.html'));
+    });
+
     // Unity WebGL index.html 서빙 (SPA 대응)
     app.get('/{*any}', (_req, res) => {
         res.sendFile(path.join(unityPath, 'index.html'));

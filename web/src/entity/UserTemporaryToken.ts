@@ -9,8 +9,8 @@ import {
 } from 'typeorm';
 import { User } from './User';
 
-@Entity('password_reset_tokens')
-export class PasswordResetToken extends BaseEntity {
+@Entity('users_temporary_tokens')
+export class UserTemporaryToken extends BaseEntity {
     @PrimaryGeneratedColumn()
     id!: number;
 

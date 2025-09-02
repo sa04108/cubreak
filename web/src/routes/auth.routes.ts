@@ -2,8 +2,9 @@ import { Router } from 'express';
 import {
     requestLogin,
     requestMe,
-    requestPasswordReset,
+    requestResetPassword,
     requestRegister,
+    requestChangePassword,
 } from '../controllers/auth.controller';
 import { auth } from '../middleware/auth';
 
@@ -18,7 +19,10 @@ router.post('/login', requestLogin);
 // 내 정보
 router.get('/me', auth(true), requestMe);
 
-// 비밀번호 재발급 (임시 비밀번호 메일 발송)
-router.post('/reset-password', requestPasswordReset);
+// 비밀번호 재발급 (비밀번호 초기화 메일 발송)
+router.post('/reset-password', requestResetPassword);
+
+// 비밀번호 변경
+router.post('/change-password', requestChangePassword);
 
 export default router;

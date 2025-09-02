@@ -7,7 +7,7 @@ import { pool } from '../config/db';
 import { UserPayload, AuthRequest } from '../middleware/auth';
 import { User } from '../entity/User';
 import { AppDataSource } from '../data-source';
-import { PasswordResetToken } from '../entity/PasswordResetToken';
+import { UserTemporaryToken } from '../entity/UserTemporaryToken';
 
 const createToken = (u: UserPayload): string =>
     jwt.sign(
@@ -114,60 +114,102 @@ export async function requestMe(req: AuthRequest, res: Response) {
 }
 
 // req body: email
-export async function requestPasswordEmail(req: Request, res: Response) {
+export async function requestResetPassword(req: Request, res: Response) {
     try {
+        const { email } = req.body;
+        const userRepo = AppDataSource.getRepository(User);
+        const tokenRepo = AppDataSource.getRepository(UserTemporaryToken);
+
+        const user = await userRepo.findOne({ where: { email } });
+        if (!user) {
+            return res.status(404).json({ message: 'Unregistered email' });
+        }
+
+        // JWT 토큰 생성
+        const token = jwt.sign(
+            { user_id: user.id },
+            process.env.JWT_SECRET as string,
+            {
+                expiresIn: '30m',
+            },
+        );
+
+        // DB 저장
+        const expiresAt = new Date(Date.now() + 30 * 60 * 1000);
+        const resetToken = tokenRepo.create({
+            user_id: user.id,
+            token,
+            expires_at: expiresAt,
+        });
+        await tokenRepo.save(resetToken);
+
+        // Email 전송
+        await sendResetPasswordMail(user.email, token);
+
+        return res.json({
+            message: 'The email for password reset has been sent successfully.',
+        });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Server error' });
     }
 }
 
+// req body: { email, token }
+async function sendResetPasswordMail(to: string, token: string) {
+    const resetLink = `http://localhost:3000/reset-password?token=${token}`;
+
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASS,
+        },
+    });
+
+    await transporter.sendMail({
+        from: `"Cubreak" <${process.env.SMTP_USER}>`,
+        to,
+        subject: 'Password Reset Instructions',
+        html: `
+            <p>To reset your password, please click the link below:</p>
+            <a href="${resetLink}">${resetLink}</a>
+            <p>This link is valid for 30 minutes only.</p>
+            <span style="color: #ff0000">Do not share this link with anyone.</span>
+        `,
+    });
+}
+
 // req body: { token, password }
-export async function requestPasswordReset(req: Request, res: Response) {
+export async function requestChangePassword(req: Request, res: Response) {
     try {
-        const { email } = req.body;
-        if (!email) {
-            return res.status(400).json({ message: 'Email is required' });
+        const { token, password } = req.body;
+        const userRepo = AppDataSource.getRepository(User);
+        const tokenRepo = AppDataSource.getRepository(UserTemporaryToken);
+
+        // JWT 검증
+        const payload = jwt.verify(token, process.env.JWT_SECRET as string) as {
+            user_id: number;
+        };
+
+        // DB에서 토큰 확인
+        const tokenRecord = await tokenRepo.findOne({ where: { token } });
+        if (!tokenRecord || tokenRecord.expires_at < new Date()) {
+            return res
+                .status(400)
+                .json({ message: 'Token is either invalid or expired.' });
         }
 
-        // 1. 유저 확인
-        const profile = await User.findOne({ where: { email } });
-        if (!profile) {
-            // 보안상 이메일 존재 여부 노출 X
-            return res.status(400).json({
-                message: `Couldn't find user by email.`,
-            });
-        }
+        const hashedPassword = await bcrypt.hash(password, 10);
+        await userRepo.update(
+            { id: payload.user_id },
+            { password_hash: hashedPassword },
+        );
+        await tokenRepo.delete({ token });
 
-        // 2. 임시 비밀번호 생성
-        const tempPassword = Math.random().toString(36).slice(-10);
-
-        // 3. 해싱 후 DB 저장
-        const hashed = await bcrypt.hash(tempPassword, 10);
-        profile.password_hash = hashed;
-        await profile.save();
-
-        // 4. 메일 발송
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.SMTP_USER,
-                pass: process.env.SMTP_PASS,
-            },
-        });
-
-        await transporter.sendMail({
-            from: `"Admin" <${process.env.SMTP_USER}>`,
-            to: email,
-            subject: 'Cubreak',
-            text: `Temporary password: ${tempPassword}\n\nYou should change your password after logged in.`,
-        });
-
-        return res.json({
-            message: 'The temporary password sent to your email.',
-        });
+        return res.json({ message: 'Your password successfully changed.' });
     } catch (error) {
         console.error('reset-password error:', error);
-        return res.status(500).json({ message: 'Internal Server Error' });
+        return res.status(400).json({ message: 'Bad request' });
     }
 }

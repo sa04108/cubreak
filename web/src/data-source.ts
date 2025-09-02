@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import { User } from './entity/User';
+import { UserTemporaryToken } from './entity/UserTemporaryToken';
 
 dotenv.config();
 
@@ -12,9 +13,9 @@ export const AppDataSource = new DataSource({
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
-    synchronize: true, // 개발 단계에서는 true, 운영에서는 migration 사용
+    synchronize: false, // 개발 단계에서는 true, 운영에서는 migration 사용
     logging: false,
-    entities: [User],
+    entities: [User, UserTemporaryToken],
     migrations: [],
     subscribers: [],
 });
