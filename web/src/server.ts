@@ -35,7 +35,7 @@ export function startServer() {
     });
 
     const port: number = Number(process.env.PORT) || 3000;
-    const host: string = process.env.HOST || '0.0.0.0';
+    const host: string = process.env.HOST || 'localhost';
 
     app.listen(port, host, () => {
         console.log(`API running on http://${host}:${port}`);
